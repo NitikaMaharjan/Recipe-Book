@@ -22,8 +22,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($user_name) || empty($user_email) || empty($user_password)) {
         echo 'All fields are required';
     } else {
-        $hashed_password = password_hash($user_password, PASSWORD_DEFAULT);
-        $sql = "INSERT INTO User (user_name, user_email, user_password) VALUES ('$user_name', ' $user_email', '$hashed_password')";
+
+        $sql = "INSERT INTO User (user_name, user_email, user_password) VALUES ('$user_name', ' $user_email', '$user_password')";
 
         if ($conn->query($sql) === TRUE) {
             header("Location: /RecipeBook/Recipe-Book/html/login.html");
