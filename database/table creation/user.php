@@ -1,19 +1,19 @@
 <?php
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "RecipeBook";
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "RecipeBook";
 
-    // Create connection
-    $conn = new mysqli($servername, $username, $password, $dbname);
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
 
-    // Check connection
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
 
-    // sql to create table
-    $sql = "CREATE TABLE User(
+// sql to create table
+$sql = "CREATE TABLE User(
         user_id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
         user_name VARCHAR(30) NOT NULL UNIQUE,
         user_email VARCHAR(50) NOT NULL UNIQUE,
@@ -22,11 +22,10 @@
         user_reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
     )";
 
-    if ($conn->query($sql) === TRUE) {
-        echo "User table created successfully";
-    } else {
-        echo "Error creating table: " . $conn->error;
-    }
+if ($conn->query($sql) === TRUE) {
+    echo "User table created successfully";
+} else {
+    echo "Error creating table: " . $conn->error;
+}
 
-    $conn->close();
-?>
+$conn->close();
