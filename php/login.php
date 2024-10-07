@@ -24,8 +24,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $sql = "SELECT user_name, user_password FROM user WHERE user_name='$user_name' AND user_password='$user_password'";
         $result=$conn->query($sql);
 
-        if ($result->num_rows>0){
-            header("Location: /RecipeBook/Recipe-Book/html/homepage2.html");
+        if ($result->num_rows==1){
+            session_start();
+            $_SESSION['loggedin']=true;
+            $_SESSION['username']=$user_name;
+            header("Location: /RecipeBook/Recipe-Book/php/homepage2.php");
             exit();
         } else {
             echo "Incorrect username and password " . $conn->error;
