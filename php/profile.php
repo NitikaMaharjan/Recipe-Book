@@ -20,7 +20,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "SELECT * FROM Post WHERE user_id = $user_id";
+$sql = "SELECT * FROM post WHERE user_id = $user_id";
 $result = $conn->query($sql);
 ?>
 
@@ -57,6 +57,7 @@ $result = $conn->query($sql);
             echo "<p><b>Category</b>:" . htmlspecialchars($row['post_category']) . "</p>";
             echo "<p><b>Posted on</b>: " . htmlspecialchars($row['post_posted_date']) . "</p>";
 
+            echo "<button onclick='edit(" . $row['post_id'] . ")'>Edit post</button>";
             echo "<button onclick='confirm_box(" . $row['post_id'] . ")'>Delete post</button>";
             echo "</div><hr>";
         }
@@ -68,11 +69,14 @@ $result = $conn->query($sql);
 
 </body>
 <script>
-    function confirm_box(post_id) {
+    function confirm_box(post_id){
         var ans = confirm("Are you sure you want to delete this post?");
         if (ans == true){
             window.location.href = "/RecipeBook/Recipe-Book/php/delete_post.php?post_id=" + post_id;
         }
+    }
+    function edit(post_id){
+        window.location.href = "/RecipeBook/Recipe-Book/php/edit_post.php?post_id=" + post_id;
     }
 </script>
 </html>
