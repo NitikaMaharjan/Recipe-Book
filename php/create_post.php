@@ -1,9 +1,14 @@
 <?php
 session_start();
 if (!isset($_SESSION['username'])) {
-    header("Location: /RecipeBook/Recipe-Book/html/login.php");
+    echo "<script>
+        alert('You haven\'t logged in !!!');
+        window.location.href = '/RecipeBook/Recipe-Book/html/login.html';
+    </script>";
     exit();
 }
+?>
+<?php
 
 $servername = "localhost";
 $username = "root";
@@ -28,7 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
     $sql = "INSERT INTO Post (post_image, post_title, post_ingredients, post_instructions, post_keywords, post_category, user_id)
-            VALUES ('$imageData', '$post_title', '$post_ingredients', '$post_instructions', '$post_keywords', '$post_category', '$user_id')";
+        VALUES ('$imageData', '$post_title', '$post_ingredients', '$post_instructions', '$post_keywords', '$post_category', '$user_id')";
 
 
     if ($conn->query($sql) === TRUE) {
@@ -41,3 +46,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 $conn->close();
+?>

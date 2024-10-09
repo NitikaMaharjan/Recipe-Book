@@ -1,8 +1,8 @@
 <?php
 session_start();
 
-if (!isset($_SESSION['username']) && isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
-    header("Location: /RecipeBook/Recipe-Book/html/login.php");
+if (!(isset($_SESSION['username']) && isset($_SESSION['loggedin']) && $_SESSION['loggedin'])) {
+    header("Location: /RecipeBook/Recipe-Book/html/login.html");
     exit();
 }
 $user_name = $_SESSION['username'];
@@ -35,6 +35,7 @@ $result = $conn->query($sql);
 
 <body>
     <h1>Welcome, <?php echo "$user_name" ?></h1>
+    <button><a href="/RecipeBook/Recipe-Book/php/logout.php">Log out</a></button>
     <button><a href="/RecipeBook/Recipe-Book/html/create_post.html">Add recipe</a></button>
     <?php
     if ($result->num_rows > 0) {
