@@ -43,6 +43,7 @@ $result = $conn->query($sql);
         while ($row = $result->fetch_assoc()) {
             echo "<div>";
             echo "<h3>Title:" . htmlspecialchars($row['post_title']) . "</h3>";
+            echo "<p>" . htmlspecialchars($row['post_text']) . "</p>";
 
             if (($row['post_image'])) {
                 echo "<img src='data:image/jpeg;base64," . base64_encode($row['post_image']) . "' alt='Recipe Image' style='max-width: 200px; max-height: 200px;'/>";
