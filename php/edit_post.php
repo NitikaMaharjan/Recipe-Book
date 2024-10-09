@@ -14,7 +14,7 @@ if ($conn->connect_error) {
 
 if (isset($_GET['post_id'])) {
     $post_id = (int)$_GET['post_id'];
-    
+
     $sql = "SELECT * FROM post WHERE post_id = $post_id";
     $result = $conn->query($sql);
 
@@ -43,7 +43,12 @@ if (isset($_GET['post_id'])) {
     <h1>Edit your Post</h1>
     <form action="/RecipeBook/Recipe-Book/php/update_post.php?post_id=<?php echo $post_id; ?>" method="POST" enctype="multipart/form-data">
         <label for="post_image">Post Image:</label>
-        <input type="file" name="post_image" accept="image" id="post_image" required><br><br>
+        <?php if (($row['post_image'])) {
+            echo "<img src='data:image/jpeg;base64," . base64_encode($row['post_image']) . "' alt='Recipe Image' style='max-width: 200px; max-height: 200px;'/>";
+        } else {
+            echo "No image available";
+        } ?><br><br>
+        <input type="file" name="post_image" accept="image" id="post_image" value="<?php $row['post_image']; ?>"><br><br>
 
         <label for="post_title">Post Title:</label>
         <input type="text" name="post_title" id="post_title" value="<?php echo htmlspecialchars($row['post_title']); ?>" required><br><br>
