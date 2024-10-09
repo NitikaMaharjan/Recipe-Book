@@ -5,7 +5,7 @@ if (!isset($_SESSION['username']) && isset($_SESSION['loggedin']) && $_SESSION['
     header("Location: /RecipeBook/Recipe-Book/html/login.php");
     exit();
 }
-$username = $_SESSION['username'];
+$user_name = $_SESSION['username'];
 $user_id = $_SESSION['user_id'];
 
 $servername = "localhost";
@@ -34,7 +34,7 @@ $result = $conn->query($sql);
 </head>
 
 <body>
-    <h1>Welcome, <?php echo "$username" ?></h1>
+    <h1>Welcome, <?php echo "$user_name" ?></h1>
     <button><a href="/RecipeBook/Recipe-Book/html/create_post.html">Add recipe</a></button>
     <?php
     if ($result->num_rows > 0) {
