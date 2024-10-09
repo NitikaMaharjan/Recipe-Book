@@ -41,6 +41,7 @@ $result = $conn->query($sql);
     if ($result->num_rows > 0) {
 
         while ($row = $result->fetch_assoc()) {
+            $_SESSION['post_to_be_deleted']=$row['post_id'];
             echo "<div>";
             echo "<h3>Title:" . htmlspecialchars($row['post_title']) . "</h3>";
             echo "<p>" . htmlspecialchars($row['post_text']) . "</p>";
@@ -55,16 +56,23 @@ $result = $conn->query($sql);
             echo "<p><b>Keywords</b>:" . htmlspecialchars($row['post_keywords']) . "</p>";
             echo "<p><b>Category</b>:" . htmlspecialchars($row['post_category']) . "</p>";
             echo "<p><b>Posted on</b>: " . htmlspecialchars($row['post_posted_date']) . "</p>";
+
+            echo "<button onclick='confirm_box(" . $row['post_id'] . ")'>Delete post</button>";
             echo "</div><hr>";
         }
     } else {
         echo "<p>You have not posted any recipes.   </p>";
     }
-
-
     $conn->close();
     ?>
 
 </body>
-
+<script>
+    function confirm_box(post_id) {
+        var ans = confirm("Are you sure you want to delete this post?");
+        if (ans == true){
+            window.location.href = "/RecipeBook/Recipe-Book/php/delete_post.php?post_id=" + post_id;
+        }
+    }
+</script>
 </html>
