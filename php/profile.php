@@ -31,6 +31,15 @@ $result = $conn->query($sql);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile page</title>
+    <style>
+        .post {
+            cursor: pointer;
+            padding: 10px;
+            border: 1px solid #ccc;
+            margin-bottom: 10px;
+            transition: background-color 0.3s ease;
+        }
+    </style>
 </head>
 
 <body>
@@ -42,7 +51,7 @@ $result = $conn->query($sql);
 
         while ($row = $result->fetch_assoc()) {
             $_SESSION['post_to_be_deleted'] = $row['post_id'];
-            echo "<div>";
+            echo "<div class='post' onclick='viewPost(" . $row['post_id'] . ")'>";
             echo "<h3>Title:" . htmlspecialchars($row['post_title']) . "</h3>";
             echo "<p>" . htmlspecialchars($row['post_text']) . "</p>";
 
@@ -51,19 +60,14 @@ $result = $conn->query($sql);
             } else {
                 echo "No image available";
             }
-            echo "<p><b>Ingrediants</b>:" . htmlspecialchars($row['post_ingredients']) . "</p>";
-            echo "<p><b>Instructions</b>:" . htmlspecialchars($row['post_instructions']) . "</p>";
-            echo "<p><b>Keywords</b>:" . htmlspecialchars($row['post_keywords']) . "</p>";
-            echo "<p><b>Category</b>:" . htmlspecialchars($row['post_category']) . "</p>";
             if ($row['post_edited_date'] != $row['post_posted_date']) {
                 echo "<p><b>Post edited on</b>: " . htmlspecialchars($row['post_edited_date']) . "</p>";
             } else {
                 echo "<p><b>Posted on</b>: " . htmlspecialchars($row['post_posted_date']) . "</p>";
             }
-
             echo "<button onclick='edit(" . $row['post_id'] . ")'>Edit post</button>";
             echo "<button onclick='confirm_box(" . $row['post_id'] . ")'>Delete post</button>";
-            echo "</div><hr>";
+            echo "</div>";
         }
     } else {
         echo "<p>You have not posted any recipes.   </p>";
@@ -74,6 +78,7 @@ $result = $conn->query($sql);
 </body>
 <script>
     function confirm_box(post_id) {
+        event.stopPropagation();
         var ans = confirm("Are you sure you want to delete this post?");
         if (ans == true) {
             window.location.href = "/RecipeBook/Recipe-Book/php/delete_post.php?post_id=" + post_id;
@@ -81,7 +86,12 @@ $result = $conn->query($sql);
     }
 
     function edit(post_id) {
+        event.stopPropagation();
         window.location.href = "/RecipeBook/Recipe-Book/php/edit_post.php?post_id=" + post_id;
+    }
+
+    function viewPost(post_id) {
+        window.location.href = "/RecipeBook/Recipe-Book/php/view_post.php?post_id=" + post_id;
     }
 </script>
 

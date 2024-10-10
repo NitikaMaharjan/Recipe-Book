@@ -34,7 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" and isset($_GET['post_id'])) {
 
     if ($conn->query($sql) === TRUE) {
         echo "Post updated successfully.";
-        header("Location: /RecipeBook/Recipe-Book/php/profile.php");
+        header("Location: /RecipeBook/Recipe-Book/php/view_post.php?post_id=" . $post_id);
         exit();
     } else {
         echo "Error: " . $conn->error;
