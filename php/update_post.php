@@ -22,6 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" and isset($_GET['post_id'])) {
     $post_category = $_POST['post_category'];
     $post_text = $_POST['post_text'];
 
+
     if (isset($_FILES['post_image']) && $_FILES['post_image']['tmp_name'] != '') {
         $imageData = file_get_contents($_FILES['post_image']['tmp_name']);
         $imageData = mysqli_real_escape_string($conn, $imageData);
@@ -29,6 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" and isset($_GET['post_id'])) {
     } else {
         $sql = "UPDATE post SET post_title='$post_title', post_ingredients='$post_ingredients', post_instructions='$post_instructions', post_keywords='$post_keywords', post_category='$post_category', post_text='$post_text' WHERE post_id='$post_id'";
     }
+
 
     if ($conn->query($sql) === TRUE) {
         echo "Post updated successfully.";
