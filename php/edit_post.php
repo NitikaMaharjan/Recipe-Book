@@ -42,7 +42,7 @@
             </div>
         </header>
         <h1>Edit your Post</h1>
-        <form action="/RecipeBook/Recipe-Book/php/update_post.php?post_id=<?php echo $post_id;?>" method="POST">
+        <form action="/RecipeBook/Recipe-Book/php/update_post.php?post_id=<?php echo $post_id;?>" method="POST" enctype="multipart/form-data">
             <label for="post_image">Post Image:</label>
             <?php if (($row['post_image'])) {
                 echo "<img src='data:image/jpeg;base64," . base64_encode($row['post_image']) . "' alt='Recipe Image' style='max-width: 200px; max-height: 200px;'/>";

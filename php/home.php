@@ -45,6 +45,7 @@
 
         <h1>Hello <?php echo "$user_name" ?>, welcome to your home feed!!</h1>
         <button><a href="/RecipeBook/Recipe-Book/php/logout.php">Log out</a></button>
+        <br/><br/>
         
         <?php
             if ($result->num_rows > 0) {
