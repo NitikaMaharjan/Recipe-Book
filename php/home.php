@@ -52,20 +52,23 @@
                 while ($row = $result->fetch_assoc()){
 
                     echo "<div class='post' onclick='viewPost(" . $row['post_id'] . ")'>";
-                    echo "<h3>Title:" . htmlspecialchars($row['post_title']) . "</h3>";
-                    echo "<p>" . htmlspecialchars($row['post_text']) . "</p>";
+                    echo "<h3>" . htmlspecialchars($row['post_title']) . "</h3>";
+
+                    if ($row['post_edited_date'] != $row['post_posted_date']) {
+                        echo "<p>Posted by <b>" . htmlspecialchars($row['user_name']) . " </b>and edited on<b> ".htmlspecialchars($row['post_edited_date'])."</b></p>";
+                    } else {
+                        echo "<p>Posted by <b>" . htmlspecialchars($row['user_name']) . " </b>on<b> ".htmlspecialchars($row['post_edited_date'])."</b></p>";
+                    }
+                    
+                    echo "<p>Category : " . htmlspecialchars($row['post_category']) . "</p>";
 
                     if (($row['post_image'])) {
                         echo "<img src='data:image/jpeg;base64," . base64_encode($row['post_image']) . "' alt='Recipe Image' style='max-width: 200px; max-height: 200px;'/>";
                     } else {
                         echo "No image available";
                     }
-                    if ($row['post_edited_date'] != $row['post_posted_date']) {
-                        echo "<p><b>Post edited on</b>: " . htmlspecialchars($row['post_edited_date']) . "</p>";
-                    } else {
-                        echo "<p><b>Posted on</b>: " . htmlspecialchars($row['post_posted_date']) . "</p>";
-                    }
-                    echo "<p><b>Posted by</b>: " . htmlspecialchars($row['user_name']) . "</p>";
+                    
+                    echo "<p>" . htmlspecialchars($row['post_text']) . "</p>";
                     echo "</div>";
                 }
             } else {

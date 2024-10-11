@@ -59,14 +59,29 @@
             echo "<p><b>Instructions</b>:" . htmlspecialchars($row['post_instructions']) . "</p>";
             echo "<p><b>Keywords</b>:" . htmlspecialchars($row['post_keywords']) . "</p>";
             echo "<p><b>Category</b>:" . htmlspecialchars($row['post_category']) . "</p>";
+            
             if ($row['post_edited_date'] != $row['post_posted_date']) {
-                echo "<p><b>Post edited on</b>: " . htmlspecialchars($row['post_edited_date']) . "</p>";
+                echo "<p>Posted by <b>" . htmlspecialchars($row['user_name']) . " </b>and edited on<b> ".htmlspecialchars($row['post_edited_date'])."</b></p>";
             } else {
-                echo "<p><b>Posted on</b>: " . htmlspecialchars($row['post_posted_date']) . "</p>";
+                echo "<p>Posted by <b>" . htmlspecialchars($row['user_name']) . " </b>on<b> ".htmlspecialchars($row['post_edited_date'])."</b></p>";
             }
-            echo "<p><b>Posted by</b>: " . htmlspecialchars($row['user_name']) . "</p>";
+            
+            echo "<button onclick='edit_post(" . $row['post_id'] . ")'>Edit post</button>";
+            echo "<button onclick='delete_post(" . $row['post_id'] . ")'>Delete post</button>";
         ?>
     </body>
+    <script>
+        function edit_post(post_id) {
+            window.location.href = "/RecipeBook/Recipe-Book/php/edit_post.php?post_id=" + post_id;
+        }
+
+        function delete_post(post_id) {
+            var ans = confirm("Are you sure you want to delete this post?");
+            if (ans == true) {
+                window.location.href = "/RecipeBook/Recipe-Book/php/delete_post.php?post_id=" + post_id;
+            }
+        }     
+    </script>
 </html>
 
 <?php 
