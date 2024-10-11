@@ -65,9 +65,11 @@
             } else {
                 echo "<p>Posted by <b>" . htmlspecialchars($row['user_name']) . " </b>on<b> ".htmlspecialchars($row['post_edited_date'])."</b></p>";
             }
-            
-            echo "<button onclick='edit_post(" . $row['post_id'] . ")'>Edit post</button>";
-            echo "<button onclick='delete_post(" . $row['post_id'] . ")'>Delete post</button>";
+
+            if($_SESSION['user_id']==$row['user_id']){
+                echo "<button onclick='edit_post(" . $row['post_id'] . ")'>Edit post</button>";
+                echo "<button onclick='delete_post(" . $row['post_id'] . ")'>Delete post</button>";
+            }
         ?>
     </body>
     <script>

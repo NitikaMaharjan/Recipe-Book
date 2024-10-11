@@ -18,7 +18,7 @@
         
         $sql = "DELETE FROM post WHERE post_id = " . $post_id;
 
-        if ($conn->query($sql) === TRUE) {
+        if ($conn->query($sql) === TRUE){
             echo "Record deleted successfully";
             header("Location: /RecipeBook/Recipe-Book/php/profile.php");
             exit();
