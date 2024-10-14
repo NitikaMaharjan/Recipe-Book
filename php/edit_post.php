@@ -21,11 +21,15 @@
         if ($result->num_rows > 0) {
             $row = $result->fetch_assoc();
         } else {
-            echo "No post found for the provided ID.";
+            echo "<script>
+                alert ('No post found for the provided ID!!');
+                  </script>";
             exit();
         }
     } else {
-        echo "No post ID provided for editing.";
+        echo "<script>
+                alert ('No post ID provided for editing!!');
+              </script>";
         exit();
     }
 ?>

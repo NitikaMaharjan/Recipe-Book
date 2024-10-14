@@ -30,15 +30,20 @@
             $sql = "UPDATE post SET post_title='$post_title', post_ingredients='$post_ingredients', post_instructions='$post_instructions', post_keywords='$post_keywords', post_category='$post_category', post_text='$post_text' WHERE post_id='$post_id'";
         }
 
-        if ($conn->query($sql) === TRUE) {
-            echo "Post updated successfully.";
-            header("Location: /RecipeBook/Recipe-Book/php/view_post.php?post_id=".$post_id);
+        if ($conn->query($sql) === TRUE){
+            echo "<script>
+                    alert ('Post updated successfully!!');
+                    window.location.href = '/RecipeBook/Recipe-Book/php/view_post.php?post_id={$post_id}';
+                  </script>";
             exit();
         } else {
             echo "Error: " . $conn->error;
         }
     } else {
-        echo "No post ID provided for updating.";
+        echo "<script>
+                alert ('No post ID provided for updating!!');
+              </script>";
+        exit();
     }
 
     $conn->close();

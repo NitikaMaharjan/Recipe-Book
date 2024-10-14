@@ -55,11 +55,11 @@
 
         if ($conn->query($sql) === TRUE) {
             echo "<script>
-                    alert ('Post added successfully!!');
+                    alert ('Post created successfully!!');
                     window.location.href = '/RecipeBook/Recipe-Book/php/profile.php';
                   </script>";
         } else {
-            echo "Error: " . $conn->error;
+            echo "Error creating post: " . $conn->error;
         }
     }
 

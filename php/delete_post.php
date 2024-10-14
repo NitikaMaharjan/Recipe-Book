@@ -19,14 +19,19 @@
         $sql = "DELETE FROM post WHERE post_id = " . $post_id;
 
         if ($conn->query($sql) === TRUE){
-            echo "Record deleted successfully";
-            header("Location: /RecipeBook/Recipe-Book/php/profile.php");
+            echo "<script>
+                    alert ('Post deleted successfully!!');
+                    window.location.href = '/RecipeBook/Recipe-Book/php/profile.php';
+                  </script>";
             exit();
         } else {
-            echo "Error deleting record: " . $conn->error;
+            echo "Error deleting post: " . $conn->error;
         }
     } else {
-        echo "No post ID provided for deletion.";
+        echo "<script>
+                alert ('No post ID provided for deletion!!');
+              </script>";
+        exit();
     }
 
     $conn->close();
