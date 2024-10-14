@@ -41,8 +41,7 @@
     <body>
         <header>
             <div class="topnav">
-                <button><a class="profile" href="/RecipeBook/Recipe-Book/php/profile.php">Profile</a></button>
-                <button><a class="home" href="/RecipeBook/Recipe-Book/php/home.php">Home</a></button>     
+                <button onclick="go_back()">Go Back</button>       
             </div>
         </header>
         <h1>Edit your Post</h1>
@@ -76,6 +75,11 @@
             <input type="submit" value="Update Post">
         </form>
     </body>
+    <script>
+        function go_back(){
+            window.history.back();
+        }
+    </script>
 </html>
 
 <?php

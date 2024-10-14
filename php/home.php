@@ -45,6 +45,7 @@
 
         <h1>Hello <?php echo "$user_name" ?>, welcome to your home feed!!</h1>
         <button><a href="/RecipeBook/Recipe-Book/php/logout.php">Log out</a></button>
+        <button><a href="/RecipeBook/Recipe-Book/html/add_post.html">Add recipe</a></button>
         <br/><br/>
         
         <?php

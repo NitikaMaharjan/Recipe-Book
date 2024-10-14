@@ -46,8 +46,7 @@
     <body>
         <header>
             <div class="topnav">
-                <button><a class="profile" href="/RecipeBook/Recipe-Book/php/profile.php">Profile</a></button>
-                <button><a class="home" href="/RecipeBook/Recipe-Book/php/home.php">Home</a></button>     
+                <button onclick="go_back()">Go Back</button>    
             </div>
         </header>
         <h1><?php echo htmlspecialchars($row['post_title']); ?></h1>
@@ -77,6 +76,10 @@
         ?>
     </body>
     <script>
+        function go_back(){
+            window.history.back();
+        }
+
         function edit_post(post_id) {
             window.location.href = "/RecipeBook/Recipe-Book/php/edit_post.php?post_id=" + post_id;
         }
