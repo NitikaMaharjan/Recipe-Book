@@ -7,7 +7,9 @@
     } 
 
     if (!isset($_GET['post_id'])) {
-        echo "Post not found.";
+        echo "<script>
+                alert ('No post ID provided for viewing!!');
+              </script>";
         exit();
     }
 
@@ -30,7 +32,9 @@
     if ($result->num_rows>0) {
         $row = $result->fetch_assoc();
     } else {
-        echo "Post not found.";
+        echo "<script>
+                alert ('No post found!!');
+              </script>";
         exit();
     }
 ?>

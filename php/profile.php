@@ -51,7 +51,6 @@
         <?php
             if ($result->num_rows>0){
                 while ($row = $result->fetch_assoc()) {
-                    $_SESSION['post_to_be_deleted'] = $row['post_id'];
                     echo "<div class='post' onclick='view_post(" . $row['post_id'] . ")'>";
                     echo "<h3>" . htmlspecialchars($row['post_title']) . "</h3>";
 
