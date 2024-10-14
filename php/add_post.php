@@ -32,14 +32,20 @@
     
             if ($check !== false && in_array($imageFileType, ['jpg', 'png', 'jpeg', 'gif'])) {
                 if ($_FILES['post_image']['size'] > 5000000) { // 5MB limit
-                    echo "Sorry, your file is too large.";
+                    echo "<script>
+                            alert ('Sorry, your file size is too large!!');
+                            window.location.href = '/RecipeBook/Recipe-Book/html/add_post.html';
+                          </script>";
                     exit();
                 }
     
                 $imageData = file_get_contents($_FILES['post_image']['tmp_name']);
                 $imageData = mysqli_real_escape_string($conn, $imageData);
             } else {
-                echo "Invalid image format. Only JPG, JPEG, PNG & GIF files are allowed.";
+                echo "<script>
+                        alert ('Invalid image format. Only JPG, JPEG, PNG & GIF files are allowed!!');
+                        window.location.href = '/RecipeBook/Recipe-Book/html/add_post.html';
+                      </script>";
                 exit();
             }
         }
@@ -48,9 +54,10 @@
             VALUES ('$imageData', '$post_title', '$post_ingredients', '$post_instructions', '$post_keywords', '$post_category', '$user_id','$post_text')";
 
         if ($conn->query($sql) === TRUE) {
-            echo "Post added successfully.";
-            header("Location: /RecipeBook/Recipe-Book/php/profile.php");
-            exit();
+            echo "<script>
+                    alert ('Post added successfully!!');
+                    window.location.href = '/RecipeBook/Recipe-Book/php/profile.php';
+                  </script>";
         } else {
             echo "Error: " . $conn->error;
         }

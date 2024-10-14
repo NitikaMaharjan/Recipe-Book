@@ -18,7 +18,10 @@
         $user_password = $_POST['password'];
 
         if (empty($user_name) || empty($user_password)) {
-            echo 'All fields are required';
+            echo "<script>
+                    alert ('All fields are required!!');
+                    window.location.href = '/RecipeBook/Recipe-Book/html/login.html';
+                  </script>";
         } else {
             $sql = "SELECT user_name, user_password, user_id FROM user WHERE user_name='$user_name' AND user_password='$user_password'";
             $result = $conn->query($sql);
@@ -32,7 +35,10 @@
                 header("Location: /RecipeBook/Recipe-Book/php/profile.php");
                 exit();
             } else {
-                echo "Incorrect username and password " . $conn->error;
+                echo "<script>
+                    alert ('Incorrect username and password, Please try again!!');
+                    window.location.href = '/RecipeBook/Recipe-Book/html/login.html';
+                  </script>".$conn->error;
             }
         }
     }
