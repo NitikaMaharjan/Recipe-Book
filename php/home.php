@@ -98,7 +98,7 @@ $result = $conn->query($sql);
             event.stopPropagation();
             const postId = this.getAttribute('data-post-id');
             const xhr = new XMLHttpRequest();
-            xhr.open('POST', '/rohan/Recipe-Book/php/like_post.php', true);
+            xhr.open('POST', '/RecipeBook/Recipe-Book/php/like_post.php', true);
             xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
             xhr.onload = function() {
