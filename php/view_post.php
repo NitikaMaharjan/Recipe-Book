@@ -26,7 +26,9 @@
         die("Connection failed: " . $conn->connect_error);
     }
 
-    $sql = "SELECT post.*, user.user_name FROM post JOIN user ON post.user_id = user.user_id WHERE post.post_id =$post_id";
+    $sql = "SELECT post.*, user.user_name, 
+                IFNULL((SELECT COUNT(*) FROM Likes WHERE post.post_id = Likes.post_id), 0) AS post_like_count, 
+                IFNULL((SELECT COUNT(*) FROM Likes WHERE post.post_id = Likes.post_id AND Likes.user_id = " . $_SESSION['user_id'] . "), 0) AS user_liked FROM post JOIN user ON post.user_id = user.user_id WHERE post.post_id =$post_id";
     $result = $conn->query($sql);
 
     if ($result->num_rows>0) {
@@ -73,6 +75,12 @@
                 echo "<button onclick='edit_post(" . $row['post_id'] . ")'>Edit post</button>";
                 echo "<button onclick='delete_post(" . $row['post_id'] . ")'>Delete post</button>";
             }
+
+            $liked = $row['user_liked'] > 0 ? 'liked' : '';
+            echo "<button class='fav-btn' data-post-id='" . $row['post_id'] . "'>Add to Favorites</button>";
+            echo "<button class='like-btn $liked' data-post-id='" . $row['post_id'] . "'>";
+            echo "Likes: <span id='like-count-" . $row['post_id'] . "'>" . htmlspecialchars($row['post_like_count']) . "</span>";
+            echo "</button>";
         ?>
     </body>
     <script>
@@ -89,7 +97,59 @@
             if (ans == true) {
                 window.location.href = "/RecipeBook/Recipe-Book/php/delete_post.php?post_id=" + post_id;
             }
-        }     
+        }
+        
+        //ajax for like button
+        document.querySelectorAll('.like-btn').forEach(button => {
+            button.addEventListener('click', function(event) {
+                event.stopPropagation();
+                const postId = this.getAttribute('data-post-id');
+                const xhr = new XMLHttpRequest();
+                xhr.open('POST', '/RecipeBook/Recipe-Book/php/like_post.php', true);
+                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+                xhr.onload = function() {
+                    if (xhr.status === 200) {
+                        const response = JSON.parse(xhr.responseText);
+                        if (response.success) {
+                            const likeBtn = document.querySelector('.like-btn[data-post-id="' + postId + '"]');
+                            likeBtn.classList.toggle('liked');
+                            document.getElementById('like-count-' + postId).innerText = response.newLikeCount;
+                        } else {
+                            alert(response.message);
+
+                        }
+                    }
+                };
+
+                xhr.send('post_id=' + postId);
+            });
+        });
+        
+        //ajax for favourite button
+        document.querySelectorAll('.fav-btn').forEach(button => {
+            button.addEventListener('click', function(event) {
+                event.stopPropagation();
+                const postId = this.getAttribute('data-post-id');
+
+                const xhr = new XMLHttpRequest();
+                xhr.open('POST', '/RecipeBook/Recipe-Book/php/add_favorite.php', true);
+                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+                xhr.onload = function() {
+                    if (xhr.status === 200) {
+                        const response = JSON.parse(xhr.responseText);
+                        if (response.success) {
+                            alert('Post added to your favorites!'); // alert nai bhayena
+                        } else {
+                            alert(response.message);
+                        }
+                    }
+                };
+
+                xhr.send('post_id=' + postId);
+            });
+        });
     </script>
 </html>
 

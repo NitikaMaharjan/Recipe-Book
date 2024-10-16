@@ -84,7 +84,6 @@ $result = $conn->query($sql);
             echo "Likes: <span id='like-count-" . $row['post_id'] . "'>" . htmlspecialchars($row['post_like_count']) . "</span>";
             echo "</button>";
             echo "</div>";
-            echo "</div>";
         }
     } else {
         echo "<p>There are no recipes to show you, Sorry T_T </p>";
@@ -96,6 +95,7 @@ $result = $conn->query($sql);
     function viewPost(post_id) {
         window.location.href = "/RecipeBook/Recipe-Book/php/view_post.php?post_id=" + post_id;
     }
+
     //ajax for like button
     document.querySelectorAll('.like-btn').forEach(button => {
         button.addEventListener('click', function(event) {
@@ -122,6 +122,7 @@ $result = $conn->query($sql);
             xhr.send('post_id=' + postId);
         });
     });
+    
     //ajax for favourite button
     document.querySelectorAll('.fav-btn').forEach(button => {
         button.addEventListener('click', function(event) {
