@@ -77,7 +77,6 @@
             }
 
             $liked = $row['user_liked'] > 0 ? 'liked' : '';
-            echo "<button class='fav-btn' data-post-id='" . $row['post_id'] . "'>Add to Favorites</button>";
             echo "<button class='like-btn $liked' data-post-id='" . $row['post_id'] . "'>";
             echo "Likes: <span id='like-count-" . $row['post_id'] . "'>" . htmlspecialchars($row['post_like_count']) . "</span>";
             echo "</button>";
@@ -118,31 +117,6 @@
                         } else {
                             alert(response.message);
 
-                        }
-                    }
-                };
-
-                xhr.send('post_id=' + postId);
-            });
-        });
-        
-        //ajax for favourite button
-        document.querySelectorAll('.fav-btn').forEach(button => {
-            button.addEventListener('click', function(event) {
-                event.stopPropagation();
-                const postId = this.getAttribute('data-post-id');
-
-                const xhr = new XMLHttpRequest();
-                xhr.open('POST', '/RecipeBook/Recipe-Book/php/add_favorite.php', true);
-                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-
-                xhr.onload = function() {
-                    if (xhr.status === 200) {
-                        const response = JSON.parse(xhr.responseText);
-                        if (response.success) {
-                            alert('Post added to your favorites!'); // alert nai bhayena
-                        } else {
-                            alert(response.message);
                         }
                     }
                 };

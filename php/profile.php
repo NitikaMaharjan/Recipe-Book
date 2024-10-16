@@ -45,7 +45,6 @@ $result = $conn->query($sql);
     <header>
         <div class="topnav">
             <button><a class="home" href="/RecipeBook/Recipe-Book/php/home.php">Home</a></button>
-            <button><a href="/RecipeBook/Recipe-Book/php/favorite_page.php">View Favorites</a></button>
         </div>
     </header>
     <h1>Hello <?php echo "$user_name" ?>, welcome to your profile!!</h1>
@@ -74,7 +73,6 @@ $result = $conn->query($sql);
             }
 
             echo "<p>" . htmlspecialchars($row['post_text']) . "</p>";
-            echo "<button class='fav-btn' data-post-id='" . $row['post_id'] . "'>Add to Favorites</button>";
             echo "<button class='like-btn $liked' data-post-id='" . $row['post_id'] . "'>";
             echo "Likes: <span id='like-count-" . $row['post_id'] . "'>" . htmlspecialchars($row['post_like_count']) . "</span>";
             echo "</button>";
@@ -111,31 +109,6 @@ $result = $conn->query($sql);
                     } else {
                         alert(response.message);
 
-                    }
-                }
-            };
-
-            xhr.send('post_id=' + postId);
-        });
-    });
-
-    //ajax for favourite button
-    document.querySelectorAll('.fav-btn').forEach(button => {
-        button.addEventListener('click', function(event) {
-            event.stopPropagation();
-            const postId = this.getAttribute('data-post-id');
-
-            const xhr = new XMLHttpRequest();
-            xhr.open('POST', '/RecipeBook/Recipe-Book/php/add_favorite.php', true);
-            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-
-            xhr.onload = function() {
-                if (xhr.status === 200) {
-                    const response = JSON.parse(xhr.responseText);
-                    if (response.success) {
-                        alert('Post added to your favorites!'); // alert nai bhayena
-                    } else {
-                        alert(response.message);
                     }
                 }
             };
