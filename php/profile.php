@@ -45,6 +45,7 @@ $result = $conn->query($sql);
     <header>
         <div class="topnav">
             <button><a class="home" href="/RecipeBook/Recipe-Book/php/home.php">Home</a></button>
+            <button><a href="/RecipeBook/Recipe-Book/php/favorite_page.php">View Favorites</a></button>
         </div>
     </header>
     <h1>Hello <?php echo "$user_name" ?>, welcome to your profile!!</h1>

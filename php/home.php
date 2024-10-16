@@ -11,7 +11,7 @@ $user_name = $_SESSION['username'];
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "RecipeBook";
+$dbname = "recipebook";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -47,12 +47,14 @@ $result = $conn->query($sql);
     <header>
         <div class="topnav">
             <button><a class="profile" href="/RecipeBook/Recipe-Book/php/profile.php">Profile</a></button>
+            <button><a href="/RecipeBook/Recipe-Book/php/favorite_page.php">View Favorites</a></button>
         </div>
     </header>
 
     <h1>Hello <?php echo "$user_name" ?>, welcome to your home feed!!</h1>
     <button><a href="/RecipeBook/Recipe-Book/php/logout.php">Log out</a></button>
     <button><a href="/RecipeBook/Recipe-Book/html/add_post.html">Add recipe</a></button>
+
     <br /><br />
 
     <?php
@@ -77,6 +79,7 @@ $result = $conn->query($sql);
             }
 
             echo "<p>" . htmlspecialchars($row['post_text']) . "</p>";
+            echo "<button class='fav-btn' data-post-id='" . $row['post_id'] . "'>Add to Favorites</button>";
             echo "<button class='like-btn $liked' data-post-id='" . $row['post_id'] . "'>";
             echo "Likes: <span id='like-count-" . $row['post_id'] . "'>" . htmlspecialchars($row['post_like_count']) . "</span>";
             echo "</button>";
@@ -84,7 +87,7 @@ $result = $conn->query($sql);
             echo "</div>";
         }
     } else {
-        echo "<p>There are no recipes to show you, Sorry T_T</p>";
+        echo "<p>There are no recipes to show you, Sorry T_T </p>";
     }
     $conn->close();
     ?>
@@ -93,6 +96,7 @@ $result = $conn->query($sql);
     function viewPost(post_id) {
         window.location.href = "/RecipeBook/Recipe-Book/php/view_post.php?post_id=" + post_id;
     }
+    //ajax for like button
     document.querySelectorAll('.like-btn').forEach(button => {
         button.addEventListener('click', function(event) {
             event.stopPropagation();
@@ -111,6 +115,30 @@ $result = $conn->query($sql);
                     } else {
                         alert(response.message);
 
+                    }
+                }
+            };
+
+            xhr.send('post_id=' + postId);
+        });
+    });
+    //ajax for favourite button
+    document.querySelectorAll('.fav-btn').forEach(button => {
+        button.addEventListener('click', function(event) {
+            event.stopPropagation();
+            const postId = this.getAttribute('data-post-id');
+
+            const xhr = new XMLHttpRequest();
+            xhr.open('POST', '/RecipeBook/Recipe-Book/php/add_favorite.php', true);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    const response = JSON.parse(xhr.responseText);
+                    if (response.success) {
+                        alert('Post added to your favorites!'); // alert nai bhayena
+                    } else {
+                        alert(response.message);
                     }
                 }
             };
