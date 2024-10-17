@@ -6,31 +6,36 @@
         exit();
     }
 
+    $user_id = $_SESSION['user_id'];
     $user_name = $_SESSION['username'];
 
     $servername = "localhost";
     $username = "root";
     $password = "";
-    $dbname = "recipebook";
+    $dbname = "RecipeBook";
 
     $conn = new mysqli($servername, $username, $password, $dbname);
 
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
-
-    $sql = "SELECT post.*, user.user_name, 
-                    IFNULL((SELECT COUNT(*) FROM Likes WHERE post.post_id = Likes.post_id), 0) AS post_like_count, 
-                    IFNULL((SELECT COUNT(*) FROM Likes WHERE post.post_id = Likes.post_id AND Likes.user_id = " . $_SESSION['user_id'] . "), 0) AS user_liked
-                FROM post 
-                JOIN user ON post.user_id = user.user_id 
-                ORDER BY post.post_id DESC";
+    
+    $sql="SELECT post.*, user.user_name, 
+        IFNULL((SELECT COUNT(*) FROM Likes WHERE Likes.post_id = post.post_id), 0) AS post_like_count,
+        IFNULL((SELECT COUNT(*) FROM Likes WHERE Likes.post_id = post.post_id AND Likes.user_id = " . $_SESSION['user_id'] . "), 0) AS user_liked
+        FROM favourite 
+        JOIN post ON favourite.post_id = post.post_id
+        JOIN user ON post.user_id = user.user_id
+        LEFT JOIN likes ON post.post_id = Likes.post_id
+        WHERE favourite.user_id = $user_id 
+        GROUP BY post.post_id
+        ORDER BY favourite.fav_added_date DESC";
     $result = $conn->query($sql);
 ?>
 
 <html>
     <head>
-        <title>Home page</title>
+        <title>My Favourite Posts</title>
         <style>
             .post {
                 cursor: pointer;
@@ -43,22 +48,16 @@
     </head>
     <body>
         <header>
-            <div>
-                <button><a href="/RecipeBook/Recipe-Book/php/profile.php">Profile</a></button>
-                <button><a href="/RecipeBook/Recipe-Book/php/favourite_page.php">My Favourites</a></button>
+            <div class="topnav">
+                <button onclick="go_back()">Go Back</button>    
             </div>
         </header>
-
-        <h1>Hello <?php echo "$user_name" ?>, welcome to your home feed!!</h1>
-        <button><a href="/RecipeBook/Recipe-Book/php/logout.php">Log out</a></button>
-        <button><a href="/RecipeBook/Recipe-Book/html/add_post.html">Add recipe</a></button>
-
-        <br/><br/>
-
+        <h1>Hello <?php echo "$user_name" ?>, welcome to your favourites!!</h1>
+        <h2>All your favourites</h2>
         <?php
             if ($result->num_rows > 0) {
-                while ($row = $result->fetch_assoc()) {
-                    $liked = $row['user_liked'] > 0 ? 'liked' : '';
+                while ($row = $result->fetch_assoc()){
+
                     echo "<div class='post' onclick='view_post(" . $row['post_id'] . ")'>";
                     echo "<h3>" . htmlspecialchars($row['post_title']) . "</h3>";
 
@@ -78,17 +77,18 @@
 
                     echo "<p>" . htmlspecialchars($row['post_text']) . "</p>";
 
-                    echo "<button class='fav-btn' data-post-id='" . $row['post_id'] . "'>Add to Favourites</button>";
+                    echo "<button class='remove-fav-btn' data-post-id='" . $row['post_id'] . "'>Remove from Favourites</button>";
 
+                    $liked = $row['user_liked'] > 0 ? 'liked' : '';
                     echo "<button class='like-btn $liked' data-post-id='" . $row['post_id'] . "'>";
                     echo "Likes: <span id='like-count-" . $row['post_id'] . "'>" . htmlspecialchars($row['post_like_count']) . "</span>";
                     echo "</button>";
-                    
+
                     echo "</div>";
                     echo "<br/>";
                 }
             } else {
-                echo "<p>There are no recipes to show you, Sorry T_T </p>";
+                echo "<p>You have not added any posts to your favourites T T</p>";
             }
             $conn->close();
         ?>
@@ -96,6 +96,10 @@
     <script>
         function view_post(post_id) {
             window.location.href = "/RecipeBook/Recipe-Book/php/view_post.php?post_id=" + post_id;
+        }
+
+        function go_back(){
+            window.history.back();
         }
 
         //ajax for like button
@@ -118,25 +122,6 @@
                             alert(response.message);
 
                         }
-                    }
-                };
-                xhr.send('post_id=' + postId);
-            });
-        });
-
-        //ajax for favourite button
-        document.querySelectorAll('.fav-btn').forEach(button => {
-            button.addEventListener('click', function(event) {
-                event.stopPropagation();
-                const postId = this.getAttribute('data-post-id');
-
-                const xhr = new XMLHttpRequest();
-                xhr.open('POST', '/RecipeBook/Recipe-Book/php/add_favourite.php', true);
-                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-
-                xhr.onload = function() {
-                    if (xhr.status === 200) {
-                        alert('Post added to your favourites!');
                     }
                 };
                 xhr.send('post_id=' + postId);

@@ -51,7 +51,15 @@
                 <button onclick="go_back()">Go Back</button>    
             </div>
         </header>
-        <h1><?php echo htmlspecialchars($row['post_title']); ?></h1>
+        <h1>
+            <?php 
+                echo htmlspecialchars($row['post_title'])."&nbsp&nbsp&nbsp&nbsp";
+                if($_SESSION['user_id']==$row['user_id']){
+                    echo "<button onclick='edit_post(" . $row['post_id'] . ")'>Edit post</button>";
+                    echo "<button onclick='delete_post(" . $row['post_id'] . ")'>Delete post</button>";
+                }
+            ?>
+        </h1>
         <p><?php echo htmlspecialchars($row['post_text']); ?></p>
 
         <?php
@@ -69,11 +77,6 @@
                 echo "<p>Posted by <b>" . htmlspecialchars($row['user_name']) . " </b>and edited on<b> ".htmlspecialchars($row['post_edited_date'])."</b></p>";
             } else {
                 echo "<p>Posted by <b>" . htmlspecialchars($row['user_name']) . " </b>on<b> ".htmlspecialchars($row['post_edited_date'])."</b></p>";
-            }
-            
-            if($_SESSION['user_id']==$row['user_id']){
-                echo "<button onclick='edit_post(" . $row['post_id'] . ")'>Edit post</button>";
-                echo "<button onclick='delete_post(" . $row['post_id'] . ")'>Delete post</button>";
             }
 
             $liked = $row['user_liked'] > 0 ? 'liked' : '';
@@ -116,11 +119,9 @@
                             document.getElementById('like-count-' + postId).innerText = response.newLikeCount;
                         } else {
                             alert(response.message);
-
                         }
                     }
                 };
-
                 xhr.send('post_id=' + postId);
             });
         });
