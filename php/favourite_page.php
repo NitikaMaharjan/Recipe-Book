@@ -107,6 +107,7 @@
             button.addEventListener('click', function(event) {
                 event.stopPropagation();
                 const postId = this.getAttribute('data-post-id');
+                
                 const xhr = new XMLHttpRequest();
                 xhr.open('POST', '/RecipeBook/Recipe-Book/php/like_post.php', true);
                 xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
@@ -124,6 +125,39 @@
                         }
                     }
                 };
+                xhr.send('post_id=' + postId);
+            });
+        });
+
+        //ajax for remove from favourite button
+        document.querySelectorAll('.remove-fav-btn').forEach(button => {
+            button.addEventListener('click', function(event) {
+                event.stopPropagation();
+                const postId = this.getAttribute('data-post-id');
+                const postElement = this.closest('.post');
+
+                const xhr = new XMLHttpRequest();
+                xhr.open('POST', '/RecipeBook/Recipe-Book/php/remove_favourite.php', true);
+                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+                xhr.onload = function() {
+                    if (xhr.status === 200) {
+                        const response = xhr.responseText.trim();
+                        if (response.includes('successfully')) {
+                            alert('Post removed from your favourites!');
+                            postElement.remove();
+                        } else {
+                            alert('Error: ' + response); 
+                        }
+                    } else {
+                        alert('Failed to remove favorite. Please try again.');
+                    }
+                };
+
+                xhr.onerror = function() {
+                    alert('Request failed. Please check your connection.');
+                };
+                
                 xhr.send('post_id=' + postId);
             });
         });
