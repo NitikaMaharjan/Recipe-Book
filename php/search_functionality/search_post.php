@@ -19,18 +19,23 @@
         die("Connection failed: " . $conn->connect_error);
     }
 
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $search = $_POST['search'];
+    }
+
     $sql = "SELECT post.*, user.user_name, 
-                    IFNULL((SELECT COUNT(*) FROM Likes WHERE post.post_id = Likes.post_id), 0) AS post_like_count, 
-                    IFNULL((SELECT COUNT(*) FROM Likes WHERE post.post_id = Likes.post_id AND Likes.user_id = " . $_SESSION['user_id'] . "), 0) AS user_liked
+                IFNULL((SELECT COUNT(*) FROM Likes WHERE post.post_id = Likes.post_id), 0) AS post_like_count, 
+                IFNULL((SELECT COUNT(*) FROM Likes WHERE post.post_id = Likes.post_id AND Likes.user_id = " . $_SESSION['user_id'] . "), 0) AS user_liked
                 FROM post 
                 JOIN user ON post.user_id = user.user_id 
+                WHERE post.post_title='$search' OR post.post_category='$search' OR user.user_name='$search'
                 ORDER BY post.post_id DESC";
     $result = $conn->query($sql);
 ?>
 
 <html>
     <head>
-        <title>Home page</title>
+        <title>Search page</title>
         <style>
             .post {
                 cursor: pointer;
@@ -43,23 +48,12 @@
     </head>
     <body>
         <header>
-            <div>
-                <button><a href="/RecipeBook/Recipe-Book/php/profile.php">Profile</a></button>
-                <button><a href="/RecipeBook/Recipe-Book/php/favourite_page.php">My Favourites</a></button>
+            <div class="topnav">
+                <button onclick="go_back()">Go Back</button>    
             </div>
         </header>
-        <form name="search" method="post" action="/RecipeBook/Recipe-Book/php/search_functionality/search_post.php">
-            <br/>
-            <input type="text" id="search" name="search" placeholder="Search Recipe"/>
-            <input type="submit" value="Search"/>
-            <br />
-        </form>
-        
-        <h1>Hello <?php echo "$user_name" ?>, welcome to your home feed!!</h1>
-        <button><a href="/RecipeBook/Recipe-Book/php/logout.php">Log out</a></button>
-        <button><a href="/RecipeBook/Recipe-Book/html/add_post.html">Add recipe</a></button>
-        <h2>All posts</h2>
-        
+        <h1>Hello <?php echo "$user_name" ?>!!</h1>
+        <h2>Results for <?php echo "$search" ?>:</h2>
         <br/>
 
         <?php
@@ -95,12 +89,16 @@
                     echo "<br/>";
                 }
             } else {
-                echo "<p>There are no recipes to show you, Sorry T_T </p>";
+                echo "<p>No matches for $search, Sorry T_T </p>";
             }
             $conn->close();
         ?>
     </body>
     <script>
+        function go_back(){
+            window.history.back();
+        }
+
         function view_post(post_id) {
             window.location.href = "/RecipeBook/Recipe-Book/php/view_post.php?post_id=" + post_id;
         }
