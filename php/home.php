@@ -84,7 +84,7 @@
                     }
 
                     echo "<p>" . htmlspecialchars($row['post_text']) . "</p>";
-
+                    echo "<p>" . htmlspecialchars($row['post_keywords']) . "</p>";
                     echo "<button class='fav-btn' data-post-id='" . $row['post_id'] . "'>Add to Favourites</button>";
 
                     echo "<button class='like-btn $liked' data-post-id='" . $row['post_id'] . "'>";

@@ -18,18 +18,41 @@
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
-
+        // Check if the form was submitted
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $search = $_POST['search'];
-    }
+        $_SESSION['last_search'] = $search; // Store the search term in the session
 
+        //  Split the search into an array by commas and trim whitespace, [#wheat, #rice]
+        $searchTerms = array_map('trim', explode(',', $search));  
+    } else {
+        // If no form submission, try retrieving the last search from the session
+        $search = $_SESSION['last_search'];
+    }
+ 
     $sql = "SELECT post.*, user.user_name, 
                 IFNULL((SELECT COUNT(*) FROM Likes WHERE post.post_id = Likes.post_id), 0) AS post_like_count, 
                 IFNULL((SELECT COUNT(*) FROM Likes WHERE post.post_id = Likes.post_id AND Likes.user_id = " . $_SESSION['user_id'] . "), 0) AS user_liked
-                FROM post 
-                JOIN user ON post.user_id = user.user_id 
-                WHERE post.post_title='$search' OR post.post_category='$search' OR user.user_name='$search'
-                ORDER BY post.post_id DESC";
+            FROM post 
+            JOIN user ON post.user_id = user.user_id 
+            WHERE (post.post_title LIKE '%$search%' 
+                OR post.post_category LIKE '%$search%' 
+                OR user.user_name LIKE '%$search%')";
+
+    // Add conditions for searching through hashtags (post_keywords) using LIKE
+    $searchConditions = [];
+    foreach ($searchTerms as $term) {
+        // Apply the LIKE condition for each hashtag
+        $searchConditions[] = "post.post_keywords LIKE '%$term%'";
+    }
+
+    // Combine the hashtag search conditions using OR
+    if (!empty($searchConditions)) {
+        $sql .= " OR (" . implode(' OR ', $searchConditions) . ")";
+    }
+
+    $sql .= " ORDER BY post.post_id DESC";
+
     $result = $conn->query($sql);
 ?>
 
@@ -78,7 +101,7 @@
                     }
 
                     echo "<p>" . htmlspecialchars($row['post_text']) . "</p>";
-
+                    echo "<p>" . htmlspecialchars($row['post_keywords']) . "</p>";
                     echo "<button class='fav-btn' data-post-id='" . $row['post_id'] . "'>Add to Favourites</button>";
 
                     echo "<button class='like-btn $liked' data-post-id='" . $row['post_id'] . "'>";
