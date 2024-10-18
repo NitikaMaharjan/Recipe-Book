@@ -44,6 +44,7 @@
     <body>
         <header>
             <div>
+                <button><a href="/RecipeBook/Recipe-Book/php/home.php">Home</a></button>
                 <button><a href="/RecipeBook/Recipe-Book/php/profile.php">Profile</a></button>
                 <button><a href="/RecipeBook/Recipe-Book/php/favourite_page.php">My Favourites</a></button>
             </div>

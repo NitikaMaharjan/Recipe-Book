@@ -1,13 +1,14 @@
 <?php
     session_start();
 
+
     if (!(isset($_SESSION['username']) && isset($_SESSION['loggedin']) && $_SESSION['loggedin'])) {
         header("Location: /RecipeBook/Recipe-Book/html/login.html");
         exit();
     }
 
     $user_name = $_SESSION['username'];
-
+    $search = '';
     $servername = "localhost";
     $username = "root";
     $password = "";
@@ -18,18 +19,24 @@
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
-        // Check if the form was submitted
+
+
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $search = $_POST['search'];
-        $_SESSION['last_search'] = $search; // Store the search term in the session
+        $_SESSION['last_search'] = $search;
 
-        //  Split the search into an array by commas and trim whitespace, [#wheat, #rice]
-        $searchTerms = array_map('trim', explode(',', $search));  
-    } else {
-        // If no form submission, try retrieving the last search from the session
-        $search = $_SESSION['last_search'];
+        header("Location: /rohan/Recipe-Book/php/search_functionality/search_post.php?search=" . urlencode($search));
+        exit(); 
     }
- 
+
+    if (isset($_GET['search'])) {
+        $search = $_GET['search'];
+        $_SESSION['last_search'] = $search;
+    } else {
+        $search = $_SESSION['last_search'] ?? '';
+    }
+
+
     $sql = "SELECT post.*, user.user_name, 
                 IFNULL((SELECT COUNT(*) FROM Likes WHERE post.post_id = Likes.post_id), 0) AS post_like_count, 
                 IFNULL((SELECT COUNT(*) FROM Likes WHERE post.post_id = Likes.post_id AND Likes.user_id = " . $_SESSION['user_id'] . "), 0) AS user_liked
@@ -39,10 +46,12 @@
                 OR post.post_category LIKE '%$search%' 
                 OR user.user_name LIKE '%$search%')";
 
+    //  Split the search into an array by commas and trim whitespace, [#wheat, #rice]
+    $searchTerms = array_map('trim', explode(',', $search));    
+
     // Add conditions for searching through hashtags (post_keywords) using LIKE
     $searchConditions = [];
     foreach ($searchTerms as $term) {
-        // Apply the LIKE condition for each hashtag
         $searchConditions[] = "post.post_keywords LIKE '%$term%'";
     }
 

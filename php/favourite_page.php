@@ -48,8 +48,10 @@
     </head>
     <body>
         <header>
-            <div class="topnav">
-                <button onclick="go_back()">Go Back</button>    
+            <div>
+                <button><a href="/RecipeBook/Recipe-Book/php/home.php">Home</a></button>
+                <button><a href="/RecipeBook/Recipe-Book/php/profile.php">Profile</a></button>
+                <button><a href="/RecipeBook/Recipe-Book/php/favourite_page.php">My Favourites</a></button>
             </div>
         </header>
         <h1>Hello <?php echo "$user_name" ?>, welcome to your favourites!!</h1>
