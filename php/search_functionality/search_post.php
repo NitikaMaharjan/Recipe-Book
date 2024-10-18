@@ -25,7 +25,7 @@
         $search = $_POST['search'];
         $_SESSION['last_search'] = $search;
 
-        header("Location: /rohan/Recipe-Book/php/search_functionality/search_post.php?search=" . urlencode($search));
+        header("Location: /Recipebook/Recipe-Book/php/search_functionality/search_post.php?search=" . urlencode($search));
         exit(); 
     }
 
@@ -81,9 +81,17 @@
     <body>
         <header>
             <div class="topnav">
-                <button onclick="go_back()">Go Back</button>    
+                <button><a href="/Recipebook/Recipe-Book/php/home.php">Back Home</a></button>    
             </div>
         </header>
+
+        <form name="search" method="post" action="/RecipeBook/Recipe-Book/php/search_functionality/search_post.php">
+            <br/>
+            <input type="text" id="search" name="search" placeholder="Search Recipe"/>
+            <input type="submit" value="Search"/>
+            <br />
+        </form>
+
         <h1>Hello <?php echo "$user_name" ?>!!</h1>
         <h2>Results for <?php echo "$search" ?>:</h2>
         <br/>
