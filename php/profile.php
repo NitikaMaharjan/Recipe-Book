@@ -25,9 +25,26 @@
         $sort_by = 'post_like_count DESC'; // Sort by likes
     }
 
-    $sql = "SELECT *,IFNULL((SELECT COUNT(*) FROM Likes WHERE post.post_id = Likes.post_id), 0) AS post_like_count, 
-                    IFNULL((SELECT COUNT(*) FROM Likes WHERE post.post_id = Likes.post_id AND Likes.user_id = " . $_SESSION['user_id'] . "), 0) AS user_liked 
-                    FROM post WHERE user_id = $user_id ORDER BY $sort_by";
+    // Update post_like_count on post table
+    $update_sql = "
+        UPDATE post 
+        SET post_like_count = (
+            SELECT COUNT(*) 
+            FROM Likes 
+            WHERE Likes.post_id = post.post_id
+        )
+    ";
+    $conn->query($update_sql);
+
+    
+    $sql = "
+        SELECT post.*, user.user_name 
+        FROM post 
+        JOIN user ON post.user_id = user.user_id 
+        WHERE post.user_id = $user_id
+        ORDER BY $sort_by
+    ";
+
     $result = $conn->query($sql);
 ?>
 
@@ -85,12 +102,13 @@
                 }
 
                 echo "<p>" . htmlspecialchars($row['post_text']) . "</p>";
+                echo "<p>" . htmlspecialchars($row['post_keywords']) . "</p>";
 
                 echo "<button class='fav-btn' data-post-id='" . $row['post_id'] . "'>Add to Favourites</button>";
 
-                $liked = $row['user_liked'] > 0 ? 'liked' : '';
-                echo "<button class='like-btn $liked' data-post-id='" . $row['post_id'] . "'>";
-                echo "Likes: <span id='like-count-" . $row['post_id'] . "'>" . htmlspecialchars($row['post_like_count']) . "</span>";
+                
+                echo "<button class='like-btn' data-post-id='" .  $row['post_id'] . "'>";
+                echo "Likes: <span id='like-count-" .  $row['post_id'] . "'>" . htmlspecialchars($row['post_like_count']) . "</span>";
                 echo "</button>";
 
                 echo "</div>";
@@ -112,28 +130,25 @@
             button.addEventListener('click', function(event) {
                 event.stopPropagation();
                 const postId = this.getAttribute('data-post-id');
-                
+
                 const xhr = new XMLHttpRequest();
-                xhr.open('POST', '/RecipeBook/Recipe-Book/php/like_post.php', true);
+                xhr.open('POST', '/rohan/Recipe-Book/php/like_post.php', true);
                 xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
                 xhr.onload = function() {
                     if (xhr.status === 200) {
                         const response = JSON.parse(xhr.responseText);
                         if (response.success) {
-                            const likeBtn = document.querySelector('.like-btn[data-post-id="' + postId + '"]');
-                            likeBtn.classList.toggle('liked');
-                            document.getElementById('like-count-' + postId).innerText = response.newLikeCount;
+                            const likeCountSpan = document.getElementById('like-count-' + postId);
+                            likeCountSpan.innerText = response.newLikeCount;
                         } else {
                             alert(response.message);
-
                         }
                     }
                 };
                 xhr.send('post_id=' + postId);
             });
         });
-
         //ajax for favourite button
         document.querySelectorAll('.fav-btn').forEach(button => {
             button.addEventListener('click', function(event) {
