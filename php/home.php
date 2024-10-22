@@ -138,7 +138,8 @@
             button.addEventListener('click', function(event) {
                 event.stopPropagation();
                 const postId = this.getAttribute('data-post-id');
-
+                console.log(postId);
+                
                 const xhr = new XMLHttpRequest();
                 xhr.open('POST', '/RecipeBook/Recipe-Book/php/add_favourite.php', true);
                 xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
