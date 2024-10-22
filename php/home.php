@@ -19,12 +19,17 @@
         die("Connection failed: " . $conn->connect_error);
     }
 
+    $sort_by = 'post.post_id DESC'; // Default sort by date
+    if (isset($_GET['sort']) && $_GET['sort'] == 'likes') {
+        $sort_by = 'post_like_count DESC'; // Sort by likes
+    }
+
     $sql = "SELECT post.*, user.user_name, 
                     IFNULL((SELECT COUNT(*) FROM Likes WHERE post.post_id = Likes.post_id), 0) AS post_like_count, 
                     IFNULL((SELECT COUNT(*) FROM Likes WHERE post.post_id = Likes.post_id AND Likes.user_id = " . $_SESSION['user_id'] . "), 0) AS user_liked
                 FROM post 
                 JOIN user ON post.user_id = user.user_id 
-                ORDER BY post.post_id DESC";
+                ORDER BY $sort_by";
     $result = $conn->query($sql);
 ?>
 
@@ -60,7 +65,14 @@
         <button><a href="/RecipeBook/Recipe-Book/php/logout.php">Log out</a></button>
         <button><a href="/RecipeBook/Recipe-Book/html/add_post.html">Add recipe</a></button>
         <h2>All posts</h2>
-        
+
+        <form id="sortForm" method="GET" action="">
+            <label for="sort">Sort by:</label>
+            <select id="sort" name="sort" onchange="document.getElementById('sortForm').submit();">
+                <option value="date" <?php echo (isset($_GET['sort']) && $_GET['sort'] == 'date') ? 'selected' : ''; ?>>Date</option>
+                <option value="likes" <?php echo (isset($_GET['sort']) && $_GET['sort'] == 'likes') ? 'selected' : ''; ?>>Likes</option>
+            </select>
+        </form>
         <br/>
 
         <?php
