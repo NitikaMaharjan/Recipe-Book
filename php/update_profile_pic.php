@@ -11,10 +11,10 @@
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
+    
+    $user_id = $_SESSION['user_id'];
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $user_id = $_SESSION['user_id'];
-
         if (isset($_FILES['profile_pic']) && $_FILES['profile_pic']['tmp_name'] != '') {
             $imageFileType = strtolower(pathinfo($_FILES['profile_pic']['name'], PATHINFO_EXTENSION));
             $check = getimagesize($_FILES['profile_pic']['tmp_name']);
