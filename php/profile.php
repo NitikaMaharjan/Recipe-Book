@@ -38,14 +38,21 @@
 
     
     $sql = "
-        SELECT post.*, user.user_name 
+        SELECT post.*, user.user_name, user.user_profile_picture
         FROM post 
         JOIN user ON post.user_id = user.user_id 
         WHERE post.user_id = $user_id
         ORDER BY $sort_by
     ";
 
+    $profile_pic_sql = "
+        SELECT user_profile_picture
+        FROM user  
+        WHERE user_id = $user_id
+    ";
+
     $result = $conn->query($sql);
+    $result2 = $conn->query($profile_pic_sql);
 ?>
 
 <html>
@@ -83,12 +90,24 @@
     <body>
         <header>
             <div>
+                <?php
+                    if ($result2->num_rows==1) {
+                        while($row = $result2->fetch_assoc()) {
+                            if (($row['user_profile_picture'])) {
+                                echo "<img src='data:image/jpeg;base64," . base64_encode($row['user_profile_picture']) . "' alt='Profile picture' style='max-width: 50px; max-height: 50px;'/>";
+                            } else {
+                                echo "<img src='/RecipeBook/Recipe-Book/default_profile_picture.jpg' style='max-width: 50px; max-height: 50px;'/>";
+                            }
+                        }
+                    }
+                ?>
                 <button><a href="/RecipeBook/Recipe-Book/php/home.php">Home</a></button>
                 <button><a href="/RecipeBook/Recipe-Book/php/profile.php">Profile</a></button>
                 <button><a href="/RecipeBook/Recipe-Book/php/favourite_page.php">My Favourites</a></button>
             </div>
         </header>
         <h1>Hello <?php echo "$user_name" ?>, welcome to your profile!!</h1>
+        <button><a href="/RecipeBook/Recipe-Book/html/settings.html">Settings</a></button>
         <button><a href="/RecipeBook/Recipe-Book/php/logout.php">Log out</a></button>
         <button><a href="/RecipeBook/Recipe-Book/html/add_post.html">Add recipe</a></button>
         <h2>All your posts</h2>
