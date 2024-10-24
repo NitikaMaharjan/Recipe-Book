@@ -59,6 +59,25 @@
                 margin-bottom: 10px;
                 transition: background-color 0.3s ease;
             }
+            .modal {
+                display: none; /* Hidden by default */
+                position: fixed; /* Stay in place */
+                z-index: 1; /* Sit on top */
+                left: 0;
+                top: 0;
+                width: 100%; /* Full width */
+                height: 100%; /* Full height */
+                overflow: auto; /* Enable scroll if needed */
+                background-color: rgb(0,0,0); /* Fallback color */
+                background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+            }
+            .modal-content {
+                background-color: #fefefe;
+                margin: 15% auto; /* 15% from the top and centered */
+                padding: 20px;
+                border: 1px solid #888;
+                width: 80%; /* Could be more or less, depending on screen size */
+            }
         </style>
     </head>
     <body>
@@ -84,7 +103,7 @@
         <?php
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
-
+                $postId = $row['post_id'];
                 echo "<div class='post' onclick='view_post(" . $row['post_id'] . ")'>";
                 echo "<h3>" . htmlspecialchars($row['post_title']) . "</h3>";
 
@@ -103,7 +122,7 @@
 
                 echo "<p>" . htmlspecialchars($row['post_text']) . "</p>";
                 echo "<p>" . htmlspecialchars($row['post_keywords']) . "</p>";
-
+                echo "<button class='comment-btn' data-post-id='" . $postId . "'>Comment</button>";
                 echo "<button class='fav-btn' data-post-id='" . $row['post_id'] . "'>Add to Favourites</button>";
 
                 
@@ -119,6 +138,16 @@
         }
         $conn->close();
         ?>
+        <!-- pop up box for comments -->
+        <div id="commentModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal()">&times;</span>
+                <h2>Comments</h2>
+                <div id="commentList"></div>
+                <textarea id="commentText" placeholder="Add your comment..."></textarea>
+                <button id="submitComment">Submit Comment</button>
+            </div>
+        </div>
     </body>
     <script>
         function view_post(post_id) {
@@ -167,5 +196,79 @@
                 xhr.send('post_id=' + postId);
             });
         });
+        // ajax and js for comments section
+        let commentPollingInterval; // Variable to hold the interval ID
+
+        function openModal(postId) {
+            // Fetch existing comments
+            fetchComments(postId);
+            
+            // Start polling for new comments
+            commentPollingInterval = setInterval(() => {
+                fetchComments(postId);
+            }, 3000); // Fetch new comments every 3 seconds
+            
+            // Display the modal
+            document.getElementById('commentModal').style.display = 'block';
+            
+            // Set the postId in the button
+            document.getElementById('submitComment').setAttribute('data-post-id', postId);
+        }
+
+        function closeModal() {
+            document.getElementById('commentModal').style.display = 'none';
+            
+            // Stop polling when the modal is closed
+            clearInterval(commentPollingInterval);
+        }
+
+        function fetchComments(postId) {
+            const xhr = new XMLHttpRequest();
+            xhr.open('GET', '/recipebook/Recipe-Book/php/comment_functionality/fetch_comments.php?post_id=' + postId, true);
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    document.getElementById('commentList').innerHTML = xhr.responseText;
+                }
+            };
+            xhr.send();
+        }
+
+        // Submit comment
+        document.getElementById('submitComment').addEventListener('click', function() {
+            const postId = this.getAttribute('data-post-id');
+            const commentText = document.getElementById('commentText').value;
+
+            const xhr = new XMLHttpRequest();
+            xhr.open('POST', '/recipebook/Recipe-Book/php/comment_functionality/add_comment.php', true);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    document.getElementById('commentText').value = ''; // Clear the text area
+                    fetchComments(postId); // Refresh comments
+                }
+            };
+            xhr.send('post_id=' + postId + '&comment_text=' + encodeURIComponent(commentText));
+        });
+
+        // Handle comment button clicks
+        document.querySelectorAll('.comment-btn').forEach(button => {
+            button.addEventListener('click', function(event) {
+                event.stopPropagation(); // Prevent post click
+                const postId = this.getAttribute('data-post-id');
+                openModal(postId);
+            });
+        });
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('commentModal');
+            if (event.target == modal) {
+                closeModal();
+            }
+        };
+        // Close modal on 'x' click
+        document.querySelector('.close').addEventListener('click', closeModal);
+
     </script>
 </html>
