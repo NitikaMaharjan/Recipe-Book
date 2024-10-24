@@ -1,10 +1,5 @@
 <?php
     session_start();
-    
-    if (!isset($_SESSION['username']) || !isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == false){
-        header("Location: /RecipeBook/Recipe-Book/html/login.html");
-        exit();
-    }
 
     $servername = "localhost";
     $username = "root";
@@ -48,7 +43,7 @@
 
         if ($conn->query($sql) === TRUE) {
             echo "<script>
-                    alert ('Profile picture added successfully!!');
+                    alert ('Profile picture updated successfully!!');
                     window.location.href = '/RecipeBook/Recipe-Book/php/profile.php';
                   </script>";
         } else {

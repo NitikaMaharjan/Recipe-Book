@@ -1,22 +1,22 @@
 <html>
     <head>
-        <title>Add Profile Picture</title>
+        <title>Update Profile Picture</title>
     </head>
     <body>
         <header>
             <div class="topnav">
-                <button onclick="go_back()">Go Back</button>
+                <button onclick="go_back()">Go Back</button>       
             </div>
         </header>
-        <h1>Add your profile picture</h1>
-        <form action="/RecipeBook/Recipe-Book/php/add_profile_pic.php" method="POST" enctype="multipart/form-data">
+        <h1>Update your profile picture</h1>
+        <form action="/RecipeBook/Recipe-Book/php/update_profile_pic.php" method="POST" enctype="multipart/form-data">
             <label for="profile_pic">Profile picture:</label>
             <input type="file" name="profile_pic" accept="image" id="profile_pic" required><br><br>
-            <input type="submit" value="Add">
+            <input type="submit" value="Update">
         </form>
     </body>
     <script>
-        function go_back() {
+        function go_back(){
             window.history.back();
         }
     </script>
