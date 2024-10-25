@@ -19,10 +19,18 @@
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
-    
-    $sql="SELECT post.*, user.user_name, 
-        IFNULL((SELECT COUNT(*) FROM Likes WHERE Likes.post_id = post.post_id), 0) AS post_like_count,
-        IFNULL((SELECT COUNT(*) FROM Likes WHERE Likes.post_id = post.post_id AND Likes.user_id = " . $_SESSION['user_id'] . "), 0) AS user_liked
+    // Update post_like_count on post table
+    $update_sql = "
+        UPDATE post 
+        SET post_like_count = (
+            SELECT COUNT(*) 
+            FROM Likes 
+            WHERE Likes.post_id = post.post_id
+        )
+    ";
+    $conn->query($update_sql);
+
+    $sql="SELECT post.*, user.user_name
         FROM favourite 
         JOIN post ON favourite.post_id = post.post_id
         JOIN user ON post.user_id = user.user_id
@@ -78,12 +86,11 @@
                     }
 
                     echo "<p>" . htmlspecialchars($row['post_text']) . "</p>";
-
+                    echo "<p>" . htmlspecialchars($row['post_keywords']) . "</p>";
                     echo "<button class='remove-fav-btn' data-post-id='" . $row['post_id'] . "'>Remove from Favourites</button>";
 
-                    $liked = $row['user_liked'] > 0 ? 'liked' : '';
-                    echo "<button class='like-btn $liked' data-post-id='" . $row['post_id'] . "'>";
-                    echo "Likes: <span id='like-count-" . $row['post_id'] . "'>" . htmlspecialchars($row['post_like_count']) . "</span>";
+                    echo "<button class='like-btn' data-post-id='" .  $row['post_id'] . "'>";
+                    echo "Likes: <span id='like-count-" .  $row['post_id'] . "'>" . htmlspecialchars($row['post_like_count']) . "</span>";
                     echo "</button>";
 
                     echo "</div>";
@@ -104,26 +111,24 @@
             window.history.back();
         }
 
-        //ajax for like button
+         //ajax for like button
         document.querySelectorAll('.like-btn').forEach(button => {
             button.addEventListener('click', function(event) {
                 event.stopPropagation();
                 const postId = this.getAttribute('data-post-id');
-                
+
                 const xhr = new XMLHttpRequest();
-                xhr.open('POST', '/RecipeBook/Recipe-Book/php/like_post.php', true);
+                xhr.open('POST', '/recipebook/Recipe-Book/php/like_post.php', true);
                 xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
                 xhr.onload = function() {
                     if (xhr.status === 200) {
                         const response = JSON.parse(xhr.responseText);
                         if (response.success) {
-                            const likeBtn = document.querySelector('.like-btn[data-post-id="' + postId + '"]');
-                            likeBtn.classList.toggle('liked');
-                            document.getElementById('like-count-' + postId).innerText = response.newLikeCount;
+                            const likeCountSpan = document.getElementById('like-count-' + postId);
+                            likeCountSpan.innerText = response.newLikeCount;
                         } else {
                             alert(response.message);
-
                         }
                     }
                 };
