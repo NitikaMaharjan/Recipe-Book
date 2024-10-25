@@ -35,7 +35,7 @@
         )
     ";
     $conn->query($update_sql);
-    $sql = "SELECT post.*, user.user_name
+    $sql = "SELECT post.*, user.user_name, user.user_profile_picture
             FROM post JOIN user ON post.user_id = user.user_id WHERE post.post_id =$post_id";
     $result = $conn->query($sql);
 
@@ -80,6 +80,29 @@
                 <button onclick="go_back()">Go Back</button>    
             </div>
         </header>
+        <?php
+            if ($row['post_edited_date'] != $row['post_posted_date']) {
+                // Post has been edited
+                echo "<div style='display: flex; align-items: center;'>"; 
+                if ($row['user_profile_picture']) {
+                    echo "<img src='data:image/jpeg;base64," . base64_encode($row['user_profile_picture']) . "' alt='Profile picture' style='width: 50px; height: 50px; border-radius: 50%; margin-right: 10px;' />";
+                } else {
+                    echo "<img src='/RecipeBook/Recipe-Book/default_profile_picture.jpg' style='width: 50px; height: 50px; border-radius: 50%; margin-right: 10px;' />";
+                }
+                echo "<p><b>" . htmlspecialchars($row['user_name']) . "</b> edited on <b>" . htmlspecialchars($row['post_edited_date']) . "</b></p>";
+                echo "</div>"; 
+            } else {
+                // Post has not been edited
+                echo "<div style='display: flex; align-items: center;'>"; 
+                if ($row['user_profile_picture']) {
+                    echo "<img src='data:image/jpeg;base64," . base64_encode($row['user_profile_picture']) . "' alt='Profile picture' style='width: 50px; height: 50px; border-radius: 50%; margin-right: 10px;' />";
+                } else {
+                    echo "<img src='/RecipeBook/Recipe-Book/default_profile_picture.jpg' style='width: 50px; height: 50px; border-radius: 50%; margin-right: 10px;' />";
+                }
+                echo "<p><b>" . htmlspecialchars($row['user_name']) . "</b> posted on <b>" . htmlspecialchars($row['post_posted_date']) . "</b></p>";
+                echo "</div>"; 
+            }        
+        ?>
         <h1>
             <?php 
                 echo htmlspecialchars($row['post_title'])."&nbsp&nbsp&nbsp&nbsp";
@@ -92,6 +115,7 @@
         <p><?php echo htmlspecialchars($row['post_text']); ?></p>
 
         <?php
+
             if (($row['post_image'])) {
                 echo "<img src='data:image/jpeg;base64," . base64_encode($row['post_image']) . "' alt='Recipe Image' style='max-width: 200px; max-height: 200px;'/>";
             } else {
@@ -101,18 +125,12 @@
             echo "<p><b>Instructions</b>:" . htmlspecialchars($row['post_instructions']) . "</p>";
             echo "<p><b>Keywords</b>:" . htmlspecialchars($row['post_keywords']) . "</p>";
             echo "<p><b>Category</b>:" . htmlspecialchars($row['post_category']) . "</p>";
-            
-            if ($row['post_edited_date'] != $row['post_posted_date']) {
-                echo "<p>Posted by <b>" . htmlspecialchars($row['user_name']) . " </b>and edited on<b> ".htmlspecialchars($row['post_edited_date'])."</b></p>";
-            } else {
-                echo "<p>Posted by <b>" . htmlspecialchars($row['user_name']) . " </b>on<b> ".htmlspecialchars($row['post_edited_date'])."</b></p>";
-            }
 
-            echo "<button class='comment-btn' data-post-id='" .  $row['post_id'] . "'>Comment</button>";
             echo "<button class='fav-btn' data-post-id='" . $row['post_id'] . "'>Add to Favourites</button>";
             echo "<button class='like-btn' data-post-id='" .  $row['post_id'] . "'>";
             echo "Likes: <span id='like-count-" .  $row['post_id'] . "'>" . htmlspecialchars($row['post_like_count']) . "</span>";
             echo "</button>";
+            echo "<button class='comment-btn' data-post-id='" .  $row['post_id'] . "'>Comment</button>";
         ?>
          <!-- pop up box for comments -->
         <div id="commentModal" class="modal">

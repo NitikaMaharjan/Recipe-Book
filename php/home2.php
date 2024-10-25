@@ -105,14 +105,14 @@
                     echo "<p>" . htmlspecialchars($row['post_text']) . "</p>";
                     echo "<p>" . htmlspecialchars($row['post_keywords']) . "</p>";
 
-                    echo "<button>Comment</button>";
+                    
                     echo "<button>Add to Favourites</button>";
 
                     $postId = $row['post_id'];
                     echo "<button>";
                     echo "Likes: <span id='like-count-" . $postId . "'>" . htmlspecialchars($row['post_like_count']) . "</span>";
                     echo "</button>";
-                    
+                    echo "<button>Comment</button>";
                     echo "</div>";
                     echo "<br/>";
                 }

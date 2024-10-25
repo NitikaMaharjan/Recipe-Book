@@ -163,12 +163,12 @@
 
                     echo "<p>" . htmlspecialchars($row['post_text']) . "</p>";
                     echo "<p>" . htmlspecialchars($row['post_keywords']) . "</p>";
-                    echo "<button class='comment-btn' data-post-id='" . $postId . "'>Comment</button>";
                     echo "<button class='fav-btn' data-post-id='" . $row['post_id'] . "'>Add to Favourites</button>";
 
                     echo "<button class='like-btn' data-post-id='" .  $row['post_id'] . "'>";
                     echo "Likes: <span id='like-count-" .  $row['post_id'] . "'>" . htmlspecialchars($row['post_like_count']) . "</span>";
                     echo "</button>";
+                    echo "<button class='comment-btn' data-post-id='" . $postId . "'>Comment</button>";
                     
                     echo "</div>";
                     echo "<br/>";
