@@ -109,6 +109,7 @@
             }
 
             echo "<button class='comment-btn' data-post-id='" .  $row['post_id'] . "'>Comment</button>";
+            echo "<button class='fav-btn' data-post-id='" . $row['post_id'] . "'>Add to Favourites</button>";
             echo "<button class='like-btn' data-post-id='" .  $row['post_id'] . "'>";
             echo "Likes: <span id='like-count-" .  $row['post_id'] . "'>" . htmlspecialchars($row['post_like_count']) . "</span>";
             echo "</button>";
@@ -163,6 +164,25 @@
                 xhr.send('post_id=' + postId);
             });
         });
+         //ajax for favourite button
+        document.querySelectorAll('.fav-btn').forEach(button => {
+            button.addEventListener('click', function(event) {
+                event.stopPropagation();
+                const postId = this.getAttribute('data-post-id');
+
+                const xhr = new XMLHttpRequest();
+                xhr.open('POST', '/RecipeBook/Recipe-Book/php/add_favourite.php', true);
+                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+                xhr.onload = function() {
+                    if (xhr.status === 200) {
+                        alert('Post added to your favourites!');
+                    }
+                };
+                xhr.send('post_id=' + postId);
+            });
+        });
+
         // ajax and js for comments section
         let commentPollingInterval; // Variable to hold the interval ID
 
