@@ -37,7 +37,7 @@
 
 
     $sql = "
-        SELECT post.*, user.user_name 
+        SELECT post.*, user.user_name, user.user_profile_picture
         FROM post 
         JOIN user ON post.user_id = user.user_id 
         ORDER BY $sort_by
@@ -114,9 +114,25 @@
                     echo "<h3>" . htmlspecialchars($row['post_title']) . "</h3>";
 
                     if ($row['post_edited_date'] != $row['post_posted_date']) {
-                        echo "<p>Posted by <b>" . htmlspecialchars($row['user_name']) . " </b>and edited on<b> " . htmlspecialchars($row['post_edited_date']) . "</b></p>";
+                        // Post has been edited
+                        echo "<div style='display: flex; align-items: center;'>"; 
+                        if ($row['user_profile_picture']) {
+                            echo "<img src='data:image/jpeg;base64," . base64_encode($row['user_profile_picture']) . "' alt='Profile picture' style='width: 50px; height: 50px; border-radius: 50%; margin-right: 10px;' />";
+                        } else {
+                            echo "<img src='/RecipeBook/Recipe-Book/default_profile_picture.jpg' style='width: 50px; height: 50px; border-radius: 50%; margin-right: 10px;' />";
+                        }
+                        echo "<p><b>" . htmlspecialchars($row['user_name']) . "</b> edited on <b>" . htmlspecialchars($row['post_edited_date']) . "</b></p>";
+                        echo "</div>"; 
                     } else {
-                        echo "<p>Posted by <b>" . htmlspecialchars($row['user_name']) . " </b>on<b> " . htmlspecialchars($row['post_edited_date']) . "</b></p>";
+                        // Post has not been edited
+                        echo "<div style='display: flex; align-items: center;'>"; 
+                        if ($row['user_profile_picture']) {
+                            echo "<img src='data:image/jpeg;base64," . base64_encode($row['user_profile_picture']) . "' alt='Profile picture' style='width: 50px; height: 50px; border-radius: 50%; margin-right: 10px;' />";
+                        } else {
+                            echo "<img src='/RecipeBook/Recipe-Book/default_profile_picture.jpg' style='width: 50px; height: 50px; border-radius: 50%; margin-right: 10px;' />";
+                        }
+                        echo "<p><b>" . htmlspecialchars($row['user_name']) . "</b> posted on <b>" . htmlspecialchars($row['post_posted_date']) . "</b></p>";
+                        echo "</div>"; 
                     }
 
                     echo "<p>Category : " . htmlspecialchars($row['post_category']) . "</p>";
