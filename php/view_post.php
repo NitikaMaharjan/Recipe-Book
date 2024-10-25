@@ -171,7 +171,7 @@
                 const postId = this.getAttribute('data-post-id');
 
                 const xhr = new XMLHttpRequest();
-                xhr.open('POST', '/RecipeBook/Recipe-Book/php/add_favourite.php', true);
+                xhr.open('POST', '/RecipeBook/Recipe-Book/php/favourite/add_favourite.php', true);
                 xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
                 xhr.onload = function() {

@@ -82,7 +82,7 @@
             <div>
                 <button><a href="/RecipeBook/Recipe-Book/php/home.php">Home</a></button>
                 <button><a href="/RecipeBook/Recipe-Book/php/profile.php">Profile</a></button>
-                <button><a href="/RecipeBook/Recipe-Book/php/favourite_page.php">My Favourites</a></button>
+                <button><a href="/RecipeBook/Recipe-Book/php/favourite/favourite_page.php">My Favourites</a></button>
             </div>
         </header>
         <form name="search" method="post" action="/RecipeBook/Recipe-Book/php/search_functionality/search_post.php">
@@ -192,7 +192,7 @@
                 console.log(postId);
                 
                 const xhr = new XMLHttpRequest();
-                xhr.open('POST', '/RecipeBook/Recipe-Book/php/add_favourite.php', true);
+                xhr.open('POST', '/RecipeBook/Recipe-Book/php/favourite/add_favourite.php', true);
                 xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
                 xhr.onload = function() {
@@ -203,6 +203,7 @@
                 xhr.send('post_id=' + postId);
             });
         });
+        
         // ajax and js for comments section
         let commentPollingInterval; // Variable to hold the interval ID
 

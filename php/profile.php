@@ -103,7 +103,7 @@
                 ?>
                 <button><a href="/RecipeBook/Recipe-Book/php/home.php">Home</a></button>
                 <button><a href="/RecipeBook/Recipe-Book/php/profile.php">Profile</a></button>
-                <button><a href="/RecipeBook/Recipe-Book/php/favourite_page.php">My Favourites</a></button>
+                <button><a href="/RecipeBook/Recipe-Book/php/favourite/favourite_page.php">My Favourites</a></button>
             </div>
         </header>
         <h1>Hello <?php echo "$user_name" ?>, welcome to your profile!!</h1>
@@ -204,7 +204,7 @@
                 const postId = this.getAttribute('data-post-id');
 
                 const xhr = new XMLHttpRequest();
-                xhr.open('POST', '/RecipeBook/Recipe-Book/php/add_favourite.php', true);
+                xhr.open('POST', '/RecipeBook/Recipe-Book/php/favourite/add_favourite.php', true);
                 xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
                 xhr.onload = function() {
