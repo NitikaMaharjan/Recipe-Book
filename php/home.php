@@ -7,6 +7,7 @@
     }
 
     $user_name = $_SESSION['username'];
+    $user_id = $_SESSION['user_id'];
 
     $servername = "localhost";
     $username = "root";
@@ -42,7 +43,15 @@
         JOIN user ON post.user_id = user.user_id 
         ORDER BY $sort_by
     ";
+
+    $profile_pic_sql = "
+        SELECT user_profile_picture
+        FROM user  
+        WHERE user_id = $user_id
+    ";
+
     $result = $conn->query($sql);
+    $result2 = $conn->query($profile_pic_sql);
 ?>
 
 <html>
@@ -78,7 +87,18 @@
         </style>
     </head>
     <body>
-        <button><a href="/RecipeBook/Recipe-Book/php/home.php">Home</a></button>
+        <a href="/RecipeBook/Recipe-Book/php/profile.php"><?php
+            if ($result2->num_rows==1) {
+                while($row = $result2->fetch_assoc()) {
+                    if (($row['user_profile_picture'])) {
+                        echo "<img src='data:image/jpeg;base64,".base64_encode($row['user_profile_picture'])."' alt='Profile picture' style='max-width: 50px; max-height: 50px; border-radius: 50%; margin-right: 10px;'/>";
+                    } else {
+                        echo "<img src='/RecipeBook/Recipe-Book/default_profile_picture.jpg' style='max-width: 50px; max-height: 50px; border-radius: 50%; margin-right: 10px;'/>";
+                    }
+                }
+            }
+        ?></a>
+
         <button><a href="/RecipeBook/Recipe-Book/php/profile.php">Profile</a></button>
         <button><a href="/RecipeBook/Recipe-Book/php/favourite_functionality/favourite_page.php">My Favourites</a></button>
         <form name="search" method="post" action="/RecipeBook/Recipe-Book/php/search_functionality/search_post.php">

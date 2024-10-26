@@ -92,15 +92,14 @@
             if ($result2->num_rows==1) {
                 while($row = $result2->fetch_assoc()) {
                     if (($row['user_profile_picture'])) {
-                        echo "<img src='data:image/jpeg;base64," . base64_encode($row['user_profile_picture']) . "' alt='Profile picture' style='max-width: 50px; max-height: 50px;'/>";
+                        echo "<img src='data:image/jpeg;base64," . base64_encode($row['user_profile_picture']) . "' alt='Profile picture' style='max-width: 50px; max-height: 50px; border-radius: 50%; margin-right: 10px;'/>";
                     } else {
-                        echo "<img src='/RecipeBook/Recipe-Book/default_profile_picture.jpg' style='max-width: 50px; max-height: 50px;'/>";
+                        echo "<img src='/RecipeBook/Recipe-Book/default_profile_picture.jpg' style='max-width: 50px; max-height: 50px; border-radius: 50%; margin-right: 10px;'/>";
                     }
                 }
             }
         ?>
         <button><a href="/RecipeBook/Recipe-Book/php/home.php">Home</a></button>
-        <button><a href="/RecipeBook/Recipe-Book/php/profile.php">Profile</a></button>
         <button><a href="/RecipeBook/Recipe-Book/php/favourite_functionality/favourite_page.php">My Favourites</a></button>
             
         <h1>Hello <?php echo "$user_name" ?>, welcome to your profile!!</h1>

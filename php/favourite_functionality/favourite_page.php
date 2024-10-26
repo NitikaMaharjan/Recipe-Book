@@ -56,8 +56,7 @@
         </style>
     </head>
     <body>
-        <button><a href="/RecipeBook/Recipe-Book/php/home.php">Home</a></button>
-        <button><a href="/RecipeBook/Recipe-Book/php/profile.php">Profile</a></button>
+        <button onclick="go_back()">Go Back</button>
             
         <h1>Hello <?php echo "$user_name" ?>, welcome to your favourites!!</h1>
         <h2>All your favourites</h2>

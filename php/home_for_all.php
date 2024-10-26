@@ -63,7 +63,7 @@
         <button><a href="/RecipeBook/Recipe-Book/html/signup.html">Sign up</a></button>
         <button><a href="/RecipeBook/Recipe-Book/html/login.html">Log in</a></button>
         
-        <br/>
+        <br/><br/>
         <input type="text" placeholder="Search Recipe"/>
         <button onclick="popup()">Search</button>
         <br />
