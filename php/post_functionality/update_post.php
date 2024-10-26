@@ -33,7 +33,7 @@
         if ($conn->query($sql) === TRUE){
             echo "<script>
                     alert ('Post updated successfully!!');
-                    window.location.href = '/RecipeBook/Recipe-Book/php/view_post.php?post_id={$post_id}';
+                    window.location.href = '/RecipeBook/Recipe-Book/php/post_functionality/view_post.php?post_id={$post_id}';
                   </script>";
             exit();
         } else {

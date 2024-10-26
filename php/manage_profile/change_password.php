@@ -6,13 +6,13 @@
     $password = "";
     $dbname = "RecipeBook";
 
+    $user_id = $_SESSION['user_id'];
+
     $conn = new mysqli($servername, $username, $password, $dbname);
 
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
-
-    $user_id = $_SESSION['user_id'];
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -23,8 +23,9 @@
         if (empty($current_password) || empty($new_password) || empty($confirm_password)) {
             echo "<script>
                     alert ('All fields are required!!');
-                    window.location.href = '/RecipeBook/Recipe-Book/html/change_password.html';
+                    window.location.href = '/RecipeBook/Recipe-Book/html/manage_profile/change_password.html';
                   </script>";
+            exit();
         } else {
             $sql = "SELECT user_password FROM user WHERE user_id='$user_id' AND user_password='$current_password'";
             $result = $conn->query($sql);
@@ -39,20 +40,23 @@
                                 alert ('Password updated successfully!!');
                                 window.location.href = '/RecipeBook/Recipe-Book/php/profile.php';
                               </script>";
+                        exit();      
                     } else {
                         echo "Error updating password: " . $conn->error;
                     }
                 }else{
                     echo "<script>
                         alert ('New password and Confirm password should match, Please try again!!');
-                        window.location.href = '/RecipeBook/Recipe-Book/html/change_password.html';
-                      </script>".$conn->error;
+                        window.location.href = '/RecipeBook/Recipe-Book/html/manage_profile/change_password.html';
+                      </script>";
+                    exit();
                 } 
             }else{
                 echo "<script>
                     alert ('Incorrect password, Please try again!!');
-                    window.location.href = '/RecipeBook/Recipe-Book/html/change_password.html';
-                  </script>".$conn->error;
+                    window.location.href = '/RecipeBook/Recipe-Book/html/manage_profile/change_password.html';
+                  </script>";
+                exit();
             }
         }
     }

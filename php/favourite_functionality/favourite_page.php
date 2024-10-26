@@ -19,6 +19,7 @@
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
+
     // Update post_like_count on post table
     $update_sql = "
         UPDATE post 
@@ -55,13 +56,9 @@
         </style>
     </head>
     <body>
-        <header>
-            <div>
-                <button><a href="/RecipeBook/Recipe-Book/php/home.php">Home</a></button>
-                <button><a href="/RecipeBook/Recipe-Book/php/profile.php">Profile</a></button>
-                <button><a href="/RecipeBook/Recipe-Book/php/favourite/favourite_page.php">My Favourites</a></button>
-            </div>
-        </header>
+        <button><a href="/RecipeBook/Recipe-Book/php/home.php">Home</a></button>
+        <button><a href="/RecipeBook/Recipe-Book/php/profile.php">Profile</a></button>
+            
         <h1>Hello <?php echo "$user_name" ?>, welcome to your favourites!!</h1>
         <h2>All your favourites</h2>
         <?php
@@ -120,7 +117,7 @@
     </body>
     <script>
         function view_post(post_id) {
-            window.location.href = "/RecipeBook/Recipe-Book/php/view_post.php?post_id=" + post_id;
+            window.location.href = "/RecipeBook/Recipe-Book/php/post_functionality/view_post.php?post_id=" + post_id;
         }
 
         function go_back(){
@@ -134,7 +131,7 @@
                 const postId = this.getAttribute('data-post-id');
 
                 const xhr = new XMLHttpRequest();
-                xhr.open('POST', '/recipebook/Recipe-Book/php/like_post.php', true);
+                xhr.open('POST', '/recipebook/Recipe-Book/php/likes_functionality/like_post.php', true);
                 xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
                 xhr.onload = function() {
@@ -160,7 +157,7 @@
                 const postElement = this.closest('.post');
 
                 const xhr = new XMLHttpRequest();
-                xhr.open('POST', '/RecipeBook/Recipe-Book/php/favourite/remove_favourite.php', true);
+                xhr.open('POST', '/RecipeBook/Recipe-Book/php/favourite_functionality/remove_favourite.php', true);
                 xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
                 xhr.onload = function() {

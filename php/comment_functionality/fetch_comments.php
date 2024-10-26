@@ -1,4 +1,5 @@
 <?php
+
     $servername = "localhost";
     $username = "root";
     $password = "";
@@ -11,8 +12,6 @@
     }
 
     $postId = $_GET['post_id'];
-
-    
     $postId = intval($postId);
 
     $sql = "SELECT c.comment_text, u.user_name,u.user_profile_picture, c.commented_at 
@@ -41,4 +40,5 @@
     }
 
     $conn->close();
+    
 ?>

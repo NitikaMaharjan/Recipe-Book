@@ -6,15 +6,14 @@
     $password = "";
     $dbname = "RecipeBook";
 
+    $user_id = $_SESSION['user_id'];
+
     $conn = new mysqli($servername, $username, $password, $dbname);
 
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
 
-    $user_id = $_SESSION['user_id'];
-
-    
     $sql = "UPDATE user SET user_profile_picture=NULL WHERE user_id='$user_id' ";
     if ($conn->query($sql) === TRUE) {
         echo "<script>

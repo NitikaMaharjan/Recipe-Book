@@ -15,15 +15,15 @@
     if (isset($_GET['post_id'])) {
         $post_id = (int)$_GET['post_id'];
 
-        // Delete comments first 
+        //inorder to delete post, first deleting comments
         $sql_delete_comments = "DELETE FROM comment WHERE post_id = $post_id";
         if ($conn->query($sql_delete_comments) === TRUE) {
             
-            // then delete from favourite
+            //second deleting post from favourite
             $sql_remove_fav = "DELETE FROM favourite WHERE post_id = $post_id";
             if ($conn->query($sql_remove_fav) === TRUE) {
 
-                // Now delete the post
+                //now deleting the post
                 $sql = "DELETE FROM post WHERE post_id = $post_id";
                 if ($conn->query($sql) === TRUE) {
                     echo "<script>

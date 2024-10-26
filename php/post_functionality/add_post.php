@@ -10,6 +10,8 @@
     $username = "root";
     $password = "";
     $dbname = "RecipeBook";
+    
+    $user_id = $_SESSION['user_id'];
 
     $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -24,7 +26,6 @@
         $post_keywords = $_POST['post_keywords'];
         $post_category = $_POST['post_category'];
         $post_text = $_POST['post_text'];
-        $user_id = $_SESSION['user_id'];
 
         if (isset($_FILES['post_image']) && $_FILES['post_image']['tmp_name'] != '') {
             $imageFileType = strtolower(pathinfo($_FILES['post_image']['name'], PATHINFO_EXTENSION));
@@ -34,7 +35,7 @@
                 if ($_FILES['post_image']['size'] > 5000000) { // 5MB limit
                     echo "<script>
                             alert ('Sorry, your file size is too large!!');
-                            window.location.href = '/RecipeBook/Recipe-Book/html/add_post.html';
+                            window.location.href = '/RecipeBook/Recipe-Book/html/post_functionality/add_post.html';
                           </script>";
                     exit();
                 }
@@ -44,7 +45,7 @@
             } else {
                 echo "<script>
                         alert ('Invalid image format. Only JPG, JPEG, PNG & GIF files are allowed!!');
-                        window.location.href = '/RecipeBook/Recipe-Book/html/add_post.html';
+                        window.location.href = '/RecipeBook/Recipe-Book/html/post_functionality/add_post.html';
                       </script>";
                 exit();
             }
@@ -58,6 +59,7 @@
                     alert ('Post created successfully!!');
                     window.location.href = '/RecipeBook/Recipe-Book/php/profile.php';
                   </script>";
+            exit();
         } else {
             echo "Error creating post: " . $conn->error;
         }

@@ -75,11 +75,7 @@
         </style>
     </head>
     <body>
-        <header>
-            <div class="topnav">
-                <button onclick="go_back()">Go Back</button>    
-            </div>
-        </header>
+        <button onclick="go_back()">Go Back</button> 
         <?php
             if ($row['post_edited_date'] != $row['post_posted_date']) {
                 // Post has been edited
@@ -149,15 +145,16 @@
         }
 
         function edit_post(post_id) {
-            window.location.href = "/RecipeBook/Recipe-Book/php/edit_post.php?post_id=" + post_id;
+            window.location.href = "/RecipeBook/Recipe-Book/php/post_functionality/edit_post.php?post_id=" + post_id;
         }
 
         function delete_post(post_id) {
             var ans = confirm("Are you sure you want to delete this post?");
             if (ans == true) {
-                window.location.href = "/RecipeBook/Recipe-Book/php/delete_post.php?post_id=" + post_id;
+                window.location.href = "/RecipeBook/Recipe-Book/php/post_functionality/delete_post.php?post_id=" + post_id;
             }
         }
+
          //ajax for like button
         document.querySelectorAll('.like-btn').forEach(button => {
             button.addEventListener('click', function(event) {
@@ -165,7 +162,7 @@
                 const postId = this.getAttribute('data-post-id');
 
                 const xhr = new XMLHttpRequest();
-                xhr.open('POST', '/recipebook/Recipe-Book/php/like_post.php', true);
+                xhr.open('POST', '/recipebook/Recipe-Book/php/likes_functionality/like_post.php', true);
                 xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
                 xhr.onload = function() {
@@ -182,6 +179,7 @@
                 xhr.send('post_id=' + postId);
             });
         });
+
          //ajax for favourite button
         document.querySelectorAll('.fav-btn').forEach(button => {
             button.addEventListener('click', function(event) {
@@ -189,7 +187,7 @@
                 const postId = this.getAttribute('data-post-id');
 
                 const xhr = new XMLHttpRequest();
-                xhr.open('POST', '/RecipeBook/Recipe-Book/php/favourite/add_favourite.php', true);
+                xhr.open('POST', '/RecipeBook/Recipe-Book/php/favourite_functionality/add_favourite.php', true);
                 xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
                 xhr.onload = function() {
