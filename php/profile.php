@@ -107,7 +107,7 @@
             </div>
         </header>
         <h1>Hello <?php echo "$user_name" ?>, welcome to your profile!!</h1>
-        <button><a href="/RecipeBook/Recipe-Book/html/settings.html">Settings</a></button>
+        <button><a href="/RecipeBook/Recipe-Book/html/manage_profile/settings.html">Settings</a></button>
         <button><a href="/RecipeBook/Recipe-Book/php/logout.php">Log out</a></button>
         <button><a href="/RecipeBook/Recipe-Book/html/add_post.html">Add recipe</a></button>
         <h2>All your posts</h2>
