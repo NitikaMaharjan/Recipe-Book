@@ -22,6 +22,7 @@
                     alert ('All fields are required!!');
                     window.location.href = '/RecipeBook/Recipe-Book/html/login.html';
                   </script>";
+            exit();
         } else {
             $sql = "SELECT user_name, user_password, user_id FROM user WHERE user_name='$user_name' AND user_password='$user_password'";
             $result = $conn->query($sql);
@@ -34,13 +35,17 @@
                 $_SESSION['user_id'] = $row['user_id'];
                 header("Location: /RecipeBook/Recipe-Book/php/profile.php");
                 exit();
-            } else {
+            }else{
                 echo "<script>
-                    alert ('Incorrect username and password, Please try again!!');
-                    window.location.href = '/RecipeBook/Recipe-Book/html/login.html';
-                  </script>".$conn->error;
+                        alert ('Incorrect username and password, Please try again!!');
+                        window.location.href = '/RecipeBook/Recipe-Book/html/login.html';
+                      </script>";
+                exit();
             }
         }
+
     }
+
     $conn->close();
+
 ?>

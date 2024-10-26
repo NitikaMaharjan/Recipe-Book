@@ -34,14 +34,18 @@
                         alert ('The passwords should match!!');
                         window.location.href = '/RecipeBook/Recipe-Book/html/signup.html';
                       </script>";
+                exit();
             }
         }else{
             echo "<script>
                     alert ('All fields are required!!');
                     window.location.href = '/RecipeBook/Recipe-Book/html/signup.html';
                   </script>";
+            exit();
         }
         
     }
+
     $conn->close();
+
 ?>

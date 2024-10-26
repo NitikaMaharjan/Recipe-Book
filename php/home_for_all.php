@@ -22,7 +22,9 @@
         JOIN user ON post.user_id = user.user_id 
         ORDER BY $sort_by
     ";
+
     $result = $conn->query($sql);
+
 ?>
 
 <html>
@@ -58,12 +60,9 @@
         </style>
     </head>
     <body>
-        <header>
-            <div>
-                <button><a href="/RecipeBook/Recipe-Book/html/signup.html">Sign up</a></button>
-                <button><a href="/RecipeBook/Recipe-Book/html/login.html">Log in</a></button>
-            </div>
-        </header>
+        <button><a href="/RecipeBook/Recipe-Book/html/signup.html">Sign up</a></button>
+        <button><a href="/RecipeBook/Recipe-Book/html/login.html">Log in</a></button>
+        
         <br/>
         <input type="text" placeholder="Search Recipe"/>
         <button onclick="popup()">Search</button>
@@ -112,7 +111,9 @@
                     echo "<button>";
                     echo "Likes: <span id='like-count-" . $postId . "'>" . htmlspecialchars($row['post_like_count']) . "</span>";
                     echo "</button>";
+
                     echo "<button>Comment</button>";
+                    
                     echo "</div>";
                     echo "<br/>";
                 }

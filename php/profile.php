@@ -34,9 +34,9 @@
             WHERE Likes.post_id = post.post_id
         )
     ";
+
     $conn->query($update_sql);
 
-    
     $sql = "
         SELECT post.*, user.user_name, user.user_profile_picture
         FROM post 
@@ -88,28 +88,26 @@
         </style>
     </head>
     <body>
-        <header>
-            <div>
-                <?php
-                    if ($result2->num_rows==1) {
-                        while($row = $result2->fetch_assoc()) {
-                            if (($row['user_profile_picture'])) {
-                                echo "<img src='data:image/jpeg;base64," . base64_encode($row['user_profile_picture']) . "' alt='Profile picture' style='max-width: 50px; max-height: 50px;'/>";
-                            } else {
-                                echo "<img src='/RecipeBook/Recipe-Book/default_profile_picture.jpg' style='max-width: 50px; max-height: 50px;'/>";
-                            }
-                        }
+        <?php
+            if ($result2->num_rows==1) {
+                while($row = $result2->fetch_assoc()) {
+                    if (($row['user_profile_picture'])) {
+                        echo "<img src='data:image/jpeg;base64," . base64_encode($row['user_profile_picture']) . "' alt='Profile picture' style='max-width: 50px; max-height: 50px;'/>";
+                    } else {
+                        echo "<img src='/RecipeBook/Recipe-Book/default_profile_picture.jpg' style='max-width: 50px; max-height: 50px;'/>";
                     }
-                ?>
-                <button><a href="/RecipeBook/Recipe-Book/php/home.php">Home</a></button>
-                <button><a href="/RecipeBook/Recipe-Book/php/profile.php">Profile</a></button>
-                <button><a href="/RecipeBook/Recipe-Book/php/favourite/favourite_page.php">My Favourites</a></button>
-            </div>
-        </header>
+                }
+            }
+        ?>
+        <button><a href="/RecipeBook/Recipe-Book/php/home.php">Home</a></button>
+        <button><a href="/RecipeBook/Recipe-Book/php/profile.php">Profile</a></button>
+        <button><a href="/RecipeBook/Recipe-Book/php/favourite_functionality/favourite_page.php">My Favourites</a></button>
+            
         <h1>Hello <?php echo "$user_name" ?>, welcome to your profile!!</h1>
         <button><a href="/RecipeBook/Recipe-Book/html/manage_profile/settings.html">Settings</a></button>
         <button><a href="/RecipeBook/Recipe-Book/php/logout.php">Log out</a></button>
         <button><a href="/RecipeBook/Recipe-Book/html/post_functionality/add_post.html">Add recipe</a></button>
+
         <h2>All your posts</h2>
 
         <form id="sortForm" method="GET" action="">
@@ -119,59 +117,60 @@
                 <option value="likes" <?php echo (isset($_GET['sort']) && $_GET['sort'] == 'likes') ? 'selected' : ''; ?>>Likes</option>
             </select>
         </form>
+
         <?php
-        if ($result->num_rows > 0) {
-            while ($row = $result->fetch_assoc()) {
-                $postId = $row['post_id'];
-                echo "<div class='post' onclick='view_post(" . $row['post_id'] . ")'>";
-                echo "<h3>" . htmlspecialchars($row['post_title']) . "</h3>";
+            if ($result->num_rows > 0) {
+                while ($row = $result->fetch_assoc()) {
+                    $postId = $row['post_id'];
+                    echo "<div class='post' onclick='view_post(" . $row['post_id'] . ")'>";
+                    echo "<h3>" . htmlspecialchars($row['post_title']) . "</h3>";
 
-                if ($row['post_edited_date'] != $row['post_posted_date']) {
-                    // Post has been edited
-                    echo "<div style='display: flex; align-items: center;'>"; 
-                    if ($row['user_profile_picture']) {
-                        echo "<img src='data:image/jpeg;base64," . base64_encode($row['user_profile_picture']) . "' alt='Profile picture' style='width: 50px; height: 50px; border-radius: 50%; margin-right: 10px;' />";
+                    if ($row['post_edited_date'] != $row['post_posted_date']) {
+                        // Post has been edited
+                        echo "<div style='display: flex; align-items: center;'>"; 
+                        if ($row['user_profile_picture']) {
+                            echo "<img src='data:image/jpeg;base64," . base64_encode($row['user_profile_picture']) . "' alt='Profile picture' style='width: 50px; height: 50px; border-radius: 50%; margin-right: 10px;' />";
+                        } else {
+                            echo "<img src='/RecipeBook/Recipe-Book/default_profile_picture.jpg' style='width: 50px; height: 50px; border-radius: 50%; margin-right: 10px;' />";
+                        }
+                        echo "<p><b>" . htmlspecialchars($row['user_name']) . "</b> edited on <b>" . htmlspecialchars($row['post_edited_date']) . "</b></p>";
+                        echo "</div>"; 
                     } else {
-                        echo "<img src='/RecipeBook/Recipe-Book/default_profile_picture.jpg' style='width: 50px; height: 50px; border-radius: 50%; margin-right: 10px;' />";
+                        // Post has not been edited
+                        echo "<div style='display: flex; align-items: center;'>"; 
+                        if ($row['user_profile_picture']) {
+                            echo "<img src='data:image/jpeg;base64," . base64_encode($row['user_profile_picture']) . "' alt='Profile picture' style='width: 50px; height: 50px; border-radius: 50%; margin-right: 10px;' />";
+                        } else {
+                            echo "<img src='/RecipeBook/Recipe-Book/default_profile_picture.jpg' style='width: 50px; height: 50px; border-radius: 50%; margin-right: 10px;' />";
+                        }
+                        echo "<p><b>" . htmlspecialchars($row['user_name']) . "</b> posted on <b>" . htmlspecialchars($row['post_posted_date']) . "</b></p>";
+                        echo "</div>"; 
                     }
-                    echo "<p><b>" . htmlspecialchars($row['user_name']) . "</b> edited on <b>" . htmlspecialchars($row['post_edited_date']) . "</b></p>";
-                    echo "</div>"; 
-                } else {
-                    // Post has not been edited
-                    echo "<div style='display: flex; align-items: center;'>"; 
-                    if ($row['user_profile_picture']) {
-                        echo "<img src='data:image/jpeg;base64," . base64_encode($row['user_profile_picture']) . "' alt='Profile picture' style='width: 50px; height: 50px; border-radius: 50%; margin-right: 10px;' />";
+
+                    echo "<p>Category : " . htmlspecialchars($row['post_category']) . "</p>";
+                    if (($row['post_image'])) {
+                        echo "<img src='data:image/jpeg;base64," . base64_encode($row['post_image']) . "' alt='Recipe Image' style='max-width: 200px; max-height: 200px;'/>";
                     } else {
-                        echo "<img src='/RecipeBook/Recipe-Book/default_profile_picture.jpg' style='width: 50px; height: 50px; border-radius: 50%; margin-right: 10px;' />";
+                        echo "No image available";
                     }
-                    echo "<p><b>" . htmlspecialchars($row['user_name']) . "</b> posted on <b>" . htmlspecialchars($row['post_posted_date']) . "</b></p>";
-                    echo "</div>"; 
+
+                    echo "<p>" . htmlspecialchars($row['post_text']) . "</p>";
+                    echo "<p>" . htmlspecialchars($row['post_keywords']) . "</p>";
+                    echo "<button class='fav-btn' data-post-id='" . $row['post_id'] . "'>Add to Favourites</button>";
+
+                    
+                    echo "<button class='like-btn' data-post-id='" .  $row['post_id'] . "'>";
+                    echo "Likes: <span id='like-count-" .  $row['post_id'] . "'>" . htmlspecialchars($row['post_like_count']) . "</span>";
+                    echo "</button>";
+                    echo "<button class='comment-btn' data-post-id='" . $postId . "'>Comment</button>";
+
+                    echo "</div>";
+                    echo "<br/>";
                 }
-
-                echo "<p>Category : " . htmlspecialchars($row['post_category']) . "</p>";
-                if (($row['post_image'])) {
-                    echo "<img src='data:image/jpeg;base64," . base64_encode($row['post_image']) . "' alt='Recipe Image' style='max-width: 200px; max-height: 200px;'/>";
-                } else {
-                    echo "No image available";
-                }
-
-                echo "<p>" . htmlspecialchars($row['post_text']) . "</p>";
-                echo "<p>" . htmlspecialchars($row['post_keywords']) . "</p>";
-                echo "<button class='fav-btn' data-post-id='" . $row['post_id'] . "'>Add to Favourites</button>";
-
-                
-                echo "<button class='like-btn' data-post-id='" .  $row['post_id'] . "'>";
-                echo "Likes: <span id='like-count-" .  $row['post_id'] . "'>" . htmlspecialchars($row['post_like_count']) . "</span>";
-                echo "</button>";
-                echo "<button class='comment-btn' data-post-id='" . $postId . "'>Comment</button>";
-
-                echo "</div>";
-                echo "<br/>";
+            } else {
+                echo "<p>You have not posted any recipes.   </p>";
             }
-        } else {
-            echo "<p>You have not posted any recipes.   </p>";
-        }
-        $conn->close();
+            $conn->close();
         ?>
         <!-- pop up box for comments -->
         <div id="commentModal" class="modal">
@@ -186,7 +185,7 @@
     </body>
     <script>
         function view_post(post_id) {
-            window.location.href = "/RecipeBook/Recipe-Book/php/view_post.php?post_id=" + post_id;
+            window.location.href = "/RecipeBook/Recipe-Book/php/post_functionality/view_post.php?post_id=" + post_id;
         }
 
         //ajax for like button
@@ -196,7 +195,7 @@
                 const postId = this.getAttribute('data-post-id');
 
                 const xhr = new XMLHttpRequest();
-                xhr.open('POST', '/recipebook/Recipe-Book/php/like_post.php', true);
+                xhr.open('POST', '/recipebook/Recipe-Book/php/likes_functionality/like_post.php', true);
                 xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
                 xhr.onload = function() {
@@ -213,6 +212,7 @@
                 xhr.send('post_id=' + postId);
             });
         });
+        
         //ajax for favourite button
         document.querySelectorAll('.fav-btn').forEach(button => {
             button.addEventListener('click', function(event) {
@@ -220,7 +220,7 @@
                 const postId = this.getAttribute('data-post-id');
 
                 const xhr = new XMLHttpRequest();
-                xhr.open('POST', '/RecipeBook/Recipe-Book/php/favourite/add_favourite.php', true);
+                xhr.open('POST', '/RecipeBook/Recipe-Book/php/favourite_functionality/add_favourite.php', true);
                 xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
                 xhr.onload = function() {
@@ -231,6 +231,7 @@
                 xhr.send('post_id=' + postId);
             });
         });
+
         // ajax and js for comments section
         let commentPollingInterval; // Variable to hold the interval ID
 
@@ -259,7 +260,7 @@
 
         function fetchComments(postId) {
             const xhr = new XMLHttpRequest();
-            xhr.open('GET', '/recipebook/Recipe-Book/php/comment_functionality/fetch_comments.php?post_id=' + postId, true);
+            xhr.open('GET', '/RecipeBook/Recipe-Book/php/comment_functionality/fetch_comments.php?post_id=' + postId, true);
             xhr.onload = function() {
                 if (xhr.status === 200) {
                     document.getElementById('commentList').innerHTML = xhr.responseText;
@@ -274,7 +275,7 @@
             const commentText = document.getElementById('commentText').value;
 
             const xhr = new XMLHttpRequest();
-            xhr.open('POST', '/recipebook/Recipe-Book/php/comment_functionality/add_comment.php', true);
+            xhr.open('POST', '/RecipeBook/Recipe-Book/php/comment_functionality/add_comment.php', true);
             xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
             xhr.onload = function() {
@@ -302,8 +303,8 @@
                 closeModal();
             }
         };
+
         // Close modal on 'x' click
         document.querySelector('.close').addEventListener('click', closeModal);
-
     </script>
 </html>
