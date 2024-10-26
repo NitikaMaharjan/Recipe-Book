@@ -1,45 +1,40 @@
 <html>
+    <head>
+        <title>Add Post</title>
+    </head>
+    <body>
+        <button onclick="go_back()">Go Back</button>
+        <h1>Create a New Post</h1>
+        <form action="/RecipeBook/Recipe-Book/php/post_functionality/add_post.php" method="POST" enctype="multipart/form-data">
 
-<head>
-    <title>Create Post</title>
-</head>
+            <label for="post_image">Post Image:</label>
+            <input type="file" name="post_image" accept="image" id="post_image" required/><br/><br/>
 
-<body>
-    <header>
-        <div class="topnav">
-            <button onclick="go_back()">Go Back</button>
-        </div>
-    </header>
-    <h1>Create a New Post</h1>
-    <form action="/RecipeBook/Recipe-Book/php/add_post.php" method="POST" enctype="multipart/form-data">
-        <label for="post_image">Post Image:</label>
-        <input type="file" name="post_image" accept="image" id="post_image" required><br><br>
+            <label for="post_title">Post Title:</label>
+            <input type="text" name="post_title" id="post_title" required/><br/><br/>
 
-        <label for="post_title">Post Title:</label>
-        <input type="text" name="post_title" id="post_title" required><br><br>
+            <label for="post_ingredients">Ingredients:</label>
+            <textarea name="post_ingredients" id="post_ingredients" required></textarea><br/><br/>
 
-        <label for="post_ingredients">Ingredients:</label>
-        <textarea name="post_ingredients" id="post_ingredients" required></textarea><br><br>
+            <label for="post_instructions">Instructions:</label>
+            <textarea name="post_instructions" id="post_instructions" required></textarea><br/><br/>
 
-        <label for="post_instructions">Instructions:</label>
-        <textarea name="post_instructions" id="post_instructions" required></textarea><br><br>
+            <label for="post_keywords">Keywords:</label>
+            <input type="text" name="post_keywords" id="post_keywords" required/><br/><br/>
 
-        <label for="post_keywords">Keywords:</label>
-        <input type="text" name="post_keywords" id="post_keywords" required><br><br>
+            <label for="post_category">Category:</label>
+            <input type="text" name="post_category" id="post_category" required/><br/><br/>
 
-        <label for="post_category">Category:</label>
-        <input type="text" name="post_category" id="post_category" required><br><br>
+            <label for="post_text">Description :</label>
+            <input type="text" name="post_text" id="post_text" required/><br/><br/>
 
-        <label for="post_text">Description :</label>
-        <input type="text" name="post_text" id="post_text" required><br><br>
+            <input type="submit" value="Add Post"/>
 
-        <input type="submit" value="Create Post">
-    </form>
-</body>
-<script>
-    function go_back() {
-        window.history.back();
-    }
-</script>
-
+        </form>
+    </body>
+    <script>
+        function go_back() {
+            window.history.back();
+        }
+    </script>
 </html>
