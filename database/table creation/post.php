@@ -1,19 +1,17 @@
 <?php
+
     $servername = "localhost";
     $username = "root";
     $password = "";
     $dbname = "RecipeBook";
 
-    // Create connection
     $conn = new mysqli($servername, $username, $password, $dbname);
 
-    // Check connection
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
 
-    // sql to create table
-    $sql = "CREATE TABLE Post(
+    $sql = "CREATE TABLE post(
         post_id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
         post_image LONGBLOB,
         post_title VARCHAR(30) NOT NULL,
@@ -36,4 +34,5 @@
     }
 
     $conn->close();
+    
 ?>
