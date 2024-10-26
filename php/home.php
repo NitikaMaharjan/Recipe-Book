@@ -289,5 +289,21 @@
         
         // Close modal on 'x' click
         document.querySelector('.close').addEventListener('click', closeModal);
+
+        //deleting comment
+        function deleteComment(commentId) {
+            if (confirm("Are you sure you want to delete this comment?")){
+                const xhr = new XMLHttpRequest();
+                xhr.open('POST', '/Recipebook/Recipe-Book/php/comment_functionality/delete_comment.php', true);
+                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                xhr.onload = function() {
+                    if (xhr.status === 200) {
+                        alert(xhr.responseText);
+                    }
+                };
+                xhr.send('comment_id=' + commentId);
+            }
+            
+        }
     </script>
 </html>

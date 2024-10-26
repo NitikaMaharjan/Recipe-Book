@@ -195,7 +195,7 @@
         }
 
         function view_post(post_id) {
-            window.location.href = "/RecipeBook/Recipe-Book/php/view_post.php?post_id=" + post_id;
+            window.location.href = "/RecipeBook/Recipe-Book/php/post_functionality/view_post.php?post_id=" + post_id;
         }
 
          //ajax for like button
@@ -205,7 +205,7 @@
                 const postId = this.getAttribute('data-post-id');
 
                 const xhr = new XMLHttpRequest();
-                xhr.open('POST', '/recipebook/Recipe-Book/php/like_post.php', true);
+                xhr.open('POST', '/recipebook/Recipe-Book/php/likes_functionality/like_post.php', true);
                 xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
                 xhr.onload = function() {
@@ -230,7 +230,7 @@
                 const postId = this.getAttribute('data-post-id');
 
                 const xhr = new XMLHttpRequest();
-                xhr.open('POST', '/RecipeBook/Recipe-Book/php/favourite/add_favourite.php', true);
+                xhr.open('POST', '/RecipeBook/Recipe-Book/php/favourite_functionality/add_favourite.php', true);
                 xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
                 xhr.onload = function() {
@@ -314,6 +314,22 @@
         };
         // Close modal on 'x' click
         document.querySelector('.close').addEventListener('click', closeModal);
+
+        //deleting comment
+        function deleteComment(commentId) {
+            if (confirm("Are you sure you want to delete this comment?")){
+                const xhr = new XMLHttpRequest();
+                xhr.open('POST', '/Recipebook/Recipe-Book/php/comment_functionality/delete_comment.php', true);
+                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                xhr.onload = function() {
+                    if (xhr.status === 200) {
+                        alert(xhr.responseText);
+                    }
+                };
+                xhr.send('comment_id=' + commentId);
+            }
+            
+        }
 
     </script>
 </html>

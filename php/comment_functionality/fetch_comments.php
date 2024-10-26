@@ -1,5 +1,10 @@
 <?php
+    session_start();
 
+    if (!(isset($_SESSION['username']) && isset($_SESSION['loggedin']) && $_SESSION['loggedin'])) {
+        header("Location: /recipebook/Recipe-Book/html/login.html");
+        exit();
+    }
     $servername = "localhost";
     $username = "root";
     $password = "";
@@ -14,7 +19,7 @@
     $postId = $_GET['post_id'];
     $postId = intval($postId);
 
-    $sql = "SELECT c.comment_text, u.user_name,u.user_profile_picture, c.commented_at 
+    $sql = "SELECT c.comment_text,u.user_id, u.user_name,u.user_profile_picture, c.commented_at , c.comment_id
             FROM Comment c 
             JOIN User u ON c.user_id = u.user_id 
             WHERE c.post_id = $postId 
@@ -33,6 +38,9 @@
                 echo "<img src='/RecipeBook/Recipe-Book/default_profile_picture.jpg' style='width: 30px; height: 30px; border-radius: 50%; margin-right: 10px;' />";
             }
             echo "<p><b>" . htmlspecialchars($row['user_name']) . ":</b> " . htmlspecialchars($row['comment_text']) . " <i>(" . htmlspecialchars($row['commented_at']) . ")</i></p>";
+            if ($row['user_id'] == $_SESSION['user_id']) {
+                echo "<button onclick=\"deleteComment(" . $row['comment_id'] . ")\">Delete</button>";
+            }
             echo "</div>"; 
         }
     } else {
