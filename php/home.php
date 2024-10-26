@@ -160,7 +160,7 @@
                 <span class="close" onclick="closeModal()">&times;</span>
                 <h2>Comments</h2>
                 <div id="commentList"></div>
-                <textarea id="commentText" placeholder="Add your comment..."></textarea><br>
+                <textarea id="commentText" placeholder="Add your comment..."></textarea><br/><br/>
                 <button id="submitComment">Submit Comment</button>
             </div>
         </div>

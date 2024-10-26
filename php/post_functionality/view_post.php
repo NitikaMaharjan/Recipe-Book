@@ -75,7 +75,7 @@
         </style>
     </head>
     <body>
-        <button onclick="go_back()">Go Back</button> 
+        <button onclick="go_back()">Go Back</button><br/><br/>
         <?php
             if ($row['post_edited_date'] != $row['post_posted_date']) {
                 // Post has been edited
@@ -134,7 +134,7 @@
                 <span class="close" onclick="closeModal()">&times;</span>
                 <h2>Comments</h2>
                 <div id="commentList"></div>
-                <textarea id="commentText" placeholder="Add your comment..."></textarea><br>
+                <textarea id="commentText" placeholder="Add your comment..."></textarea><br/><br/>
                 <button id="submitComment">Submit Comment</button>
             </div>
         </div>
