@@ -106,12 +106,8 @@
         </style>
     </head>
     <body>
-        <header>
-            <div class="topnav">
-                <button><a href="/Recipebook/Recipe-Book/php/home.php">Back Home</a></button>    
-            </div>
-        </header>
-
+        <button><a href="/Recipebook/Recipe-Book/php/home.php">Back Home</a></button>  
+        
         <form name="search" method="post" action="/RecipeBook/Recipe-Book/php/search_functionality/search_post.php">
             <br/>
             <input type="text" id="search" name="search" placeholder="Search Recipe"/>
