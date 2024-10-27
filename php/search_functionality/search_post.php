@@ -46,26 +46,34 @@
         )
     ";
     $conn->query($update_sql);
-
     $sql = "SELECT post.*, user.user_name, user.user_profile_picture
             FROM post 
             JOIN user ON post.user_id = user.user_id 
             WHERE (post.post_title LIKE '%$search%' 
-                OR post.post_category LIKE '%$search%' 
                 OR user.user_name LIKE '%$search%')";
 
-    //  Split the search into an array by commas and trim whitespace, [#wheat, #rice]
-    $searchTerms = array_map('trim', explode(',', $search));    
+    // Split the search terms by commas and trim whitespace
+    $searchTerms = array_map('trim', explode(',', $search));
 
-    // Add conditions for searching through hashtags (post_keywords) using LIKE
-    $searchConditions = [];
+    // Initialize arrays for conditions
+    $categoryConditions = [];
+    $keywordConditions = [];
+
+    // Loop through each term to create conditions for both category and keywords
     foreach ($searchTerms as $term) {
-        $searchConditions[] = "post.post_keywords LIKE '%$term%'";
+        // Create dynamic conditions for both categories and keywords
+        $categoryConditions[] = "post.post_category LIKE '%$term%'";
+        $keywordConditions[] = "post.post_keywords LIKE '%$term%'";
     }
 
-    // Combine the hashtag search conditions using OR
-    if (!empty($searchConditions)) {
-        $sql .= " OR (" . implode(' OR ', $searchConditions) . ")";
+    // Add category conditions to the SQL query
+    if (!empty($categoryConditions)) {
+        $sql .= " OR (" . implode(' OR ', $categoryConditions) . ")";
+    }
+
+    // Add keyword conditions to the SQL query
+    if (!empty($keywordConditions)) {
+        $sql .= " OR (" . implode(' OR ', $keywordConditions) . ")";
     }
 
     $sql .= " ORDER BY post.post_id DESC";
