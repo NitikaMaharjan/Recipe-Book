@@ -11,16 +11,11 @@
         die("Connection failed: " . $conn->connect_error);
     }
 
-    $sort_by = 'post.post_id DESC'; // Default sort by date
-    if (isset($_GET['sort']) && $_GET['sort'] == 'likes') {
-        $sort_by = 'post_like_count DESC'; // Sort by likes
-    }
-
     $sql = "
         SELECT post.*, user.user_name, user.user_profile_picture
         FROM post 
         JOIN user ON post.user_id = user.user_id 
-        ORDER BY $sort_by
+        ORDER BY post.post_id DESC
     ";
 
     $result = $conn->query($sql);
@@ -72,14 +67,14 @@
         <button onclick="popup()">Add recipe</button>
         <h2>All posts</h2>
 
-        <form id="sortForm" method="GET" action="">
-            <label for="sort">Sort by:</label>
-            <select id="sort" name="sort" onchange="document.getElementById('sortForm').submit();">
-                <option value="date" <?php echo (isset($_GET['sort']) && $_GET['sort'] == 'date') ? 'selected' : ''; ?>>Date</option>
-                <option value="likes" <?php echo (isset($_GET['sort']) && $_GET['sort'] == 'likes') ? 'selected' : ''; ?>>Likes</option>
-            </select>
-        </form>
-        <br/>
+        
+        <label>Sort by:</label>
+        <select onchange="popup()">
+            <option value="date">Date</option>
+            <option value="likes">Likes</option>
+        </select>
+        
+        <br/><br/>
 
         <?php
             if ($result->num_rows > 0) {
@@ -162,6 +157,7 @@
 
         function closePopup() {
             document.getElementById('signup_login_popup').style.display = 'none';
+            location.reload();
         }
 
         // Close pop-up on 'x' click
