@@ -56,7 +56,7 @@
 
 <html>
     <head>
-        <title>Home page</title>
+        <title>Recipebook</title>
         <style>
             .post {
                 cursor: pointer;
@@ -99,7 +99,6 @@
             }
         ?></a>
 
-        <button><a href="/RecipeBook/Recipe-Book/php/profile.php">Profile</a></button>
         <button><a href="/RecipeBook/Recipe-Book/php/favourite_functionality/favourite_page.php">My Favourites</a></button>
         <form name="search" method="post" action="/RecipeBook/Recipe-Book/php/search_functionality/search_post.php">
             <br/>
@@ -109,7 +108,7 @@
         </form>
         
         <h1>Hello <?php echo "$user_name" ?>, welcome to your home feed!!</h1>
-        <button onclick="confirmit()">Log out</button>
+        <button><a href="/RecipeBook/Recipe-Book/html/manage_profile/settings.html">Settings</a></button>
         <button><a href="/RecipeBook/Recipe-Book/html/post_functionality/add_post.html">Add recipe</a></button>
         <h2>All posts</h2>
 
@@ -186,13 +185,6 @@
         </div>
     </body>
     <script>
-        function confirmit(){
-            var ans = confirm("Are you sure you want to log out?");
-            if (ans == true) {
-                window.location.href = "/RecipeBook/Recipe-Book/php/logout.php";
-            }
-        }
-        
         function view_post(post_id) {
             window.location.href = "/RecipeBook/Recipe-Book/php/post_functionality/view_post.php?post_id=" + post_id;
         }

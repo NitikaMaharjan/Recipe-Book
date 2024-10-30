@@ -47,7 +47,7 @@
 
 <html>
     <head>
-        <title>My Favourite Posts</title>
+        <title>Recipebook</title>
         <style>
             .post {
                 cursor: pointer;

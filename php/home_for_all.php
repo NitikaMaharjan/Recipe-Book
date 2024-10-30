@@ -24,7 +24,7 @@
 
 <html>
     <head>
-        <title>Home page</title>
+        <title>Recipebook</title>
         <style>
             .post {
                 cursor: pointer;

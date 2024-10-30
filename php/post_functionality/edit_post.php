@@ -36,7 +36,7 @@
 
 <html>
     <head>
-        <title>Edit Post</title>
+        <title>Recipebook</title>
     </head>
     <body>
         <button onclick="go_back()">Go Back</button>

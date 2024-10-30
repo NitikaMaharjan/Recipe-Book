@@ -83,7 +83,7 @@
 
 <html>
     <head>
-        <title>Search page</title>
+        <title>Recipebook</title>
         <style>
             .post {
                 cursor: pointer;

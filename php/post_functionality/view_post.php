@@ -51,7 +51,7 @@
 
 <html>
     <head>
-        <title>Post Details</title>
+        <title>Recipebook</title>
         <style>
             .modal {
                 display: none; /* Hidden by default */
