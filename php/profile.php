@@ -88,7 +88,7 @@
         </style>
     </head>
     <body>
-        <?php
+        <a href="/RecipeBook/Recipe-Book/php/profile.php"><?php
             if ($result2->num_rows==1) {
                 while($row = $result2->fetch_assoc()) {
                     if (($row['user_profile_picture'])) {
@@ -98,7 +98,8 @@
                     }
                 }
             }
-        ?>
+        ?></a>
+        
         <button><a href="/RecipeBook/Recipe-Book/php/home.php">Home</a></button>
         <button><a href="/RecipeBook/Recipe-Book/php/favourite_functionality/favourite_page.php">My Favourites</a></button>
             

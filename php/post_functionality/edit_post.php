@@ -71,7 +71,7 @@
             <label for="post_text">Description :</label>
             <input type="text" name="post_text" id="post_text" value="<?php echo htmlspecialchars($row['post_text']); ?>" required/><br/><br/>
 
-            <input type="submit" value="Update Post"/>
+            <input type="submit" value="Update"/>
         </form>
     </body>
     <script>
