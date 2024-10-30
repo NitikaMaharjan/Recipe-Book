@@ -59,11 +59,21 @@
     <head>
         <title>Recipebook</title>
         <style>
+            .add_recipe {
+                position: fixed; /* Sticks the button in place */
+                bottom: 20px;    /* Distance from the bottom of the viewport */
+                right: 20px;     /* Distance from the right of the viewport */
+            }
+            .container{
+                display: flex;
+                justify-content: center; /* Center horizontally */
+                align-items: center;     /* Center vertically */
+            }
             .post {
                 cursor: pointer;
-                padding: 10px;
-                border: 1px solid #ccc;
-                margin-bottom: 10px;
+                padding: 50px;
+                border: 2px solid #ccc;
+                margin-bottom: 50px;
                 transition: background-color 0.3s ease;
             }
             .modal {
@@ -88,26 +98,28 @@
         </style>
     </head>
     <body>
-        <a href="/RecipeBook/Recipe-Book/php/profile.php"><?php
-            if ($result2->num_rows==1) {
-                while($row = $result2->fetch_assoc()) {
-                    if (($row['user_profile_picture'])) {
-                        echo "<img src='data:image/jpeg;base64," . base64_encode($row['user_profile_picture']) . "' alt='Profile picture' style='max-width: 50px; max-height: 50px; border-radius: 50%; margin-right: 10px;'/>";
-                    } else {
-                        echo "<img src='/RecipeBook/Recipe-Book/default_profile_picture.jpg' style='max-width: 50px; max-height: 50px; border-radius: 50%; margin-right: 10px;'/>";
+        <button><a href="/RecipeBook/Recipe-Book/php/home.php">Home</a></button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <button>Recipebook logo</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <button><a href="/RecipeBook/Recipe-Book/php/favourite_functionality/favourite_page.php">My Favourites</a></button>
+        <button><a href="/RecipeBook/Recipe-Book/html/manage_profile/settings.html">Settings</a></button>
+        <br/><br/>
+        <div align="center">
+            <a href="/RecipeBook/Recipe-Book/php/profile.php"><?php
+                if ($result2->num_rows==1) {
+                    while($row = $result2->fetch_assoc()) {
+                        if (($row['user_profile_picture'])) {
+                            echo "<img src='data:image/jpeg;base64," . base64_encode($row['user_profile_picture']) . "' alt='Profile picture' style='max-width: 50px; max-height: 50px; border-radius: 50%; margin-right: 10px;'/>";
+                        } else {
+                            echo "<img src='/RecipeBook/Recipe-Book/default_profile_picture.jpg' style='max-width: 50px; max-height: 50px; border-radius: 50%; margin-right: 10px;'/>";
+                        }
                     }
                 }
-            }
-        ?></a>
-        
-        <button><a href="/RecipeBook/Recipe-Book/php/home.php">Home</a></button>
-        <button><a href="/RecipeBook/Recipe-Book/php/favourite_functionality/favourite_page.php">My Favourites</a></button>
-            
-        <h1>Hello <?php echo "$user_name" ?>, welcome to your profile!!</h1>
-        <button><a href="/RecipeBook/Recipe-Book/html/manage_profile/settings.html">Settings</a></button>
-        <button><a href="/RecipeBook/Recipe-Book/html/post_functionality/add_post.html">Add recipe</a></button>
+            ?></a>
+        </div>
+        <h1 style="text-align:center;"><?php echo "$user_name" ?></h1>
+        <h2 style="text-align:center;">All your posts</h2>
 
-        <h2>All your posts</h2>
+        <button class="add_recipe"><a href="/RecipeBook/Recipe-Book/html/post_functionality/add_post.html">Add recipe</a></button>
 
         <form id="sortForm" method="GET" action="">
             <label for="sort">Sort by:</label>
@@ -121,6 +133,7 @@
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {
                     $postId = $row['post_id'];
+                    echo "<div class='container'>";
                     echo "<div class='post' onclick='view_post(" . $row['post_id'] . ")'>";
                     echo "<h3>" . htmlspecialchars($row['post_title']) . "</h3>";
 
@@ -163,6 +176,7 @@
                     echo "</button>";
                     echo "<button class='comment-btn' data-post-id='" . $postId . "'>Comment</button>";
 
+                    echo "</div>";
                     echo "</div>";
                     echo "<br/>";
                 }
