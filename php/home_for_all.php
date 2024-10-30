@@ -26,9 +26,6 @@
     <head>
         <title>Recipebook</title>
         <style>
-            .search_bar{
-                width: 850px;
-            }
             .add_recipe {
                 position: fixed; /* Sticks the button in place */
                 bottom: 20px;    /* Distance from the bottom of the viewport */
@@ -68,14 +65,14 @@
         </style>
     </head>
     <body>
-        <button>Recipebook logo</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <input class="search_bar" type="text" placeholder="Search Recipe"/>
-        <button onclick="popup()">Search</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <button onclick="about()">Recipebook logo</button>
+        <input type="text" placeholder="Search Recipe"/>
+        <button onclick="popup()">Search</button>
         <button><a href="/RecipeBook/Recipe-Book/html/signup.html">Sign up</a></button>
         <button><a href="/RecipeBook/Recipe-Book/html/login.html">Log in</a></button>
         
-        <h1 style="text-align:center;">Welcome to RecipeBook!!</h1>
-        <h2 style="text-align:center;">All posts</h2>
+        <h1>Welcome to RecipeBook!!</h1>
+        <h2>All posts</h2>
         
         <button class="add_recipe" onclick="popup()">Add recipe</button>
 
@@ -145,35 +142,62 @@
             }
             $conn->close();
         ?>
+        <!-- pop up box for about -->
+        <div id="about" class="popup">
+            <div class="popup_content">
+                <span class="close1" onclick="closePopup1()">&times;</span>
+                <h1>About Recipebook</h1>
+            </div>
+        </div>
         <!-- pop up box for signup and login -->
         <div id="signup_login_popup" class="popup">
             <div class="popup_content">
-                <span class="close" onclick="closePopup()">&times;</span>
+                <span class="close2" onclick="closePopup2()">&times;</span>
                 <button><a href="/RecipeBook/Recipe-Book/html/signup.html">Sign up</a></button>
                 <button><a href="/RecipeBook/Recipe-Book/html/login.html">Log in</a></button>
             </div>
         </div>
     </body>
     <script>
+        function about() {
+            //display the pop-up box
+            document.getElementById('about').style.display = 'block';
+        }
+
+        function closePopup1() {
+            document.getElementById('about').style.display = 'none';
+        }
+
+        // Close pop-up on 'x' click
+        document.querySelector('.close1').addEventListener('click', closePopup1);
+
+
         function popup() {
             //display the pop-up box
             document.getElementById('signup_login_popup').style.display = 'block';
         }
 
-        // Close pop-up when clicking outside
-        window.onclick = function(event) {
-            const popup = document.getElementById('signup_login_popup');
-            if (event.target == popup) {
-                closePopup();
-            }
-        };
-
-        function closePopup() {
+        function closePopup2() {
             document.getElementById('signup_login_popup').style.display = 'none';
             location.reload();
         }
 
         // Close pop-up on 'x' click
-        document.querySelector('.close').addEventListener('click', closePopup);
+        document.querySelector('.close2').addEventListener('click', closePopup2);
+
+        
+        window.onclick = function(event) {
+            const popup1 = document.getElementById('about');
+            const popup2 = document.getElementById('signup_login_popup');
+
+            // Close "About" pop-up when clicking outside
+            if (event.target == popup1) {
+                closePopup1();
+            }
+            // Close sign-up/login pop-up when clicking outside
+            if (event.target == popup2) {
+                closePopup2();
+            }
+        };
     </script>
 </html>
