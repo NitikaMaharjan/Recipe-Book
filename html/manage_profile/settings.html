@@ -8,12 +8,20 @@
         <button><a href="/RecipeBook/Recipe-Book/html/manage_profile/update_profile_pic.html">Update profile picture</a></button><br/><br/>
         <button onclick="delete_profile_pic()">Delete profile picture</button><br/><br/>
         <button><a href="/RecipeBook/Recipe-Book/html/manage_profile/change_password.html">Change password</a></button><br/><br/>
-        <button><a href="/RecipeBook/Recipe-Book/php/logout.php">Log out</a></button>
+        <button onclick="confirmit()">Log out</button>
     </body>
     <script>
+        function confirmit(){
+            var ans = confirm("Are you sure you want to log out?");
+            if (ans == true) {
+                window.location.href = "/RecipeBook/Recipe-Book/php/logout.php";
+            }
+        }
+
         function go_back() {
             window.history.back();
         }
+        
         function delete_profile_pic(){
             var ans = confirm("Are you sure you want to delete your profile picture?");
             if (ans == true) {

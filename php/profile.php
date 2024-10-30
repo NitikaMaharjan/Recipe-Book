@@ -104,7 +104,7 @@
             
         <h1>Hello <?php echo "$user_name" ?>, welcome to your profile!!</h1>
         <button><a href="/RecipeBook/Recipe-Book/html/manage_profile/settings.html">Settings</a></button>
-        <button><a href="/RecipeBook/Recipe-Book/php/logout.php">Log out</a></button>
+        <button onclick="confirmit()">Log out</button>
         <button><a href="/RecipeBook/Recipe-Book/html/post_functionality/add_post.html">Add recipe</a></button>
 
         <h2>All your posts</h2>
@@ -183,6 +183,13 @@
         </div>
     </body>
     <script>
+        function confirmit(){
+            var ans = confirm("Are you sure you want to log out?");
+            if (ans == true) {
+                window.location.href = "/RecipeBook/Recipe-Book/php/logout.php";
+            }
+        }
+        
         function view_post(post_id) {
             window.location.href = "/RecipeBook/Recipe-Book/php/post_functionality/view_post.php?post_id=" + post_id;
         }
