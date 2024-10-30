@@ -114,7 +114,7 @@
         </style>
     </head>
     <body>
-        <button><a href="/Recipebook/Recipe-Book/php/home.php">Back Home</a></button>  
+        <button><a href="/Recipebook/Recipe-Book/php/home.php">Home</a></button>  
         
         <form name="search" method="post" action="/RecipeBook/Recipe-Book/php/search_functionality/search_post.php">
             <br/>

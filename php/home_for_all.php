@@ -26,11 +26,24 @@
     <head>
         <title>Recipebook</title>
         <style>
+            .search_bar{
+                width: 850px;
+            }
+            .add_recipe {
+                position: fixed; /* Sticks the button in place */
+                bottom: 20px;    /* Distance from the bottom of the viewport */
+                right: 20px;     /* Distance from the right of the viewport */
+            }
+            .container{
+                display: flex;
+                justify-content: center; /* Center horizontally */
+                align-items: center;     /* Center vertically */
+            }
             .post {
                 cursor: pointer;
-                padding: 10px;
-                border: 1px solid #ccc;
-                margin-bottom: 10px;
+                padding: 50px;
+                border: 2px solid #ccc;
+                margin-bottom: 50px;
                 transition: background-color 0.3s ease;
             }
             .popup {
@@ -55,19 +68,17 @@
         </style>
     </head>
     <body>
+        <button>Recipebook logo</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input class="search_bar" type="text" placeholder="Search Recipe"/>
+        <button onclick="popup()">Search</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <button><a href="/RecipeBook/Recipe-Book/html/signup.html">Sign up</a></button>
         <button><a href="/RecipeBook/Recipe-Book/html/login.html">Log in</a></button>
         
-        <br/><br/>
-        <input type="text" placeholder="Search Recipe"/>
-        <button onclick="popup()">Search</button>
-        <br />
+        <h1 style="text-align:center;">Welcome to RecipeBook!!</h1>
+        <h2 style="text-align:center;">All posts</h2>
         
-        <h1>Welcome to RecipeBook!!</h1>
-        <button onclick="popup()">Add recipe</button>
-        <h2>All posts</h2>
+        <button class="add_recipe" onclick="popup()">Add recipe</button>
 
-        
         <label>Sort by:</label>
         <select onchange="popup()">
             <option value="date">Date</option>
@@ -79,6 +90,7 @@
         <?php
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {
+                    echo "<div class='container'>";
                     echo "<div class='post' onclick='popup()'>";
                     echo "<h3>" . htmlspecialchars($row['post_title']) . "</h3>";
 
@@ -124,6 +136,7 @@
 
                     echo "<button>Comment</button>";
                     
+                    echo "</div>";
                     echo "</div>";
                     echo "<br/>";
                 }

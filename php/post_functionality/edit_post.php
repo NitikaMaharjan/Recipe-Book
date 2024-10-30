@@ -40,7 +40,7 @@
     </head>
     <body>
         <button onclick="go_back()">Go Back</button>
-        <h1>Edit your Post</h1>
+        <h1>Edit your Recipe</h1>
         <form action="/RecipeBook/Recipe-Book/php/post_functionality/update_post.php?post_id=<?php echo $post_id;?>" method="POST" enctype="multipart/form-data">
 
             <label for="post_image">Post Image:</label>
