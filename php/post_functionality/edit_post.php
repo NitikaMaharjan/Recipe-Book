@@ -37,6 +37,29 @@
 <html>
     <head>
         <title>Recipebook</title>
+        <script>
+            function addIngredientField() {
+                let container = document.getElementById("ingredients_container");
+                let input = document.createElement("input");
+                input.type = "text";
+                input.name = "post_ingredients[]";
+                input.placeholder = "Enter ingredient";
+                container.appendChild(input);
+                container.appendChild(document.createElement("br"));
+            }
+
+            function addStepField() {
+                let container = document.getElementById("steps_container");
+                let input = document.createElement("textarea");
+                input.name = "post_instructions[]";
+                input.placeholder = "Enter preparation step";
+                container.appendChild(input);
+                container.appendChild(document.createElement("br"));
+            }
+            function removeField(button) { 
+                let div = button.parentElement; div.remove(); 
+            }
+        </script>
     </head>
     <body>
         <button onclick="go_back()">Go Back</button>
@@ -55,12 +78,36 @@
 
             <label for="post_title">Post Title:</label>
             <input type="text" name="post_title" id="post_title" value="<?php echo htmlspecialchars($row['post_title']); ?>" required/><br/><br/>
+            
+            <label for="post_ingredients">Ingredients:</label> 
+            <div id="ingredients_container">
+                <?php 
+                    $ingredients = explode(", ", $row['post_ingredients']); 
+                    foreach ($ingredients as $ingredient) { 
+                        echo "<div class='ingredient-field'>";
+                        echo "<input type='text' name='post_ingredients[]' value='" . htmlspecialchars($ingredient) . "' required/>";
+                        echo "<button type='button' onclick='removeField(this)'>Remove</button>";
+                        echo "</div>";
+                    } 
+                ?>
+            </div> 
+            <button type="button" onclick="addIngredientField()">Add Ingredient</button>
+            <br/><br/>
 
-            <label for="post_ingredients">Ingredients:</label>
-            <textarea name="post_ingredients" id="post_ingredients" required><?php echo htmlspecialchars($row['post_ingredients']); ?></textarea><br/><br/>
-
-            <label for="post_instructions">Instructions:</label>
-            <textarea name="post_instructions" id="post_instructions" required><?php echo htmlspecialchars($row['post_instructions']); ?></textarea><br/><br/>
+            <label for="post_instructions">Instructions:</label> 
+            <div id="steps_container">
+                <?php 
+                    $steps = explode(", ", $row['post_instructions']); 
+                    foreach ($steps as $step) {
+                        echo "<div class='step-field'>";
+                        echo "<textarea name='post_instructions[]' required>" . htmlspecialchars($step) . "</textarea>";
+                        echo "<button type='button' onclick='removeField(this)'>Remove</button>";
+                        echo "</div>";
+                    } 
+                ?>
+            </div> 
+            <button type="button" onclick="addStepField()">Add Step</button>
+            <br/><br/>
 
             <label for="post_keywords">Keywords:</label>
             <input type="text" name="post_keywords" id="post_keywords" value="<?php echo htmlspecialchars($row['post_keywords']); ?>" required/><br/><br/>

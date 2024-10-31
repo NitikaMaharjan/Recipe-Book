@@ -117,8 +117,23 @@
             } else {
                 echo "No image available";
             }
-            echo "<p><b>Ingrediants</b>:" . htmlspecialchars($row['post_ingredients']) . "</p>";
-            echo "<p><b>Instructions</b>:" . htmlspecialchars($row['post_instructions']) . "</p>";
+
+            echo "<p><b>Ingredients:</b></p>";
+            $ingredients = explode(', ', $row['post_ingredients']);
+            echo "<ul>";
+            foreach ($ingredients as $ingredient) {
+                echo "<li>" . htmlspecialchars($ingredient) . "</li>";
+            }
+            echo "</ul>";
+
+            echo "<p><b>Instructions:</b></p>";
+            $steps = explode(', ', $row['post_instructions']);
+            echo "<ol>";
+            foreach ($steps as $step) {
+                echo "<li>" . htmlspecialchars($step) . "</li>";
+            }
+            echo "</ol>";
+
             echo "<p><b>Keywords</b>:" . htmlspecialchars($row['post_keywords']) . "</p>";
             echo "<p><b>Category</b>:" . htmlspecialchars($row['post_category']) . "</p>";
 

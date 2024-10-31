@@ -40,7 +40,7 @@
         LEFT JOIN likes ON post.post_id = Likes.post_id
         WHERE favourite.user_id = $user_id 
         GROUP BY post.post_id
-        ORDER BY favourite.fav_added_date ASC
+        ORDER BY favourite.fav_added_date DESC
     ";
     $result = $conn->query($sql);
 ?>

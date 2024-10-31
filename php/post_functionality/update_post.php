@@ -16,8 +16,8 @@
 
         $post_id = (int)$_GET['post_id'];
         $post_title = $_POST['post_title'];
-        $post_ingredients = $_POST['post_ingredients'];
-        $post_instructions = $_POST['post_instructions'];
+        $post_ingredients = implode(", ", $_POST['post_ingredients']); 
+        $post_instructions = implode(", ", $_POST['post_instructions']);
         $post_keywords = $_POST['post_keywords'];
         $post_category = $_POST['post_category'];
         $post_text = $_POST['post_text'];
