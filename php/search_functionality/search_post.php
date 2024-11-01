@@ -84,45 +84,20 @@
 <html>
     <head>
         <title>Recipebook</title>
-        <style>
-            .post {
-                cursor: pointer;
-                padding: 10px;
-                border: 1px solid #ccc;
-                margin-bottom: 10px;
-                transition: background-color 0.3s ease;
-            }
-            .modal {
-                display: none; /* Hidden by default */
-                position: fixed; /* Stay in place */
-                z-index: 1; /* Sit on top */
-                left: 0;
-                top: 0;
-                width: 100%; /* Full width */
-                height: 100%; /* Full height */
-                overflow: auto; /* Enable scroll if needed */
-                background-color: rgb(0,0,0); /* Fallback color */
-                background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-            }
-            .modal-content {
-                background-color: #fefefe;
-                margin: 15% auto; /* 15% from the top and centered */
-                padding: 20px;
-                border: 1px solid #888;
-                width: 80%; /* Could be more or less, depending on screen size */
-            }
-        </style>
+        <link rel="stylesheet" href="/RecipeBook/Recipe-Book/css/styles.css">
     </head>
     <body>
-        <button><a href="/Recipebook/Recipe-Book/php/home.php">Home</a></button>  
-        
-        <form name="search" method="post" action="/RecipeBook/Recipe-Book/php/search_functionality/search_post.php">
-            <br/>
-            <input type="text" id="search" name="search" placeholder="Search Recipe"/>
-            <input type="submit" value="Search"/>
-            <br />
-        </form>
-
+        <nav class="navbar">
+            <button><a href="/Recipebook/Recipe-Book/php/home.php">Home</a></button>  
+            
+            <form name="search" method="post" action="/RecipeBook/Recipe-Book/php/search_functionality/search_post.php">
+                <br/>
+                <input type="text" id="search" name="search" placeholder="Search Recipe"/>
+                <input type="submit" value="Search"/>
+                <br />
+            </form>
+        </nav>
+        <br><br><br><br>
         <h1>Hello <?php echo "$user_name" ?>!!</h1>
         <h2>Results for <?php echo "$search" ?>:</h2>
         <br/>
@@ -131,7 +106,7 @@
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {
                     $postId = $row['post_id'];
-                   
+                    echo "<div class='container'>";
                     echo "<div class='post' onclick='view_post(" . $row['post_id'] . ")'>";
                     echo "<h3>" . htmlspecialchars($row['post_title']) . "</h3>";
 
@@ -174,6 +149,7 @@
                     echo "</button>";
                     echo "<button class='comment-btn' data-post-id='" . $postId . "'>Comment</button>";
                     
+                    echo "</div>";
                     echo "</div>";
                     echo "<br/>";
                 }

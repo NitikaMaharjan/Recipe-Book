@@ -52,30 +52,10 @@
 <html>
     <head>
         <title>Recipebook</title>
-        <style>
-            .modal {
-                display: none; /* Hidden by default */
-                position: fixed; /* Stay in place */
-                z-index: 1; /* Sit on top */
-                left: 0;
-                top: 0;
-                width: 100%; /* Full width */
-                height: 100%; /* Full height */
-                overflow: auto; /* Enable scroll if needed */
-                background-color: rgb(0,0,0); /* Fallback color */
-                background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-            }
-            .modal-content {
-                background-color: #fefefe;
-                margin: 15% auto; /* 15% from the top and centered */
-                padding: 20px;
-                border: 1px solid #888;
-                width: 80%; /* Could be more or less, depending on screen size */
-            }
-        </style>
+        <link rel="stylesheet" href="/RecipeBook/Recipe-Book/css/styles.css">
     </head>
     <body>
-        <button onclick="go_back()">Go Back</button><br/><br/>
+        <button onclick="go_back()" class="back-button">Go Back</button><br/><br/>
         <?php
             if ($row['post_edited_date'] != $row['post_posted_date']) {
                 // Post has been edited

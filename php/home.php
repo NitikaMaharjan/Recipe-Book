@@ -57,66 +57,31 @@
 <html>
     <head>
         <title>Recipebook</title>
-        <style>
-            .add_recipe {
-                position: fixed; /* Sticks the button in place */
-                bottom: 20px;    /* Distance from the bottom of the viewport */
-                right: 20px;     /* Distance from the right of the viewport */
-            }
-            .container{
-                display: flex;
-                justify-content: center; /* Center horizontally */
-                align-items: center;     /* Center vertically */
-            }
-            .post {
-                cursor: pointer;
-                padding: 50px;
-                border: 2px solid #ccc;
-                margin-bottom: 50px;
-                transition: background-color 0.3s ease;
-            }
-            .modal {
-                display: none; /* Hidden by default */
-                position: fixed; /* Stay in place */
-                z-index: 1; /* Sit on top */
-                left: 0;
-                top: 0;
-                width: 100%; /* Full width */
-                height: 100%; /* Full height */
-                overflow: auto; /* Enable scroll if needed */
-                background-color: rgb(0,0,0); /* Fallback color */
-                background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-            }
-            .modal-content {
-                background-color: #fefefe;
-                margin: 15% auto; /* 15% from the top and centered */
-                padding: 20px;
-                border: 1px solid #888;
-                width: 80%; /* Could be more or less, depending on screen size */
-            }
-        </style>
+        <link rel="stylesheet" href="/RecipeBook/Recipe-Book/css/styles.css">
     </head>
     <body>
-        <a href="/RecipeBook/Recipe-Book/php/profile.php"><?php
-            if ($result2->num_rows==1) {
-                while($row = $result2->fetch_assoc()) {
-                    if (($row['user_profile_picture'])) {
-                        echo "<img src='data:image/jpeg;base64,".base64_encode($row['user_profile_picture'])."' alt='Profile picture' style='max-width: 50px; max-height: 50px; border-radius: 50%; margin-right: 10px;'/>";
-                    } else {
-                        echo "<img src='/RecipeBook/Recipe-Book/default_profile_picture.jpg' style='max-width: 50px; max-height: 50px; border-radius: 50%; margin-right: 10px;'/>";
+        <nav class="navbar">
+            <a href="/RecipeBook/Recipe-Book/php/profile.php"><?php
+                if ($result2->num_rows==1) {
+                    while($row = $result2->fetch_assoc()) {
+                        if (($row['user_profile_picture'])) {
+                            echo "<img src='data:image/jpeg;base64,".base64_encode($row['user_profile_picture'])."' alt='Profile picture' style='max-width: 50px; max-height: 50px; border-radius: 50%; margin-right: 10px;'/>";
+                        } else {
+                            echo "<img src='/RecipeBook/Recipe-Book/default_profile_picture.jpg' style='max-width: 50px; max-height: 50px; border-radius: 50%; margin-right: 10px;'/>";
+                        }
                     }
                 }
-            }
-        ?></a>
-        <button>Recipebook logo</button>
-        <button><a href="/RecipeBook/Recipe-Book/php/favourite_functionality/favourite_page.php">My Favourites</a></button>
-        <button><a href="/RecipeBook/Recipe-Book/html/manage_profile/settings.html">Settings</a></button>
-        <br/><br/>
-        <form name="search" method="post" action="/RecipeBook/Recipe-Book/php/search_functionality/search_post.php">
-            <input class="search_bar" type="text" id="search" name="search" placeholder="Search Recipe"/>
-            <input type="submit" value="Search"/>
-        </form>
-        
+            ?></a>
+            <button>Recipebook logo</button>
+            <button><a href="/RecipeBook/Recipe-Book/php/favourite_functionality/favourite_page.php">My Favourites</a></button>
+            <button><a href="/RecipeBook/Recipe-Book/html/manage_profile/settings.html">Settings</a></button>
+            <br/><br/>
+            <form name="search" method="post" action="/RecipeBook/Recipe-Book/php/search_functionality/search_post.php">
+                <input class="search_bar" type="text" id="search" name="search" placeholder="Search Recipe"/>
+                <input type="submit" value="Search"/>
+            </form>
+        </nav>
+        <br><br><br><br><br><br>  
         <h1>Hello <?php echo "$user_name" ?>, welcome to your home feed!!</h1>
         <h2>All posts</h2>
 

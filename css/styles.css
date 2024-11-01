@@ -1,0 +1,86 @@
+body {
+    background-color: #ffbf17;
+}
+
+.add_recipe {
+    position: fixed;
+    /* Sticks the button in place */
+    bottom: 20px;
+    /* Distance from the bottom of the viewport */
+    right: 20px;
+    /* Distance from the right of the viewport */
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    /* Center horizontally */
+    align-items: center;
+    /* Center vertically */
+    width: 100%;
+    max-width: 600px;
+    /* Set a max-width for the container */
+    margin: 0 auto;
+    /* Centers the container horizontally */
+}
+
+.post {
+    cursor: pointer;
+    padding: 20px;
+    border: 2px solid #ccc;
+    background-color: white;
+    margin-bottom: 20px;
+    transition: background-color 0.3s ease;
+    width: 100%;
+    /* Ensures the posts take up the full container width */
+}
+
+.modal {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/ opacity */
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    /* Could be more or less, depending on screen size */
+}
+
+.back-button {
+    position: fixed;
+}
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: white;
+    color: white;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+#sortForm {
+    position: fixed;
+}
