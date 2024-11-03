@@ -25,18 +25,23 @@
 <html>
     <head>
         <title>Recipebook</title>
-        <link rel="stylesheet" href="/RecipeBook/Recipe-Book/css/styles.css">
+        <link rel="icon" href="/RecipeBook/Recipe-Book/logo/logo.png" style="border-radius: 50%;" type="image/x-icon">
+        <link rel="stylesheet" href="/RecipeBook/Recipe-Book/css/home_for_all.css" type="text/css">
     </head>
     <body>
         <nav class="navbar">
-            <button onclick="about()">Recipebook logo</button>
+            <img class="logo" src="/RecipeBook/Recipe-Book/logo/logo.png" onclick="about()"/>
+            &nbsp;&nbsp;
+            <img class="logo2" src="/RecipeBook/Recipe-Book/logo/logo2.png" onclick="about()"/>
+            &nbsp;&nbsp;
             <input type="text" placeholder="Search Recipe"/>
             <button onclick="popup()">Search</button>
             <button><a href="/RecipeBook/Recipe-Book/html/signup.html">Sign up</a></button>
             <button><a href="/RecipeBook/Recipe-Book/html/login.html">Log in</a></button>
-            <br/><br/>
+            <br/><br/><br/>
         </nav>
-        <br/>
+        <br/><br/><br/><br/><br/>
+
         <h1>Welcome to RecipeBook!!</h1>
         <h2>All posts</h2>
         
