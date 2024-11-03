@@ -79,15 +79,16 @@
             <form name="search" method="post" action="/RecipeBook/Recipe-Book/php/search_functionality/search_post.php">
                 <input class="search_bar" type="text" id="search" name="search" placeholder="Search Recipe"/>
                 <input type="submit" value="Search"/>
-            </form>
+            </form> 
         </nav>
-        <br><br><br><br><br><br>  
+        <br/><br/><br/><br/><br/><br/> 
+
         <h1>Hello <?php echo "$user_name" ?>, welcome to your home feed!!</h1>
         <h2>All posts</h2>
 
         <button class="add_recipe"><a href="/RecipeBook/Recipe-Book/html/post_functionality/add_post.html">Add recipe</a></button>
         
-        <form id="sortForm" method="GET" action="">
+        <form method="GET" action="">
             <label for="sort">Sort by:</label>
             <select id="sort" name="sort" onchange="document.getElementById('sortForm').submit();">
                 <option value="date" <?php echo (isset($_GET['sort']) && $_GET['sort'] == 'date') ? 'selected' : ''; ?>>Date</option>

@@ -77,16 +77,15 @@
             <button>Recipebook logo</button>
             <button><a href="/RecipeBook/Recipe-Book/php/favourite_functionality/favourite_page.php">My Favourites</a></button>
             <button><a href="/RecipeBook/Recipe-Book/html/manage_profile/settings.html">Settings</a></button>
-            <br/><br/>
-            
         </nav>
-        <br><br><br><br> 
+        <br/><br/><br/><br/> 
+
         <h1><?php echo "$user_name" ?></h1>
         <h2>All your posts</h2>
 
         <button class="add_recipe"><a href="/RecipeBook/Recipe-Book/html/post_functionality/add_post.html">Add recipe</a></button>
 
-        <form id="sortForm" method="GET" action="">
+        <form method="GET" action="">
             <label for="sort">Sort by:</label>
             <select id="sort" name="sort" onchange="document.getElementById('sortForm').submit();">
                 <option value="date" <?php echo (isset($_GET['sort']) && $_GET['sort'] == 'date') ? 'selected' : ''; ?>>Date</option>

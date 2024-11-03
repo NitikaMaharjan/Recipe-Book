@@ -25,52 +25,18 @@
 <html>
     <head>
         <title>Recipebook</title>
-        <style>
-            .add_recipe {
-                position: fixed; /* Sticks the button in place */
-                bottom: 20px;    /* Distance from the bottom of the viewport */
-                right: 20px;     /* Distance from the right of the viewport */
-            }
-            .container{
-                display: flex;
-                justify-content: center; /* Center horizontally */
-                align-items: center;     /* Center vertically */
-            }
-            .post {
-                cursor: pointer;
-                padding: 50px;
-                border: 2px solid #ccc;
-                margin-bottom: 50px;
-                transition: background-color 0.3s ease;
-            }
-            .popup {
-                display: none; /* Hidden by default */
-                position: fixed; /* Stay in place */
-                z-index: 1; /* Sit on top */
-                left: 0;
-                top: 0;
-                width: 100%; /* Full width */
-                height: 100%; /* Full height */
-                overflow: auto; /* Enable scroll if needed */
-                background-color: rgb(0,0,0); /* Fallback color */
-                background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-            }
-            .popup_content {
-                background-color: #fefefe;
-                margin: 15% auto; /* 15% from the top and centered */
-                padding: 20px;
-                border: 1px solid #888;
-                width: 80%; /* Could be more or less, depending on screen size */
-            }
-        </style>
+        <link rel="stylesheet" href="/RecipeBook/Recipe-Book/css/styles.css">
     </head>
     <body>
-        <button onclick="about()">Recipebook logo</button>
-        <input type="text" placeholder="Search Recipe"/>
-        <button onclick="popup()">Search</button>
-        <button><a href="/RecipeBook/Recipe-Book/html/signup.html">Sign up</a></button>
-        <button><a href="/RecipeBook/Recipe-Book/html/login.html">Log in</a></button>
-        
+        <nav class="navbar">
+            <button onclick="about()">Recipebook logo</button>
+            <input type="text" placeholder="Search Recipe"/>
+            <button onclick="popup()">Search</button>
+            <button><a href="/RecipeBook/Recipe-Book/html/signup.html">Sign up</a></button>
+            <button><a href="/RecipeBook/Recipe-Book/html/login.html">Log in</a></button>
+            <br/><br/>
+        </nav>
+        <br/>
         <h1>Welcome to RecipeBook!!</h1>
         <h2>All posts</h2>
         
@@ -194,7 +160,7 @@
             if (event.target == popup1) {
                 closePopup1();
             }
-            // Close sign-up/login pop-up when clicking outside
+            // Close signuplogin pop-up when clicking outside
             if (event.target == popup2) {
                 closePopup2();
             }
