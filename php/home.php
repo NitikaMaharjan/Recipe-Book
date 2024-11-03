@@ -72,7 +72,8 @@
                     }
                 }
             ?></a>
-            <button>Recipebook logo</button>
+            <a href="/RecipeBook/Recipe-Book/php/profile.php"><img src="/RecipeBook/Recipe-Book/logo/logo2.jpg" width="100"></a>
+
             <button><a href="/RecipeBook/Recipe-Book/php/favourite_functionality/favourite_page.php">My Favourites</a></button>
             <button><a href="/RecipeBook/Recipe-Book/html/manage_profile/settings.html">Settings</a></button>
             <br/><br/>
@@ -86,7 +87,7 @@
         <h1>Hello <?php echo "$user_name" ?>, welcome to your home feed!!</h1>
         <h2>All posts</h2>
 
-        <button class="add_recipe"><a href="/RecipeBook/Recipe-Book/html/post_functionality/add_post.html">Add recipe</a></button>
+        <a class="add_recipe" href="/RecipeBook/Recipe-Book/html/post_functionality/add_post.html"><img src="/RecipeBook/Recipe-Book/buttons/add_button.png" width="60"></a>
         
         <form method="GET" action="">
             <label for="sort">Sort by:</label>
