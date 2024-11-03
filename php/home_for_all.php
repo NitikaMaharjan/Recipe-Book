@@ -25,14 +25,14 @@
 <html>
     <head>
         <title>Recipebook</title>
-        <link rel="icon" href="/RecipeBook/Recipe-Book/logo/logo.png" style="border-radius: 50%;" type="image/x-icon">
         <link rel="stylesheet" href="/RecipeBook/Recipe-Book/css/home_for_all.css" type="text/css">
+        <link class="logo" rel="icon" href="/RecipeBook/Recipe-Book/logo/logo.jpg" type="image/x-icon">
     </head>
     <body>
         <nav class="navbar">
-            <img class="logo" src="/RecipeBook/Recipe-Book/logo/logo.png" onclick="about()"/>
+            <img class="logo" src="/RecipeBook/Recipe-Book/logo/logo.JPG" onclick="about()"/>
             &nbsp;&nbsp;
-            <img class="logo2" src="/RecipeBook/Recipe-Book/logo/logo2.png" onclick="about()"/>
+            <img class="logo2" src="/RecipeBook/Recipe-Book/logo/logo2.jpg" onclick="about()"/>
             &nbsp;&nbsp;
             <input type="text" placeholder="Search Recipe"/>
             <button onclick="popup()">Search</button>
@@ -45,7 +45,7 @@
         <h1>Welcome to RecipeBook!!</h1>
         <h2>All posts</h2>
         
-        <button class="add_recipe" onclick="popup()">Add recipe</button>
+        <img class="add_recipe" src="/RecipeBook/Recipe-Book/buttons/add_button.png" onclick="popup()"/>
 
         <label>Sort by:</label>
         <select onchange="popup()">
