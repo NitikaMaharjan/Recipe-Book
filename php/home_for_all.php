@@ -34,15 +34,16 @@
             &nbsp;&nbsp;
             <img class="logo2" src="/RecipeBook/Recipe-Book/logo/logo2.jpg" onclick="about()"/>
             &nbsp;&nbsp;
-            <input type="text" placeholder="Search Recipe"/>
-            <button onclick="popup()">Search</button>
+            <div class="search-bar">
+                <img src="/RecipeBook/Recipe-Book/buttons/search_icon.png" onclick="popup()" height="30px"/>
+                <input type="text" placeholder="Search" onclick="popup()" style="margin-left:20px">
+            </div>
             <button><a href="/RecipeBook/Recipe-Book/html/signup.html">Sign up</a></button>
             <button><a href="/RecipeBook/Recipe-Book/html/login.html">Log in</a></button>
             <br/><br/><br/>
         </nav>
-        <br/><br/><br/><br/><br/>
 
-        <h1>Welcome to RecipeBook!!</h1>
+        <h1 style="margin-top:80px">Welcome to RecipeBook!!</h1>
         <h2>All posts</h2>
         
         <img class="add_recipe" src="/RecipeBook/Recipe-Book/buttons/add_button.png" onclick="popup()"/>

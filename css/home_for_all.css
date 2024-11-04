@@ -1,28 +1,30 @@
 .logo {
-    width: 50px; 
-    height: 50px; 
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
 }
 
 .logo2 {
     width: 300px;
-    height: 55px;  
+    height: 55px;
 }
 
 .navbar {
+    display: flex;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     background-color: white;
+    gap: 15px;
 }
 
 .add_recipe {
     position: fixed;
-    bottom: 20px; 
-    right: 30px; 
-    width: 50px; 
-    height: 50px; 
+    bottom: 20px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
 }
 
@@ -44,42 +46,99 @@
 }
 
 .modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
     left: 0;
     top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0, 0, 0); /* Fallback color */
-    background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/ opacity */
 }
 
 .modal-content {
     background-color: #fefefe;
-    margin: 15% auto; /* 15% from the top and centered */
+    margin: 15% auto;
+    /* 15% from the top and centered */
     padding: 20px;
     border: 1px solid #888;
-    width: 80%; /* Could be more or less, depending on screen size */
+    width: 80%;
+    /* Could be more or less, depending on screen size */
 }
 
 .popup {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
     left: 0;
     top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/ opacity */
 }
+
 .popup_content {
     background-color: #fefefe;
-    margin: 15% auto; /* 15% from the top and centered */
+    margin: 15% auto;
+    /* 15% from the top and centered */
     padding: 20px;
     border: 1px solid #888;
-    width: 80%; /* Could be more or less, depending on screen size */
+    width: 80%;
+    /* Could be more or less, depending on screen size */
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    background-color: #e0e0e0;
+    /* Lighter background color */
+    border-radius: 30px;
+    /* More rounded */
+    padding: 8px 15px;
+    /* Adjust padding for a sleeker look */
+    width: 100%;
+    max-width: 450px;
+    /* Limit width to fit within nav or page layout */
+}
+
+/* Search icon */
+.search-icon {
+    font-size: 20px;
+    /* Slightly larger icon */
+    margin-right: 8px;
+    /* Less margin to bring icon closer to input */
+    color: #555;
+    /* Darker color for better visibility */
+}
+
+/* Input field in search bar */
+.search-bar input[type="text"] {
+    border: none;
+    background: none;
+    outline: none;
+    flex: 1;
+    font-size: 15px;
+    color: #333;
+    padding: 5px 0;
+    /* Slight padding for better alignment */
 }
