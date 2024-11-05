@@ -1,3 +1,7 @@
+body {
+    font-family: "Times New Roman";
+}
+
 .add_recipe {
     position: fixed;
     /* Sticks the button in place */
