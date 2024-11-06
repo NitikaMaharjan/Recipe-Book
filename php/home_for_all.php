@@ -30,21 +30,23 @@
     </head>
     <body>
         <nav class="navbar">
-            <img class="logo" src="/RecipeBook/Recipe-Book/logo/logo.JPG" onclick="about()"/>
-            &nbsp;&nbsp;
-            <img class="logo2" src="/RecipeBook/Recipe-Book/logo/logo2.jpg" onclick="about()"/>
-            &nbsp;&nbsp;
+            <div class="logo">
+            <img src="/RecipeBook/Recipe-Book/logo/logo.JPG" onclick="about()" style="width: 50px; height: 50px; border-radius: 50%;"/>
+            </div>
+            <div class="recipebook-center">
+                <h1 onclick="about()" class="recipebook">Recipebook</h1>
+            </div>
             <div class="search-bar">
                 <img src="/RecipeBook/Recipe-Book/buttons/search_icon.png" onclick="popup()" height="30px"/>
                 <input type="text" placeholder="Search" onclick="popup()" style="margin-left:20px">
             </div>
-            <button class="signup-btn" onclick="window.location.href='/RecipeBook/Recipe-Book/html/signup.html'">Sign up</button>
             <button class="login-btn" onclick="window.location.href='/RecipeBook/Recipe-Book/html/login.html'">Log in</button>
+            <button class="signup-btn" onclick="window.location.href='/RecipeBook/Recipe-Book/html/signup.html'">Sign up</button>
          <br/><br/><br/>
         </nav>
 
         <div class="heading">
-            <h1>Welcome to RecipeBook!!</h1>
+            <h1>Welcome to <span style="color:#ffbf17;">Recipebook!!</span></h1>
             <h2>All posts</h2>
             <label>Sort by:</label>
             <select onchange="popup()">
@@ -54,9 +56,6 @@
         </div>
 
         <img class="add_recipe" src="/RecipeBook/Recipe-Book/buttons/add_button.png" onclick="popup()"/>
-
-
-        
         <br/><br/>
 
         <?php

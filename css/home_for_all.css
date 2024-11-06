@@ -1,5 +1,5 @@
-body {
-    font-family: "Times New Roman";
+body{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .heading {
@@ -8,15 +8,16 @@ body {
     text-align: center;
 }
 
-.logo {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
+.logo, .recipebook-center{
+    display: flex;
+    justify-content: center; /* Centers horizontally */
+    align-items: center; /* Centers vertically */
+    height: 55px; /* Example height, adjust as needed */
 }
 
-.logo2 {
-    width: 300px;
-    height: 55px;
+.recipebook {
+    color:#FFBF17; 
+    font-size:50px;
 }
 
 .navbar {
@@ -29,9 +30,8 @@ body {
     background-color: white;
     gap: 15px;
     padding-top: 15px;
-    padding-bottom: 10px;
+    padding-bottom: 15px;
     padding-left: 10px;
-    border-bottom: 2px dotted
 }
 
 .add_recipe {
@@ -51,17 +51,10 @@ body {
     width: 100%;
     max-width: 600px;
     margin: 0 auto;
-    background-color: #f0f0f0;
+    background-color: #cccc;
     border-radius: 30px;
     margin-bottom: 15px;
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-.container:hover {
-    background-color: #ffbf17;
-    /* Slightly darker background on hover */
-    box-shadow: 0 10px 8px rgba(0, 0, 0, 0.2);
-    /* Add shadow on hover */
+    transition: background-color white, box-shadow white;
 }
 
 .post {
@@ -135,16 +128,14 @@ body {
 
 .search-bar {
     display: flex;
-    align-items: center;
-    background-color: #e0e0e0;
-    /* Lighter background color */
+    position:absolute;
+    background-color: #cccc;
     border-radius: 30px;
-    /* More rounded */
     padding: 8px 15px;
-    /* Adjust padding for a sleeker look */
     width: 100%;
-    max-width: 400px;
-    /* Limit width to fit within nav or page layout */
+    max-width: 550px;
+    top:20px;
+    left:380px;
 }
 
 /* Search icon */
@@ -171,6 +162,7 @@ body {
 
 .login-btn,
 .signup-btn {
+    position: absolute;
     border: none;
     border-radius: 30px;
     padding: 16px 30px;
@@ -181,13 +173,19 @@ body {
 }
 
 .login-btn {
-    background-color: #ffbf17;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #FFBF17;
     color: white;
+    right: 140px;
+    top: 20px;
 }
 
 .signup-btn {
-    background-color: #f0f0f0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #cccc;
     color: black;
+    right: 20px;
+    top: 20px;
 }
 
 .heading label {
@@ -196,14 +194,15 @@ body {
 }
 
 .heading select {
-    background-color: #ffbf17;
+    background-color: #cccc;
+    border-color: #cccc;
     border-radius: 30px;
     padding: 5px;
     cursor: pointer;
 }
 
 .heading select option {
-    background-color: #ffbf17;
+    background-color: #FFBF17;
     border-radius: 30px;
     padding: 5px;
     cursor: pointer;
