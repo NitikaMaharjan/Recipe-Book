@@ -41,9 +41,10 @@
                 <img src="/RecipeBook/Recipe-Book/buttons/search_icon.png" onclick="popup()" height="30px"/>
                 <input type="text" placeholder="Search Recipe" onclick="popup()" style="margin-left:20px">
             </div>
-
-            <button class="login-btn" onclick="window.location.href='/RecipeBook/Recipe-Book/html/login.html'">Log in</button>
-            <button class="signup-btn" onclick="window.location.href='/RecipeBook/Recipe-Book/html/signup.html'">Sign up</button>
+            <div class="loginbar">
+                <button class="login-btn" onclick="window.location.href='/RecipeBook/Recipe-Book/html/login.html'">Log in</button>
+                <button class="signup-btn" onclick="window.location.href='/RecipeBook/Recipe-Book/html/signup.html'">Sign up</button>
+            </div>
         </nav>
 
         <div class="heading">
