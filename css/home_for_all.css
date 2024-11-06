@@ -1,25 +1,6 @@
 body{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-
-.heading {
-    margin-top: 100px;
-    font-size: 20px;
-    text-align: center;
-}
-
-.logo, .recipebook-center{
-    display: flex;
-    justify-content: center; /* Centers horizontally */
-    align-items: center; /* Centers vertically */
-    height: 55px; /* Example height, adjust as needed */
-}
-
-.recipebook {
-    color:#FFBF17; 
-    font-size:50px;
-}
-
 .navbar {
     display: flex;
     position: fixed;
@@ -33,99 +14,17 @@ body{
     padding-bottom: 15px;
     padding-left: 10px;
 }
-
-.add_recipe {
-    position: fixed;
-    bottom: 20px;
-    right: 30px;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    cursor: pointer;
-}
-
-.container {
+.logo, .recipebook{
     display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    max-width: 600px;
-    margin: 0 auto;
-    background-color: #cccc;
-    border-radius: 30px;
-    margin-bottom: 15px;
-    transition: background-color white, box-shadow white;
-}
-
-.post {
+    justify-content: center; 
+    align-items: center; 
+    height: 55px; 
     cursor: pointer;
-    padding: 20px;
-    margin-bottom: 10px;
-    width: 100%;
 }
-
-.modal {
-    display: none;
-    /* Hidden by default */
-    position: fixed;
-    /* Stay in place */
-    z-index: 1;
-    /* Sit on top */
-    left: 0;
-    top: 0;
-    width: 100%;
-    /* Full width */
-    height: 100%;
-    /* Full height */
-    overflow: auto;
-    /* Enable scroll if needed */
-    background-color: rgb(0, 0, 0);
-    /* Fallback color */
-    background-color: rgba(0, 0, 0, 0.4);
-    /* Black w/ opacity */
+.recipebook {
+    color:#FFBF17; 
+    font-size:50px;
 }
-
-.modal-content {
-    background-color: #fefefe;
-    margin: 15% auto;
-    /* 15% from the top and centered */
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-    /* Could be more or less, depending on screen size */
-}
-
-.popup {
-    display: none;
-    /* Hidden by default */
-    position: fixed;
-    /* Stay in place */
-    z-index: 1;
-    /* Sit on top */
-    left: 0;
-    top: 0;
-    width: 100%;
-    /* Full width */
-    height: 100%;
-    /* Full height */
-    overflow: auto;
-    /* Enable scroll if needed */
-    background-color: rgb(0, 0, 0);
-    /* Fallback color */
-    background-color: rgba(0, 0, 0, 0.4);
-    /* Black w/ opacity */
-}
-
-.popup_content {
-    background-color: #fefefe;
-    margin: 15% auto;
-    /* 15% from the top and centered */
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-    /* Could be more or less, depending on screen size */
-}
-
 .search-bar {
     display: flex;
     position:absolute;
@@ -135,33 +34,18 @@ body{
     width: 100%;
     max-width: 550px;
     top:20px;
-    left:380px;
+    left:383px;
 }
-
-/* Search icon */
-.search-icon {
-    font-size: 20px;
-    /* Slightly larger icon */
-    margin-right: 8px;
-    /* Less margin to bring icon closer to input */
-    color: #555;
-    /* Darker color for better visibility */
-}
-
-/* Input field in search bar */
 .search-bar input[type="text"] {
     border: none;
     background: none;
     outline: none;
     flex: 1;
     font-size: 15px;
-    color: #333;
+    color: black;
     padding: 5px 0;
 }
-
-
-.login-btn,
-.signup-btn {
+.login-btn,.signup-btn {
     position: absolute;
     border: none;
     border-radius: 30px;
@@ -170,8 +54,8 @@ body{
     font-weight: bold;
     cursor: pointer;
     text-decoration: none;
+    transition: background-color 0.2s, color 0.2s; 
 }
-
 .login-btn {
     font-family: Arial, Helvetica, sans-serif;
     background-color: #FFBF17;
@@ -179,7 +63,6 @@ body{
     right: 140px;
     top: 20px;
 }
-
 .signup-btn {
     font-family: Arial, Helvetica, sans-serif;
     background-color: #cccc;
@@ -187,23 +70,92 @@ body{
     right: 20px;
     top: 20px;
 }
-
+.heading {
+    margin-top: 100px;
+    font-size: 20px;
+    text-align: center;
+}
 .heading label {
     margin-right: 10px;
     font-weight: bold;
 }
-
 .heading select {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bold;
+    font-size: 15px;
     background-color: #cccc;
     border-color: #cccc;
-    border-radius: 30px;
-    padding: 5px;
+    border-radius: 20px;
+    padding: 8px;
+}
+.heading select:hover{
+    background-color: #FFBF17;
+    border-color: #FFBF17;
+}
+.add_recipe {
+    position: fixed;
+    bottom: 20px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
     cursor: pointer;
+}
+.container {
+    display: block;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #cccc;
+    border-radius: 30px;
+    margin-bottom: 15px;
+    cursor: pointer;
+}
+.post-title{
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    padding: 10px 30px;
+    width: 90%;
+}
+.post{
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    padding: 20px 30px;
+    width: 90%;
+}
+.container:hover{
+    .post-title{
+        background-color: #FFBF17;
+        color:white;
+    }
+    .post{
+        background-color: #f0f0f0cc;
+    }
+}
+.popup, .modal{
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+}
+.popup_content, .modal-content {
+    background-color: #FFBF17;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #FFBF17;
+    border-radius: 30px;
+    width: 80%;
 }
 
-.heading select option {
-    background-color: #FFBF17;
-    border-radius: 30px;
-    padding: 5px;
-    cursor: pointer;
-}
+
+
+
+
+
+
