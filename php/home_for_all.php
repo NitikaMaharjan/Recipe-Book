@@ -58,7 +58,7 @@
             </select>
         </div>
 
-        <img class="add_recipe" src="/RecipeBook/Recipe-Book/buttons/add_button.png" onclick="popup()"/>
+        <img class="add_recipe" src="/RecipeBook/Recipe-Book/buttons/add_button.png" onclick="popup()" title="Add Recipe"/>
 
         <?php
             if ($result->num_rows > 0) {
@@ -67,7 +67,7 @@
                     echo "<div class='container' onclick='popup()'>";
 
                         echo "<div class='post-title'>";
-                            echo "<h3>" . htmlspecialchars($row['post_title']) . "</h3>";
+                            echo "<h3 style='font-size:30px;'>" . htmlspecialchars($row['post_title']) . "</h3>";
                         echo "</div>";
                         
                         echo "<div class='post'>";
