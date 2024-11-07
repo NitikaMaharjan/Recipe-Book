@@ -27,13 +27,13 @@
     <head>
         <title>Recipebook</title>
         <link rel="stylesheet" href="/RecipeBook/Recipe-Book/css/home_for_all.css" type="text/css">
-        <link class="logo" rel="icon" href="/RecipeBook/Recipe-Book/logo/logo2.jpg" type="image/x-icon">
+        <link class="logo" rel="icon" href="/RecipeBook/Recipe-Book/logo/logo2.png" type="image/png">
     </head>
 
     <body>
         <nav class="navbar">
             <div class="logo">
-                <img src="/RecipeBook/Recipe-Book/logo/logo2.JPG" onclick="about()" style="width: 50px; height: 50px; border-radius: 50%;"/>&nbsp;&nbsp;
+                <img src="/RecipeBook/Recipe-Book/logo/logo2.png" onclick="about()" style="width: 150px; height: 200px; border-radius: 50%;"/>&nbsp;&nbsp;
                 <h1 onclick="about()" class="recipebook">Recipebook</h1>
             </div>
 
@@ -46,7 +46,7 @@
                 <button class="signup-btn" onclick="window.location.href='/RecipeBook/Recipe-Book/html/signup.html'">Sign up</button>
             </div>
         </nav>
-
+        
         <div class="heading">
             <h1>Welcome to <span style="color:#ffbf17; cursor:pointer;" onclick="about()">Recipebook</span></h1>
             <h2>All posts</h2>

@@ -77,7 +77,7 @@
     
         <nav class="navbar">
             <div class="logo">
-                <img src="/RecipeBook/Recipe-Book/logo/logo2.JPG" onclick="about()" style="width: 120px; height: 100px; border-radius: 50%;"/>&nbsp;&nbsp;
+                <img src="/RecipeBook/Recipe-Book/logo/logo2.png" onclick="about()" style="width: 150px; height: 200px; border-radius: 50%;"/>&nbsp;&nbsp;
                 <h1  onclick="window.location.href='/RecipeBook/Recipe-Book/php/home.php'" class="recipebook">Recipebook</h1>
             </div>
             <button class="home-btn" onclick="window.location.href='/RecipeBook/Recipe-Book/php/home.php'">Home</button>
