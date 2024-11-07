@@ -56,8 +56,8 @@ body {
 
 .loginbar {
     display: flex;
-    gap: 10px;
-    margin-right: 35px;
+    gap: 20px;
+    margin-right: 25px;
     margin-left: 10px;
 }
 
