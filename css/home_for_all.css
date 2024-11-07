@@ -209,7 +209,7 @@ body {
         background-color: #FFBF17;
     }
     .post{
-        background-color: #bbbabacc;
+        background-color: #FFDB80;
     }
 }
 
@@ -228,10 +228,10 @@ body {
 .popup_content,
 .modal-content {
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: rgb(151, 151, 151);
+    background-color: #FFDB80;
     margin: 15% auto;
     padding: 20px;
-    border: 1px solid rgb(151, 151, 151);
+    border: 1px solid #FFDB80;
     border-radius: 30px;
     width: 80%;
     text-align: center;

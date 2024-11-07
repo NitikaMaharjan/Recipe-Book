@@ -127,7 +127,7 @@
             <div class="popup_content">
                 <div style="text-align:right;">
                     <span class="close1" onclick="closePopup1()" style="font-size:35px; color:black;">&times;</span>
-                </div><br/>
+                </div>
                 <img src="/RecipeBook/Recipe-Book/logo/logo.png" style="width: 300px; height: 300px;"/>
                 <h1 style="color:black;">About Recipebook</h1>
                 <p style="font-size: 20px; text-align:left;">Recipebook is an online platform that serves as a social networking and content-sharing system which enables users to share their own recipes. It's an interactive and personalized place for food enthusiasts, with the ability to post recipes, like and comment on posts, and search for recipes by title, username, or ingredients they have on hand.</p>
@@ -137,14 +137,22 @@
         <!-- pop up box for signup and login -->
         <div id="signup_login_popup" class="popup">
             <div class="popup_content">
-            <div style="text-align:right;">
-                <span class="close2" onclick="closePopup2()" style="font-size:35px; color:black;">&times;</span><br/>
-            </div><br/>
-            <button><a href="/RecipeBook/Recipe-Book/html/signup.html">Sign up</a></button>
-            <button><a href="/RecipeBook/Recipe-Book/html/login.html">Log in</a></button>
+                <div style="text-align:right;">
+                    <span class="close2" onclick="closePopup2()" style="font-size:35px; color:black;">&times;</span>
+                </div>
+                <div>
+                <h1>Sign up to get started!!</h1>
+                <form name="signup" method="post" action="/RecipeBook/Recipe-Book/php/signup.php">
+                    <input type="text" name="username" placeholder="Username" required/><br/><br/>
+                    <input type="email" name="email" placeholder="Email" required/><br/><br/>
+                    <input type="password" name="password" placeholder="Password" required/><br/><br/>
+                    <input type="password" name="password2" placeholder="Confirm password" required/><br/><br/>
+                    <input type="submit" value="Sign up"/>
+                </form>
+                <p style="font-size: 20px;">Already have an account??</p><a href="/RecipeBook/Recipe-Book/html/login.html">Log in</a>
+                </div>
             </div>
         </div>
-
     </body>
     <script>
         //for color change of login and sign up button
