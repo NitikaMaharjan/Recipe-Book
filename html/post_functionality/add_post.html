@@ -2,6 +2,7 @@
 
 <head>
     <title>Recipebook</title>
+
     <script>
         function addIngredientField() {
             let container = document.getElementById("ingredients_container");
@@ -41,13 +42,15 @@
         <div id="ingredients_container">
             <input type="text" name="post_ingredients[]" placeholder="Enter ingredient" required /><br />
         </div>
-        <button type="button" onclick="addIngredientField()">Add Ingredient</button><br /><br />
+        <img onclick="addIngredientField()" width="30px" style="background-color:transparent;cursor: pointer;"
+            src="/RecipeBook/Recipe-Book/buttons/add_button.png" title="Add Ingredient"><br /><br />
 
         <label for="post_instructions">Preparation:</label>
         <div id="steps_container">
             <textarea name="post_instructions[]" placeholder="Enter preparation step" required></textarea><br />
         </div>
-        <button type="button" onclick="addStepField()">Add Step</button><br /><br />
+        <img onclick="addStepField()" width="30px" style="background-color:transparent;cursor: pointer;"
+            src="/RecipeBook/Recipe-Book/buttons/add_button.png" title="Add Step"><br /><br />
 
         <label for="post_keywords">Keywords:</label>
         <input type="text" name="post_keywords" id="post_keywords" Placeholder="#tasty, #yummy,..."

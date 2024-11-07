@@ -61,8 +61,10 @@
                 while ($row = $result->fetch_assoc()){
                     $postId = $row['post_id'];
                     echo "<div class='container'>";
+                    echo "<div class='post-title'>";
+                        echo "<h3 style='font-size:25px;'>" . htmlspecialchars($row['post_title']) . "</h3>";
+                    echo "</div>";
                     echo "<div class='post' onclick='view_post(" . $row['post_id'] . ")'>";
-                    echo "<h3>" . htmlspecialchars($row['post_title']) . "</h3>";
 
                     if ($row['post_edited_date'] != $row['post_posted_date']) {
                         // Post has been edited

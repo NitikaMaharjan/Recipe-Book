@@ -61,41 +61,51 @@
     </head>
     <body>
         <nav class="navbar">
-            <a href="/RecipeBook/Recipe-Book/php/profile.php"><?php
-                if ($result2->num_rows==1) {
-                    while($row = $result2->fetch_assoc()) {
-                        if (($row['user_profile_picture'])) {
-                            echo "<img src='data:image/jpeg;base64,".base64_encode($row['user_profile_picture'])."' alt='Profile picture' style='max-width: 50px; max-height: 50px; border-radius: 50%; margin-right: 10px;'/>";
-                        } else {
-                            echo "<img src='/RecipeBook/Recipe-Book/default_profile_picture.jpg' style='max-width: 50px; max-height: 50px; border-radius: 50%; margin-right: 10px;'/>";
+            <div class="logo">
+                <a href="/RecipeBook/Recipe-Book/php/profile.php"><?php
+                    if ($result2->num_rows==1) {
+                        while($row = $result2->fetch_assoc()) {
+                            if (($row['user_profile_picture'])) {
+                                echo "<img src='data:image/jpeg;base64,".base64_encode($row['user_profile_picture'])."' alt='Profile picture' style='max-width: 50px; max-height: 50px; border-radius: 50%; margin-right: 10px;'/>";
+                            } else {
+                                echo "<img src='/RecipeBook/Recipe-Book/default_profile_picture.jpg' style='max-width: 50px; max-height: 50px; border-radius: 50%; margin-right: 10px;'/>";
+                            }
                         }
                     }
-                }
-            ?></a>
-            <a href="/RecipeBook/Recipe-Book/php/profile.php"><img src="/RecipeBook/Recipe-Book/logo/logo2.jpg" width="100"></a>
+                    ?>
+                </a>
+                <h1  onclick="window.location.href='/RecipeBook/Recipe-Book/php/profile.php'" class="recipebook">Recipebook</h1>
+            </div>
 
-            <button><a href="/RecipeBook/Recipe-Book/php/favourite_functionality/favourite_page.php">My Favourites</a></button>
-            <button><a href="/RecipeBook/Recipe-Book/html/manage_profile/settings.html">Settings</a></button>
-            <br/><br/>
-            <form name="search" method="post" action="/RecipeBook/Recipe-Book/php/search_functionality/search_post.php">
-                <input class="search_bar" type="text" id="search" name="search" placeholder="Search Recipe"/>
-                <input type="submit" value="Search"/>
-            </form> 
+            <div class="search-bar">
+                <form name="search" method="post" action="/RecipeBook/Recipe-Book/php/search_functionality/search_post.php">
+                    <img src="/RecipeBook/Recipe-Book/buttons/search_icon.png" height="30px"/>
+                    <input class="search_bar" type="text" id="search" name="search" placeholder="Search Recipe" style="margin-left:20px"/>
+                    <input type="submit" value="Search"/>
+                </form> 
+            </div>
+
+            <div class="leftside-bar">
+                <button class="favc-btn" onclick="window.location.href='/RecipeBook/Recipe-Book/php/favourite_functionality/favourite_page.php'">My Favourites<img src="/RecipeBook/Recipe-Book/buttons/fav_button.png" height="20px" style="margin-left:3px"/></button>
+                <button class="setting-btn" onclick="window.location.href='/RecipeBook/Recipe-Book/html/manage_profile/settings.html'">Settings</button>
+            </div>
         </nav>
-        <br/><br/><br/><br/><br/><br/> 
 
-        <h1>Hello <?php echo "$user_name" ?>, welcome to your home feed!!</h1>
-        <h2>All posts</h2>
+        <div class="heading">
+            <h2>Hello ,<span style="color:#ffbf17; cursor:pointer;"><?php echo "$user_name" ?></span>, welcome to your home feed!!</h2>
+            <h2>All posts</h2>
 
-        <a class="add_recipe" href="/RecipeBook/Recipe-Book/html/post_functionality/add_post.html"><img src="/RecipeBook/Recipe-Book/buttons/add_button.png" width="60"></a>
+            <form id="sortForm" method="GET" action="">
+                <label for="sort">Sort by:</label>
+                <select id="sort" name="sort" onchange="document.getElementById('sortForm').submit();">
+                    <option value="date" <?php echo (isset($_GET['sort']) && $_GET['sort'] == 'date') ? 'selected' : ''; ?>>Date</option>
+                    <option value="likes" <?php echo (isset($_GET['sort']) && $_GET['sort'] == 'likes') ? 'selected' : ''; ?>>Likes</option>
+                </select>
+            </form>
+        </div>
+
+        <a href="/RecipeBook/Recipe-Book/html/post_functionality/add_post.html"><img  class="add_recipe" src="/RecipeBook/Recipe-Book/buttons/add_button.png" title="Add Recipe"></a>
         
-        <form method="GET" action="">
-            <label for="sort">Sort by:</label>
-            <select id="sort" name="sort" onchange="document.getElementById('sortForm').submit();">
-                <option value="date" <?php echo (isset($_GET['sort']) && $_GET['sort'] == 'date') ? 'selected' : ''; ?>>Date</option>
-                <option value="likes" <?php echo (isset($_GET['sort']) && $_GET['sort'] == 'likes') ? 'selected' : ''; ?>>Likes</option>
-            </select>
-        </form>
         <br/>
 
         <?php
@@ -103,8 +113,10 @@
                 while ($row = $result->fetch_assoc()) {
                     $postId = $row['post_id'];
                     echo "<div class='container'>";
+                    echo "<div class='post-title'>";
+                        echo "<h3 style='font-size:25px;'>" . htmlspecialchars($row['post_title']) . "</h3>";
+                    echo "</div>";
                     echo "<div class='post' onclick='view_post($postId)'>";
-                    echo "<h3>" . htmlspecialchars($row['post_title']) . "</h3>";
 
                     if ($row['post_edited_date'] != $row['post_posted_date']) {
                         // Post has been edited

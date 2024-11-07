@@ -1,113 +1,291 @@
 body {
-    font-family: "Times New Roman";
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    background-color: white;
+    padding: 15px 15px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.recipebook {
+    color: #FFBF17;
+    font-size: 35px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    background-color: #cccc;
+    border-radius: 30px;
+    padding: 8px 15px;
+    width: 100%;
+    max-width: 650px;
+    flex: 1;
+    margin: 0 20px;
+}
+
+.search-bar form {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.search-bar img {
+    cursor: pointer;
+}
+
+.search-bar input[type="text"] {
+    border: none;
+    background: none;
+    outline: none;
+    flex: 1;
+    font-size: 15px;
+    color: black;
+    padding-left: 10px;
+}
+
+.search-bar input[type="submit"] {
+    background-color: #cccc;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    padding: 8px 20px;
+    cursor: pointer;
+    font-size: 15px;
+    transition: background-color 0.3s;
+    margin-left: 10px;
+}
+
+.search-bar input[type="submit"]:hover {
+    background-color: #FFBF17;
+}
+
+.leftside-bar {
+    display: flex;
+    gap: 10px;
+    margin-right: 35px;
+    margin-left: 10px;
+}
+
+.favc-btn,
+.setting-btn {
+    border: none;
+    border-radius: 30px;
+    padding: 16px 30px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.favc-btn {
+    align-items: center;
+    display: flex;
+    background-color: #FFBF17;
+    color: white;
+}
+
+.setting-btn {
+    background-color: #FFBF17;
+    color: white;
+}
+
+.leftside-bar .favc-btn:hover {
+    background-color: #cccc;
+    color: black;
+}
+
+.leftside-bar .setting-btn:hover {
+    background-color: #cccc;
+    color: black;
+}
+
+.home-btn {
+    border: none;
+    border-radius: 30px;
+    padding: 16px 30px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    align-items: center;
+    margin-right: 25px;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.home-btn:hover {
+    background-color: #FFBF17;
+    color: white;
+}
+
+@media (max-width: 1024px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px;
+    }
+
+    .logo {
+        margin-bottom: 10px;
+    }
+
+    .search-bar {
+        width: 100%;
+        max-width: none;
+        margin: 0 0 10px 0;
+    }
+
+    .loginbar {
+        align-self: flex-end;
+    }
+}
+
+@media (max-width: 768px) {
+    .recipebook {
+        font-size: 1.2rem;
+    }
+
+    .search-bar input[type="text"] {
+        font-size: 14px;
+    }
+
+    .login-btn,
+    .signup-btn {
+        padding: 8px 15px;
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 480px) {
+    .search-bar {
+        padding: 6px 10px;
+    }
+
+    .login-btn,
+    .signup-btn {
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+}
+
+.heading {
+    margin-top: 100px;
+    font-size: 20px;
+    text-align: center;
+}
+
+.heading label {
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+.heading select {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bold;
+    font-size: 15px;
+    background-color: #cccc;
+    border-color: #cccc;
+    border-radius: 20px;
+    padding: 8px;
+}
+
+.heading select:hover {
+    background-color: #FFBF17;
+    border-color: #FFBF17;
 }
 
 .add_recipe {
     position: fixed;
-    /* Sticks the button in place */
     bottom: 20px;
-    /* Distance from the bottom of the viewport */
-    right: 20px;
-    /* Distance from the right of the viewport */
+    right: 30px;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    cursor: pointer;
 }
 
 .container {
-    display: flex;
+    display: block;
     justify-content: center;
-    /* Center horizontally */
     align-items: center;
-    /* Center vertically */
     width: 100%;
     max-width: 600px;
-    /* Set a max-width for the container */
     margin: 0 auto;
-    /* Centers the container horizontally */
+    border-radius: 30px;
+    margin-bottom: 15px;
+    cursor: pointer;
+}
+
+.post-title {
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    padding: 5px 30px;
+    width: 90%;
+    background-color: black;
+    color: white;
 }
 
 .post {
-    cursor: pointer;
-    padding: 20px;
-    border: 2px solid #ccc;
-    background-color: white;
-    margin-bottom: 20px;
-    transition: background-color 0.3s ease;
-    width: 100%;
-    /* Ensures the posts take up the full container width */
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    padding: 20px 30px;
+    width: 90%;
+    background-color: antiquewhite;
+    color: black;
 }
 
+.container:hover {
+    .post-title {
+        background-color: #FFBF17;
+        color: white;
+    }
+
+    .post {
+        background-color: antiquewhite;
+    }
+
+    box-shadow: 0px 6px 6px rgba(0, 0, 0, 0.2);
+}
+
+.popup,
 .modal {
     display: none;
-    /* Hidden by default */
     position: fixed;
-    /* Stay in place */
     z-index: 1;
-    /* Sit on top */
     left: 0;
     top: 0;
     width: 100%;
-    /* Full width */
     height: 100%;
-    /* Full height */
     overflow: auto;
-    /* Enable scroll if needed */
-    background-color: rgb(0, 0, 0);
-    /* Fallback color */
-    background-color: rgba(0, 0, 0, 0.4);
-    /* Black w/ opacity */
 }
 
+.popup_content,
 .modal-content {
-    background-color: #fefefe;
+    background-color: #FFBF17;
     margin: 15% auto;
-    /* 15% from the top and centered */
     padding: 20px;
-    border: 1px solid #888;
+    border: 1px solid #FFBF17;
+    border-radius: 30px;
     width: 80%;
-    /* Could be more or less, depending on screen size */
-}
-
-.popup {
-    display: none;
-    /* Hidden by default */
-    position: fixed;
-    /* Stay in place */
-    z-index: 1;
-    /* Sit on top */
-    left: 0;
-    top: 0;
-    width: 100%;
-    /* Full width */
-    height: 100%;
-    /* Full height */
-    overflow: auto;
-    /* Enable scroll if needed */
-    background-color: rgb(0, 0, 0);
-    /* Fallback color */
-    background-color: rgba(0, 0, 0, 0.4);
-    /* Black w/ opacity */
-}
-
-.popup_content {
-    background-color: #fefefe;
-    margin: 15% auto;
-    /* 15% from the top and centered */
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-    /* Could be more or less, depending on screen size */
 }
 
 .back-button {
     position: fixed;
-}
-
-.navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background-color: white;
-    color: white;
-    align-items: center;
-    box-sizing: border-box;
 }

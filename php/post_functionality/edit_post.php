@@ -63,7 +63,7 @@
         </script>
     </head>
     <body>
-        <button onclick="go_back()" class="back-button">Go Back</button>
+        <button onclick="go_back()" class="back-button">Go Back</button><br>    
         <h1>Edit your Recipe</h1>
         <form action="/RecipeBook/Recipe-Book/php/post_functionality/update_post.php?post_id=<?php echo $post_id;?>" method="POST" enctype="multipart/form-data">
 
@@ -92,7 +92,8 @@
                     } 
                 ?>
             </div> 
-            <button type="button" onclick="addIngredientField()">Add Ingredient</button>
+            <img onclick="addIngredientField()" width="30px" style="background-color:transparent;cursor: pointer;"
+             src="/RecipeBook/Recipe-Book/buttons/add_button.png" title="Add Ingredient">
             <br/><br/>
 
             <label for="post_instructions">Instructions:</label> 
@@ -107,7 +108,9 @@
                     } 
                 ?>
             </div> 
-            <button type="button" onclick="addStepField()">Add Step</button>
+            <img onclick="addStepField()" width="30px" style="background-color:transparent;cursor: pointer;"
+             src="/RecipeBook/Recipe-Book/buttons/add_button.png" title="Add Step">
+            
             <br/><br/>
 
             <label for="post_keywords">Keywords:</label>

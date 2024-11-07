@@ -27,13 +27,13 @@
     <head>
         <title>Recipebook</title>
         <link rel="stylesheet" href="/RecipeBook/Recipe-Book/css/home_for_all.css" type="text/css">
-        <link class="logo" rel="icon" href="/RecipeBook/Recipe-Book/logo/logo.jpg" type="image/x-icon">
+        <link class="logo" rel="icon" href="/RecipeBook/Recipe-Book/logo/logo2.jpg" type="image/x-icon">
     </head>
 
     <body>
         <nav class="navbar">
             <div class="logo">
-                <img src="/RecipeBook/Recipe-Book/logo/logo.JPG" onclick="about()" style="width: 50px; height: 50px; border-radius: 50%;"/>&nbsp;&nbsp;
+                <img src="/RecipeBook/Recipe-Book/logo/logo2.JPG" onclick="about()" style="width: 50px; height: 50px; border-radius: 50%;"/>&nbsp;&nbsp;
                 <h1 onclick="about()" class="recipebook">Recipebook</h1>
             </div>
 
@@ -67,7 +67,7 @@
                     echo "<div class='container' onclick='popup()'>";
 
                         echo "<div class='post-title'>";
-                            echo "<h3 style='font-size:30px;'>" . htmlspecialchars($row['post_title']) . "</h3>";
+                            echo "<h3 style='font-size:25px;'>" . htmlspecialchars($row['post_title']) . "</h3>";
                         echo "</div>";
                         
                         echo "<div class='post'>";

@@ -88,17 +88,16 @@
     </head>
     <body>
         <nav class="navbar">
-            <button><a href="/Recipebook/Recipe-Book/php/home.php">Home</a></button>  
-            
-            <form name="search" method="post" action="/RecipeBook/Recipe-Book/php/search_functionality/search_post.php">
-                <br/>
-                <input type="text" id="search" name="search" placeholder="Search Recipe"/>
-                <input type="submit" value="Search"/>
-                <br />
-            </form>
+            <button class="home-btn" onclick="window.location.href='/RecipeBook/Recipe-Book/php/home.php'">Home</button>            
         </nav>
-        <br><br><br><br>
-        <h1>Hello <?php echo "$user_name" ?>!!</h1>
+        <br><br><br><br><br>
+        <div class="search-bar">
+            <form name="search" method="post" action="/RecipeBook/Recipe-Book/php/search_functionality/search_post.php">
+                <img src="/RecipeBook/Recipe-Book/buttons/search_icon.png" height="30px"/>
+                <input class="search_bar" type="text" id="search" name="search" placeholder="Search Recipe" style="margin-left:20px"/>
+                <input type="submit" value="Search"/>
+            </form> 
+        </div>
         <h2>Results for <?php echo "$search" ?>:</h2>
         <br/>
 
@@ -107,8 +106,10 @@
                 while ($row = $result->fetch_assoc()) {
                     $postId = $row['post_id'];
                     echo "<div class='container'>";
+                    echo "<div class='post-title'>";
+                        echo "<h3 style='font-size:25px;'>" . htmlspecialchars($row['post_title']) . "</h3>";
+                    echo "</div>";
                     echo "<div class='post' onclick='view_post(" . $row['post_id'] . ")'>";
-                    echo "<h3>" . htmlspecialchars($row['post_title']) . "</h3>";
 
                     if ($row['post_edited_date'] != $row['post_posted_date']) {
                         // Post has been edited

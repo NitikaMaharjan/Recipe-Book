@@ -195,7 +195,7 @@ body {
     border-bottom-right-radius: 30px;
     padding: 20px 30px;
     width: 90%;
-    background-color: #cccc;
+    background-color: antiquewhite;
     color: black;
 }
 
@@ -204,6 +204,11 @@ body {
         background-color: #FFBF17;
         color: white;
     }
+
+    .post {
+        background-color: antiquewhite;
+    }
+
     box-shadow: 0px 6px 6px rgba(0, 0, 0, 0.2);
 }
 
