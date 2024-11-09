@@ -33,25 +33,25 @@
     <body>
         <nav class="navbar">
             <div class="logo">
-                <img src="/RecipeBook/Recipe-Book/logo/book2.png" onclick="about()" style="width: 50px; height: 50px;"/>
+                <img src="/RecipeBook/Recipe-Book/logo/book2.png" onclick="about()" style="width: 50px; height: 50px;"/>&nbsp;&nbsp;
                 <h1 onclick="about()" class="recipebook">Recipebook</h1>
             </div>
 
             <div class="search-bar">
                 <img src="/RecipeBook/Recipe-Book/buttons/search_icon.png" onclick="popup()" height="30px"/>
-                <input type="text" placeholder="Search Recipe" onclick="popup()" style="margin-left:20px">
+                <input type="text" placeholder="Search Recipe" onclick="popup()"/>
             </div>
             <div class="loginbar">
-                <button class="login-btn" onclick="window.location.href='/RecipeBook/Recipe-Book/html/login.html'">Log in</button>
+                <button class="login-btn" onclick="window.location.href='/RecipeBook/Recipe-Book/html/login.html'">Log in</button>&nbsp;&nbsp;
                 <button class="signup-btn" onclick="window.location.href='/RecipeBook/Recipe-Book/html/signup.html'">Sign up</button>
             </div>
         </nav>
         
         <div class="heading">
-            <h1>Welcome to <span style="color:#ffbf17; cursor:pointer;" onclick="about()">Recipebook</span></h1>
-            <h2>All posts</h2>
+            <h1 style="text-align: center;">Welcome to <span style="color:#ffbf17; cursor:pointer;" onclick="about()">Recipebook</span></h1><br/>
+            <h2 style="text-align: center;">All posts</h2>
 
-            <label>Sort by:</label>
+            <label>Sort by:</label>&nbsp;&nbsp;
             <select onchange="popup()">
                 <option value="date">Date</option>
                 <option value="likes">Likes</option>
@@ -123,14 +123,14 @@
         ?>
 
         <!-- pop up box for about -->
-        <div id="about" class="popup">
-            <div class="popup_content">
+        <div id="about" class="about">
+            <div class="about_content">
                 <div style="text-align:right;">
-                    <span class="close1" onclick="closePopup1()" style="font-size:35px; color:black;">&times;</span>
+                    <span class="close1" onclick="closePopup1()" style="font-size:35px; color:black; cursor:pointer;">&times;</span>
                 </div>
                 <img src="/RecipeBook/Recipe-Book/logo/logo.png" style="width: 300px; height: 300px;"/>
                 <h1 style="color:black;">About Recipebook</h1>
-                <p style="font-size: 20px; text-align:left;">Recipebook is an online platform that serves as a social networking and content-sharing system which enables users to share their own recipes. It's an interactive and personalized place for food enthusiasts, with the ability to post recipes, like and comment on posts, and search for recipes by title, username, or ingredients they have on hand.</p>
+                <p style="font-size: 20px; text-align:left;">Recipebook is an online platform that serves as a social networking and content-sharing system which enables users to share their own recipes. It's an interactive and personalized place for food enthusiasts, which enables users to post recipes, like and comment on posts, and search for recipes by recipe title, username of users, categories and hashtags.</p>
             </div>
         </div>
 
@@ -138,7 +138,7 @@
         <div id="signup_login_popup" class="popup">
             <div class="popup_content">
                 <div style="text-align:right;">
-                    <span class="close2" onclick="closePopup2()" style="font-size:35px; color:black;">&times;</span>
+                    <span class="close2" onclick="closePopup2()" style="font-size:35px; color:black; cursor:pointer;">&times;</span>
                 </div>
                 <div>
                 <h1>Sign up to get started!!</h1>
@@ -155,30 +155,6 @@
         </div>
     </body>
     <script>
-        //for color change of login and sign up button
-        const loginBtn = document.querySelector('.login-btn');
-        const signupBtn = document.querySelector('.signup-btn');
-
-        function hoverEffect() {
-            loginBtn.style.backgroundColor = '#cccc';
-            loginBtn.style.color = 'black';
-            signupBtn.style.backgroundColor = '#FFBF17';
-            signupBtn.style.color = 'white';
-        }
-
-        function removeHoverEffect() {
-            loginBtn.style.backgroundColor = '#FFBF17';
-            loginBtn.style.color = 'white';
-            signupBtn.style.backgroundColor = '#cccc';
-            signupBtn.style.color = 'black';
-        }
-
-        loginBtn.addEventListener('mouseenter', hoverEffect);
-        signupBtn.addEventListener('mouseenter', hoverEffect);
-
-        loginBtn.addEventListener('mouseleave', removeHoverEffect);
-        signupBtn.addEventListener('mouseleave', removeHoverEffect);
-
         //about popup box
         function about() {
             //display the pop-up box
