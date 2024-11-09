@@ -64,7 +64,7 @@
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {
                     echo "<br/>";
-                    echo "<div class='container' onclick='popup()'>";
+                    echo "<div class='container' onclick='popup()' onmouseover='onHover(this)' onmouseout='noHover(this)'>";
 
                         echo "<div class='post-title'>";
                             echo "<h3 style='font-size:25px;'>" . htmlspecialchars($row['post_title']) . "</h3>";
@@ -96,7 +96,7 @@
                             echo "<p><b>Category : </b>" . htmlspecialchars($row['post_category']) . "</p>";
 
                             if (($row['post_image'])) {
-                                echo "<img src='data:image/jpeg;base64," . base64_encode($row['post_image']) . "' alt='Recipe Image' style='max-width: 200px; max-height: 200px;'/>";
+                                echo "<img src='data:image/jpeg;base64," . base64_encode($row['post_image']) . "' alt='Recipe Image' style='max-width: 200px; max-height: 200px; border-radius:30px;'/>";
                             } else {
                                 echo "No image available";
                             }
@@ -104,14 +104,12 @@
                             echo "<p>" . htmlspecialchars($row['post_keywords']) . "</p>";
 
                             
-                            echo "<button>Add to Favourites</button>";
+                            echo "<img class='fav' src='/RecipeBook/Recipe-Book/buttons/fav_button_black_outlined.png' onclick='popup()' height='30px' width='30px'/>&nbsp;&nbsp;&nbsp;";
 
                             $postId = $row['post_id'];
-                            echo "<button>";
-                            echo "Likes: <span id='like-count-" . $postId . "'>" . htmlspecialchars($row['post_like_count']) . "</span>";
-                            echo "</button>";
+                            echo "<img class='like' src='/RecipeBook/Recipe-Book/buttons/like_button_black_outlined.png' onclick='popup()' height='30px' width='30px'/><span id='like-count-" . $postId . "'>" . htmlspecialchars($row['post_like_count']) . "</span>&nbsp;&nbsp;&nbsp;";
 
-                            echo "<button>Comment</button>";
+                            echo "<img class='comment' src='/RecipeBook/Recipe-Book/buttons/comment_button_black_outlined.png' onclick='popup()' height='30px' width='30px'/>";
                         echo "</div>";
 
                     echo "</div>";
@@ -149,12 +147,44 @@
                     <input type="password" name="password2" placeholder="Confirm password" required/><br/><br/>
                     <input type="submit" value="Sign up"/>
                 </form>
-                <p style="font-size: 20px;">Already have an account??</p><a href="/RecipeBook/Recipe-Book/html/login.html">Log in</a>
+                <h1>Already have an account??</h1><button><a href="/RecipeBook/Recipe-Book/html/login.html">Log in</a></button>
                 </div>
             </div>
         </div>
     </body>
     <script>
+        function onHover(container) {
+            const favIcon = container.querySelector('.fav');
+            const likeIcon = container.querySelector('.like');
+            const commentIcon = container.querySelector('.comment');
+
+            favIcon.src = "/RecipeBook/Recipe-Book/buttons/fav_button_yellow_outlined.png";
+            favIcon.style.height="35px";
+            favIcon.style.width="35px";
+            likeIcon.src = "/RecipeBook/Recipe-Book/buttons/like_button_yellow_outlined.png";
+            likeIcon.style.height="35px";
+            likeIcon.style.width="35px";
+            commentIcon.src = "/RecipeBook/Recipe-Book/buttons/comment_button_yellow_outlined.png";
+            commentIcon.style.height="35px";
+            commentIcon.style.width="35px";
+        }
+
+        function noHover(container) {
+            const favIcon = container.querySelector('.fav');
+            const likeIcon = container.querySelector('.like');
+            const commentIcon = container.querySelector('.comment');
+
+            favIcon.src = "/RecipeBook/Recipe-Book/buttons/fav_button_black_outlined.png";
+            favIcon.style.height="30px";
+            favIcon.style.width="30px";
+            likeIcon.src = "/RecipeBook/Recipe-Book/buttons/like_button_black_outlined.png";
+            likeIcon.style.height="30px";
+            likeIcon.style.width="30px";
+            commentIcon.src = "/RecipeBook/Recipe-Book/buttons/comment_button_black_outlined.png";
+            commentIcon.style.height="30px";
+            commentIcon.style.width="30px";
+        }
+
         //about popup box
         function about() {
             //display the pop-up box
