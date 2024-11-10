@@ -47,79 +47,80 @@
             </div>
         </nav>
         
-        <div class="heading">
-            <h1 style="text-align: center;">Welcome to <span style="color:#ffbf17; cursor:pointer;" onclick="about()">Recipebook</span></h1><br/>
-            <h2 style="text-align: center;">All posts</h2>
+        <div class="background">
+            <div class="heading">
+                <h1 style="text-align: center;">Welcome to <span style="color:#ffbf17; cursor:pointer;" onclick="about()">Recipebook</span></h1><br/>
+                <h2 style="text-align: center;">All posts</h2>
 
-            <label>Sort by:</label>&nbsp;&nbsp;
-            <select onchange="popup()">
-                <option value="date">Date</option>
-                <option value="likes">Likes</option>
-            </select>
-        </div>
+                <label>Sort by:</label>&nbsp;&nbsp;
+                <select onchange="popup()">
+                    <option value="date">Date</option>
+                    <option value="likes">Likes</option>
+                </select>
+            </div>
 
-        <img class="add_recipe" src="/RecipeBook/Recipe-Book/buttons/add_button.png" onclick="popup()" title="Add Recipe"/>
+            <img class="add_recipe" src="/RecipeBook/Recipe-Book/buttons/add_button.png" onclick="popup()" title="Add Recipe"/>
 
-        <?php
-            if ($result->num_rows > 0) {
-                while ($row = $result->fetch_assoc()) {
-                    echo "<br/>";
-                    echo "<div class='container' onclick='popup()' onmouseover='onHover(this)' onmouseout='noHover(this)'>";
+            <?php
+                if ($result->num_rows > 0) {
+                    while ($row = $result->fetch_assoc()) {
+                        echo "<br/>";
+                        echo "<div class='container' onclick='popup()' onmouseover='onHover(this)' onmouseout='noHover(this)'>";
 
-                        echo "<div class='post-title'>";
-                            echo "<h3 style='font-size:25px;'>" . htmlspecialchars($row['post_title']) . "</h3>";
-                        echo "</div>";
-                        
-                        echo "<div class='post'>";
-                            if ($row['post_edited_date'] != $row['post_posted_date']) {
-                                // Post has been edited
-                                echo "<div style='display: flex; align-items: center;'>"; 
-                                if ($row['user_profile_picture']) {
-                                    echo "<img src='data:image/jpeg;base64," . base64_encode($row['user_profile_picture']) . "' alt='Profile picture' style='width: 50px; height: 50px; border-radius: 50%; margin-right: 10px;' />";
-                                } else {
-                                    echo "<img src='/RecipeBook/Recipe-Book/default_profile_picture.jpg' style='width: 50px; height: 50px; border-radius: 50%; margin-right: 10px;' />";
-                                }
-                                echo "<p><b>" . htmlspecialchars($row['user_name']) . "</b> edited on <b>" . htmlspecialchars($row['post_edited_date']) . "</b></p>";
-                                echo "</div>"; 
-                            } else {
-                                // Post has not been edited
-                                echo "<div style='display: flex; align-items: center;'>"; 
-                                if ($row['user_profile_picture']) {
-                                    echo "<img src='data:image/jpeg;base64," . base64_encode($row['user_profile_picture']) . "' alt='Profile picture' style='width: 50px; height: 50px; border-radius: 50%; margin-right: 10px;' />";
-                                } else {
-                                    echo "<img src='/RecipeBook/Recipe-Book/default_profile_picture.jpg' style='width: 50px; height: 50px; border-radius: 50%; margin-right: 10px;' />";
-                                }
-                                echo "<p><b>" . htmlspecialchars($row['user_name']) . "</b> posted on <b>" . htmlspecialchars($row['post_posted_date']) . "</b></p>";
-                                echo "</div>"; 
-                            }
-
-                            echo "<p><b>Category : </b>" . htmlspecialchars($row['post_category']) . "</p>";
-
-                            if (($row['post_image'])) {
-                                echo "<img src='data:image/jpeg;base64," . base64_encode($row['post_image']) . "' alt='Recipe Image' style='max-width: 200px; max-height: 200px; border-radius:30px;'/>";
-                            } else {
-                                echo "No image available";
-                            }
-                            echo "<p>" . htmlspecialchars($row['post_text']) . "</p>";
-                            echo "<p>" . htmlspecialchars($row['post_keywords']) . "</p>";
-
+                            echo "<div class='post-title'>";
+                                echo "<h3 style='font-size:25px;'>" . htmlspecialchars($row['post_title']) . "</h3>";
+                            echo "</div>";
                             
-                            echo "<img class='fav' src='/RecipeBook/Recipe-Book/buttons/fav_button_black_outlined.png' onclick='popup()' height='30px' width='30px'/>&nbsp;&nbsp;&nbsp;";
+                            echo "<div class='post'>";
+                                if ($row['post_edited_date'] != $row['post_posted_date']) {
+                                    // Post has been edited
+                                    echo "<div style='display: flex; align-items: center;'>"; 
+                                    if ($row['user_profile_picture']) {
+                                        echo "<img src='data:image/jpeg;base64," . base64_encode($row['user_profile_picture']) . "' alt='Profile picture' style='width: 50px; height: 50px; border-radius: 50%; margin-right: 10px;' />";
+                                    } else {
+                                        echo "<img src='/RecipeBook/Recipe-Book/default_profile_picture.jpg' style='width: 50px; height: 50px; border-radius: 50%; margin-right: 10px;' />";
+                                    }
+                                    echo "<p><b>" . htmlspecialchars($row['user_name']) . "</b> edited on <b>" . htmlspecialchars($row['post_edited_date']) . "</b></p>";
+                                    echo "</div>"; 
+                                } else {
+                                    // Post has not been edited
+                                    echo "<div style='display: flex; align-items: center;'>"; 
+                                    if ($row['user_profile_picture']) {
+                                        echo "<img src='data:image/jpeg;base64," . base64_encode($row['user_profile_picture']) . "' alt='Profile picture' style='width: 50px; height: 50px; border-radius: 50%; margin-right: 10px;' />";
+                                    } else {
+                                        echo "<img src='/RecipeBook/Recipe-Book/default_profile_picture.jpg' style='width: 50px; height: 50px; border-radius: 50%; margin-right: 10px;' />";
+                                    }
+                                    echo "<p><b>" . htmlspecialchars($row['user_name']) . "</b> posted on <b>" . htmlspecialchars($row['post_posted_date']) . "</b></p>";
+                                    echo "</div>"; 
+                                }
 
-                            $postId = $row['post_id'];
-                            echo "<img class='like' src='/RecipeBook/Recipe-Book/buttons/like_button_black_outlined.png' onclick='popup()' height='30px' width='30px'/><span id='like-count-" . $postId . "'>" . htmlspecialchars($row['post_like_count']) . "</span>&nbsp;&nbsp;&nbsp;";
+                                echo "<p><b>Category : </b>" . htmlspecialchars($row['post_category']) . "</p>";
 
-                            echo "<img class='comment' src='/RecipeBook/Recipe-Book/buttons/comment_button_black_outlined.png' onclick='popup()' height='30px' width='30px'/>";
+                                if (($row['post_image'])) {
+                                    echo "<img src='data:image/jpeg;base64," . base64_encode($row['post_image']) . "' alt='Recipe Image' style='max-width: 200px; max-height: 200px; border-radius:30px;'/>";
+                                } else {
+                                    echo "No image available";
+                                }
+                                echo "<p>" . htmlspecialchars($row['post_text']) . "</p>";
+                                echo "<p>" . htmlspecialchars($row['post_keywords']) . "</p>";
+
+                                
+                                echo "<img class='fav' src='/RecipeBook/Recipe-Book/buttons/fav_button_black_outlined.png' onclick='popup()' height='30px' width='30px'/>&nbsp;&nbsp;&nbsp;";
+
+                                $postId = $row['post_id'];
+                                echo "<img class='like' src='/RecipeBook/Recipe-Book/buttons/like_button_black_outlined.png' onclick='popup()' height='30px' width='30px'/><span id='like-count-" . $postId . "'>" . htmlspecialchars($row['post_like_count']) . "</span>&nbsp;&nbsp;&nbsp;";
+
+                                echo "<img class='comment' src='/RecipeBook/Recipe-Book/buttons/comment_button_black_outlined.png' onclick='popup()' height='30px' width='30px'/>";
+                            echo "</div>";
+
                         echo "</div>";
-
-                    echo "</div>";
+                    }
+                } else {
+                    echo "<p>There are no recipes to show you, Sorry T_T </p>";
                 }
-            } else {
-                echo "<p>There are no recipes to show you, Sorry T_T </p>";
-            }
-            $conn->close();
-        ?>
-
+                $conn->close();
+            ?>
+        </div>
         <!-- pop up box for about -->
         <div id="about" class="about">
             <div class="about_content">
