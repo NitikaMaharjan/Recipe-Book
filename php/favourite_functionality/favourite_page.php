@@ -52,7 +52,7 @@
     </head>
     <body>
 
-        <button onclick="go_back()" class="back-button">Go Back</button><br/>
+        <button onclick="go_back()" class="back-button">Go Back</button><br/><br/>
         <h1>Hello <?php echo "$user_name" ?>, welcome to your favourites!!</h1>
         <h2>All your favourites</h2>
 

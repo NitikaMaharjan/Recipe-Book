@@ -62,19 +62,9 @@
     <body>
         <nav class="navbar">
             <div class="logo">
-                <a href="/RecipeBook/Recipe-Book/php/profile.php"><?php
-                    if ($result2->num_rows==1) {
-                        while($row = $result2->fetch_assoc()) {
-                            if (($row['user_profile_picture'])) {
-                                echo "<img src='data:image/jpeg;base64,".base64_encode($row['user_profile_picture'])."' alt='Profile picture' style='max-width: 50px; max-height: 50px; border-radius: 50%; margin-right: 10px;'/>";
-                            } else {
-                                echo "<img src='/RecipeBook/Recipe-Book/default_profile_picture.jpg' style='max-width: 50px; max-height: 50px; border-radius: 50%; margin-right: 10px;'/>";
-                            }
-                        }
-                    }
-                    ?>
-                </a>
-                <h1  onclick="window.location.href='/RecipeBook/Recipe-Book/php/profile.php'" class="recipebook">Recipebook</h1>
+                <img src="/RecipeBook/Recipe-Book/logo/logo1.png" onclick="window.location.href='/RecipeBook/Recipe-Book/php/home.php'" style="width: 80px; height: 100px;"/>
+                <h1  onclick="window.location.href='/RecipeBook/Recipe-Book/php/home.php'" class="recipebook">Recipebook</h1>
+                
             </div>
 
             <div class="search-bar">
@@ -84,9 +74,21 @@
                     <input type="submit" value="Search"/>
                 </form> 
             </div>
-
+            <a href="/RecipeBook/Recipe-Book/php/profile.php"><?php
+                    if ($result2->num_rows==1) {
+                        while($row = $result2->fetch_assoc()) {
+                            if (($row['user_profile_picture'])) {
+                                echo "<img src='data:image/jpeg;base64,".base64_encode($row['user_profile_picture'])."' alt='Profile picture' style='max-width: 75px; max-height: 70px; border-radius: 50%; margin-right: 40px;margin-left:20px'/>";
+                            } else {
+                                echo "<img src='/RecipeBook/Recipe-Book/default_profile_picture.jpg' style='max-width: 50px; max-height: 50px; border-radius: 50%; padding-left: 50px;'/>";
+                            }
+                        }
+                    }
+                    ?>
+            </a>
+            
             <div class="leftside-bar">
-                <button class="favc-btn" onclick="window.location.href='/RecipeBook/Recipe-Book/php/favourite_functionality/favourite_page.php'">My Favourites<img src="/RecipeBook/Recipe-Book/buttons/fav_button.png" height="20px" style="margin-left:3px"/></button>
+                <button class="favc-btn" onclick="window.location.href='/RecipeBook/Recipe-Book/php/favourite_functionality/favourite_page.php'"><img src="/RecipeBook/Recipe-Book/buttons/fav_button_black.png" height="40px" style="margin-left:3px"/></button>
                 <button class="setting-btn" onclick="window.location.href='/RecipeBook/Recipe-Book/html/manage_profile/settings.html'">Settings</button>
             </div>
         </nav>
@@ -104,7 +106,7 @@
             </form>
         </div>
 
-        <a href="/RecipeBook/Recipe-Book/html/post_functionality/add_post.html"><img  class="add_recipe" src="/RecipeBook/Recipe-Book/buttons/add_button.png" title="Add Recipe"></a>
+        <a href="/RecipeBook/Recipe-Book/html/post_functionality/add_post.html"><img class="add_recipe"   src="/RecipeBook/Recipe-Book/buttons/add_button.png" title="Add Recipe"></a>
         
         <br/>
 

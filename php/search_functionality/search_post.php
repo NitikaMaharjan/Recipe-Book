@@ -90,7 +90,7 @@
         <nav class="navbar">
             <button class="home-btn" onclick="window.location.href='/RecipeBook/Recipe-Book/php/home.php'">Home</button>            
         </nav>
-        <br><br><br><br><br>
+        <br><br><br><br><br><br>
         <div class="search-bar">
             <form name="search" method="post" action="/RecipeBook/Recipe-Book/php/search_functionality/search_post.php">
                 <img src="/RecipeBook/Recipe-Book/buttons/search_icon.png" height="30px"/>

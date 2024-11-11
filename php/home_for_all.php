@@ -27,13 +27,13 @@
     <head>
         <title>Recipebook</title>
         <link rel="stylesheet" href="/RecipeBook/Recipe-Book/css/home_for_all.css" type="text/css">
-        <link rel="icon" href="/RecipeBook/Recipe-Book/logo/book2.png" type="image/png">
+        <link rel="icon" href="/RecipeBook/Recipe-Book/logo/logo1.png" type="image/png">
     </head>
 
     <body>
         <nav class="navbar">
             <div class="logo">
-                <img src="/RecipeBook/Recipe-Book/logo/book2.png" onclick="about()" style="width: 50px; height: 50px;"/>&nbsp;&nbsp;
+                <img src="/RecipeBook/Recipe-Book/logo/logo1.png" onclick="about()" style="width: 100px; height: 120px;"/>&nbsp;&nbsp;
                 <h1 onclick="about()" class="recipebook">Recipebook</h1>
             </div>
 

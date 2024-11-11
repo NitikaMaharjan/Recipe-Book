@@ -56,73 +56,75 @@
     </head>
     <body>
         <button onclick="go_back()" class="back-button">Go Back</button><br/><br/>
-        <?php
-            if ($row['post_edited_date'] != $row['post_posted_date']) {
-                // Post has been edited
-                echo "<div style='display: flex; align-items: center;'>"; 
-                if ($row['user_profile_picture']) {
-                    echo "<img src='data:image/jpeg;base64," . base64_encode($row['user_profile_picture']) . "' alt='Profile picture' style='width: 50px; height: 50px; border-radius: 50%; margin-right: 10px;' />";
+        <div class="view-post-container">
+            <?php
+                if ($row['post_edited_date'] != $row['post_posted_date']) {
+                    // Post has been edited
+                    echo "<div style='display: flex; align-items: center;'>"; 
+                    if ($row['user_profile_picture']) {
+                        echo "<img src='data:image/jpeg;base64," . base64_encode($row['user_profile_picture']) . "' alt='Profile picture' style='width: 50px; height: 50px; border-radius: 50%; margin-right: 10px;' />";
+                    } else {
+                        echo "<img src='/RecipeBook/Recipe-Book/default_profile_picture.jpg' style='width: 50px; height: 50px; border-radius: 50%; margin-right: 10px;' />";
+                    }
+                    echo "<p><b>" . htmlspecialchars($row['user_name']) . "</b> edited on <b>" . htmlspecialchars($row['post_edited_date']) . "</b></p>";
+                    echo "</div>"; 
                 } else {
-                    echo "<img src='/RecipeBook/Recipe-Book/default_profile_picture.jpg' style='width: 50px; height: 50px; border-radius: 50%; margin-right: 10px;' />";
-                }
-                echo "<p><b>" . htmlspecialchars($row['user_name']) . "</b> edited on <b>" . htmlspecialchars($row['post_edited_date']) . "</b></p>";
-                echo "</div>"; 
-            } else {
-                // Post has not been edited
-                echo "<div style='display: flex; align-items: center;'>"; 
-                if ($row['user_profile_picture']) {
-                    echo "<img src='data:image/jpeg;base64," . base64_encode($row['user_profile_picture']) . "' alt='Profile picture' style='width: 50px; height: 50px; border-radius: 50%; margin-right: 10px;' />";
-                } else {
-                    echo "<img src='/RecipeBook/Recipe-Book/default_profile_picture.jpg' style='width: 50px; height: 50px; border-radius: 50%; margin-right: 10px;' />";
-                }
-                echo "<p><b>" . htmlspecialchars($row['user_name']) . "</b> posted on <b>" . htmlspecialchars($row['post_posted_date']) . "</b></p>";
-                echo "</div>"; 
-            }        
-        ?>
-        <h1>
-            <?php 
-                echo htmlspecialchars($row['post_title'])."&nbsp&nbsp&nbsp&nbsp";
-                if($_SESSION['user_id']==$row['user_id']){
-                    echo "<button onclick='edit_post(" . $row['post_id'] . ")'>Edit post</button>";
-                    echo "<button onclick='delete_post(" . $row['post_id'] . ")'>Delete post</button>";
-                }
+                    // Post has not been edited
+                    echo "<div style='display: flex; align-items: center;'>"; 
+                    if ($row['user_profile_picture']) {
+                        echo "<img src='data:image/jpeg;base64," . base64_encode($row['user_profile_picture']) . "' alt='Profile picture' style='width: 50px; height: 50px; border-radius: 50%; margin-right: 10px;' />";
+                    } else {
+                        echo "<img src='/RecipeBook/Recipe-Book/default_profile_picture.jpg' style='width: 50px; height: 50px; border-radius: 50%; margin-right: 10px;' />";
+                    }
+                    echo "<p><b>" . htmlspecialchars($row['user_name']) . "</b> posted on <b>" . htmlspecialchars($row['post_posted_date']) . "</b></p>";
+                    echo "</div>"; 
+                }        
             ?>
-        </h1>
-        <p><?php echo htmlspecialchars($row['post_text']); ?></p>
+            <h1>
+                <?php 
+                    echo htmlspecialchars($row['post_title'])."&nbsp&nbsp&nbsp&nbsp";
+                    if($_SESSION['user_id']==$row['user_id']){
+                        echo "<button onclick='edit_post(" . $row['post_id'] . ")'>Edit post</button>";
+                        echo "<button onclick='delete_post(" . $row['post_id'] . ")'>Delete post</button>";
+                    }
+                ?>
+            </h1>
+            <p><?php echo htmlspecialchars($row['post_text']); ?></p>
 
-        <?php
+            <?php
 
-            if (($row['post_image'])) {
-                echo "<img src='data:image/jpeg;base64," . base64_encode($row['post_image']) . "' alt='Recipe Image' style='max-width: 200px; max-height: 200px;'/>";
-            } else {
-                echo "No image available";
-            }
+                if (($row['post_image'])) {
+                    echo "<img src='data:image/jpeg;base64," . base64_encode($row['post_image']) . "' alt='Recipe Image' '/>";
+                } else {
+                    echo "No image available";
+                }
 
-            echo "<p><b>Ingredients:</b></p>";
-            $ingredients = explode(', ', $row['post_ingredients']);
-            echo "<ul>";
-            foreach ($ingredients as $ingredient) {
-                echo "<li>" . htmlspecialchars($ingredient) . "</li>";
-            }
-            echo "</ul>";
+                echo "<p><b>Ingredients:</b></p>";
+                $ingredients = explode(', ', $row['post_ingredients']);
+                echo "<ul>";
+                foreach ($ingredients as $ingredient) {
+                    echo "<li>" . htmlspecialchars($ingredient) . "</li>";
+                }
+                echo "</ul>";
 
-            echo "<p><b>Instructions:</b></p>";
-            $steps = explode(', ', $row['post_instructions']);
-            echo "<ol>";
-            foreach ($steps as $step) {
-                echo "<li>" . htmlspecialchars($step) . "</li>";
-            }
-            echo "</ol>";
+                echo "<p><b>Instructions:</b></p>";
+                $steps = explode(', ', $row['post_instructions']);
+                echo "<ol>";
+                foreach ($steps as $step) {
+                    echo "<li>" . htmlspecialchars($step) . "</li>";
+                }
+                echo "</ol>";
 
-            echo "<p><b>Keywords</b>:" . htmlspecialchars($row['post_keywords']) . "</p>";
-            echo "<p><b>Category</b>:" . htmlspecialchars($row['post_category']) . "</p>";
+                echo "<p><b>Keywords</b>:" . htmlspecialchars($row['post_keywords']) . "</p>";
+                echo "<p><b>Category</b>:" . htmlspecialchars($row['post_category']) . "</p>";
 
-            echo "<button class='fav-btn' data-post-id='" . $row['post_id'] . "'>Add to Favourites</button>";
-            echo "<button class='like-btn' data-post-id='" .  $row['post_id'] . "'>";
-            echo "Likes: <span id='like-count-" .  $row['post_id'] . "'>" . htmlspecialchars($row['post_like_count']) . "</span>";
-            echo "</button>";
-            echo "<button class='comment-btn' data-post-id='" .  $row['post_id'] . "'>Comment</button>";
-        ?>
+                echo "<button class='fav-btn' data-post-id='" . $row['post_id'] . "'>Add to Favourites</button>";
+                echo "<button class='like-btn' data-post-id='" .  $row['post_id'] . "'>";
+                echo "Likes: <span id='like-count-" .  $row['post_id'] . "'>" . htmlspecialchars($row['post_like_count']) . "</span>";
+                echo "</button>";
+                echo "<button class='comment-btn' data-post-id='" .  $row['post_id'] . "'>Comment</button>";
+            ?>
+        </div>
          <!-- pop up box for comments -->
         <div id="commentModal" class="modal">
             <div class="modal-content">

@@ -1,5 +1,12 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    background-image: url('/RecipeBook/Recipe-Book/background.png');
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    width: 100%;
 }
 
 .navbar {
@@ -10,9 +17,9 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    height: 70px;
+    height: 100px;
     background-color: white;
-    padding: 30px 15px;
+
 }
 
 .logo {
@@ -89,7 +96,7 @@ body {
 .setting-btn {
     border: none;
     border-radius: 30px;
-    padding: 16px 30px;
+    padding: 5px 20px;
     font-size: 14px;
     font-weight: bold;
     cursor: pointer;
@@ -226,11 +233,13 @@ body {
     justify-content: center;
     align-items: center;
     width: 100%;
-    max-width: 600px;
+    max-width: 650px;
     margin: 0 auto;
     border-radius: 30px;
     margin-bottom: 15px;
     cursor: pointer;
+    transition: all 0.3s ease;
+    padding-left: 35px;
 }
 
 .post-title {
@@ -240,6 +249,7 @@ body {
     width: 90%;
     background-color: black;
     color: white;
+    transition: padding 0.3s ease;
 }
 
 .post {
@@ -247,21 +257,25 @@ body {
     border-bottom-right-radius: 30px;
     padding: 20px 30px;
     width: 90%;
-    background-color: antiquewhite;
+    background-color: #cccc;
     color: black;
+    transition: padding 0.3s ease;
 }
 
 .container:hover {
+
+    .post-title,
+    .post {
+        padding: 17px 37px;
+    }
+
     .post-title {
         background-color: #FFBF17;
-        color: white;
     }
 
     .post {
-        background-color: antiquewhite;
+        background-color: #FFDB80;
     }
-
-    box-shadow: 0px 6px 6px rgba(0, 0, 0, 0.2);
 }
 
 .popup,
@@ -288,4 +302,127 @@ body {
 
 .back-button {
     position: fixed;
+    background-color: #FFBF17;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    top: 20px;
+    left: 20px;
+}
+
+/* Styles for view_post.php */
+
+.view-post-container {
+    max-width: 600px;
+    margin: 50px auto;
+    background-color: #FFFFFFDD;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.view-post-container div {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+
+.view-post-container p {
+    margin: 0;
+    font-size: 16px;
+    color: #333;
+}
+
+.view-post-container h1 {
+    font-size: 28px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.view-post-container h1 button {
+    background-color: #FFBF17;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    padding: 8px 20px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-left: 10px;
+    transition: background-color 0.3s;
+}
+
+.view-post-container h1 button:hover {
+    background-color: #cccc;
+}
+
+
+.view-post-container p {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.view-post-container img {
+    max-width: 100%;
+    max-height: 300px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.view-post-container ul,
+.view-post-container ol {
+    margin-left: 20px;
+    font-size: 16px;
+    color: #333;
+}
+
+.view-post-container ul li,
+.view-post-container ol li {
+    margin-bottom: 10px;
+}
+
+.view-post-container p b {
+    font-weight: bold;
+}
+
+.view-post-container button {
+    background-color: #FFBF17;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    padding: 10px 25px;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 10px 10px 20px 0;
+    transition: background-color 0.3s;
+}
+
+.view-post-container button:hover {
+    background-color: #cccc;
+}
+
+@media (max-width: 768px) {
+    .view-post-container {
+        padding: 15px;
+    }
+
+    .view-post-container h1 {
+        font-size: 24px;
+    }
+
+    .view-post-container p {
+        font-size: 14px;
+    }
+
+    .view-post-container button {
+        padding: 8px 15px;
+        font-size: 14px;
+    }
 }

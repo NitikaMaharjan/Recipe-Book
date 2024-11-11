@@ -77,13 +77,13 @@
     
         <nav class="navbar">
             <div class="logo">
-                <img src="/RecipeBook/Recipe-Book/logo/logo2.png" onclick="about()" style="width: 150px; height: 200px; border-radius: 50%;"/>&nbsp;&nbsp;
+                <img src="/RecipeBook/Recipe-Book/logo/logo1.png" onclick="about()" style="width: 100px; height: 120px;"/>&nbsp;&nbsp;
                 <h1  onclick="window.location.href='/RecipeBook/Recipe-Book/php/home.php'" class="recipebook">Recipebook</h1>
             </div>
             <button class="home-btn" onclick="window.location.href='/RecipeBook/Recipe-Book/php/home.php'">Home</button>
 
             <div class="leftside-bar">
-                <button class="favc-btn" onclick="window.location.href='/RecipeBook/Recipe-Book/php/favourite_functionality/favourite_page.php'">My Favourites<img src="/RecipeBook/Recipe-Book/buttons/fav_button.png" height="20px" style="margin-left:3px"/></button>
+                <button class="favc-btn" onclick="window.location.href='/RecipeBook/Recipe-Book/php/favourite_functionality/favourite_page.php'"><img src="/RecipeBook/Recipe-Book/buttons/fav_button_black.png" height="40px" style="margin-left:3px"/></button>
                 <button class="setting-btn" onclick="window.location.href='/RecipeBook/Recipe-Book/html/manage_profile/settings.html'">Settings</button>
             </div>
         </nav>

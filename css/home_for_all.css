@@ -1,7 +1,7 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
-    background-image:url('/RecipeBook/Recipe-Book/wallpaper.jpg');
+    background-image: url('/RecipeBook/Recipe-Book/background.png');
     background-attachment: fixed;
     background-size: cover;
     background-position: center;
@@ -16,16 +16,18 @@ body {
     position: fixed;
     width: 100%;
     background-color: white;
-    height:70px;
+    height: 100px;
 }
 
-.logo, .recipebook{
+.logo,
+.recipebook {
     margin: 5px;
 }
+
 .logo {
     display: flex;
     align-items: center;
-    cursor: pointer;  
+    cursor: pointer;
 }
 
 .recipebook {
@@ -59,8 +61,8 @@ body {
     padding-left: 10px;
 }
 
-.loginbar{
-    margin:10px;
+.loginbar {
+    margin: 10px;
 }
 
 .login-btn,
@@ -74,22 +76,25 @@ body {
     transition: background-color 0.2s, color 0.2s;
 }
 
-.login-btn, .signup-btn{
+.login-btn,
+.signup-btn {
     background-color: #cccc;
     color: black;
 }
 
-.login-btn:hover, .signup-btn:hover{
+.login-btn:hover,
+.signup-btn:hover {
     background-color: #ffbf17;
     color: white;
 }
 
-.heading h1, .heading h2 {
-    margin:0px;
+.heading h1,
+.heading h2 {
+    margin: 0px;
 }
 
-.heading{
-    padding-top: 70px;
+.heading {
+    padding-top: 100px;
 }
 
 .heading label {
@@ -133,7 +138,7 @@ body {
     border-radius: 30px;
     margin-bottom: 15px;
     cursor: pointer;
-    transition: all 0.3s ease; 
+    transition: all 0.3s ease;
     padding-left: 35px;
 }
 
@@ -154,33 +159,39 @@ body {
     width: 90%;
     background-color: #cccc;
     color: black;
-    transition: padding 0.3s ease; 
+    transition: padding 0.3s ease;
 }
 
 .container:hover {
-    .post-title, .post{
-        padding: 17px 37px; 
+
+    .post-title,
+    .post {
+        padding: 17px 37px;
     }
-    .post-title{
+
+    .post-title {
         background-color: #FFBF17;
     }
-    .post{
+
+    .post {
         background-color: #FFDB80;
     }
 }
 
-.about, .popup{
-    display: none;  
-    position: fixed; 
+.about,
+.popup {
+    display: none;
+    position: fixed;
     top: 0;
     left: 0;
-    width: 100%;  
-    height: 100%;  
-    background-color: rgba(0, 0, 0, 0.5); 
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
-.about_content, .popup_content{
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+.about_content,
+.popup_content {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #FFDB80;
     padding: 20px;
     border: 1px solid #FFDB80;
@@ -190,10 +201,10 @@ body {
     margin-left: 108px;
 }
 
-.about_content{
+.about_content {
     margin-top: 25px;
 }
 
-.popup_content{
+.popup_content {
     margin-top: 90px;
 }
