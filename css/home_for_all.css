@@ -56,9 +56,28 @@ body {
     background: none;
     outline: none;
     flex: 1;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 15px;
     color: black;
     padding-left: 10px;
+}
+
+.search-btn{
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    padding: 8px 20px;
+    cursor: pointer;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 15px;
+    transition: background-color 0.3s;
+    margin-left: 10px;
+}
+
+.search-btn:hover {
+    background-color: #ffbf17;
+    color: white;
 }
 
 .loginbar {
@@ -126,8 +145,6 @@ body {
     height: 70px;
     border-radius: 50%;
     cursor: pointer;
-    z-index: 100;
-    background-color: white;
 }
 
 .container {

@@ -27,29 +27,30 @@
     <head>
         <title>Recipebook</title>
         <link rel="stylesheet" href="/RecipeBook/Recipe-Book/css/home_for_all.css" type="text/css">
-        <link rel="icon" href="/RecipeBook/Recipe-Book/logo/logo1.png" type="image/png">
+        <link rel="icon" href="/RecipeBook/Recipe-Book/logo/logo4.png" type="image/png">
     </head>
 
     <body>
         <nav class="navbar">
             <div class="logo">
-                <img src="/RecipeBook/Recipe-Book/logo/logo1.png" onclick="about()" style="width: 100px; height: 120px;"/>&nbsp;&nbsp;
-                <h1 onclick="about()" class="recipebook">Recipebook</h1>
+                <img src="/RecipeBook/Recipe-Book/logo/logo4.png" onclick="about()" title="About Recipebook" style="width: 120px; height: 120px;"/>&nbsp;
+                <h1 onclick="about()" class="recipebook" title="About Recipebook">Recipebook</h1>
             </div>
 
             <div class="search-bar">
                 <img src="/RecipeBook/Recipe-Book/buttons/search_icon.png" onclick="popup()" height="30px"/>
                 <input type="text" placeholder="Search Recipe" onclick="popup()"/>
+                <button class="search-btn" onclick="popup()">Search</button>
             </div>
             <div class="loginbar">
-                <button class="login-btn" onclick="window.location.href='/RecipeBook/Recipe-Book/html/login.html'">Log in</button>&nbsp;&nbsp;
-                <button class="signup-btn" onclick="window.location.href='/RecipeBook/Recipe-Book/html/signup.html'">Sign up</button>
+                <button class="login-btn" onclick="window.location.href='/RecipeBook/Recipe-Book/html/login.html'" title="Log in">Log in</button>&nbsp;&nbsp;
+                <button class="signup-btn" onclick="window.location.href='/RecipeBook/Recipe-Book/html/signup.html'" title="Sign up">Sign up</button>
             </div>
         </nav>
         
         <div class="background">
             <div class="heading">
-                <h1 style="text-align: center;">Welcome to <span style="color:#ffbf17; cursor:pointer;" onclick="about()">Recipebook</span></h1><br/>
+                <h1 style="text-align: center;">Welcome to <span style="color:#ffbf17; cursor:pointer;" onclick="about()" title="About Recipebook">Recipebook</span></h1><br/>
                 <h2 style="text-align: center;">All posts</h2>
 
                 <label>Sort by:</label>&nbsp;&nbsp;
