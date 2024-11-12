@@ -12,7 +12,6 @@ body {
 .navbar {
     display: flex;
     align-items: center;
-    justify-content: space-between;
     position: fixed;
     width: 100%;
     background-color: white;
@@ -45,10 +44,19 @@ body {
     width: 100%;
     max-width: 650px;
     flex: 1;
+    margin:43px;
 }
 
 .search-bar img {
     cursor: pointer;
+}
+
+.search-bar form {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin: 0;
+    padding: 0;
 }
 
 .search-bar input[type="text"] {
@@ -79,27 +87,16 @@ body {
     background-color: #ffbf17;
 }
 
-.loginbar {
-    margin: 10px;
+.rightside-bar {
+    display: flex;
+    margin:30px;
 }
 
-.login-btn,
-.signup-btn {
-    border: none;
-    border-radius: 30px;
-    padding: 16px 30px;
-    font-size: 14px;
-    font-weight: bold;
+.setting-btn{
+    padding-left: 30px;
+}
+.favc-btn, .setting-btn {
     cursor: pointer;
-    transition: background-color 0.2s, color 0.2s;
-    background-color: #cccc;
-    color: black;
-}
-
-.login-btn:hover,
-.signup-btn:hover {
-    background-color: #ffbf17;
-    color: white;
 }
 
 .heading h1,
@@ -192,8 +189,7 @@ body {
     }
 }
 
-.about,
-.popup {
+.modal{
     display: none;
     position: fixed;
     top: 0;
@@ -203,22 +199,30 @@ body {
     background-color: rgba(0, 0, 0, 0.5);
 }
 
-.about_content,
-.popup_content {
+.modal-content{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #FFDB80;
     padding: 20px;
     border: 1px solid #FFDB80;
     border-radius: 30px;
     width: 80%;
-    text-align: center;
+    text-align: left;
+    margin-top: 90px;
     margin-left: 108px;
 }
 
-.about_content {
-    margin-top: 25px;
+#submit-comment{
+    border: none;
+    border-radius: 30px;
+    padding: 16px 30px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+    background-color: black;
+    color: white;
 }
 
-.popup_content {
-    margin-top: 90px;
+#submit-comment:hover {
+    background-color: #ffbf17;
 }
