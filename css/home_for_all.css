@@ -126,6 +126,8 @@ body {
     height: 70px;
     border-radius: 50%;
     cursor: pointer;
+    z-index: 100;
+    background-color: white;
 }
 
 .container {
@@ -133,7 +135,7 @@ body {
     justify-content: center;
     align-items: center;
     width: 100%;
-    max-width: 650px;
+    max-width: 550px;
     margin: 0 auto;
     border-radius: 30px;
     margin-bottom: 15px;

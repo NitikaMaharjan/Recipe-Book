@@ -58,6 +58,7 @@
     <head>
         <title>Recipebook</title>
         <link rel="stylesheet" href="/RecipeBook/Recipe-Book/css/styles.css">
+        <link rel="icon" href="/RecipeBook/Recipe-Book/logo/logo1.png" type="image/png">
     </head>
     <body>
         <nav class="navbar">
@@ -80,7 +81,7 @@
                             if (($row['user_profile_picture'])) {
                                 echo "<img src='data:image/jpeg;base64,".base64_encode($row['user_profile_picture'])."' alt='Profile picture' style='max-width: 75px; max-height: 70px; border-radius: 50%; margin-right: 40px;margin-left:20px'/>";
                             } else {
-                                echo "<img src='/RecipeBook/Recipe-Book/default_profile_picture.jpg' style='max-width: 50px; max-height: 50px; border-radius: 50%; padding-left: 50px;'/>";
+                                echo "<img src='/RecipeBook/Recipe-Book/default_profile_picture.jpg' style='max-width: 50px; max-height: 50px; border-radius: 50%; margin-right: 40px;'/>";
                             }
                         }
                     }

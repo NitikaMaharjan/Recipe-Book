@@ -49,13 +49,13 @@
     <head>
         <title>Recipebook</title>
         <link rel="stylesheet" href="/RecipeBook/Recipe-Book/css/styles.css">
+        <link rel="icon" href="/RecipeBook/Recipe-Book/logo/logo1.png" type="image/png">
     </head>
     <body>
-
         <button onclick="go_back()" class="back-button">Go Back</button><br/><br/>
-        <h1>Hello <?php echo "$user_name" ?>, welcome to your favourites!!</h1>
-        <h2>All your favourites</h2>
-
+        <h1 style="text-align:center">Hello <?php echo "$user_name" ?>, welcome to your favourites!!</h1>
+        <h2 style="text-align:center">All your favourites</h2>
+        
         <?php
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()){

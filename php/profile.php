@@ -72,6 +72,7 @@
     <head>
         <title>Recipebook</title>
         <link rel="stylesheet" href="/RecipeBook/Recipe-Book/css/styles.css">
+        <link rel="icon" href="/RecipeBook/Recipe-Book/logo/logo1.png" type="image/png">
     </head>
     <body>
     
@@ -114,7 +115,7 @@
             </form>
         </div>
 
-        <a href="/RecipeBook/Recipe-Book/html/post_functionality/add_post.html"><img  class="add_recipe" src="/RecipeBook/Recipe-Book/buttons/add_button.png" title="Add Recipe"></a>
+        <a  href="/RecipeBook/Recipe-Book/html/post_functionality/add_post.html"><img class="add_recipe"  src="/RecipeBook/Recipe-Book/buttons/add_button.png" title="Add Recipe"></a>
 
        
 
