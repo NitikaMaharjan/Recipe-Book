@@ -160,10 +160,10 @@
     <form action="/RecipeBook/Recipe-Book/php/post_functionality/add_post.php" method="POST"
         enctype="multipart/form-data">
 
-        <label for="post_image">Post Image:</label>
+        <label for="post_image">Recipe Image:</label>
         <input type="file" name="post_image" accept="image" id="post_image" required />
 
-        <label for="post_title">Post Title:</label>
+        <label for="post_title">Recipe Title:</label>
         <input type="text" name="post_title" id="post_title" required />
 
         <label for="post_ingredients">Ingredients:</label>
@@ -173,22 +173,21 @@
         <img onclick="addIngredientField()" width="30px" style="background-color:transparent;cursor: pointer;"
             src="/RecipeBook/Recipe-Book/buttons/add_button.png" title="Add Ingredient">
 
-        <label for="post_instructions">Preparation:</label>
+        <label for="post_instructions">Preparation steps:</label>
         <div id="steps_container">
             <textarea name="post_instructions[]" placeholder="Enter preparation step" required></textarea>
         </div>
         <img onclick="addStepField()" width="30px" style="background-color:transparent;cursor: pointer;"
             src="/RecipeBook/Recipe-Book/buttons/add_button.png" title="Add Step">
 
-        <label for="post_keywords">Keywords:</label>
+        <label for="post_keywords">Hashtag:</label>
         <input type="text" name="post_keywords" id="post_keywords" Placeholder="#cheese, #potato,..." required />
 
         <label for="post_category">Category:</label>
         <input type="text" name="post_category" id="post_category" required />
 
-        <label for="post_text">Description :</label>
-        <textarea name="post_text" id="post_text" required></textarea>
-
+        <label for="post_text">Note:</label>
+        <textarea name="post_text" id="post_text" placeholder="Add your personal note" required></textarea>
 
         <input type="submit" value="Add Recipe" />
 

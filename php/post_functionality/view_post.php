@@ -108,7 +108,7 @@
                 }
                 echo "</ul>";
 
-                echo "<p><b>Instructions:</b></p>";
+                echo "<p><b>Preparation Steps:</b></p>";
                 $steps = explode(', ', $row['post_instructions']);
                 echo "<ol>";
                 foreach ($steps as $step) {
@@ -116,7 +116,7 @@
                 }
                 echo "</ol>";
 
-                echo "<p><b>Keywords</b>:" . htmlspecialchars($row['post_keywords']) . "</p>";
+                echo "<p><b>Hashtag</b>:" . htmlspecialchars($row['post_keywords']) . "</p>";
                 echo "<p><b>Category</b>:" . htmlspecialchars($row['post_category']) . "</p>";
 
                 echo "<button class='fav-btn' data-post-id='" . $row['post_id'] . "'>Add to Favourites</button>";
