@@ -44,7 +44,7 @@ body {
     width: 100%;
     max-width: 650px;
     flex: 1;
-    margin:43px;
+    margin: 43px;
 }
 
 .search-bar img {
@@ -70,7 +70,7 @@ body {
     padding-left: 10px;
 }
 
-.search-btn{
+.search-btn {
     background-color: black;
     color: white;
     border: none;
@@ -89,13 +89,15 @@ body {
 
 .rightside-bar {
     display: flex;
-    margin:30px;
+    margin: 30px;
 }
 
-.setting-btn{
+.setting-btn {
     padding-left: 30px;
 }
-.favc-btn, .setting-btn {
+
+.favc-btn,
+.setting-btn {
     cursor: pointer;
 }
 
@@ -189,7 +191,7 @@ body {
     }
 }
 
-.modal{
+.modal {
     display: none;
     position: fixed;
     top: 0;
@@ -199,7 +201,7 @@ body {
     background-color: rgba(0, 0, 0, 0.5);
 }
 
-.modal-content{
+.modal-content {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #FFDB80;
     padding: 20px;
@@ -211,7 +213,7 @@ body {
     margin-left: 108px;
 }
 
-#submit-comment{
+#submit-comment {
     border: none;
     border-radius: 30px;
     padding: 16px 30px;
