@@ -12,6 +12,12 @@ body {
 .navbar {
     display: flex;
     align-items: center;
+    position: fixed;
+    width: 100%;
+    background-color: white;
+    height: 100px;
+    display: flex;
+    align-items: center;
     justify-content: space-between;
     position: fixed;
     top: 0;
@@ -85,11 +91,9 @@ body {
     background-color: #FFBF17;
 }
 
-.leftside-bar {
+.rightside-bar {
     display: flex;
-    gap: 10px;
-    margin-right: 35px;
-    margin-left: 10px;
+    margin: 30px;
 }
 
 .favc-btn,
@@ -103,27 +107,7 @@ body {
     transition: background-color 0.2s, color 0.2s;
 }
 
-.favc-btn {
-    align-items: center;
-    display: flex;
-    background-color: #FFBF17;
-    color: white;
-}
 
-.setting-btn {
-    background-color: #FFBF17;
-    color: white;
-}
-
-.leftside-bar .favc-btn:hover {
-    background-color: #cccc;
-    color: black;
-}
-
-.leftside-bar .setting-btn:hover {
-    background-color: #cccc;
-    color: black;
-}
 
 .home-btn {
     border: none;
@@ -226,8 +210,6 @@ body {
     height: 70px;
     border-radius: 50%;
     cursor: pointer;
-    z-index: 100;
-    background-color: white;
 }
 
 .container {

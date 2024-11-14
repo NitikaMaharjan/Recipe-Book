@@ -1,38 +1,107 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
-    <title>Recipebook</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipebook - Settings</title>
     <link rel="icon" href="/RecipeBook/Recipe-Book/logo/logo1.png" type="image/png">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: url('/RecipeBook/Recipe-Book/background.png') no-repeat center center fixed;
+            background-size: cover;
+        }
+
+        .setting-container {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            width: 300px;
+            text-align: center;
+            border-radius: 10px;
+            border: 1px solid #ddd;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .setting-container h1 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .setting-container button {
+            background-color: black;
+            color: white;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            padding: 12px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin: 10px 0;
+            width: 100%;
+        }
+
+        .setting-container button:hover {
+            background-color: #FFBF17;
+        }
+
+
+        .back-button {
+            position: fixed;
+            background-color: #FFBF17;
+            color: white;
+            font-weight: bold;
+            border: none;
+            border-radius: 10px;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            top: 20px;
+            left: 20px;
+        }
+    </style>
 </head>
 
 <body>
-    <button onclick="go_back()">Go Back</button>
-    <h1>Settings</h1>
-    <button><a href="/RecipeBook/Recipe-Book/html/manage_profile/update_profile_pic.html">Update profile
-            picture</a></button><br /><br />
-    <button onclick="delete_profile_pic()">Delete profile picture</button><br /><br />
-    <button><a href="/RecipeBook/Recipe-Book/html/manage_profile/change_password.html">Change
-            password</a></button><br /><br />
-    <button onclick="confirmit()">Log out</button>
+    <button class="back-button" onclick="go_back()">Go Back</button>
+
+    <div class="setting-container">
+        <h1>Settings</h1>
+
+        <button
+            onclick="window.location.href='/RecipeBook/Recipe-Book/html/manage_profile/update_profile_pic.html'">Update
+            Profile Picture</button>
+        <button onclick="delete_profile_pic()">Delete Profile Picture</button>
+        <button onclick="window.location.href='/RecipeBook/Recipe-Book/html/manage_profile/change_password.html'">Change
+            Password</button>
+        <button onclick="confirmit()">Log Out</button>
+    </div>
+
+    <script>
+        function confirmit() {
+            var ans = confirm("Are you sure you want to log out?");
+            if (ans == true) {
+                window.location.href = "/RecipeBook/Recipe-Book/php/logout.php";
+            }
+        }
+
+        function go_back() {
+            window.history.back();
+        }
+
+        function delete_profile_pic() {
+            var ans = confirm("Are you sure you want to delete your profile picture?");
+            if (ans == true) {
+                window.location.href = "/RecipeBook/Recipe-Book/php/manage_profile/delete_profile_pic.php";
+            }
+        }
+    </script>
 </body>
-<script>
-    function confirmit() {
-        var ans = confirm("Are you sure you want to log out?");
-        if (ans == true) {
-            window.location.href = "/RecipeBook/Recipe-Book/php/logout.php";
-        }
-    }
-
-    function go_back() {
-        window.history.back();
-    }
-
-    function delete_profile_pic() {
-        var ans = confirm("Are you sure you want to delete your profile picture?");
-        if (ans == true) {
-            window.location.href = "/RecipeBook/Recipe-Book/php/manage_profile/delete_profile_pic.php";
-        }
-    }
-</script>
 
 </html>

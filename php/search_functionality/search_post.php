@@ -106,7 +106,7 @@
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {
                     $postId = $row['post_id'];
-                    echo "<div class='container'>";
+                    echo "<div class='container' onmouseover='onHover(this)' onmouseout='noHover(this)'>";
                     echo "<div class='post-title'>";
                         echo "<h3 style='font-size:25px;'>" . htmlspecialchars($row['post_title']) . "</h3>";
                     echo "</div>";
@@ -144,12 +144,9 @@
 
                     echo "<p>" . htmlspecialchars($row['post_text']) . "</p>";
                     echo "<p>" . htmlspecialchars($row['post_keywords']) . "</p>";
-                    echo "<button class='fav-btn' data-post-id='" . $row['post_id'] . "'>Add to Favourites</button>";
-
-                    echo "<button class='like-btn' data-post-id='" .  $row['post_id'] . "'>";
-                    echo "Likes: <span id='like-count-" .  $row['post_id'] . "'>" . htmlspecialchars($row['post_like_count']) . "</span>";
-                    echo "</button>";
-                    echo "<button class='comment-btn' data-post-id='" . $postId . "'>Comment</button>";
+                    echo "<img class='like-btn'  data-post-id='" . $postId . "' src='/RecipeBook/Recipe-Book/buttons/like_button_black_outlined.png' height='30px' width='30px' title='Likes'/><span id='like-count-" . $postId . "'>" . htmlspecialchars($row['post_like_count']) . "</span>&nbsp;&nbsp;&nbsp;";
+                    echo "<img class='comment-btn' data-post-id='" . $postId . "' src='/RecipeBook/Recipe-Book/buttons/comment_button_black_outlined.png' height='30px' width='30px' title='Comment'/>&nbsp;&nbsp;&nbsp;";
+                    echo "<img class='fav-btn' data-post-id='" . $row['post_id'] . "' src='/RecipeBook/Recipe-Book/buttons/fav_button_black_outlined.png' height='30px' width='30px' title='Add to favourites'/>";
                     
                     echo "</div>";
                     echo "</div>";
@@ -174,6 +171,55 @@
     <script>
         function view_post(post_id) {
             window.location.href = "/RecipeBook/Recipe-Book/php/post_functionality/view_post.php?post_id=" + post_id;
+        }
+        function onHoverFavc(){
+            document.querySelector('.favc-btn').src = '/RecipeBook/Recipe-Book/buttons/fav_button_yellow.png';
+        }
+
+        function noHoverFavc(){
+            document.querySelector('.favc-btn').src = '/RecipeBook/Recipe-Book/buttons/fav_button_black.png';
+        }
+
+        function onHoverSetting(){
+            document.querySelector('.setting-btn').src = '/RecipeBook/Recipe-Book/buttons/settings_button_yellow_lined.png';
+            document.querySelector('.setting-btn').style.height="50px";
+            document.querySelector('.setting-btn').style.width="50px";
+        }
+
+        function noHoverSetting(){
+            document.querySelector('.setting-btn').src = '/RecipeBook/Recipe-Book/buttons/settings_button_black_lined.png';
+        }
+
+        function onHover(container) {
+            const favIcon = container.querySelector('.fav-btn');
+            const likeIcon = container.querySelector('.like-btn');
+            const commentIcon = container.querySelector('.comment-btn');
+
+            favIcon.src = "/RecipeBook/Recipe-Book/buttons/fav_button_yellow_outlined.png";
+            favIcon.style.height="35px";
+            favIcon.style.width="35px";
+            likeIcon.src = "/RecipeBook/Recipe-Book/buttons/like_button_yellow_outlined.png";
+            likeIcon.style.height="35px";
+            likeIcon.style.width="35px";
+            commentIcon.src = "/RecipeBook/Recipe-Book/buttons/comment_button_yellow_outlined.png";
+            commentIcon.style.height="35px";
+            commentIcon.style.width="35px";
+        }
+
+        function noHover(container) {
+            const favIcon = container.querySelector('.fav-btn');
+            const likeIcon = container.querySelector('.like-btn');
+            const commentIcon = container.querySelector('.comment-btn');
+
+            favIcon.src = "/RecipeBook/Recipe-Book/buttons/fav_button_black_outlined.png";
+            favIcon.style.height="30px";
+            favIcon.style.width="30px";
+            likeIcon.src = "/RecipeBook/Recipe-Book/buttons/like_button_black_outlined.png";
+            likeIcon.style.height="30px";
+            likeIcon.style.width="30px";
+            commentIcon.src = "/RecipeBook/Recipe-Book/buttons/comment_button_black_outlined.png";
+            commentIcon.style.height="30px";
+            commentIcon.style.width="30px";
         }
 
          //ajax for like button
