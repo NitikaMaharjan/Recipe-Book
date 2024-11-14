@@ -164,7 +164,7 @@
             button.addEventListener('click', function(event) {
                 event.stopPropagation();
                 const postId = this.getAttribute('data-post-id');
-                const postElement = this.closest('.post');
+                const postElement = this.closest('.container'); // This ensures the entire post container is removed
 
                 const xhr = new XMLHttpRequest();
                 xhr.open('POST', '/RecipeBook/Recipe-Book/php/favourite_functionality/remove_favourite.php', true);
@@ -175,9 +175,9 @@
                         const response = xhr.responseText.trim();
                         if (response.includes('successfully')) {
                             alert('Post removed from your favourites!');
-                            postElement.remove();
+                            postElement.remove();  // Remove the entire post container (not just the post)
                         } else {
-                            alert('Error: ' + response); 
+                            alert('Error: ' + response);
                         }
                     } else {
                         alert('Failed to remove favorite. Please try again.');
@@ -191,6 +191,7 @@
                 xhr.send('post_id=' + postId);
             });
         });
+
 
         // ajax and js for comments section
         let commentPollingInterval; // Variable to hold the interval ID

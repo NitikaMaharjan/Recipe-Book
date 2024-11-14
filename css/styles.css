@@ -70,7 +70,7 @@ body {
 }
 
 .search-bar input[type="submit"] {
-    background-color: #cccc;
+    background-color: black;
     color: white;
     border: none;
     border-radius: 15px;
@@ -133,7 +133,7 @@ body {
     font-weight: bold;
     cursor: pointer;
     align-items: center;
-    margin-right: 25px;
+    margin-right: 110px;
     transition: background-color 0.2s, color 0.2s;
 }
 
