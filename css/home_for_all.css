@@ -62,7 +62,7 @@ body {
     padding-left: 10px;
 }
 
-.search-btn{
+.search-btn {
     background-color: black;
     color: white;
     border: none;
@@ -219,6 +219,85 @@ body {
     margin-top: 25px;
 }
 
+
 .popup_content {
+    background-color: #fff;
+    margin: auto;
     margin-top: 90px;
+    padding: 20px;
+    border-radius: 8px;
+    width: 50%;
+    max-width: 600px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: relative;
+}
+
+.close2 {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 35px;
+    color: black;
+    cursor: pointer;
+}
+
+.signup_login_popup_logo {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.signup_login_popup_logo img {
+    width: 220px;
+    height: 220px;
+    cursor: pointer;
+}
+
+/* Form styling */
+.signup_login_popup_form {
+    flex: 2;
+    padding: 20px;
+}
+
+.signup_login_popup_form h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.signup_login_popup_form input[type="text"],
+.signup_login_popup_form input[type="email"],
+.signup_login_popup_form input[type="password"],
+.signup_login_popup_form input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.signup_login_popup_form input[type="submit"] {
+    background-color: #FFBF17;
+    color: white;
+    cursor: pointer;
+    border: none;
+}
+
+.signup_login_popup_form button {
+    background-color: transparent;
+    border: none;
+    font-size: 16px;
+    text-decoration: underline;
+    color: #FFBF17;
+    cursor: pointer;
+    padding: 0;
+}
+
+.signup_login_popup_form button a {
+    color: inherit;
+    text-decoration: none;
 }

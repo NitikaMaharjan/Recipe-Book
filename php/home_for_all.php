@@ -133,22 +133,25 @@
             </div>
         </div>
 
+       
         <!-- pop up box for signup and login -->
         <div id="signup_login_popup" class="popup">
             <div class="popup_content">
-                <div style="text-align:right;">
-                    <span class="close2" onclick="closePopup2()" style="font-size:35px; color:black; cursor:pointer;">&times;</span>
+                <span class="close2" onclick="closePopup2()">&times;</span>
+                <div class="signup_login_popup_logo">
+                    <img src="/RecipeBook/Recipe-Book/logo/logo4.png"  title="About Recipebook" />
                 </div>
-                <div>
-                <h1>Sign up to get started!!</h1>
-                <form name="signup" method="post" action="/RecipeBook/Recipe-Book/php/signup.php">
-                    <input type="text" name="username" placeholder="Username" required/><br/><br/>
-                    <input type="email" name="email" placeholder="Email" required/><br/><br/>
-                    <input type="password" name="password" placeholder="Password" required/><br/><br/>
-                    <input type="password" name="password2" placeholder="Confirm password" required/><br/><br/>
-                    <input type="submit" value="Sign up"/>
-                </form>
-                <h1>Already have an account??</h1><button><a href="/RecipeBook/Recipe-Book/html/login.html">Log in</a></button>
+                <div class="signup_login_popup_form">
+                    <h1>Sign up to get started!!</h1>
+                    <form name="signup" method="post" action="/RecipeBook/Recipe-Book/php/signup.php">
+                        <input type="text" name="username" placeholder="Username" required /><br />
+                        <input type="email" name="email" placeholder="Email" required /><br />
+                        <input type="password" name="password" placeholder="Password" required /><br />
+                        <input type="password" name="password2" placeholder="Confirm password" required /><br />
+                        <input type="submit" value="Sign up" />
+                    </form>
+                    <h1>Already have an account??</h1>
+                    <button><a href="/RecipeBook/Recipe-Book/html/login.html">Log in</a></button>
                 </div>
             </div>
         </div>
