@@ -105,12 +105,12 @@
                             echo "<p>" . htmlspecialchars($row['post_keywords']) . "</p>";
 
                             
-                            echo "<img class='fav' src='/RecipeBook/Recipe-Book/buttons/fav_button_black_outlined.png' onclick='popup()' height='30px' width='30px' title='Add to favourites'/>&nbsp;&nbsp;&nbsp;";
 
                             $postId = $row['post_id'];
                             echo "<img class='like' src='/RecipeBook/Recipe-Book/buttons/like_button_black_outlined.png' onclick='popup()' height='30px' width='30px' title='Likes'/><span id='like-count-" . $postId . "'>" . htmlspecialchars($row['post_like_count']) . "</span>&nbsp;&nbsp;&nbsp;";
+                            echo "<img class='comment' src='/RecipeBook/Recipe-Book/buttons/comment_button_black_outlined.png' onclick='popup()' height='30px' width='30px' title='Comment'/>&nbsp;&nbsp;&nbsp;";
+                            echo "<img class='fav' src='/RecipeBook/Recipe-Book/buttons/fav_button_black_outlined.png' onclick='popup()' height='30px' width='30px' title='Add to favourites'/>";
 
-                            echo "<img class='comment' src='/RecipeBook/Recipe-Book/buttons/comment_button_black_outlined.png' onclick='popup()' height='30px' width='30px' title='Comment'/>";
                         echo "</div>";
 
                     echo "</div>";
@@ -160,39 +160,7 @@
         </div>
     </body>
     <script>
-        function onHover(container) {
-            const favIcon = container.querySelector('.fav');
-            const likeIcon = container.querySelector('.like');
-            const commentIcon = container.querySelector('.comment');
-
-            favIcon.src = "/RecipeBook/Recipe-Book/buttons/fav_button_yellow_outlined.png";
-            favIcon.style.height="35px";
-            favIcon.style.width="35px";
-            likeIcon.src = "/RecipeBook/Recipe-Book/buttons/like_button_yellow_outlined.png";
-            likeIcon.style.height="35px";
-            likeIcon.style.width="35px";
-            commentIcon.src = "/RecipeBook/Recipe-Book/buttons/comment_button_yellow_outlined.png";
-            commentIcon.style.height="35px";
-            commentIcon.style.width="35px";
-        }
-
-        function noHover(container) {
-            const favIcon = container.querySelector('.fav');
-            const likeIcon = container.querySelector('.like');
-            const commentIcon = container.querySelector('.comment');
-
-            favIcon.src = "/RecipeBook/Recipe-Book/buttons/fav_button_black_outlined.png";
-            favIcon.style.height="30px";
-            favIcon.style.width="30px";
-            likeIcon.src = "/RecipeBook/Recipe-Book/buttons/like_button_black_outlined.png";
-            likeIcon.style.height="30px";
-            likeIcon.style.width="30px";
-            commentIcon.src = "/RecipeBook/Recipe-Book/buttons/comment_button_black_outlined.png";
-            commentIcon.style.height="30px";
-            commentIcon.style.width="30px";
-        }
-
-        //about popup box
+        
         function about() {
             //display the pop-up box
             document.getElementById('about').style.display = 'block';

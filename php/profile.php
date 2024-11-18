@@ -38,7 +38,12 @@
     $conn->query($update_sql);
 
     $sql = "
-        SELECT post.*, user.user_name, user.user_profile_picture
+        SELECT post.*, 
+           user.user_name, 
+           user.user_profile_picture,
+           (SELECT COUNT(*) FROM Likes WHERE Likes.post_id = post.post_id) AS post_like_count,
+           (SELECT COUNT(*) FROM Likes WHERE Likes.post_id = post.post_id AND Likes.user_id = $user_id) AS has_liked,
+           (SELECT COUNT(*) FROM favourite WHERE favourite.post_id = post.post_id AND favourite.user_id = $user_id) AS has_favorited
         FROM post 
         JOIN user ON post.user_id = user.user_id 
         WHERE post.user_id = $user_id
@@ -161,9 +166,13 @@
                     echo "<p>" . htmlspecialchars($row['post_text']) . "</p>";
                     echo "<p>" . htmlspecialchars($row['post_keywords']) . "</p>";
 
-                    echo "<img class='like-btn'  data-post-id='" . $postId . "' src='/RecipeBook/Recipe-Book/buttons/like_button_black_outlined.png' height='30px' width='30px' title='Likes'/><span id='like-count-" . $postId . "'>" . htmlspecialchars($row['post_like_count']) . "</span>&nbsp;&nbsp;&nbsp;";   
+                    $likeButtonSrc = $row['has_liked'] ? "/RecipeBook/Recipe-Book/buttons/like_button_yellow_filled.png" : "/RecipeBook/Recipe-Book/buttons/like_button_black_outlined.png";
+                    $favButtonSrc = $row['has_favorited'] ? "/RecipeBook/Recipe-Book/buttons/fav_button_yellow_filled.png" : "/RecipeBook/Recipe-Book/buttons/fav_button_black_outlined.png";
+
+                    echo "<img id='like-btn-" . $row['post_id'] . "' class='like-btn' data-post-id='" . $row['post_id'] . "' src='" . $likeButtonSrc . "' height='30px' width='30px' title='Likes' />";
+                    echo "<span id='like-count-" . $row['post_id'] . "'>" . htmlspecialchars($row['post_like_count']) . "</span>&nbsp;&nbsp;&nbsp;";
                     echo "<img class='comment-btn' data-post-id='" . $postId . "' src='/RecipeBook/Recipe-Book/buttons/comment_button_black_outlined.png' height='30px' width='30px' title='Comment'/>&nbsp;&nbsp;&nbsp;";
-                    echo "<img class='fav-btn' data-post-id='" . $row['post_id'] . "' src='/RecipeBook/Recipe-Book/buttons/fav_button_black_outlined.png' height='30px' width='30px' title='Add to favourites'/>";
+                    echo "<img id='fav-btn-" . $row['post_id'] . "' class='fav-btn' data-post-id='" . $row['post_id'] . "' src='" . $favButtonSrc . "' height='30px' width='30px' title='Add to favourites' />";
 
                     echo "</div>";
                     echo "</div>";
@@ -207,82 +216,81 @@
             document.querySelector('.setting-btn').src = '/RecipeBook/Recipe-Book/buttons/settings_button_black_lined.png';
         }
 
-        function onHover(container) {
-            const favIcon = container.querySelector('.fav-btn');
-            const likeIcon = container.querySelector('.like-btn');
-            const commentIcon = container.querySelector('.comment-btn');
-
-            favIcon.src = "/RecipeBook/Recipe-Book/buttons/fav_button_yellow_outlined.png";
-            favIcon.style.height="35px";
-            favIcon.style.width="35px";
-            likeIcon.src = "/RecipeBook/Recipe-Book/buttons/like_button_yellow_outlined.png";
-            likeIcon.style.height="35px";
-            likeIcon.style.width="35px";
-            commentIcon.src = "/RecipeBook/Recipe-Book/buttons/comment_button_yellow_outlined.png";
-            commentIcon.style.height="35px";
-            commentIcon.style.width="35px";
-        }
-
-        function noHover(container) {
-            const favIcon = container.querySelector('.fav-btn');
-            const likeIcon = container.querySelector('.like-btn');
-            const commentIcon = container.querySelector('.comment-btn');
-
-            favIcon.src = "/RecipeBook/Recipe-Book/buttons/fav_button_black_outlined.png";
-            favIcon.style.height="30px";
-            favIcon.style.width="30px";
-            likeIcon.src = "/RecipeBook/Recipe-Book/buttons/like_button_black_outlined.png";
-            likeIcon.style.height="30px";
-            likeIcon.style.width="30px";
-            commentIcon.src = "/RecipeBook/Recipe-Book/buttons/comment_button_black_outlined.png";
-            commentIcon.style.height="30px";
-            commentIcon.style.width="30px";
-        }
-
-
         //ajax for like button
         document.querySelectorAll('.like-btn').forEach(button => {
-            button.addEventListener('click', function(event) {
-                event.stopPropagation();
+            button.addEventListener('click', function (event) {
+                event.stopPropagation(); // Prevent any parent event from triggering
+                
                 const postId = this.getAttribute('data-post-id');
+                const likeBtn = document.getElementById(`like-btn-${postId}`);
+                const likeCount = document.getElementById(`like-count-${postId}`);
+                const isLiked = likeBtn.src.includes("like_button_yellow_filled");
 
+                // Update Like Button UI
+                if (isLiked) {
+                    likeBtn.src = "/RecipeBook/Recipe-Book/buttons/like_button_black_outlined.png";
+                    likeCount.innerHTML = parseInt(likeCount.innerHTML) - 1;
+                } else {
+                    likeBtn.src = "/RecipeBook/Recipe-Book/buttons/like_button_yellow_filled.png";
+                    likeCount.innerHTML = parseInt(likeCount.innerHTML) + 1;
+                }
+
+                // Send AJAX Request
                 const xhr = new XMLHttpRequest();
-                xhr.open('POST', '/recipebook/Recipe-Book/php/likes_functionality/like_post.php', true);
-                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                xhr.open("POST", "/RecipeBook/Recipe-Book/php/likes_functionality/like_post.php", true);
+                xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
-                xhr.onload = function() {
+                xhr.onload = function () {
                     if (xhr.status === 200) {
                         const response = JSON.parse(xhr.responseText);
+
                         if (response.success) {
-                            const likeCountSpan = document.getElementById('like-count-' + postId);
-                            likeCountSpan.innerText = response.newLikeCount;
+                            // Update Like Count in UI (already updated above, but just in case)
+                            likeCount.innerText = response.newLikeCount;
                         } else {
                             alert(response.message);
                         }
+                    } else {
+                        console.error("Error with the AJAX request.");
                     }
                 };
-                xhr.send('post_id=' + postId);
+
+                xhr.send("post_id=" + postId);
             });
         });
-        
-        //ajax for favourite button
+
         document.querySelectorAll('.fav-btn').forEach(button => {
             button.addEventListener('click', function(event) {
-                event.stopPropagation();
-                const postId = this.getAttribute('data-post-id');
+                event.stopPropagation(); // Prevent parent events from triggering
 
+                const postId = this.getAttribute('data-post-id');
+                const favBtn = document.getElementById(`fav-btn-${postId}`);
+                const isFavored = favBtn.src.includes("fav_button_yellow_filled");
+
+                // Toggle Favorite Button UI
+                if (isFavored) {
+                    favBtn.src = "/RecipeBook/Recipe-Book/buttons/fav_button_black_outlined.png";
+                } else {
+                    favBtn.src = "/RecipeBook/Recipe-Book/buttons/fav_button_yellow_filled.png";
+                }
+
+                // Send AJAX Request
                 const xhr = new XMLHttpRequest();
-                xhr.open('POST', '/RecipeBook/Recipe-Book/php/favourite_functionality/add_favourite.php', true);
-                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                xhr.open("POST", "/RecipeBook/Recipe-Book/php/favourite_functionality/add_favourite.php", true);
+                xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
                 xhr.onload = function() {
                     if (xhr.status === 200) {
                         alert('Post added to your favourites!');
+                    } else {
+                        console.error("AJAX request failed.");
                     }
                 };
-                xhr.send('post_id=' + postId);
+
+                xhr.send("post_id=" + postId); 
             });
         });
+
 
         // ajax and js for comments section
         let commentPollingInterval; // Variable to hold the interval ID
