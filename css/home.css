@@ -141,6 +141,9 @@ body {
     cursor: pointer;
 }
 
+#sortForm {
+    margin: 0;
+}
 
 
 .container {
