@@ -116,7 +116,10 @@
                     echo "</div>";
                 }
             } else {
-                echo "<p>There are no recipes to show you, Sorry T_T </p>";
+                echo "<p style='text-align: center; font-size: 20px;'><b>";
+                echo "<img src='/RecipeBook/Recipe-Book/logo/logo4.png' onclick='about()' title='About Recipebook' style='width: 300px; height: 300px; cursor:pointer;'/><br/>";
+                echo "There are no recipes to show you. Click <span style='color:#ffbf17; cursor:pointer;' onclick='popup()'>Add recipe</span> to get started!!";
+                echo "</b></p>";
             }
             $conn->close();
         ?>
