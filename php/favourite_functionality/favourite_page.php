@@ -49,7 +49,7 @@
     <head>
         <title>Recipebook</title>
         <link rel="stylesheet" href="/RecipeBook/Recipe-Book/css/styles.css">
-        <link rel="icon" href="/RecipeBook/Recipe-Book/logo/logo1.png" type="image/png">
+        <link rel="icon" href="/RecipeBook/Recipe-Book/logo/logo4.png" type="image/png">
     </head>
     <body>
         <button onclick="go_back()" class="back-button">Go Back</button><br/><br/>

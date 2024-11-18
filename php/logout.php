@@ -1,3 +1,9 @@
+<html>
+    <head>
+        <title>Recipebook</title>
+        <link rel="icon" href="/RecipeBook/Recipe-Book/logo/logo4.png" type="image/png">
+    </head>
+</html>
 <?php
     session_start();
 
