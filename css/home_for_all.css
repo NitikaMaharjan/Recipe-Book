@@ -57,7 +57,7 @@ body {
     outline: none;
     flex: 1;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 15px;
+    font-size: 14px;
     color: black;
     padding-left: 10px;
 }
@@ -70,7 +70,7 @@ body {
     padding: 8px 20px;
     cursor: pointer;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 15px;
+    font-size: 14px;
     transition: background-color 0.3s;
     margin-left: 10px;
 }
@@ -113,14 +113,14 @@ body {
 
 .heading label {
     padding-left: 70px;
-    font-size: 20px;
+    font-size: 18px;
     font-weight: bold;
 }
 
 .heading select {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-weight: bold;
-    font-size: 15px;
+    font-size: 14px;
     background-color: #cccc;
     border-color: #cccc;
     border-radius: 20px;
@@ -147,52 +147,33 @@ body {
     justify-content: center;
     align-items: center;
     width: 100%;
-    max-width: 550px;
+    max-width: 500px;
     margin: 0 auto;
     border-radius: 30px;
     margin-bottom: 15px;
+    padding-bottom: 15px;
     cursor: pointer;
     transition: all 0.3s ease;
-    padding-left: 35px;
-    border: 2px solid #dbdbdb;
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.85);
+    border: 1px solid #ccc;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.322);
 }
 
-.container:hover {
-    border: 5px solid #FFBF17;
-}
-
-/* Post Title */
-.container .post-title {
+.post-title{
+    padding-left:0px;
+    color:#ffbf17;
     text-align: center;
 }
 
-.container .post-title h3 {
-    font-weight: bold;
-    color: #333;
+.like_comment_bookmark{
+    display: flex;
+    justify-content: space-between;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
-/* Post Content */
-.container .post {
-    text-align: left;
-    font-size: 14px;
-    color: #555;
-}
-
-/* Image inside the post */
-.container .post img {
-    margin: 10px 0;
-    border-radius: 10px;
-    max-width: 100%;
-    height: auto;
-    object-fit: cover;
-    /* Ensure images are well-cropped */
-}
-
-/* Adjust text size for smaller screens */
-.container .post p {
-    font-size: 14px;
-    margin: 10px 0;
+.post{
+    padding-left: 15px;
 }
 
 .about,
@@ -256,14 +237,13 @@ body {
     cursor: pointer;
 }
 
-/* Form styling */
 .signup_login_popup_form {
     flex: 2;
     padding: 20px;
 }
 
 .signup_login_popup_form h1 {
-    font-size: 24px;
+    font-size: 20px;
     margin-bottom: 10px;
     color: #333;
 }
@@ -281,12 +261,14 @@ body {
 }
 
 .signup_login_popup_form input[type="submit"] {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: black;
     color: white;
+    font-weight:bold;
     cursor: pointer;
     border: none;
     border-radius: 30px;
-    padding: 16px 30px;
+    padding: 14px 28px;
     width:40%;
 }
 
@@ -301,14 +283,15 @@ body {
     cursor: pointer;
     color: black;
     text-decoration: underline;
-    font-size: 16px;
+    font-size: 14px;
 }
 
 .signup_login_popup_form button a {
-    text-decoration: none;
-    color: inherit;
+    color: black;
+    text-decoration: underline;
 }
 
-.signup_login_popup_form button a:hover {
-    color: #ffbf17;
+.signup_login_popup_form button a:visited {
+    color: black;
 }
+
