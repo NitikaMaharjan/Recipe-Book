@@ -1,7 +1,7 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
-    background-image: url('/RecipeBook/Recipe-Book/background.png');
+    background-image: url('/RecipeBook/Recipe-Book/background_3.png');
     background-attachment: fixed;
     background-size: cover;
     background-position: center;
@@ -211,23 +211,21 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: white;
     padding: 20px;
-    border-radius: 30px;
+    border-radius: 8px;
     width: 80%;
     text-align: center;
     margin-left: 108px;
 }
 
 .about_content {
-    margin-top: 25px;
+    margin-top: 30px;
 }
-
 
 .popup_content {
     background-color: #fff;
     margin: auto;
-    margin-top: 90px;
+    margin-top: 50px;
     padding: 20px;
-    border-radius: 8px;
     width: 50%;
     max-width: 600px;
     display: flex;
@@ -278,7 +276,7 @@ body {
     padding: 10px;
     margin-bottom: 15px;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 8px;
     box-sizing: border-box;
 }
 
@@ -287,6 +285,9 @@ body {
     color: white;
     cursor: pointer;
     border: none;
+    border-radius: 30px;
+    padding: 16px 30px;
+    width:40%;
 }
 
 .signup_login_popup_form input[type="submit"]:hover {

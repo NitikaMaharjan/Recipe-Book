@@ -118,7 +118,7 @@
             } else {
                 echo "<p style='text-align: center; font-size: 20px;'><b>";
                 echo "<img src='/RecipeBook/Recipe-Book/logo/logo4.png' onclick='about()' title='About Recipebook' style='width: 300px; height: 300px; cursor:pointer;'/><br/>";
-                echo "There are no recipes to show you. Click <span style='color:#ffbf17; cursor:pointer;' onclick='popup()'>Add recipe</span> to get started!!";
+                echo "There are no recipes to show you. <span style='color:#ffbf17; cursor:pointer;' onclick='popup()'>Click Here</span> to get started with Recipebook!";
                 echo "</b></p>";
             }
             $conn->close();
@@ -130,9 +130,9 @@
                 <div style="text-align:right;">
                     <span class="close1" onclick="closePopup1()" style="font-size:35px; color:black; cursor:pointer;">&times;</span>
                 </div>
-                <img src="/RecipeBook/Recipe-Book/logo/logo.png" style="width: 300px; height: 300px;"/>
-                <h1 style="color:black;">About Recipebook</h1>
-                <p style="font-size: 20px; text-align:left;">Recipebook is an online platform that serves as a social networking and content-sharing system which enables users to share their own recipes. It's an interactive and personalized space for food enthusiasts, which enables users to post recipes, like and comment on posts, and search for recipes by recipe title, username of users, categories and hashtags.</p>
+                <img src="/RecipeBook/Recipe-Book/logo/logo4.png" style="width: 300px; height: 300px;"/>
+                <h1>About <span style="color:#ffbf17;">Recipebook</span></h1>
+                <p style="font-size: 20px; text-align:left;">RecipeBook is a social media platform designed specifically for food enthusiasts. It allows users to share their recipes, discover creations by others, and actively connect and engage with a community of like-minded food lovers.</p>
             </div>
         </div>
 
@@ -145,7 +145,7 @@
                     <img src="/RecipeBook/Recipe-Book/logo/logo4.png"  title="About Recipebook" />
                 </div>
                 <div class="signup_login_popup_form">
-                    <h1>Sign up to get started!!</h1>
+                    <h1>Sign up to get started with Recipebook!</h1><br/>
                     <form name="signup" method="post" action="/RecipeBook/Recipe-Book/php/signup.php">
                         <input type="text" name="username" placeholder="Username" required /><br />
                         <input type="email" name="email" placeholder="Email" required /><br />
@@ -153,7 +153,7 @@
                         <input type="password" name="password2" placeholder="Confirm password" required /><br />
                         <input type="submit" value="Sign up" />
                     </form>
-                    <h1>Already have an account??</h1>
+                    <h1>Already have an account?</h1>
                     <button><a href="/RecipeBook/Recipe-Book/html/login.html">Log in</a></button>
                 </div>
             </div>

@@ -1,106 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recipebook</title>
+    <link rel="stylesheet" href="/RecipeBook/Recipe-Book/css/login.css" type="text/css">
     <link rel="icon" href="/RecipeBook/Recipe-Book/logo/logo4.png" type="image/png">
-    <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: url('/RecipeBook/Recipe-Book/background.png') no-repeat center center fixed;
-            background-size: cover;
-        }
-
-        .login-container {
-            background-color: rgba(255, 255, 255, 0.85);
-            padding: 40px;
-            width: 300px;
-            text-align: center;
-            border-radius: 10px;
-            border: 1px solid #ccc;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        /* Heading styles */
-        .login-container h1 {
-            font-size: 24px;
-            color: #333;
-            margin-bottom: 20px;
-        }
-
-        .login-container h2 {
-            font-size: 18px;
-            color: #666;
-            margin-top: 20px;
-        }
-
-        /* Input field styling */
-        .login-container input[type="text"],
-        .login-container input[type="password"] {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            box-sizing: border-box;
-        }
-
-        /* Submit button styling */
-        .login-container input[type="submit"] {
-            width: 100%;
-            padding: 10px;
-            background-color: black;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-            margin-top: 10px;
-        }
-
-        .login-container input[type="submit"]:hover {
-            background-color: #ffbf17;
-        }
-
-        /* Signup button styling */
-        .login-container button {
-            background-color: transparent;
-            border: none;
-            padding: 0;
-            cursor: pointer;
-            color: black;
-            text-decoration: underline;
-            font-size: 16px;
-        }
-
-        .login-container button a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        .login-container button a:hover {
-            color: #ffbf17;
-        }
-    </style>
 </head>
 
 <body>
     <div class="login-container">
         <img src="/RecipeBook/Recipe-Book/logo/logo4.png" title="About Recipebook" width="100px" />
-        <h1>Log me in!!</h1>
+        <h1>Log me in!</h1>
         <form name="login" method="post" action="/RecipeBook/Recipe-Book/php/login.php">
             <input type="text" name="username" placeholder="Username" required /><br />
             <input type="password" name="password" placeholder="Password" required /><br />
             <input type="submit" value="Log in" />
         </form>
-        <h2>Don't have an account ?</h2>
+        <h2>Don't have an account?</h2>
         <button><a href="/RecipeBook/Recipe-Book/html/signup.html">Sign up</a></button>
     </div>
 </body>
