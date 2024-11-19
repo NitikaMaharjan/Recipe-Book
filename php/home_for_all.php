@@ -111,10 +111,10 @@
                         echo "<div class='like_comment_bookmark'>";
                             $postId = $row['post_id'];
                             echo "<div>";
-                            echo "<img class='like' src='/RecipeBook/Recipe-Book/buttons/like_button_black_outlined.png' onmouseover='onHoverLike(this)' onmouseout='noHoverLike(this)' onclick='popup()' height='30px' width='30px' title='Likes'/><span id='like-count-" . $postId . "'>" . htmlspecialchars($row['post_like_count']) . "</span>&nbsp;&nbsp;&nbsp";
-                            echo "<img class='comment' src='/RecipeBook/Recipe-Book/buttons/comment_button_black_outlined.png' onmouseover='onHoverComment(this)' onmouseout='noHoverComment(this)' onclick='popup()' height='30px' width='30px' title='Comment'/>";
+                            echo "<img class='like' src='/RecipeBook/Recipe-Book/buttons/like_button_yellow_outlined.png' onmouseover='onHoverLike(this)' onmouseout='noHoverLike(this)' onclick='popup()' height='30px' width='30px' title='Likes'/><span id='like-count-" . $postId . "' style='color:#ffbf17;'>" . htmlspecialchars($row['post_like_count']) . "</span>&nbsp;&nbsp;&nbsp";
+                            echo "<img class='comment' src='/RecipeBook/Recipe-Book/buttons/comment_button_yellow_outlined.png' onmouseover='onHoverComment(this)' onmouseout='noHoverComment(this)' onclick='popup()' height='30px' width='30px' title='Comment'/>";
                             echo "</div>";
-                            echo "<img class='fav' src='/RecipeBook/Recipe-Book/buttons/fav_button_black_outlined.png' onmouseover='onHoverFav(this)' onmouseout='noHoverFav(this)' onclick='popup()' height='30px' width='30px' title='Add to favourites'/>";
+                            echo "<img class='fav' src='/RecipeBook/Recipe-Book/buttons/fav_button_yellow_outlined.png' onmouseover='onHoverFav(this)' onmouseout='noHoverFav(this)' onclick='popup()' height='30px' width='30px' title='Add to favourites'/>";
                         echo "</div>";
 
                     echo "</div>";
@@ -169,7 +169,7 @@
         }
 
         function noHoverLike(like) {
-            like.src = '/RecipeBook/Recipe-Book/buttons/like_button_black_outlined.png';
+            like.src = '/RecipeBook/Recipe-Book/buttons/like_button_yellow_outlined.png';
         }
 
         function onHoverComment(comment) {
@@ -177,7 +177,7 @@
         }
 
         function noHoverComment(comment) {
-            comment.src = '/RecipeBook/Recipe-Book/buttons/comment_button_black_outlined.png';
+            comment.src = '/RecipeBook/Recipe-Book/buttons/comment_button_yellow_outlined.png';
         }
 
         function onHoverFav(fav) {
@@ -185,7 +185,7 @@
         }
 
         function noHoverFav(fav) {
-            fav.src = '/RecipeBook/Recipe-Book/buttons/fav_button_black_outlined.png';
+            fav.src = '/RecipeBook/Recipe-Book/buttons/fav_button_yellow_outlined.png';
         }
 
 
