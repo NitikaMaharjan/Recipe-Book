@@ -96,7 +96,7 @@
 
                             echo "<p><b>Category : </b>" . htmlspecialchars($row['post_category']) . "</p>";
 
-                            echo "<div style='text-align:center;'>";
+                            echo "<div class='post-image' style='text-align:center;'>";
                             if (($row['post_image'])) {
                                 echo "<img src='data:image/jpeg;base64," . base64_encode($row['post_image']) . "' alt='Recipe Image' style='max-width: 200px; max-height: 200px; border-radius:8px;'/>";
                             } else {
@@ -157,7 +157,7 @@
                         <input type="password" name="password2" placeholder="Confirm password" required /><br />
                         <input type="submit" value="Sign up" />
                     </form>
-                    <h1>Already have an account?</h1>
+                    <h2>Already have an account?</h2>
                     <button><a href="/RecipeBook/Recipe-Book/html/login.html">Log in</a></button>
                 </div>
             </div>
