@@ -92,7 +92,7 @@
                                     echo "<img src='/RecipeBook/Recipe-Book/default_profile_picture.jpg' style='width: 50px; height: 50px; border-radius: 50%; margin-right: 10px;' />";
                                 }
                                 echo "<p><b>" . htmlspecialchars($row['user_name']) . "</p></b>";
-                                echo "</div>";
+                            echo "</div>";
                             echo "<div class='like_comment_bookmark'>";
                                 $postId = $row['post_id'];
                                 echo "<img class='like' src='/RecipeBook/Recipe-Book/buttons/like_button_yellow_outlined.png' onmouseover='onHoverLike(this)' onmouseout='noHoverLike(this)' onclick='popup()' height='30px' width='30px' title='Likes'/><span id='like-count-" . $postId . "' style='color:#ffbf17; font-weight:bold;'>" . htmlspecialchars($row['post_like_count']) . "</span>&nbsp;&nbsp;&nbsp;";
@@ -132,7 +132,7 @@
                     <img src="/RecipeBook/Recipe-Book/logo/logo4.png" title="Recipebook"/>
                 </div>
                 <div class="signup_login_popup_form">
-                    <h1>Sign up to get started with <span style="color:#ffbf17;">Recipebook</span>!</h1><br/>
+                    <h1>Sign up to get started with <span style="color:#ffbf17;">Recipebook</span></h1><br/>
                     <form name="signup" method="post" action="/RecipeBook/Recipe-Book/php/signup.php">
                         <input type="text" name="username" placeholder="Username" required /><br />
                         <input type="email" name="email" placeholder="Email" required /><br />
@@ -170,7 +170,6 @@
         function noHoverFav(fav) {
             fav.src = '/RecipeBook/Recipe-Book/buttons/fav_button_yellow_outlined.png';
         }
-
 
         function about() {
             //display the pop-up box

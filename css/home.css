@@ -1,7 +1,7 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
-    background-image: url('/RecipeBook/Recipe-Book/background.png');
+    background-image: url('/RecipeBook/Recipe-Book/background_3.png');
     background-attachment: fixed;
     background-size: cover;
     background-position: center;
@@ -65,7 +65,7 @@ body {
     outline: none;
     flex: 1;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 15px;
+    font-size: 14px;
     color: black;
     padding-left: 10px;
 }
@@ -78,7 +78,7 @@ body {
     padding: 8px 20px;
     cursor: pointer;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 15px;
+    font-size: 14px;
     transition: background-color 0.3s;
     margin-left: 10px;
 }
@@ -112,14 +112,14 @@ body {
 
 .heading label {
     padding-left: 70px;
-    font-size: 20px;
+    font-size: 18px;
     font-weight: bold;
 }
 
 .heading select {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-weight: bold;
-    font-size: 15px;
+    font-size: 14px;
     background-color: #cccc;
     border-color: #cccc;
     border-radius: 20px;
@@ -145,7 +145,6 @@ body {
     margin: 0;
 }
 
-
 .container {
     display: block;
     justify-content: center;
@@ -153,7 +152,7 @@ body {
     width: 100%;
     max-width: 500px;
     margin: 0 auto;
-    border-radius: 30px;
+    border-radius: 8px;
     margin-bottom: 15px;
     padding-bottom: 15px;
     cursor: pointer;
@@ -163,21 +162,22 @@ body {
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.322);
 }
 
-.post-title {
-    padding-left: 0px;
-    color: #ffbf17;
+.post-title{
+    padding-left:0px;
+    color:#ffbf17;
     text-align: center;
 }
 
-.container .post {
-    padding-left: 15px;
+.post-description{
+    padding-left: 22px;
 }
 
-.like_comment_bookmark {
-    display: flex;
+.post-actions{
+    display:flex;
+    align-items: center;
     justify-content: space-between;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: 22px;
+    padding-right: 22px;
 }
 
 .modal {
@@ -192,33 +192,37 @@ body {
 
 .modal-content {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #FFDB80;
+    font-size: 14px;
+    background-color: white;
     padding: 20px;
-    border: 1px solid #FFDB80;
-    border-radius: 30px;
-    width: 80%;
+    border-radius: 8px;
+    width: 50%;
     text-align: left;
-    margin-top: 90px;
-    margin-left: 108px;
+    margin: auto;
+    margin-top: 150px;
+    margin-left: 300px;
+    color: #333333;
+}
+#commentList{
+    padding-left: 5px;
 }
 
 #submit-comment {
-    border: none;
-    border-radius: 30px;
-    padding: 16px 30px;
-    font-size: 14px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.2s, color 0.2s;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: black;
     color: white;
+    font-weight:bold;
+    cursor: pointer;
+    border: none;
+    border-radius: 30px;
+    padding: 14px 28px;
+    font-size:14px;
 }
 
 #submit-comment:hover {
     background-color: #ffbf17;
 }
 
-/* popup large image  */
 .image-modal {
     display: none;
     position: fixed;
@@ -232,7 +236,6 @@ body {
     align-items: center;
 }
 
-/* The enlarged image */
 .image-modal img {
     max-width: 90%;
     max-height: 90%;
@@ -240,13 +243,12 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* Close button */
 .image-modal .close-btn {
     position: absolute;
     top: 20px;
     right: 20px;
     color: white;
-    font-size: 30px;
+    font-size: 35px;
     font-weight: bold;
     cursor: pointer;
 }
