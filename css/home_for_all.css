@@ -234,7 +234,6 @@ body {
 .signup_login_popup_logo img {
     width: 220px;
     height: 220px;
-    cursor: pointer;
 }
 
 .signup_login_popup_form {
@@ -243,7 +242,7 @@ body {
 }
 
 .signup_login_popup_form h1 {
-    font-size: 20px;
+    font-size: 25px;
     margin-bottom: 10px;
     color: #333;
 }

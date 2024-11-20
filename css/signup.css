@@ -12,7 +12,7 @@ body {
     color: #333333;
 }
 
-.login-container {
+.signup-container {
     background-color: rgba(255, 255, 255, 0.85);
     padding-top: 15px;
     padding-bottom: 15px;
@@ -24,20 +24,21 @@ body {
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.322);
 }
 
-.login-container h1 {
+.signup-container h1 {
     font-size: 25px;
     margin-top: 0px;
     margin-bottom: 20px;
 }
 
-.login-container h2 {
+.signup-container h2 {
     font-size: 20px;
     margin-top: 20px;
     margin-bottom:5px;
 }
 
-.login-container input[type="text"],
-.login-container input[type="password"] {
+.signup-container input[type="text"],
+.signup-container input[type="password"],
+.signup-container input[type="email"] {
     width: 100%;
     padding: 10px;
     margin: 10px 0;
@@ -46,7 +47,7 @@ body {
     box-sizing: border-box;
 }
 
-.login-container input[type="submit"] {
+.signup-container input[type="submit"] {
     width: 40%;
     padding-top: 14px;
     padding-bottom: 14px;
@@ -60,11 +61,11 @@ body {
     font-weight: bold;
 }
 
-.login-container input[type="submit"]:hover {
+.signup-container input[type="submit"]:hover {
     background-color: #ffbf17;
 }
 
-.login-container button {
+.signup-container button {
     background-color: transparent;
     border: none;
     padding: 0;
@@ -73,11 +74,11 @@ body {
     font-size: 14px;
 }
 
-.login-container button a {
+.signup-container button a {
     color: black;
     text-decoration: underline;
 }
 
-.login-container button a:visited {
+.signup-container button a:hover {
     color: black;
 }

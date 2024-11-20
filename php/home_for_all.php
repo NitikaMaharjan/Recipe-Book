@@ -121,7 +121,7 @@
                 }
             } else {
                 echo "<p style='text-align: center; font-size: 20px;'><b>";
-                echo "<img src='/RecipeBook/Recipe-Book/logo/logo4.png' onclick='about()' title='About Recipebook' style='width: 300px; height: 300px; cursor:pointer;'/><br/>";
+                echo "<img src='/RecipeBook/Recipe-Book/logo/logo4.png' onclick='about()' title='Recipebook' style='width: 300px; height: 300px; cursor:pointer;'/><br/>";
                 echo "There are no recipes to show you. <span style='color:#ffbf17; cursor:pointer;' onclick='popup()'>Click Here</span> to get started with Recipebook!";
                 echo "</b></p>";
             }
@@ -134,8 +134,8 @@
                 <div style="text-align:right;">
                     <span class="close1" onclick="closePopup1()" style="font-size:35px; color:black; cursor:pointer;">&times;</span>
                 </div>
-                <img src="/RecipeBook/Recipe-Book/logo/logo4.png" style="width: 300px; height: 300px;"/>
-                <h1 style="color:#333;">About <span style="color:#ffbf17;">Recipebook</span></h1>
+                <img src="/RecipeBook/Recipe-Book/logo/logo4.png" title="Recipebook" style="width: 300px; height: 300px;"/>
+                <h1 style="color: #333;">About <span style="color:#ffbf17;">Recipebook</span></h1>
                 <p style="font-size: 20px; text-align:left;">RecipeBook is a social media platform designed specifically for food enthusiasts. It allows users to share their recipes, discover creations by others, and actively connect and engage with a community of like-minded food lovers.</p>
             </div>
         </div>
@@ -146,10 +146,10 @@
             <div class="popup_content">
                 <span class="close2" onclick="closePopup2()">&times;</span>
                 <div class="signup_login_popup_logo">
-                    <img src="/RecipeBook/Recipe-Book/logo/logo4.png"  title="About Recipebook" />
+                    <img src="/RecipeBook/Recipe-Book/logo/logo4.png" title="Recipebook"/>
                 </div>
                 <div class="signup_login_popup_form">
-                    <h1>Sign up to get started with Recipebook!</h1><br/>
+                    <h1>Sign up to get started with <span style="color:#ffbf17;">Recipebook</span>!</h1><br/>
                     <form name="signup" method="post" action="/RecipeBook/Recipe-Book/php/signup.php">
                         <input type="text" name="username" placeholder="Username" required /><br />
                         <input type="email" name="email" placeholder="Email" required /><br />
