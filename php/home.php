@@ -176,7 +176,7 @@
                                     echo "</div>";
                                     echo "<img id='fav-btn-" . $row['post_id'] . "' class='fav-btn' data-post-id='" . $row['post_id'] . "' src='" . $favButtonSrc . "' height='30px' width='30px' title='Add to favourites' />";
                                 echo "</div>";
-                        echo "</div>";
+                        echo "</div><br>";
                     }
                 } else {
                     echo "<p style='text-align: center; font-size: 20px;'><b>";
