@@ -154,10 +154,10 @@
                                 echo "<div class='like_comment_bookmark'>";
                                     $likeButtonSrc = $row['has_liked'] ? "/RecipeBook/Recipe-Book/buttons/like_button_yellow_filled.png" : "/RecipeBook/Recipe-Book/buttons/like_button_yellow_outlined.png";
                                     $favButtonSrc = $row['has_favorited'] ? "/RecipeBook/Recipe-Book/buttons/fav_button_yellow_filled.png" : "/RecipeBook/Recipe-Book/buttons/fav_button_yellow_outlined.png";
-                                    echo "<img id='like-btn-" . $row['post_id'] . "' class='like-btn' data-post-id='" . $row['post_id'] . "' src='" . $likeButtonSrc . "' height='30px' width='30px' title='Likes' onmouseover='onHoverLike(this)' onmouseout='noHoverLike(this)'/>";
+                                    echo "<img id='like-btn-" . $row['post_id'] . "' class='like-btn' data-post-id='" . $row['post_id'] . "' src='" . $likeButtonSrc . "' height='30px' width='30px' title='Likes'/>";
                                     echo "<span id='like-count-" . $row['post_id'] . "' style='color:#ffbf17; font-weight:bold;'>" . htmlspecialchars($row['post_like_count']) . "</span>&nbsp;&nbsp;&nbsp";
                                     echo "<img class='comment-btn' data-post-id='" . $postId . "' src='/RecipeBook/Recipe-Book/buttons/comment_button_yellow_outlined.png' height='30px' width='30px' title='Comment' onmouseover='onHoverComment(this)' onmouseout='noHoverComment(this)'/>&nbsp;&nbsp;&nbsp;";
-                                    echo "<img id='fav-btn-" . $row['post_id'] . "' class='fav-btn' data-post-id='" . $row['post_id'] . "' src='" . $favButtonSrc . "' height='30px' width='30px' title='Add to favourites' onmouseover='onHoverFav(this)' onmouseout='noHoverFav(this)'/>";
+                                    echo "<img id='fav-btn-" . $row['post_id'] . "' class='fav-btn' data-post-id='" . $row['post_id'] . "' src='" . $favButtonSrc . "' height='30px' width='30px' title='Add to favourites'/>";
                                 echo "</div>";
                             echo "</div>";
                         echo "</div>";
@@ -210,28 +210,12 @@
             document.querySelector('.setting-btn').src = '/RecipeBook/Recipe-Book/buttons/settings_button_black_lined.png';
         }
 
-        function onHoverLike(like) {
-            like.src = '/RecipeBook/Recipe-Book/buttons/like_button_yellow_filled.png';
-        }
-
-        function noHoverLike(like) {
-            like.src = '/RecipeBook/Recipe-Book/buttons/like_button_yellow_outlined.png';
-        }
-
         function onHoverComment(comment) {
             comment.src = '/RecipeBook/Recipe-Book/buttons/comment_button_yellow_filled.png';
         }
 
         function noHoverComment(comment) {
             comment.src = '/RecipeBook/Recipe-Book/buttons/comment_button_yellow_outlined.png';
-        }
-
-        function onHoverFav(fav) {
-            fav.src = '/RecipeBook/Recipe-Book/buttons/fav_button_yellow_filled.png';
-        }
-
-        function noHoverFav(fav) {
-            fav.src = '/RecipeBook/Recipe-Book/buttons/fav_button_yellow_outlined.png';
         }
 
         //pop up large image function
@@ -273,7 +257,7 @@
 
                 // Update Like Button UI
                 if (isLiked) {
-                    likeBtn.src = "/RecipeBook/Recipe-Book/buttons/like_button_black_outlined.png";
+                    likeBtn.src = "/RecipeBook/Recipe-Book/buttons/like_button_yellow_outlined.png";
                     likeCount.innerHTML = parseInt(likeCount.innerHTML) - 1;
                 } else {
                     likeBtn.src = "/RecipeBook/Recipe-Book/buttons/like_button_yellow_filled.png";
@@ -314,7 +298,7 @@
 
                 // Toggle Favorite Button UI
                 if (isFavored) {
-                    favBtn.src = "/RecipeBook/Recipe-Book/buttons/fav_button_black_outlined.png";
+                    favBtn.src = "/RecipeBook/Recipe-Book/buttons/fav_button_yellow_outlined.png";
                 } else {
                     favBtn.src = "/RecipeBook/Recipe-Book/buttons/fav_button_yellow_filled.png";
                 }
