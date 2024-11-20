@@ -152,17 +152,20 @@
             
             .back-button {
                 position: fixed;
-                background-color: #FFBF17;
-                color: white;
-                font-weight: bold;
+                width: 60px;
                 border: none;
                 border-radius: 10px;
-                padding: 10px 20px;
+                padding: 10px 30px;
                 cursor: pointer;
                 transition: background-color 0.3s;
                 top: 20px;
                 left: 20px;
             }
+
+            .back-button:hover {
+                content: url('/RecipeBook/Recipe-Book/buttons/back_button2.png');
+            }
+
 
         </style>
         <script>
@@ -190,7 +193,7 @@
         </script>
     </head>
     <body>
-        <button onclick="go_back()" class="back-button">Go Back</button><br>    
+        <img onclick="go_back()" class="back-button" src="/RecipeBook/Recipe-Book/buttons/back_button.png" title="Go back">
         <h1 style="text-align:center">Edit your Recipe</h1>
         <div class="edit_post_container">
             <form action="/RecipeBook/Recipe-Book/php/post_functionality/update_post.php?post_id=<?php echo $post_id;?>" method="POST" enctype="multipart/form-data">

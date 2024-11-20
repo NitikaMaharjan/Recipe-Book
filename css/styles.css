@@ -217,54 +217,36 @@ body {
     justify-content: center;
     align-items: center;
     width: 100%;
-    max-width: 550px;
+    max-width: 500px;
     margin: 0 auto;
     border-radius: 30px;
     margin-bottom: 15px;
+    padding-bottom: 15px;
     cursor: pointer;
     transition: all 0.3s ease;
-    padding-left: 35px;
-    border: 2px solid #dbdbdb;
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.85);
+    border: 1px solid #ccc;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.322);
 }
 
-.container:hover {
-    border: 5px solid #FFBF17;
-}
-
-/* Post Title */
-.container .post-title {
+.post-title {
+    padding-left: 0px;
+    color: #ffbf17;
     text-align: center;
 }
 
-.container .post-title h3 {
-    font-weight: bold;
-    color: #333;
-}
-
-/* Post Content */
 .container .post {
-    text-align: left;
-    font-size: 14px;
-    color: #555;
+    padding-left: 15px;
 }
 
-/* Image inside the post */
-.container .post img {
-    margin: 10px 0;
-    border-radius: 10px;
-    max-width: 100%;
-    height: auto;
-    object-fit: cover;
-    /* Ensure images are well-cropped */
+.like_comment_bookmark {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
-/* Adjust text size for smaller screens */
-.container .post p {
-    font-size: 14px;
-    margin: 10px 0;
-}
-
+/* comment pop up box */
 .popup,
 .modal {
     display: none;
@@ -289,16 +271,18 @@ body {
 
 .back-button {
     position: fixed;
-    background-color: #FFBF17;
-    color: white;
-    font-weight: bold;
+    width: 60px;
     border: none;
     border-radius: 10px;
-    padding: 10px 20px;
+    padding: 10px 30px;
     cursor: pointer;
     transition: background-color 0.3s;
     top: 20px;
     left: 20px;
+}
+
+.back-button:hover {
+    content: url('/RecipeBook/Recipe-Book/buttons/back_button2.png');
 }
 
 /* Styles for view_post.php */
@@ -412,4 +396,37 @@ body {
         padding: 8px 15px;
         font-size: 14px;
     }
+}
+
+/* popup large image  */
+.image-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+/* The enlarged image */
+.image-modal img {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Close button */
+.image-modal .close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: white;
+    font-size: 30px;
+    font-weight: bold;
+    cursor: pointer;
 }

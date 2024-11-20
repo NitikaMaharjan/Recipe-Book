@@ -56,7 +56,9 @@
         <link rel="icon" href="/RecipeBook/Recipe-Book/logo/logo4.png" type="image/png">
     </head>
     <body>
-        <button onclick="go_back()" class="back-button">Go Back</button><br/><br/>
+        <img onclick="go_back()" class="back-button" src="/RecipeBook/Recipe-Book/buttons/back_button.png" title="Go back">
+
+        <!-- <button class="back-button">Go Back</button><br/><br/> -->
         <div class="view-post-container">
             <?php
                 if ($row['post_edited_date'] != $row['post_posted_date']) {

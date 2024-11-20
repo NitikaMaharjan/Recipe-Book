@@ -51,25 +51,26 @@
             background-color: #FFBF17;
         }
 
-
         .back-button {
             position: fixed;
-            background-color: #FFBF17;
-            color: white;
-            font-weight: bold;
+            width: 60px;
             border: none;
             border-radius: 10px;
-            padding: 10px 20px;
+            padding: 10px 30px;
             cursor: pointer;
             transition: background-color 0.3s;
             top: 20px;
             left: 20px;
         }
+
+        .back-button:hover {
+            content: url('/RecipeBook/Recipe-Book/buttons/back_button2.png');
+        }
     </style>
 </head>
 
 <body>
-    <button class="back-button" onclick="go_back()">Go Back</button>
+    <img onclick="go_back()" class="back-button" src="/RecipeBook/Recipe-Book/buttons/back_button.png" title="Go back">
 
     <div class="setting-container">
         <h1>Settings</h1>

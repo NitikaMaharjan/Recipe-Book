@@ -157,29 +157,38 @@
                     }
 
                     echo "<p>Category : " . htmlspecialchars($row['post_category']) . "</p>";
+
+                    echo "<div class='post-image' style='text-align:center;'>";
                     if (($row['post_image'])) {
-                        echo "<img src='data:image/jpeg;base64," . base64_encode($row['post_image']) . "' alt='Recipe Image' style='max-width: 200px; max-height: 200px;'/>";
+                        echo "<img src='data:image/jpeg;base64," . base64_encode($row['post_image']) . "' 
+                        alt='Recipe Image' class='thumbnail' style='max-width: 200px; max-height: 200px; border-radius:8px; cursor: pointer;' onclick='showPopup(this)'/>";
                     } else {
                         echo "No image available";
                     }
+                    echo "</div>";
 
                     echo "<p>" . htmlspecialchars($row['post_text']) . "</p>";
                     echo "<p>" . htmlspecialchars($row['post_keywords']) . "</p>";
+                    echo "</div>";
 
                     $likeButtonSrc = $row['has_liked'] ? "/RecipeBook/Recipe-Book/buttons/like_button_yellow_filled.png" : "/RecipeBook/Recipe-Book/buttons/like_button_black_outlined.png";
                     $favButtonSrc = $row['has_favorited'] ? "/RecipeBook/Recipe-Book/buttons/fav_button_yellow_filled.png" : "/RecipeBook/Recipe-Book/buttons/fav_button_black_outlined.png";
-
-                    echo "<img id='like-btn-" . $row['post_id'] . "' class='like-btn' data-post-id='" . $row['post_id'] . "' src='" . $likeButtonSrc . "' height='30px' width='30px' title='Likes' />";
-                    echo "<span id='like-count-" . $row['post_id'] . "'>" . htmlspecialchars($row['post_like_count']) . "</span>&nbsp;&nbsp;&nbsp;";
-                    echo "<img class='comment-btn' data-post-id='" . $postId . "' src='/RecipeBook/Recipe-Book/buttons/comment_button_black_outlined.png' height='30px' width='30px' title='Comment'/>&nbsp;&nbsp;&nbsp;";
-                    echo "<img id='fav-btn-" . $row['post_id'] . "' class='fav-btn' data-post-id='" . $row['post_id'] . "' src='" . $favButtonSrc . "' height='30px' width='30px' title='Add to favourites' />";
-
+                    echo "<div class='like_comment_bookmark'>";
+                        echo "<div>";
+                        echo "<img id='like-btn-" . $row['post_id'] . "' class='like-btn' data-post-id='" . $row['post_id'] . "' src='" . $likeButtonSrc . "' height='30px' width='30px' title='Likes' />";
+                        echo "<span id='like-count-" . $row['post_id'] . "'>" . htmlspecialchars($row['post_like_count']) . "</span>&nbsp;&nbsp;&nbsp;";
+                        echo "<img class='comment-btn' data-post-id='" . $postId . "' src='/RecipeBook/Recipe-Book/buttons/comment_button_black_outlined.png' height='30px' width='30px' title='Comment'/>";
+                        echo "</div>";
+                        echo "<img id='fav-btn-" . $row['post_id'] . "' class='fav-btn' data-post-id='" . $row['post_id'] . "' src='" . $favButtonSrc . "' height='30px' width='30px' title='Add to favourites' />";
                     echo "</div>";
                     echo "</div>";
                     echo "<br/>";
                 }
             } else {
-                echo "<p>You have not posted any recipes.   </p>";
+                echo "<p style='text-align: center; font-size: 20px; margin-bottom:10px'><b>";
+                echo "<img src='/RecipeBook/Recipe-Book/logo/logo4.png' title='Recipebook' style='width: 300px; height: 300px; cursor:pointer;'/><br/>";
+                echo "You haven't posted any recipes yet. Click 'Add' to share your first recipe!";
+                echo "</b></p><br><br>";
             }
             $conn->close();
         ?>
@@ -214,6 +223,33 @@
 
         function noHoverSetting(){
             document.querySelector('.setting-btn').src = '/RecipeBook/Recipe-Book/buttons/settings_button_black_lined.png';
+        }
+
+        //pop up large image function
+        function showPopup(image) {
+            event.stopPropagation(); // Prevent any parent event from triggering
+            // Create the modal container
+            const modal = document.createElement('div');
+            modal.classList.add('image-modal');
+            modal.style.display = 'flex';
+
+            // Add the image to the modal
+            const modalImage = document.createElement('img');
+            modalImage.src = image.src;
+            modal.appendChild(modalImage);
+
+            // Add a close button
+            const closeBtn = document.createElement('span');
+            closeBtn.classList.add('close-btn');
+            closeBtn.innerHTML = '&times;';
+            closeBtn.onclick = function () {
+                modal.style.display = 'none';
+                modal.remove();
+            };
+            modal.appendChild(closeBtn);
+
+            // Add the modal to the body
+            document.body.appendChild(modal);
         }
 
         //ajax for like button
