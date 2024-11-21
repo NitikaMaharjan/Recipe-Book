@@ -172,8 +172,8 @@
             } else {
                 echo "<p style='text-align: center; font-size: 20px;'><b>";
                 echo "<img src='/RecipeBook/Recipe-Book/logo/logo4.png' title='Recipebook' style='width: 300px; height: 300px; cursor:pointer;'/><br/>";
-                echo "There are no recipes to show you. <span style='color:#ffbf17; cursor:pointer;' onclick='window.location.href='/RecipeBook/Recipe-Book/html/post_functionality/add_post.html''>Click Here</span> to get started with Recipebook!";
-                echo "</b></p>";
+                echo "There are no recipes to show you. <span style='color:#ffbf17; cursor:pointer;' onclick='add_post()'>Click Here</span> to get started with Recipebook!";
+                echo "</b></p><br/>";
             }
             $conn->close();
         ?>
@@ -196,6 +196,10 @@
     <script>
         function view_post(post_id) {
             window.location.href = "/RecipeBook/Recipe-Book/php/post_functionality/view_post.php?post_id=" + post_id;
+        }
+
+        function add_post(){
+            window.location.href = "/RecipeBook/Recipe-Book/html/post_functionality/add_post.html";
         }
 
         function onHoverHome() {
