@@ -19,7 +19,7 @@
     $postId = $_GET['post_id'];
     $postId = intval($postId);
 
-    $sql = "SELECT c.comment_text,u.user_id, u.user_name,u.user_profile_picture, c.commented_at , c.comment_id
+    $sql = "SELECT c.comment_id, c.comment_text,u.user_id, u.user_name,u.user_profile_picture
             FROM Comment c 
             JOIN User u ON c.user_id = u.user_id 
             WHERE c.post_id = $postId 
@@ -37,9 +37,9 @@
                 // Default profile picture
                 echo "<img src='/RecipeBook/Recipe-Book/default_profile_picture.jpg' style='width: 30px; height: 30px; border-radius: 50%; margin-right: 10px;' />";
             }
-            echo "<p><b>" . htmlspecialchars($row['user_name']) . ":</b> " . htmlspecialchars($row['comment_text']) . " <i>(" . htmlspecialchars($row['commented_at']) . ")</i></p>";
+            echo "<p><b>" . htmlspecialchars($row['user_name']) . ":</b> " . htmlspecialchars($row['comment_text']) ."</p>&nbsp;&nbsp;&nbsp;";
             if ($row['user_id'] == $_SESSION['user_id']) {
-                echo "<button onclick=\"deleteComment(" . $row['comment_id'] . ")\">Delete</button>";
+                echo "<button class='delete-button' onclick=\"deleteComment(" . $row['comment_id'] . ")\" style='background-color: #ffbf17; color: white; font-weight:bold; cursor: pointer; border: none; border-radius: 30px; padding: 8px 14px;'>Delete</button>";
             }
             echo "</div>"; 
         }

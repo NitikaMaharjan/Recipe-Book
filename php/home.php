@@ -157,7 +157,7 @@
                                     echo "<img id='like-btn-" . $row['post_id'] . "' class='like-btn' data-post-id='" . $row['post_id'] . "' src='" . $likeButtonSrc . "' height='30px' width='30px' title='Likes'/>";
                                     echo "<span id='like-count-" . $row['post_id'] . "' style='color:#ffbf17; font-weight:bold;'>" . htmlspecialchars($row['post_like_count']) . "</span>&nbsp;&nbsp;&nbsp";
                                     echo "<img class='comment-btn' data-post-id='" . $postId . "' src='/RecipeBook/Recipe-Book/buttons/comment_button_yellow_outlined.png' height='30px' width='30px' title='Comment' onmouseover='onHoverComment(this)' onmouseout='noHoverComment(this)'/>&nbsp;&nbsp;&nbsp;";
-                                    echo "<img id='fav-btn-" . $row['post_id'] . "' class='fav-btn' data-post-id='" . $row['post_id'] . "' src='" . $favButtonSrc . "' height='30px' width='30px' title='Add to favourites'/>";
+                                    echo "<img id='fav-btn-" . $row['post_id'] . "' class='fav-btn' data-post-id='" . $row['post_id'] . "' src='" . $favButtonSrc . "' height='30px' width='30px' title='Add to favourites' onmouseover='onHoverFav(this)' onmouseout='noHoverFav(this)'/>";
                                 echo "</div>";
                             echo "</div>";
                         echo "</div>";
@@ -208,6 +208,14 @@
 
         function noHoverSetting(){
             document.querySelector('.setting-btn').src = '/RecipeBook/Recipe-Book/buttons/settings_button_black_lined.png';
+        }
+
+        function onHoverFav(fav) {
+            fav.src = '/RecipeBook/Recipe-Book/buttons/fav_button_yellow_filled.png';
+        }
+
+        function noHoverFav(fav) {
+            fav.src = '/RecipeBook/Recipe-Book/buttons/fav_button_yellow_outlined.png';
         }
 
         function onHoverComment(comment) {
@@ -288,35 +296,23 @@
             });
         });
 
+        //ajax for favourite button
         document.querySelectorAll('.fav-btn').forEach(button => {
             button.addEventListener('click', function(event) {
-                event.stopPropagation(); // Prevent parent events from triggering
-
+                event.stopPropagation();
                 const postId = this.getAttribute('data-post-id');
-                const favBtn = document.getElementById(`fav-btn-${postId}`);
-                const isFavored = favBtn.src.includes("fav_button_yellow_filled");
+                console.log(postId);
 
-                // Toggle Favorite Button UI
-                if (isFavored) {
-                    favBtn.src = "/RecipeBook/Recipe-Book/buttons/fav_button_yellow_outlined.png";
-                } else {
-                    favBtn.src = "/RecipeBook/Recipe-Book/buttons/fav_button_yellow_filled.png";
-                }
-
-                // Send AJAX Request
                 const xhr = new XMLHttpRequest();
-                xhr.open("POST", "/RecipeBook/Recipe-Book/php/favourite_functionality/add_favourite.php", true);
-                xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                xhr.open('POST', '/RecipeBook/Recipe-Book/php/favourite_functionality/add_favourite.php', true);
+                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
                 xhr.onload = function() {
                     if (xhr.status === 200) {
                         alert('Post added to your favourites!');
-                    } else {
-                        console.error("AJAX request failed.");
                     }
                 };
-
-                xhr.send("post_id=" + postId); 
+                xhr.send('post_id=' + postId);
             });
         });
         
