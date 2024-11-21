@@ -153,11 +153,10 @@
                                 echo "</div>";
                                 echo "<div class='like_comment_bookmark'>";
                                     $likeButtonSrc = $row['has_liked'] ? "/RecipeBook/Recipe-Book/buttons/like_button_yellow_filled.png" : "/RecipeBook/Recipe-Book/buttons/like_button_yellow_outlined.png";
-                                    $favButtonSrc = $row['has_favorited'] ? "/RecipeBook/Recipe-Book/buttons/fav_button_yellow_filled.png" : "/RecipeBook/Recipe-Book/buttons/fav_button_yellow_outlined.png";
                                     echo "<img id='like-btn-" . $row['post_id'] . "' class='like-btn' data-post-id='" . $row['post_id'] . "' src='" . $likeButtonSrc . "' height='30px' width='30px' title='Likes'/>";
                                     echo "<span id='like-count-" . $row['post_id'] . "' style='color:#ffbf17; font-weight:bold;'>" . htmlspecialchars($row['post_like_count']) . "</span>&nbsp;&nbsp;&nbsp";
                                     echo "<img class='comment-btn' data-post-id='" . $postId . "' src='/RecipeBook/Recipe-Book/buttons/comment_button_yellow_outlined.png' height='30px' width='30px' title='Comment' onmouseover='onHoverComment(this)' onmouseout='noHoverComment(this)'/>&nbsp;&nbsp;&nbsp;";
-                                    echo "<img id='fav-btn-" . $row['post_id'] . "' class='fav-btn' data-post-id='" . $row['post_id'] . "' src='" . $favButtonSrc . "' height='30px' width='30px' title='Add to favourites' onmouseover='onHoverFav(this)' onmouseout='noHoverFav(this)'/>";
+                                    echo "<img id='fav-btn-" . $row['post_id'] . "' class='fav-btn' data-post-id='" . $row['post_id'] . "' src='/RecipeBook/Recipe-Book/buttons/fav_button_yellow_outlined.png' height='30px' width='30px' title='Add to favourites' onmouseover='onHoverFav(this)' onmouseout='noHoverFav(this)'/>";
                                 echo "</div>";
                             echo "</div>";
                         echo "</div>";
