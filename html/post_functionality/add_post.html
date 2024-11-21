@@ -1,149 +1,61 @@
 <html>
+    <head>
+        <title>Recipebook</title>
+        <link rel="stylesheet" href="/RecipeBook/Recipe-Book/css/add_post.css" type="text/css">
+        <link rel="icon" href="/RecipeBook/Recipe-Book/logo/logo4.png" type="image/png">
+    </head>
+    <body>
+        <img onclick="go_back()" class="back-button" src="/RecipeBook/Recipe-Book/buttons/back_button.png" title="Go back" onmouseover="onHoverBack()" onmouseout="noHoverBack()">
+        <h1>Add New Recipe</h1>
+        <form action="/RecipeBook/Recipe-Book/php/post_functionality/add_post.php" method="POST" enctype="multipart/form-data">
 
-<head>
+            <label for="post_image">Recipe Image:</label>
+            <input type="file" name="post_image" accept="image" id="post_image" required />
 
-    <title>Recipebook</title>
-    <link rel="icon" href="/RecipeBook/Recipe-Book/logo/logo4.png" type="image/png">
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            background-image: url('/RecipeBook/Recipe-Book/background.png');
-            background-attachment: fixed;
-            background-size: cover;
-            background-position: center;
-            height: 100vh;
-            color: #333;
-        }
+            <label for="post_title">Recipe Title:</label>
+            <input type="text" name="post_title" id="post_title" required />
 
-        h1 {
-            text-align: center;
-            color: #FFBF17;
-            margin-top: 100px;
-            font-size: 2em;
-        }
+            <label for="post_ingredients">Ingredients:</label>
+            <div id="ingredients_container">
+                <input type="text" name="post_ingredients[]" placeholder="Enter ingredient" required />
+            </div>
+            <img class="add-btn" onclick="addIngredientField()" width="30px" style="background-color:transparent;cursor: pointer;"
+                src="/RecipeBook/Recipe-Book/buttons/add_button.png" title="Add Ingredient">
 
-        form {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            background-color: #FFFFFFDD;
-            padding: 30px;
-            border-radius: 20px;
-            width: 90%;
-            max-width: 500px;
-            margin: 20px auto;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
+            <label for="post_instructions">Preparation steps:</label>
+            <div id="steps_container">
+                <textarea name="post_instructions[]" placeholder="Enter preparation step" required></textarea>
+            </div>
+            <img class="add-btn" onclick="addStepField()" width="30px" style="background-color:transparent;cursor: pointer;"
+                src="/RecipeBook/Recipe-Book/buttons/add_button.png" title="Add Preparation Step">
 
-        label {
-            font-weight: bold;
-            color: #333;
-            margin-bottom: 5px;
-            width: 100%;
-            text-align: left;
-        }
+            <label for="post_keywords">Hashtags:</label>
+            <input type="text" name="post_keywords" id="post_keywords" Placeholder="#cheese, #potato,..." required />
 
-        input[type="text"],
-        input[type="file"],
-        textarea {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 15px;
-            border: 1px solid #ddd;
-            border-radius: 10px;
-            font-size: 16px;
-            outline: none;
-        }
+            <label for="post_category">Category:</label>
+            <input type="text" name="post_category" id="post_category" required />
 
-        textarea {
-            resize: vertical;
-        }
+            <label for="post_text">Note:</label>
+            <textarea name="post_text" id="post_text" placeholder="Add your personal note" required></textarea>
 
-        input[type="file"] {
-            padding: 5px;
-            cursor: pointer;
-        }
+            <input type="submit" value="Add Recipe" />
 
-        input[type="submit"] {
-            padding: 10px 20px;
-            background-color: black;
-            color: white;
-            font-weight: bold;
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        input[type="submit"]:hover {
-            background-color: #E5A800;
-        }
-
-        button {
-            background-color: #FFBF17;
-            color: white;
-            font-weight: bold;
-            border: none;
-            border-radius: 10px;
-            padding: 10px 20px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-            position: absolute;
-            top: 20px;
-            left: 20px;
-        }
-
-        button:hover {
-            background-color: #E5A800;
-        }
-
-        img[title="Add Ingredient"],
-        img[title="Add Step"] {
-            cursor: pointer;
-            width: 40px;
-            margin: 5px 0;
-        }
-
-        #ingredients_container,
-        #steps_container {
-            width: 100%;
-        }
-
-        input[type="text"]::placeholder,
-        textarea::placeholder {
-            color: #999;
-            opacity: 1;
-        }
-
-        @media (max-width: 768px) {
-            form {
-                width: 95%;
-            }
-
-            h1 {
-                margin-top: 60px;
-            }
-        }
-
-        .back-button {
-            position: fixed;
-            width: 60px;
-            border: none;
-            border-radius: 10px;
-            padding: 10px 30px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-            top: 20px;
-            left: 20px;
-        }
-
-        .back-button:hover {
-            content: url('/RecipeBook/Recipe-Book/buttons/back_button2.png');
-        }
-    </style>
-
+        </form>
+        <br/>
+    </body>
     <script>
+        function go_back() {
+            window.history.back();
+        }
+
+        function onHoverBack(){
+            document.querySelector('.back-button').src = '/RecipeBook/Recipe-Book/buttons/back_button2.png';
+        }
+
+        function noHoverBack(){
+            document.querySelector('.back-button').src = '/RecipeBook/Recipe-Book/buttons/back_button.png';
+        }
+
         function addIngredientField() {
             let container = document.getElementById("ingredients_container");
             let input = document.createElement("input");
@@ -162,53 +74,5 @@
             container.appendChild(input);
             container.appendChild(document.createElement("br"));
         }
-
     </script>
-</head>
-
-<body>
-    <img onclick="go_back()" class="back-button" src="/RecipeBook/Recipe-Book/buttons/back_button.png" title="Go back">
-    <h1>Add a new recipe</h1>
-    <form action="/RecipeBook/Recipe-Book/php/post_functionality/add_post.php" method="POST"
-        enctype="multipart/form-data">
-
-        <label for="post_image">Recipe Image:</label>
-        <input type="file" name="post_image" accept="image" id="post_image" required />
-
-        <label for="post_title">Recipe Title:</label>
-        <input type="text" name="post_title" id="post_title" required />
-
-        <label for="post_ingredients">Ingredients:</label>
-        <div id="ingredients_container">
-            <input type="text" name="post_ingredients[]" placeholder="Enter ingredient" required />
-        </div>
-        <img onclick="addIngredientField()" width="30px" style="background-color:transparent;cursor: pointer;"
-            src="/RecipeBook/Recipe-Book/buttons/add_button.png" title="Add Ingredient">
-
-        <label for="post_instructions">Preparation steps:</label>
-        <div id="steps_container">
-            <textarea name="post_instructions[]" placeholder="Enter preparation step" required></textarea>
-        </div>
-        <img onclick="addStepField()" width="30px" style="background-color:transparent;cursor: pointer;"
-            src="/RecipeBook/Recipe-Book/buttons/add_button.png" title="Add Step">
-
-        <label for="post_keywords">Hashtags:</label>
-        <input type="text" name="post_keywords" id="post_keywords" Placeholder="#cheese, #potato,..." required />
-
-        <label for="post_category">Category:</label>
-        <input type="text" name="post_category" id="post_category" required />
-
-        <label for="post_text">Note:</label>
-        <textarea name="post_text" id="post_text" placeholder="Add your personal note" required></textarea>
-
-        <input type="submit" value="Add Recipe" />
-
-    </form>
-</body>
-<script>
-    function go_back() {
-        window.history.back();
-    }
-</script>
-
 </html>

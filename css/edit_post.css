@@ -1,0 +1,152 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    background-image: url('/RecipeBook/Recipe-Book/background.png');
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    width: 100%;
+}
+
+.back-button{
+    position: fixed;
+    top: 20px;
+    left: 30px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+h1 {
+    text-align: center;
+    color: #FFBF17;
+    margin-top: 20px;
+    font-size: 35px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #FFFFFFDD;
+    padding: 30px;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 500px;
+    margin: 20px auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+label {
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+    width: 100%;
+    text-align: left;
+}
+
+input[type="text"],
+input[type="file"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    font-size: 16px;
+    outline: none;
+}
+
+input[type="file"] {
+    padding: 5px;
+    cursor: pointer;
+}
+
+textarea {
+    resize: vertical;
+}
+
+img[title="Add Ingredient"],
+img[title="Add Step"] {
+    cursor: pointer;
+    margin: 5px 0;
+}
+
+#ingredients_container,
+#steps_container {
+    width: 100%;
+}
+
+input[type="text"]::placeholder,
+textarea::placeholder {
+    color: #999;
+    opacity: 1;
+}
+
+input[type="submit"] {
+    padding: 10px 20px;
+    background-color: black;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+input[type="submit"]:hover {
+    background-color: #FFBF17;
+}
+
+.ingredient-field button, .step-field button{
+    background-color: black;
+    color: #fff;
+    border: none;
+    padding: 6px 10px;
+    cursor: pointer;
+    font-size: 14px;
+    border-radius: 30px;
+    font-weight:bold;
+    margin-bottom:0px;
+}
+
+.ingredient-field button:hover, .step-field button:hover{
+    background-color: #ffbf17;
+}
+
+.edit_post_container img {
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+#ingredients_container,
+#steps_container {
+    display: flex;
+    flex-direction: column;
+}
+
+.ingredient-field,
+.step-field {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.ingredient-field input,
+.step-field textarea {
+    margin-right: 10px;
+}
+
+.ingredient-field input,
+.step-field textarea {
+    width: 90%;
+    margin-right: 10px;
+}
+
+.step-field textarea {
+    resize: vertical;
+}
+
+
