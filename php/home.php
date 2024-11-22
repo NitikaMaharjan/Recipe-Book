@@ -160,7 +160,8 @@
                                 echo "</div>";
                             echo "</div>";
                         echo "</div>";
-                    echo "</div>";        
+                    echo "</div>"; 
+                    echo "<br/>";       
                 }
             } else {
                 echo "<p style='text-align: center; font-size: 20px;'><b>";
@@ -179,8 +180,8 @@
                 </div>
                 <h2 style="color: #ffbf17; font-size:35px;">Comments</h2>
                 <div id="commentList"></div><br/><br/><br/>
-                <div>
-                    <textarea id="commentText" placeholder="Add your comment..."></textarea><br/><br/>
+                <div style="display:flex; align-items:center;">
+                    <textarea id="commentText" placeholder="Add your comment..."></textarea>&nbsp;&nbsp;
                     <button id="submit-comment">Submit Comment</button>
                 </div>
             </div>

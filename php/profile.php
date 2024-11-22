@@ -83,7 +83,7 @@
     
         <nav class="navbar">
             <div class="logo">
-                <img src="/RecipeBook/Recipe-Book/logo/logo4.png" onclick="window.location.href='/RecipeBook/Recipe-Book/php/home.php'" title="Home feed" style="width: 120px; height: 120px;"/>&nbsp;&nbsp;
+                <img src="/RecipeBook/Recipe-Book/logo/logo4.png" onclick="window.location.href='/RecipeBook/Recipe-Book/php/home.php'" title="Home feed" style="width: 120px; height: 120px;"/>&nbsp;
                 <h1  onclick="window.location.href='/RecipeBook/Recipe-Book/php/home.php'" title="Home feed" class="recipebook">Recipebook</h1>
             </div>
             <div class="rightside-bar">
@@ -167,7 +167,8 @@
                                 echo "</div>";
                             echo "</div>";
                         echo "</div>";
-                    echo "</div>";        
+                    echo "</div>";  
+                    echo "<br/>";      
                 }
             } else {
                 echo "<p style='text-align: center; font-size: 20px;'><b>";
@@ -186,8 +187,8 @@
                 </div>
                 <h2 style="color: #ffbf17; font-size:35px;">Comments</h2>
                 <div id="commentList"></div><br/><br/><br/>
-                <div>
-                    <textarea id="commentText" placeholder="Add your comment..."></textarea><br/><br/>
+                <div style="display:flex; align-items:center;">
+                    <textarea id="commentText" placeholder="Add your comment..."></textarea>&nbsp;&nbsp;
                     <button id="submit-comment">Submit Comment</button>
                 </div>
             </div>

@@ -101,6 +101,7 @@
                             echo "</div>";
                         echo "</div>";
                     echo "</div>";
+                    echo "<br/>";
                 }
             } else {
                 echo "<p style='text-align: center; font-size: 20px;'><b>";
