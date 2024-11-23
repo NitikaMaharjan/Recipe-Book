@@ -72,12 +72,12 @@
                             echo "</div>";
                             
                             echo "<div class='post-image' style='text-align:center;'>";
-                            if (($row['post_image'])) {
-                                echo "<img src='data:image/jpeg;base64," . base64_encode($row['post_image']) . "' 
-                                alt='Recipe Image' style='max-width: 450px; max-height: 450px; border-radius:8px; cursor: pointer;' onclick='inlarge_image(this)'/>";
-                            } else {
-                                echo "No image available";
-                            }
+                                if (($row['post_image'])) {
+                                    echo "<img src='data:image/jpeg;base64," . base64_encode($row['post_image']) . "' 
+                                    alt='Recipe Image' style='max-width: 450px; max-height: 450px; border-radius:8px; cursor: pointer;' onclick='inlarge_image(this)'/>";
+                                } else {
+                                    echo "No image available";
+                                }
                             echo "</div>";
 
                             echo "<div class='post-description'>";
@@ -99,7 +99,7 @@
                                     echo "<img id='like-btn-" . $row['post_id'] . "' class='like-btn' data-post-id='" . $row['post_id'] . "' src='" . $likeButtonSrc . "' height='30px' width='30px' title='Likes'/>";
                                     echo "<span id='like-count-" . $row['post_id'] . "' style='color:#ffbf17; font-weight:bold;'>" . htmlspecialchars($row['post_like_count']) . "</span>&nbsp;&nbsp;&nbsp";
                                     echo "<img class='comment-btn' data-post-id='" . $postId . "' src='/RecipeBook/Recipe-Book/buttons/comment_button_yellow_outlined.png' height='30px' width='30px' title='Comment' onmouseover='onHoverComment(this)' onmouseout='noHoverComment(this)'/>&nbsp;&nbsp;&nbsp;";
-                                    echo "<img id='fav-btn-" . $row['post_id'] . "' class='fav-btn' data-post-id='" . $row['post_id'] . "' src='/RecipeBook/Recipe-Book/buttons/fav_button_yellow_filled.png' height='30px' width='30px' title='Add to favourites' onmouseover='onHoverFav(this)' onmouseout='noHoverFav(this)'/>";
+                                    echo "<img class='remove-fav-btn' data-post-id='" . $row['post_id'] . "' src='/RecipeBook/Recipe-Book/buttons/fav_button_yellow_filled.png' height='30px' width='30px' title='Add to favourites' onmouseover='onHoverFav(this)' onmouseout='noHoverFav(this)'/>";
                                 echo "</div>";
                             echo "</div>";
                         echo "</div>";
@@ -233,22 +233,35 @@
             });
         });
 
-        //ajax for favourite button
-        document.querySelectorAll('.fav-btn').forEach(button => {
+        //ajax for remove from favourite button
+        document.querySelectorAll('.remove-fav-btn').forEach(button => {
             button.addEventListener('click', function(event) {
                 event.stopPropagation();
                 const postId = this.getAttribute('data-post-id');
-                console.log(postId);
+                const postElement = this.closest('.container'); // This ensures the entire post container is removed
 
                 const xhr = new XMLHttpRequest();
-                xhr.open('POST', '/RecipeBook/Recipe-Book/php/favourite_functionality/add_favourite.php', true);
+                xhr.open('POST', '/RecipeBook/Recipe-Book/php/favourite_functionality/remove_favourite.php', true);
                 xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
                 xhr.onload = function() {
                     if (xhr.status === 200) {
-                        alert('Post added to your favourites!');
+                        const response = xhr.responseText.trim();
+                        if (response.includes('successfully')) {
+                            alert('Removing this post from your favourites!');
+                            postElement.remove();  // Remove the entire post container (not just the post)
+                        } else {
+                            alert('Error: ' + response);
+                        }
+                    } else {
+                        alert('Failed to remove favorite. Please try again.');
                     }
                 };
+
+                xhr.onerror = function() {
+                    alert('Request failed. Please check your connection.');
+                };
+                
                 xhr.send('post_id=' + postId);
             });
         });

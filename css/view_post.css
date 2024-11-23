@@ -1,12 +1,10 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 0;
     background-image: url('/RecipeBook/Recipe-Book/background.png');
     background-attachment: fixed;
     background-size: cover;
     background-position: center;
     height: 100vh;
-    width: 100%;
 }
 
 .back-button{
@@ -17,54 +15,6 @@ body {
     height: 60px;
     border-radius: 50%;
     cursor: pointer;
-}
-
-h1{
-    font-size:35px;
-}
-
-h2{
-    font-size:24px;
-}
-
-h1, h2{
-    text-align: center;
-    margin-top: 20px;
-}
-
-
-.container {
-    display: block;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    max-width: 500px;
-    margin: 0 auto;
-    border-radius: 8px;
-    margin-bottom: 15px;
-    padding-bottom: 15px;
-    cursor: pointer;
-    background-color: rgba(255, 255, 255, 0.85);
-    border: 1px solid #ccc;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.322);
-}
-
-.post-title{
-    padding-left:0px;
-    color:#ffbf17;
-    text-align: center;
-}
-
-.post-description{
-    padding-left: 22px;
-}
-
-.post-actions{
-    display:flex;
-    align-items: center;
-    justify-content: space-between;
-    padding-left: 22px;
-    padding-right: 22px;
 }
 
 .modal {
@@ -121,6 +71,48 @@ h1, h2{
 
 #submit-comment:hover {
     background-color: #ffbf17;
+}
+
+.view-post-container {
+    display: block;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    max-width: 600px;
+    margin:30px auto;
+    padding: 20px 30px;
+    background-color: rgba(255, 255, 255, 0.85);
+    border: 1px solid #ccc;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.322);
+    cursor:pointer;
+    color: #333333;
+}
+
+.view-post-container h1{
+    color: #ffbf17;
+    font-size:35px;
+    margin: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+.heading, .post-actions{
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.view-post-container li{
+    margin-bottom: 5px;
+}
+
+.view-post-container h2{
+    font-size:24px;
+}
+
+.same-line{
+    display:flex;
+    align-items: center;
 }
 
 .image-modal {

@@ -129,12 +129,12 @@
                             echo "</div>";
                             
                             echo "<div class='post-image' style='text-align:center;'>";
-                            if (($row['post_image'])) {
-                                echo "<img src='data:image/jpeg;base64," . base64_encode($row['post_image']) . "' 
-                                alt='Recipe Image' style='max-width: 450px; max-height: 450px; border-radius:8px; cursor: pointer;' onclick='inlarge_image(this)'/>";
-                            } else {
-                                echo "No image available";
-                            }
+                                if (($row['post_image'])) {
+                                    echo "<img src='data:image/jpeg;base64," . base64_encode($row['post_image']) . "' 
+                                    alt='Recipe Image' style='max-width: 450px; max-height: 450px; border-radius:8px; cursor: pointer;' onclick='inlarge_image(this)'/>";
+                                } else {
+                                    echo "No image available";
+                                }
                             echo "</div>";
 
                             echo "<div class='post-description'>";
