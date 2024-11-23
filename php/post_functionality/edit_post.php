@@ -42,7 +42,7 @@
     </head>
     <body>
         <img onclick="go_back()" class="back-button" src="/RecipeBook/Recipe-Book/buttons/back_button.png" title="Go back" onmouseover="onHoverBack()" onmouseout="noHoverBack()">
-        <h1>Edit Recipe</h1>
+        <h1>Edit <span style='color:ffbf17;'>Recipe</span></h1>
 
         <form action="/RecipeBook/Recipe-Book/php/post_functionality/update_post.php?post_id=<?php echo $post_id;?>" method="POST" enctype="multipart/form-data">
             
@@ -67,7 +67,7 @@
                     foreach ($ingredients as $ingredient) { 
                         echo "<div class='ingredient-field'>";
                         echo "<input type='text' name='post_ingredients[]' value='" . htmlspecialchars($ingredient) . "' required/>";
-                        echo "<button type='button' onclick='removeField(this)'>Remove</button>";
+                        echo "&nbsp;&nbsp;<img src='/RecipeBook/Recipe-Book/buttons/minus_button.png' onclick='removeField(this)' width='22px' title='Remove Ingredient' style='background-color:transparent;cursor: pointer;'>";
                         echo "</div>";
                     } 
                 ?>
@@ -83,7 +83,7 @@
                     foreach ($steps as $step) {
                         echo "<div class='step-field'>";
                         echo "<textarea name='post_instructions[]' required>" . htmlspecialchars($step) . "</textarea>";
-                        echo "<button type='button' onclick='removeField(this)'>Remove</button>";
+                        echo "&nbsp;&nbsp;<img src='/RecipeBook/Recipe-Book/buttons/minus_button.png' onclick='removeField(this)' width='22px' title='Remove Preparation Step'  style='background-color:transparent;cursor: pointer;'>";
                         echo "</div>";
                     } 
                 ?>

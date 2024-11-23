@@ -42,7 +42,7 @@
                 echo "</div>";
                 echo "<div>";
                     if ($row['user_id'] == $_SESSION['user_id']) {   
-                        echo "<button class='delete-btn' onclick=\"deleteComment(" . $row['comment_id'] . ")\" style='background-color: #ffbf17; color: white; font-weight:bold; cursor: pointer; border: none; border-radius: 30px; padding: 8px 14px;'>Delete</button>";
+                        echo "<img src='/RecipeBook/Recipe-Book/buttons/remove_button_black.png' onclick=\"deleteComment(" . $row['comment_id'] . ")\" height='30px' width='30px' title='Delete Comment'>";
                     }
                 echo "</div>";
             echo "</div>";  

@@ -167,7 +167,7 @@
                 echo "<p style='text-align: center; font-size: 20px;'><b>";
                 echo "<img src='/RecipeBook/Recipe-Book/logo/logo4.png' title='Recipebook' style='width: 300px; height: 300px; cursor:pointer;'/><br/>";
                 echo "There are no recipes to show you. <span style='color:#ffbf17; cursor:pointer;' onclick='add_post()'>Click Here</span> to get started with Recipebook!";
-                echo "</b></p>";
+                echo "</b></p><br/>";
             }
             $conn->close();
         ?>
