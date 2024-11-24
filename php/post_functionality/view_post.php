@@ -106,11 +106,11 @@
                 echo "</ol>";
                 echo "</p>";
 
-                echo "<div class='same-line'><h2>Hashtags:</h2>&nbsp;&nbsp;<p>" . htmlspecialchars($row['post_keywords']) . "</p></div>";
+                echo "<h2>Hashtags:</h2><p>" . htmlspecialchars($row['post_keywords']) . "</p>";
 
-                echo "<div class='same-line'><h2>Category:</h2>&nbsp;&nbsp;<p>" . htmlspecialchars($row['post_category']) . "</p></div>";
+                echo "<h2>Category:</h2><p>" . htmlspecialchars($row['post_category']) . "</p>";
 
-                echo "<div class='same-line'><h2>Note:</h2>&nbsp;&nbsp;<p>".htmlspecialchars($row['post_text'])."</p></div>";
+                echo "<h2>Note:</h2><p>".htmlspecialchars($row['post_text'])."</p>";
 
                 echo "<br/>";
                 echo "<div class='post-actions'>";
