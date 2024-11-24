@@ -86,6 +86,9 @@
                 <img src="/RecipeBook/Recipe-Book/logo/logo4.png" onclick="window.location.href='/RecipeBook/Recipe-Book/php/home.php'" title="Home feed" style="width: 120px; height: 120px;"/>&nbsp;
                 <h1  onclick="window.location.href='/RecipeBook/Recipe-Book/php/home.php'" title="Home feed" class="recipebook">Recipebook</h1>
             </div>
+            <div class="likes-button">
+                <button><?php echo "Total likes: " . $total_likes; ?></button>
+            </div>
             <div class="rightside-bar">
                 <img class="home-btn" onclick="window.location.href='/RecipeBook/Recipe-Book/php/home.php'" src='/RecipeBook/Recipe-Book/buttons/home_button_black_outlined.png' title="Home feed"  onmouseover="onHoverHome()" onmouseout="noHoverHome()" />
                 <img class="favc-btn" onclick="window.location.href='/RecipeBook/Recipe-Book/php/favourite_functionality/favourite_page.php'" src="/RecipeBook/Recipe-Book/buttons/fav_button_black.png" title="Your favourites" onmouseover="onHoverFavc()" onmouseout="noHoverFavc()"/>
@@ -107,11 +110,9 @@
                         }
                         ?>
                     </a>
-                <h2><?php echo "$user_name" ?></h2><br/>
-                <button><?php echo "Total likes: " . $total_likes; ?></button>
+                <h2><span style="color:#ffbf17;"><?php echo $user_name ?></span></h2><br/>
             </div>
-            <br/>
-            <h2 style="text-align: center;">All posts</h2>
+            <h2 style="text-align: center; margin-top:0px;">All posts</h2>
 
             <form id="sortForm" method="GET" action="">
                 <label for="sort">Sort by:</label>&nbsp;&nbsp;

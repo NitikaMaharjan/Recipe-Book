@@ -79,7 +79,6 @@ body {
     cursor: pointer;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 14px;
-    transition: background-color 0.3s;
     margin-left: 10px;
 }
 

@@ -1,0 +1,73 @@
+body {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+    background-image: url('/RecipeBook/Recipe-Book/background.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.back-button{
+    position: fixed;
+    top: 20px;
+    left: 30px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.form-container {
+    background-color: rgba(255, 255, 255, 0.85);
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 20px;
+    padding-right:20px;
+    width: 400px;
+    text-align: center;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.322);
+    color: black;
+}
+
+.form-container img {
+    padding-left: 15px;
+    cursor: pointer;
+}
+.form-container h1 {
+    color: #333333;
+    font-size: 25px;
+    margin-top: 0px;
+    margin-bottom: 20px;
+}
+
+.form-container label{
+    padding-left:40px;
+}
+
+.form-container input[type="submit"] {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 10px 20px;
+    background-color: black;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+.form-container input[type="submit"]:hover {
+    background-color: #FFBF17;
+}
+
+#image-preview {
+    display: none;
+    margin-top: 20px;
+    padding-left: 120px;
+}

@@ -46,7 +46,7 @@
 
         <form action="/RecipeBook/Recipe-Book/php/post_functionality/update_post.php?post_id=<?php echo $post_id;?>" method="POST" enctype="multipart/form-data">
             
-            <label for="post_image">Post Image:</label>
+            <label for="post_image">Recipe Image:</label>
             <?php 
                 if (($row['post_image'])) {
                     echo "<img src='data:image/jpeg;base64," . base64_encode($row['post_image']) . "' alt='Recipe Image' style='max-width: 150px; max-height: 150px;'/>";
@@ -57,7 +57,7 @@
             <br/>
             <input type="file" name="post_image" accept="image" id="post_image" value="<?php $row['post_image']; ?>"/>
 
-            <label for="post_title">Post Title:</label>
+            <label for="post_title">Recipe Title:</label>
             <input type="text" name="post_title" id="post_title" value="<?php echo htmlspecialchars($row['post_title']); ?>" required/>
             
             <label for="post_ingredients">Ingredients:</label> 
@@ -76,7 +76,7 @@
             <img onclick="addIngredientField()" width="30px" style="background-color:transparent;cursor: pointer;"
             src="/RecipeBook/Recipe-Book/buttons/add_button.png" title="Add Ingredient">
 
-            <label for="post_instructions">Instructions:</label> 
+            <label for="post_instructions">Preparation Steps:</label> 
             <div id="steps_container">
                 <?php 
                     $steps = explode(", ", $row['post_instructions']); 

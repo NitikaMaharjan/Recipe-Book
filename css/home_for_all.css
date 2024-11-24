@@ -91,7 +91,6 @@ body {
     font-size: 14px;
     font-weight: bold;
     cursor: pointer;
-    transition: background-color 0.2s, color 0.2s;
     background-color: #cccc;
     color: black;
 }
@@ -231,6 +230,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor:pointer;
 }
 
 .signup_login_popup_logo img {

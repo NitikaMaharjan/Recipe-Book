@@ -19,6 +19,24 @@ body {
     height: 100px;
 }
 
+.likes-button button{
+    margin-top: 15px;
+    margin-right: 60px;
+    border: none;
+    border-radius: 30px;
+    padding: 16px 30px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+    background-color: #cccc;
+    color: black;
+}
+
+.likes-button button:hover{
+    background-color: #ffbf17;
+    color: white;
+}
 .logo,
 .recipebook {
     margin: 5px;
@@ -55,28 +73,17 @@ body {
 }
 
 .heading {
-    padding-top: 100px;
+    padding-top: 110px;
 }
 
 .heading-profile{
     text-align:center;
 }
 
-.heading-profile button{
-    border: none;
-    border-radius: 30px;
-    padding: 16px 30px;
-    font-size: 14px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.2s, color 0.2s;
-    background-color: #cccc;
-    color: black;
-}
-
-.heading-profile button:hover{
-    background-color: #ffbf17;
-    color: white;
+.heading-profile h2{
+    font-size: 35px;
+    margin-top: 5px;
+    margin-bottom: 0px;
 }
 
 .heading label {

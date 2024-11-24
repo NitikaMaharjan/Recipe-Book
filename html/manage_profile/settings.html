@@ -1,99 +1,39 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recipebook - Settings</title>
-    <link rel="icon" href="/RecipeBook/Recipe-Book/logo/logo4.png" type="image/png">
-    <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: url('/RecipeBook/Recipe-Book/background.png') no-repeat center center fixed;
-            background-size: cover;
-        }
-
-        .setting-container {
-            background-color: rgba(255, 255, 255, 0.9);
-            padding: 30px;
-            width: 300px;
-            text-align: center;
-            border-radius: 10px;
-            border: 1px solid #ddd;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        .setting-container h1 {
-            font-size: 24px;
-            color: #333;
-            margin-bottom: 20px;
-        }
-
-        .setting-container button {
-            background-color: black;
-            color: white;
-            font-weight: bold;
-            border: none;
-            border-radius: 5px;
-            padding: 12px 20px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-            margin: 10px 0;
-            width: 100%;
-        }
-
-        .setting-container button:hover {
-            background-color: #FFBF17;
-        }
-
-        .back-button {
-            position: fixed;
-            width: 60px;
-            border: none;
-            border-radius: 10px;
-            padding: 10px 30px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-            top: 20px;
-            left: 20px;
-        }
-
-        .back-button:hover {
-            content: url('/RecipeBook/Recipe-Book/buttons/back_button2.png');
-        }
-    </style>
-</head>
-
-<body>
-    <img onclick="go_back()" class="back-button" src="/RecipeBook/Recipe-Book/buttons/back_button.png" title="Go back">
-
-    <div class="setting-container">
-        <h1>Settings</h1>
-
-        <button
-            onclick="window.location.href='/RecipeBook/Recipe-Book/html/manage_profile/update_profile_pic.html'">Update
-            Profile Picture</button>
-        <button onclick="delete_profile_pic()">Delete Profile Picture</button>
-        <button onclick="window.location.href='/RecipeBook/Recipe-Book/html/manage_profile/change_password.html'">Change
-            Password</button>
-        <button onclick="confirmit()">Log Out</button>
-    </div>
-
+<html>
+    <head>
+        <title>Settings</title>
+        <link rel="stylesheet" href="/recipeBook/Recipe-Book/css/settings.css" type="text/css">
+        <link rel="icon" href="/RecipeBook/Recipe-Book/logo/logo4.png" type="image/png">
+    </head>
+    <body>
+        <img onclick="go_back()" class="back-button" src="/RecipeBook/Recipe-Book/buttons/back_button.png" title="Go back" onmouseover="onHoverBack()" onmouseout="noHoverBack()">
+        
+        <div class="setting-container">
+            <img src="/RecipeBook/Recipe-Book/logo/logo4.png" title="Recipebook" width="150px" />
+            <h1>Settings</h1>
+            <button onclick="window.location.href='/RecipeBook/Recipe-Book/html/manage_profile/update_profile_pic.html'">Update Profile Picture</button>
+            <button onclick="delete_profile_pic()">Delete Profile Picture</button>
+            <button onclick="window.location.href='/RecipeBook/Recipe-Book/html/manage_profile/change_password.html'">Change Password</button>
+            <button onclick="confirmit()">Log Out</button>
+        </div>
+    </body>
     <script>
+        function go_back() {
+            window.history.back();
+        }
+
+        function onHoverBack(){
+            document.querySelector('.back-button').src = '/RecipeBook/Recipe-Book/buttons/back_button2.png';
+        }
+
+        function noHoverBack(){
+            document.querySelector('.back-button').src = '/RecipeBook/Recipe-Book/buttons/back_button.png';
+        }
+
         function confirmit() {
             var ans = confirm("Are you sure you want to log out?");
             if (ans == true) {
                 window.location.href = "/RecipeBook/Recipe-Book/php/logout.php";
             }
-        }
-
-        function go_back() {
-            window.history.back();
         }
 
         function delete_profile_pic() {
@@ -103,6 +43,4 @@
             }
         }
     </script>
-</body>
-
 </html>

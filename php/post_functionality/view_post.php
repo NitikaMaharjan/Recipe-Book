@@ -67,7 +67,7 @@
             <?php 
                 echo "<div class='heading'>";
                     echo "<div>";
-                        echo "<h1>".htmlspecialchars($row['post_title'])."</h1>";
+                        echo "<h1 title='Recipe Title'>".htmlspecialchars($row['post_title'])."</h1>";
                     echo "</div>";
                     echo "<div>";
                         if($_SESSION['user_id']==$row['user_id']){
@@ -86,7 +86,6 @@
                         echo "No image available";
                     }
                 echo "</div>";
-                echo "<br/>";
 
                 echo "<h2>Ingredients:</h2><p>";
                 $ingredients = explode(', ', $row['post_ingredients']);
@@ -116,9 +115,9 @@
                 echo "<div class='post-actions'>";
                     echo "<div style='display: flex; align-items: center;'>";
                         if ($row['user_profile_picture']) {
-                            echo "<img src='data:image/jpeg;base64," . base64_encode($row['user_profile_picture']) . "' alt='Profile picture' style='width: 50px; height: 50px; border-radius: 50%;' />&nbsp;";
+                            echo "<img src='data:image/jpeg;base64," . base64_encode($row['user_profile_picture']) . "' alt='Profile picture' style='width: 50px; height: 50px; border-radius: 50%;' />";
                         } else {
-                            echo "<img src='/RecipeBook/Recipe-Book/default_profile_picture.jpg' style='width: 50px; height: 50px; border-radius: 50%;' />&nbsp;";
+                            echo "<img src='/RecipeBook/Recipe-Book/default_profile_picture.jpg' style='width: 50px; height: 50px; border-radius: 50%;' />";
                         }
                         if ($row['post_edited_date'] != $row['post_posted_date']) {
                             // Post has been edited
