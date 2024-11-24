@@ -81,8 +81,8 @@
                             echo "</div>";
 
                             echo "<div class='post-description'>";
-                            echo "<p><b>Category : </b>" . htmlspecialchars($row['post_category']) . "</p>";
-                            echo "<p>" . htmlspecialchars($row['post_keywords']) . "</p>";
+                                echo "<p>" . htmlspecialchars($row['post_keywords']) . "</p>";
+                                echo "<p><b>Category : </b>" . htmlspecialchars($row['post_category']) . "</p>";
                             echo "</div>";
 
                             echo "<div class='post-actions'>";

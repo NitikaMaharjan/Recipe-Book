@@ -145,8 +145,8 @@
                             echo "</div>";
 
                             echo "<div class='post-description'>";
-                            echo "<p><b>Category : </b>" . htmlspecialchars($row['post_category']) . "</p>";
-                            echo "<p>" . htmlspecialchars($row['post_keywords']) . "</p>";
+                                echo "<p>" . htmlspecialchars($row['post_keywords']) . "</p>";
+                                echo "<p><b>Category : </b>" . htmlspecialchars($row['post_category']) . "</p>";
                             echo "</div>";
 
                             echo "<div class='post-actions'>";
@@ -173,7 +173,7 @@
             } else {
                 echo "<p style='text-align: center; font-size: 20px;'><b>";
                 echo "<img src='/RecipeBook/Recipe-Book/logo/logo4.png' title='Recipebook' style='width: 300px; height: 300px; cursor:pointer;'/><br/>";
-                echo "There are no recipes to show you. <span style='color:#ffbf17; cursor:pointer;' onclick='add_post()'>Click Here</span> to get started with Recipebook!";
+                echo "You have not posted any recipes yet. <span style='color:#ffbf17; cursor:pointer;' onclick='add_post()'>Click Here</span> to get started with Recipebook!";
                 echo "</b></p><br/>";
             }
             $conn->close();

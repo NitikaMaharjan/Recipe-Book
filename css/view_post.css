@@ -86,6 +86,11 @@ body {
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.322);
     cursor:pointer;
     color: #333333;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
+    white-space: normal;
+    overflow: hidden;
 }
 
 .view-post-container h1{

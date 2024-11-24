@@ -86,9 +86,9 @@
                         if ($result2->num_rows==1) {
                             while($row = $result2->fetch_assoc()) {
                                 if (($row['user_profile_picture'])) {
-                                    echo "<img src='data:image/jpeg;base64,".base64_encode($row['user_profile_picture'])."' alt='Profile picture' title='Your profile' style='max-width: 55px; max-height: 50px; border-radius: 50%;'/>";
+                                    echo "<img src='data:image/jpeg;base64,".base64_encode($row['user_profile_picture'])."' title='Your profile' style='max-width: 55px; max-height: 50px; border-radius: 50%;'/>";
                                 } else {
-                                    echo "<img src='/RecipeBook/Recipe-Book/default_profile_picture.jpg' style='max-width: 50px; max-height: 50px; border-radius: 50%;'/>";
+                                    echo "<img src='/RecipeBook/Recipe-Book/default_profile_picture.jpg' title='Your profile' style='max-width: 50px; max-height: 50px; border-radius: 50%;'/>";
                                 }
                             }
                         }
@@ -138,8 +138,8 @@
                             echo "</div>";
 
                             echo "<div class='post-description'>";
-                            echo "<p><b>Category : </b>" . htmlspecialchars($row['post_category']) . "</p>";
-                            echo "<p>" . htmlspecialchars($row['post_keywords']) . "</p>";
+                                echo "<p>" . htmlspecialchars($row['post_keywords']) . "</p>";
+                                echo "<p><b>Category : </b>" . htmlspecialchars($row['post_category']) . "</p>";
                             echo "</div>";
 
                             echo "<div class='post-actions'>";
