@@ -50,7 +50,7 @@
                 $delete_post_sql = "DELETE FROM post WHERE post_id = $post_id";
                 $conn->query($delete_post_sql); 
                 echo"<script>
-                        alert('You have deleted the post !');
+                        alert('You have deleted this post !');
                         window.location.href = '/Recipebook/Recipe-Book/admin/posts_page.php?user_id=$user_id';
                         exit();
                     </script>";
@@ -89,6 +89,8 @@
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
                         $post_id = $row['post_id'];
+                        $post_title = $row['post_title'];
+                        
                         $comment_count_sql = "SELECT COUNT(*) AS total_comments FROM Comment WHERE post_id = $post_id";
                         $comment_result = $conn->query($comment_count_sql);
                         $comments_row = $comment_result->fetch_assoc();
@@ -108,7 +110,7 @@
                                 <td>
                                     <form method='GET' action='/Recipebook/Recipe-Book/admin/posts_comment.php'>
                                         <input type='hidden' name='post_id' value='{$row['post_id']}'>
-                                        <input type='hidden' name='user_name' value='{$user_name}'>
+                                        <input type='hidden' name='post_title' value='{$post_title}'>
                                         <button type='submit' name='post_comment' class='comment-btn' title='Show Comments'>Show Comments ($total_comments)</button>
                                     </form>
                                 </td>
@@ -121,7 +123,7 @@
                             </tr>";
                     }
                 } else {
-                    echo "<tr><td colspan='10' style='text-align:center;'>There are no posts from this user!</td></tr>";
+                    echo "<tr><td colspan='10' style='text-align:center;'>There are no posts from $user_name!</td></tr>";
                 }
                 ?>
             </tbody>

@@ -19,7 +19,7 @@
 
     if (isset($_GET['post_comment'])) {
         $post_id = $_GET['post_id'];
-        $user_name = $_GET['user_name'];
+        $post_title = $_GET['post_title'];
 
         $postid_sql = "SELECT post_id FROM post WHERE post_id = $post_id";
         $postid_result = $conn->query($postid_sql);
@@ -45,7 +45,7 @@
         $conn->query($delete_comment_sql);
         echo"<script>
                 alert('You have deleted this comment !');
-                window.location.href = '/Recipebook/Recipe-Book/admin/posts_comment.php?post_id=$post_id&user_name=$user_name&post_comment=true';
+                window.location.href = '/Recipebook/Recipe-Book/admin/posts_comment.php?post_id=$post_id&post_title=$post_title&post_comment=true';
                 exit();
             </script>";
     }
@@ -59,14 +59,15 @@
     </head>
     <body>
         <img onclick="go_back()" class="back-button" src="/RecipeBook/Recipe-Book/buttons/back_button.png" title="Go back" onmouseover="onHoverBack()" onmouseout="noHoverBack()">
-        <h1><?php echo htmlspecialchars($user_name); ?>'s Comments</h1>
+        <h1>Comments in <?php echo htmlspecialchars($post_title); ?></h1>
 
         <table>
             <thead>
                 <tr>
                     <th>Comment ID</th>
-                    <th>User image</th>
-                    <th>Text</th>
+                    <th>Commented By</th>
+                    <th>User Image</th>
+                    <th>Comment</th>
                     <th>Commented Date</th>
                     <th>Actions</th>
                 </tr>
@@ -77,6 +78,7 @@
                     while ($row = $result->fetch_assoc()) {
                         echo "<tr>
                                 <td>{$row['comment_id']}</td>
+                                <td>{$row['user_name']}</td>
                                 <td>";
                         if ($row['user_profile_picture']) {
                             echo "<img src='data:image/jpeg;base64," . base64_encode($row['user_profile_picture']) . "' class='thumbnail' onclick='showPopup(this)' />";
@@ -95,7 +97,7 @@
                             </tr>";
                     }
                 } else {
-                    echo "<tr><td colspan='6' style='text-align:center;'>There are comments from $user_name!</td></tr>";
+                    echo "<tr><td colspan='6' style='text-align:center;'>There are comments in this post</td></tr>";
                 }
                 ?>
             </tbody>
