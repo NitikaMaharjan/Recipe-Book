@@ -33,7 +33,7 @@
     <body>
         <nav class="navbar">
             <div class="logo">
-                <img src="/RecipeBook/Recipe-Book/logo/logo4.png" onclick="about()" title="About Recipebook" style="width: 120px; height: 120px;"/>&nbsp;
+                <img src="/RecipeBook/Recipe-Book/logo/logo4.png" onclick="window.location.href='/RecipeBook/Recipe-Book/php/home_for_all.php'" title="Home feed" style="width: 120px; height: 120px;"/>&nbsp;
                 <h1 onclick="about()" class="recipebook" title="About Recipebook">Recipebook</h1>
             </div>
 
@@ -172,6 +172,7 @@
             fav.src = '/RecipeBook/Recipe-Book/buttons/fav_button_yellow_outlined.png';
         }
 
+        //about popup box
         function about() {
             //display the pop-up box
             document.getElementById('about').style.display = 'block';
