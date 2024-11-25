@@ -62,9 +62,7 @@
             </div>
         </nav>
 
-        <form action="/Recipebook/Recipe-Book/admin/logout_admin.php" method="post">
-            <button type="submit">Logout</button>
-        </form>
+        <h1 style="text-align:center; color:#ffbf17;">Overview</h1>
 
         <div class="dashboard-container">
             <div class="dashboard-buttons">
