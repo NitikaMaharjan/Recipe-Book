@@ -149,8 +149,8 @@ h1, h2{
 
 .image-modal .close-btn {
     position: absolute;
-    top: 20px;
-    right: 20px;
+    top: 10px;
+    right: 340px;
     color: white;
     font-size: 35px;
     font-weight: bold;
