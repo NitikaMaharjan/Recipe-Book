@@ -45,6 +45,10 @@
         <link rel="icon" href="/RecipeBook/Recipe-Book/logo/logo4.png" type="image/png">
     </head>
     <body>
+        <form action="/Recipebook/Recipe-Book/admin/logout_admin.php" method="post">
+            <button type="submit">Logout</button>
+        </form>
+
         <div class="dashboard-container">
             <h1>Dashboard</h1>
             <div class="dashboard-buttons">
@@ -52,13 +56,14 @@
                     <button onclick="window.location.href='/Recipebook/Recipe-Book/admin/users_page.php'">Users: <?php echo $user_count; ?></button>
                 </div>
                 <div>
-                    <button onclick="window.location.href='Recipebook/Recipe-Book/admin/all_posts.php'">Posts: <?php echo $post_count; ?></button>
+                    <button onclick="window.location.href='/Recipebook/Recipe-Book/admin/all_posts.php'">Posts: <?php echo $post_count; ?></button>
                 </div>
                 <div>
                     <button onclick="window.location.href='/Recipebook/Recipe-Book/admin/all_comments.php'">Comments: <?php echo $comment_count; ?></button>
                 </div>
             </div>
         </div>
+
     </body>
 </html>
 
