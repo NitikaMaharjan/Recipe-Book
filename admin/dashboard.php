@@ -40,17 +40,24 @@
 
 <html>
     <head>
-        <title>Admin Dashboard</title>
+        <title>Recipebook</title>
         <link rel="stylesheet" href="/Recipebook/Recipe-Book/admin/dashboard.css" type="text/css">
+        <link rel="icon" href="/RecipeBook/Recipe-Book/logo/logo4.png" type="image/png">
     </head>
     <body>
         <div class="dashboard-container">
-            <h2>Dashboard</h2>
-            <p>
-                <a href="/Recipebook/Recipe-Book/admin/users_page.php">Users: <?php echo $user_count; ?></a><br>
-                <a href="/Recipebook/Recipe-Book/admin/all_posts.php">Posts: <?php echo $post_count; ?></a><br>
-                <a href="/Recipebook/Recipe-Book/admin/all_comments.php">Comments: <?php echo $comment_count; ?></a><br>
-            </p>
+            <h1>Dashboard</h1>
+            <div class="dashboard-buttons">
+                <div>
+                    <button onclick="window.location.href='/Recipebook/Recipe-Book/admin/users_page.php'">Users: <?php echo $user_count; ?></button>
+                </div>
+                <div>
+                    <button onclick="window.location.href='Recipebook/Recipe-Book/admin/all_posts.php'">Posts: <?php echo $post_count; ?></button>
+                </div>
+                <div>
+                    <button onclick="window.location.href='/Recipebook/Recipe-Book/admin/all_comments.php'">Comments: <?php echo $comment_count; ?></button>
+                </div>
+            </div>
         </div>
     </body>
 </html>
