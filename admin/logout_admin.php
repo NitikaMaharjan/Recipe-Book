@@ -1,3 +1,9 @@
+<html>
+    <head>
+        <title>Recipebook</title>
+        <link rel="icon" href="/RecipeBook/Recipe-Book/logo/logo4.png" type="image/png">
+    </head>
+</html>
 <?php
     session_start();
 
@@ -10,7 +16,10 @@
         if (empty($_SESSION)) {
             session_destroy();
         }
-        header("Location: /Recipebook/Recipe-Book/admin/login_admin.html");
+        echo"<script>
+                alert('You have been logged out!!');
+                window.location.href = '/Recipebook/Recipe-Book/admin/login_admin.html';
+            </script>";
         exit();
     } else {
         header("Location: /Recipebook/Recipe-Book/admin/login_admin.html");
