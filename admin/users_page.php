@@ -58,7 +58,7 @@
     </head>
     <body>
         <img onclick="go_back()" class="back-button" src="/RecipeBook/Recipe-Book/buttons/back_button.png" title="Go back" onmouseover="onHoverBack()" onmouseout="noHoverBack()">
-        <h1 title="Users">Users</h1>
+        <h1 title="All Users">Users</h1>
 
         <table>
             <thead>
@@ -107,7 +107,7 @@
                                     <form method='POST' action=''>
                                         <input type='hidden' name='user_id' value='{$row['user_id']}'>
                                         <input type='hidden' name='user_name' value='{$row['user_name']}'>
-                                        <button type='submit' name='delete_user' class='delete-button' title='Delete user' onclick='return confirmit()' ><img class='delete-btn' src='/RecipeBook/Recipe-Book/buttons/remove_button_333.png' onmouseover='onHoverRemoveUser()' onmouseout='noHoverRemoveUser()' height='40px' width=''40px></button>
+                                        <button type='submit' name='delete_user' class='delete-button' title='Delete user' onclick='return confirmit()' ><img class='delete-btn' src='/RecipeBook/Recipe-Book/buttons/remove_button_333.png' onmouseover='onHoverRemoveUser(this)' onmouseout='noHoverRemoveUser(this)' height='40px' width=''40px></button>
                                     </form>
                                 </td>
                             </tr>";
@@ -138,12 +138,12 @@
             document.querySelector('.back-button').src = '/RecipeBook/Recipe-Book/buttons/back_button.png';
         }
 
-        function onHoverRemoveUser(){
-            document.querySelector('.delete-btn').src = '/RecipeBook/Recipe-Book/buttons/remove_button_yellow.png';
+        function onHoverRemoveUser(btn){
+            btn.src = '/RecipeBook/Recipe-Book/buttons/remove_button_yellow.png';
         }
 
-        function noHoverRemoveUser(){
-            document.querySelector('.delete-btn').src = '/RecipeBook/Recipe-Book/buttons/remove_button_333.png';
+        function noHoverRemoveUser(btn){
+            btn.src = '/RecipeBook/Recipe-Book/buttons/remove_button_333.png';
         }
 
         function confirmit(){
