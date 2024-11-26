@@ -1,36 +1,75 @@
 body {
-    font-family: Arial, sans-serif;
-    margin: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    background-color:white;
 }
-h1 {
-    text-align: center;
-    margin-bottom: 20px;
+
+.back-button{
+    position: fixed;
+    top: 20px;
+    left: 30px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    cursor: pointer;
 }
+
+h1{
+    color:#ffbf17;
+    text-align:center;
+    font-size:35px;
+    cursor:pointer;
+    margin-top:20px;
+}
+
 table {
-    width: 100%;
+    width: 85%;
     border-collapse: collapse;
-    margin-top: 20px;
+    margin-top: 30px;
+    margin-left: 120px;
 }
+
 table, th, td {
     border: 1px solid #ccc;
 }
+
 th, td {
     padding: 10px;
-    text-align: left;
+    text-align: center;
+    overflow-wrap: break-word;
+    max-width: 200px;
+    white-space: normal;
 }
+
 th {
-    background-color: #f4f4f4;
+    background-color: #e9e9e9;
+    color:black;
 }
-tr:nth-child(even) {
-    background-color: #f9f9f9;
-}
-.thumbnail {
-    max-width: 50px;
-    max-height: 50px;
-    border-radius: 8px;
+
+.show, .comment-btn{
+    border:1px solid #ccc;
+    background-color: #ccc;
+    padding:12px 20px;
+    border-radius: 30px;
     cursor: pointer;
 }
-/* Popup Modal */
+
+.comment-btn{
+    margin-top: 17px;
+}
+
+.show:hover, .comment-btn:hover{
+    border:1px solid #ffbf17;
+    background-color: #ffbf17;
+}
+
+.delete-button{
+    border:none;
+    background-color: transparent;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
 .modal {
     display: none;
     position: fixed;
@@ -41,45 +80,28 @@ tr:nth-child(even) {
     height: 100%;
     overflow: auto;
     background-color: rgba(0, 0, 0, 0.5);
-    padding-top: 60px;
+    padding-top: 150px;
 }
 
 .modal-content {
     margin: auto;
     display: block;
     width: 80%;
-    max-width: 700px;
+    max-width: 300px;
+}
+
+.thumbnail {
+    max-width: 50px;
+    max-height: 50px;
+    border-radius: 50px;
+    cursor: pointer;
 }
 
 .close {
-    position: fixed;
-    top: 15px;
-    right: 35px;
-    color: #f1f1f1;
-    font-size: 40px;
-    font-weight: bold;
-    transition: 0.3s;
-}
-
-.close:hover,
-.close:focus {
-    color: #bbb;
-    text-decoration: none;
-    cursor: pointer;
-}
-.delete-btn {
-    color: white;
-    background-color: red;
-    border: none;
-    padding: 5px 10px;
-    cursor: pointer;
-    border-radius: 5px;
-}
-.infoModel-content {
-    background-color: #fff;
-    margin: auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 60%;
-    border-radius: 8px;
+    position: absolute;
+    top: 110px;
+    right: 510px;
+    font-size:35px;
+    color:white;
+    cursor:pointer;
 }

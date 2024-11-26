@@ -29,41 +29,44 @@
     if (isset($_POST['delete_post'])) {
         $post_id = $_POST['post_id'];
         //inorder to delete post, first deleting comments
-            $sql_delete_comments = "DELETE FROM comment WHERE post_id = $post_id";
-            if ($conn->query($sql_delete_comments) === TRUE) {
-                //second deleting post from favourite
-                $sql_remove_fav = "DELETE FROM favourite WHERE post_id = $post_id";
-                if ($conn->query($sql_remove_fav) === TRUE) {
-                    $delete_post_sql = "DELETE FROM post WHERE post_id = $post_id";
-                    $conn->query($delete_post_sql); 
-                }
+        $sql_delete_comments = "DELETE FROM comment WHERE post_id = $post_id";
+        if ($conn->query($sql_delete_comments) === TRUE) {
+            //second deleting post from favourite
+            $sql_remove_fav = "DELETE FROM favourite WHERE post_id = $post_id";
+            if ($conn->query($sql_remove_fav) === TRUE) {
+                $delete_post_sql = "DELETE FROM post WHERE post_id = $post_id";
+                $conn->query($delete_post_sql);
+                echo"<script>
+                        alert('You have deleted this post!');
+                        window.location.href = '/Recipebook/Recipe-Book/admin/all_posts.php';
+                        exit();
+                    </script>"; 
             }
-        header("Location: /Recipebook/Recipe-Book/admin/all_posts.php");
-        exit();
+        }
     }
 ?>
 
 <html>
     <head>
-        <title>All Posts</title>
+        <title>Recipebook</title>
+        <link rel="stylesheet" href="/Recipebook/Recipe-Book/admin/all_posts.css" type="text/css">
+        <link rel="icon" href="/RecipeBook/Recipe-Book/logo/logo4.png" type="image/png">
     </head>
     <body>
-        <img onclick="go_back()" class="back-button" src="/RecipeBook/Recipe-Book/buttons/back_button.png" title="Go back">
-
-        <h1>All Posts</h1>
+        <img onclick="go_back()" class="back-button" src="/RecipeBook/Recipe-Book/buttons/back_button.png" title="Go back" onmouseover="onHoverBack()" onmouseout="noHoverBack()">
+        <h1 title="All Posts"><span style="color:#333;">All</span> Posts</h1>
 
         <table>
             <thead>
                 <tr>
                     <th>Post ID</th>
-                    <th>Posted By</th>
                     <th>Title</th>
                     <th>Image</th>
-                    <th>Keywords</th>
+                    <th>Hashtags</th>
                     <th>Category</th>
-                    <th>Description</th>
+                    <th>Note</th>
                     <th>Posted Date</th>
-                    <th>Additional info</th>
+                    <th>All Information</th>
                     <th>Comments</th>
                     <th>Actions</th>
                 </tr>
@@ -73,13 +76,14 @@
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
                         $post_id = $row['post_id'];
+                        $post_title = $row['post_title'];
+                        
                         $comment_count_sql = "SELECT COUNT(*) AS total_comments FROM Comment WHERE post_id = $post_id";
                         $comment_result = $conn->query($comment_count_sql);
                         $comments_row = $comment_result->fetch_assoc();
                         $total_comments = $comments_row['total_comments'];
                         echo "<tr>
                                 <td>{$row['post_id']}</td>
-                                <td>{$row['user_name']}</td>
                                 <td>{$row['post_title']}</td>
                                 <td><img src='data:image/jpeg;base64," . base64_encode($row['post_image']) . "' 
                                             alt='Recipe Image' class='thumbnail' onclick='showPopup(this)'/></td>
@@ -88,84 +92,72 @@
                                 <td>{$row['post_text']}</td>
                                 <td>{$row['post_posted_date']}</td>
                                 <td>
-                                    <button onclick=\"showInfo(
-                                        '" . addslashes($row['post_ingredients']) . "',
-                                        '" . addslashes($row['post_instructions']) . "'
-                                    )\">Show</button>
+                                    <button class='show' title='Show all information' onclick=\"window.location.href='/Recipebook/Recipe-Book/admin/post_details.php?post_id=" . $row['post_id'] . "'\">Show</button>
                                 </td>
                                 <td>
                                     <form method='GET' action='/Recipebook/Recipe-Book/admin/posts_comment.php'>
                                         <input type='hidden' name='post_id' value='{$row['post_id']}'>
-                                        <button type='submit' name='post_comment' class='comment-btn'>Comment ($total_comments)</button>
+                                        <input type='hidden' name='post_title' value='{$post_title}'>
+                                        <button type='submit' name='post_comment' class='comment-btn' title='Show Comments'>Show Comments ($total_comments)</button>
                                     </form>
                                 </td>
                                 <td>
                                     <form method='POST' action=''>
                                         <input type='hidden' name='post_id' value='{$row['post_id']}'>
-                                        <button type='submit' name='delete_post' class='delete-btn'>Delete</button>
+                                        <button type='submit' name='delete_post' class='delete-button' title='Delete post' onclick='return confirmit()' ><img class='delete-btn' src='/RecipeBook/Recipe-Book/buttons/remove_button_333.png' onmouseover='onHoverRemovePost(this)' onmouseout='noHoverRemovePost(this)' height='40px' width=''40px></button>
                                     </form>
                                 </td>
                             </tr>";
                     }
                 } else {
-                    echo "<tr><td colspan='11' style='text-align:center;'>No posts found for this user</td></tr>";
+                    echo "<tr><td colspan='10' style='text-align:center;'>There are no posts!</td></tr>";
                 }
                 ?>
             </tbody>
         </table>
 
-        <!-- The Modal -->
         <div id="myModal" class="modal">
             <span class="close" onclick="closePopup()">&times;</span>
             <img class="modal-content" id="modalImg">
-        </div>
-        <div id="infoModal" class="modal">
-            <div class="infoModel-content">
-                <span class="close" onclick="closeModal()">&times;</span>
-                <h2>Post Details</h2>
-                <p><strong>Ingredients:</strong></p>
-                <p id="modal-ingredients"></p>
-                <p><strong>Instructions:</strong></p>
-                <p id="modal-instructions"></p>
-            </div>
         </div>
     </body>
     <script>
         function go_back() {
             window.history.back();
         }
+
+        function onHoverBack(){
+            document.querySelector('.back-button').src = '/RecipeBook/Recipe-Book/buttons/back_button2.png';
+        }
+
+        function noHoverBack(){
+            document.querySelector('.back-button').src = '/RecipeBook/Recipe-Book/buttons/back_button.png';
+        }
+
+        function onHoverRemovePost(btn){
+            btn.src = '/RecipeBook/Recipe-Book/buttons/remove_button_yellow.png';
+        }
+
+        function noHoverRemovePost(btn){
+            btn.src = '/RecipeBook/Recipe-Book/buttons/remove_button_333.png';
+        }
+
+        function confirmit(){
+            var ans = confirm("Are you sure you want to delete this post?");
+            return ans;
+        }
+
         function showPopup(img) {
             var modal = document.getElementById("myModal");
             var modalImg = document.getElementById("modalImg");
             modal.style.display = "block";
             modalImg.src = img.src;
         }
+
         function closePopup() {
             var modal = document.getElementById("myModal");
             modal.style.display = "none";
         }
-
-        // Function to display the modal with post details
-        function showInfo(ingredients, instructions) {
-            document.getElementById("modal-ingredients").textContent = ingredients;
-            document.getElementById("modal-instructions").textContent = instructions;
-
-            // Show the modal
-            document.getElementById("infoModal").style.display = "block";
-        }
-
-        // Function to close the modal
-        function closeModal() {
-            document.getElementById("infoModal").style.display = "none";
-        }
-
-        // Close modal if user clicks outside of it
-        window.onclick = function(event) {
-            const modal = document.getElementById("infoModal");
-            if (event.target === modal) {
-                modal.style.display = "none";
-            }
-        };
     </script>
 </html>
 

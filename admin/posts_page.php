@@ -50,7 +50,7 @@
                 $delete_post_sql = "DELETE FROM post WHERE post_id = $post_id";
                 $conn->query($delete_post_sql); 
                 echo"<script>
-                        alert('You have deleted this post !');
+                        alert('You have deleted this post!');
                         window.location.href = '/Recipebook/Recipe-Book/admin/posts_page.php?user_id=$user_id';
                         exit();
                     </script>";
@@ -133,17 +133,6 @@
             <span class="close" onclick="closePopup()">&times;</span>
             <img class="modal-content" id="modalImg">
         </div>
-
-        <div id="infoModal" class="modal">
-            <div class="infoModel-content">
-                <span class="close2" onclick="closeModal()">&times;</span>
-                <h2>Post Details</h2>
-                <p><strong>Ingredients:</strong></p>
-                <p id="modal-ingredients"></p>
-                <p><strong>Preparation Steps:</strong></p>
-                <p id="modal-instructions"></p>
-            </div>
-        </div>
     </body>
     <script>
         function go_back() {
@@ -182,28 +171,6 @@
             var modal = document.getElementById("myModal");
             modal.style.display = "none";
         }
-
-        // Function to display the modal with post details
-        function showInfo(ingredients, instructions) {
-            document.getElementById("modal-ingredients").textContent = ingredients;
-            document.getElementById("modal-instructions").textContent = instructions;
-
-            // Show the modal
-            document.getElementById("infoModal").style.display = "block";
-        }
-
-        // Function to close the modal
-        function closeModal() {
-            document.getElementById("infoModal").style.display = "none";
-        }
-
-        // Close modal if user clicks outside of it
-        window.onclick = function(event) {
-            const modal = document.getElementById("infoModal");
-            if (event.target === modal) {
-                modal.style.display = "none";
-            }
-        };
     </script>
 </html>
 

@@ -44,7 +44,7 @@
         $delete_comment_sql = "DELETE FROM Comment WHERE comment_id = $comment_id";
         $conn->query($delete_comment_sql);
         echo"<script>
-                alert('You have deleted this comment !');
+                alert('You have deleted this comment!');
                 window.location.href = '/Recipebook/Recipe-Book/admin/posts_comment.php?post_id=$post_id&post_title=$post_title&post_comment=true';
                 exit();
             </script>";
