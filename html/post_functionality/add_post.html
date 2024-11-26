@@ -1,150 +1,146 @@
-<!DOCTYPE html>
 <html>
+    <head>
+        <title>Recipebook</title>
+        <link rel="stylesheet" href="/Recipebook/Recipe-Book/css/add_post.css" type="text/css">
+        <link rel="icon" href="/RecipeBook/Recipe-Book/logo/logo4.png" type="image/png">
+    </head>
+    <body>
+        <img onclick="go_back()" class="back-button" src="/RecipeBook/Recipe-Book/buttons/back_button.png" title="Go back"
+            onmouseover="onHoverBack()" onmouseout="noHoverBack()">
+        <h1>Add <span style="color:#ffbf17;">New Recipe</span></h1>
+        <form action="/RecipeBook/Recipe-Book/php/post_functionality/add_post.php" method="POST"
+            enctype="multipart/form-data">
 
-<head>
-    <title>Recipebook</title>
-    <link rel="stylesheet" href="/Recipebook/Recipe-Book/css/add_post.css" type="text/css">
-    <link rel="icon" href="/RecipeBook/Recipe-Book/logo/logo4.png" type="image/png">
-</head>
+            <label for="post_image">Recipe Image:</label>
+            <input type="file" name="post_image" accept="image/*" id="post_image" required />
 
-<body>
-    <img onclick="go_back()" class="back-button" src="/RecipeBook/Recipe-Book/buttons/back_button.png" title="Go back"
-        onmouseover="onHoverBack()" onmouseout="noHoverBack()">
-    <h1>Add <span style="color:#ffbf17;">New Recipe</span></h1>
-    <form action="/RecipeBook/Recipe-Book/php/post_functionality/add_post.php" method="POST"
-        enctype="multipart/form-data">
+            <label for="post_title">Recipe Title:</label>
+            <input type="text" name="post_title" id="post_title" required />
 
-        <label for="post_image">Recipe Image:</label>
-        <input type="file" name="post_image" accept="image/*" id="post_image" required />
-
-        <label for="post_title">Recipe Title:</label>
-        <input type="text" name="post_title" id="post_title" required />
-
-        <label for="post_ingredients">Ingredients:</label>
-        <div id="ingredients_container">
-            <div class="ingredient-field">
-                <input type="text" name="post_ingredients[]" placeholder="Enter ingredient" required />
-                <img src="/RecipeBook/Recipe-Book/buttons/minus_button.png" onclick="removeField(this)" width="22px"
-                    title="Remove Ingredient" style="background-color:transparent;cursor: pointer;">
+            <label for="post_ingredients">Ingredients:</label>
+            <div id="ingredients_container">
+                <div class="ingredient-field">
+                    <input type="text" name="post_ingredients[]" placeholder="Enter ingredient" required />&nbsp;&nbsp;
+                    <img src="/RecipeBook/Recipe-Book/buttons/minus_button.png" onclick="removeField(this)" width="22px"
+                        title="Remove Ingredient" style="background-color:transparent;cursor: pointer;">
+                </div>
             </div>
-        </div>
-        <img class="add-btn" onclick="addIngredientField()" width="30px"
-            style="background-color:transparent;cursor: pointer;" src="/RecipeBook/Recipe-Book/buttons/add_button.png"
-            title="Add Ingredient">
+            <img class="add-btn" onclick="addIngredientField()" width="30px"
+                style="background-color:transparent;cursor: pointer;" src="/RecipeBook/Recipe-Book/buttons/add_button.png"
+                title="Add Ingredient">
 
-        <label for="post_instructions">Preparation steps:</label>
-        <div id="steps_container">
-            <div class="step-field">
-                <textarea name="post_instructions[]" placeholder="Enter preparation step" required></textarea>
-                <img src="/RecipeBook/Recipe-Book/buttons/minus_button.png" onclick="removeField(this)" width="22px"
-                    title="Remove Preparation Step" style="background-color:transparent;cursor: pointer;">
+            <label for="post_instructions">Preparation steps:</label>
+            <div id="steps_container">
+                <div class="step-field">
+                    <textarea name="post_instructions[]" placeholder="Enter preparation step" required></textarea>
+                    <img src="/RecipeBook/Recipe-Book/buttons/minus_button.png" onclick="removeField(this)" width="22px"
+                        title="Remove Preparation Step" style="background-color:transparent;cursor: pointer;">
+                </div>
             </div>
-        </div>
-        <img class="add-btn" onclick="addStepField()" width="30px" style="background-color:transparent;cursor: pointer;"
-            src="/RecipeBook/Recipe-Book/buttons/add_button.png" title="Add Preparation Step">
+            <img class="add-btn" onclick="addStepField()" width="30px" style="background-color:transparent;cursor: pointer;"
+                src="/RecipeBook/Recipe-Book/buttons/add_button.png" title="Add Preparation Step">
 
-        <label for="post_keywords">Hashtags:</label>
-        <input type="text" name="post_keywords" id="post_keywords" placeholder="#cheese, #potato,..." required />
+            <label for="post_keywords">Hashtags:</label>
+            <input type="text" name="post_keywords" id="post_keywords" placeholder="#cheese, #potato,..." required />
 
-        <label for="post_category">Category:</label>
-        <input type="text" name="post_category" id="post_category" placeholder="italian, chinese,..." required />
+            <label for="post_category">Category:</label>
+            <input type="text" name="post_category" id="post_category" placeholder="italian, chinese,..." required />
 
-        <label for="post_text">Note:</label>
-        <textarea name="post_text" id="post_text" placeholder="Add your personal note" required></textarea>
+            <label for="post_text">Note:</label>
+            <textarea name="post_text" id="post_text" placeholder="Add your personal note" required></textarea>
 
-        <input type="submit" value="Add Recipe" />
-    </form>
-    <br />
-</body>
+            <input type="submit" value="Add Recipe" />
+        </form>
+        <br />
+    </body>
 
-<script>
-    function go_back() {
-        window.history.back();
-    }
-
-    function onHoverBack() {
-        document.querySelector('.back-button').src = '/RecipeBook/Recipe-Book/buttons/back_button2.png';
-    }
-
-    function noHoverBack() {
-        document.querySelector('.back-button').src = '/RecipeBook/Recipe-Book/buttons/back_button.png';
-    }
-
-    function addIngredientField() {
-        let container = document.getElementById("ingredients_container");
-
-        let div = document.createElement("div");
-        div.className = "ingredient-field";
-
-        let input = document.createElement("input");
-        input.type = "text";
-        input.name = "post_ingredients[]";
-        input.placeholder = "Enter ingredient";
-        input.required = true;
-
-        let img = document.createElement("img");
-        img.src = "/RecipeBook/Recipe-Book/buttons/minus_button.png";
-        img.width = 22;
-        img.title = "Remove Ingredient";
-        img.style = "background-color:transparent;cursor: pointer;";
-        img.onclick = function () {
-            removeField(img);
-        };
-
-        div.appendChild(input);
-        div.appendChild(img);
-        container.appendChild(div);
-    }
-
-    function addStepField() {
-        let container = document.getElementById("steps_container");
-
-        let div = document.createElement("div");
-        div.className = "step-field";
-
-        let textarea = document.createElement("textarea");
-        textarea.name = "post_instructions[]";
-        textarea.placeholder = "Enter preparation step";
-        textarea.required = true;
-
-        let img = document.createElement("img");
-        img.src = "/RecipeBook/Recipe-Book/buttons/minus_button.png";
-        img.width = 22;
-        img.title = "Remove Preparation Step";
-        img.style = "background-color:transparent;cursor: pointer;";
-        img.onclick = function () {
-            removeField(img);
-        };
-
-        div.appendChild(textarea);
-        div.appendChild(img);
-        container.appendChild(div);
-    }
-
-    function removeField(button) {
-        let container = button.parentElement.parentElement;
-
-
-        if (button.parentElement.classList.contains("ingredient-field")) {
-            let ingre_fields = container.querySelectorAll(".ingredient-field");
-
-            if (ingre_fields.length > 1) {
-                button.parentElement.remove();
-            } else {
-                alert("At least one ingredient field is required.");
-            }
+    <script>
+        function go_back() {
+            window.history.back();
         }
 
-        if (button.parentElement.classList.contains("step-field")) {
-            let step_fields = container.querySelectorAll(".step-field");
+        function onHoverBack() {
+            document.querySelector('.back-button').src = '/RecipeBook/Recipe-Book/buttons/back_button2.png';
+        }
 
-            if (step_fields.length > 1) {
-                button.parentElement.remove();
-            } else {
-                alert("At least one step field is required.");
+        function noHoverBack() {
+            document.querySelector('.back-button').src = '/RecipeBook/Recipe-Book/buttons/back_button.png';
+        }
+
+        function addIngredientField() {
+            let container = document.getElementById("ingredients_container");
+
+            let div = document.createElement("div");
+            div.className = "ingredient-field";
+
+            let input = document.createElement("input");
+            input.type = "text";
+            input.name = "post_ingredients[]";
+            input.placeholder = "Enter ingredient";
+            input.required = true;
+
+            let img = document.createElement("img");
+            img.src = "/RecipeBook/Recipe-Book/buttons/minus_button.png";
+            img.width = 22;
+            img.title = "Remove Ingredient";
+            img.style = "background-color:transparent;cursor: pointer;";
+            img.onclick = function () {
+                removeField(img);
+            };
+
+            div.appendChild(input);
+            div.appendChild(img);
+            container.appendChild(div);
+        }
+
+        function addStepField() {
+            let container = document.getElementById("steps_container");
+
+            let div = document.createElement("div");
+            div.className = "step-field";
+
+            let textarea = document.createElement("textarea");
+            textarea.name = "post_instructions[]";
+            textarea.placeholder = "Enter preparation step";
+            textarea.required = true;
+
+            let img = document.createElement("img");
+            img.src = "/RecipeBook/Recipe-Book/buttons/minus_button.png";
+            img.width = 22;
+            img.title = "Remove Preparation Step";
+            img.style = "background-color:transparent;cursor: pointer;";
+            img.onclick = function () {
+                removeField(img);
+            };
+
+            div.appendChild(textarea);
+            div.appendChild(img);
+            container.appendChild(div);
+        }
+
+        function removeField(button) {
+            let container = button.parentElement.parentElement;
+
+
+            if (button.parentElement.classList.contains("ingredient-field")) {
+                let ingre_fields = container.querySelectorAll(".ingredient-field");
+
+                if (ingre_fields.length > 1) {
+                    button.parentElement.remove();
+                } else {
+                    alert("At least one ingredient field is required.");
+                }
+            }
+
+            if (button.parentElement.classList.contains("step-field")) {
+                let step_fields = container.querySelectorAll(".step-field");
+
+                if (step_fields.length > 1) {
+                    button.parentElement.remove();
+                } else {
+                    alert("At least one step field is required.");
+                }
             }
         }
-    }
-</script>
-
+    </script>
 </html>
