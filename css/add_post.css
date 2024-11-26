@@ -9,7 +9,7 @@ body {
     width: 100%;
 }
 
-.back-button{
+.back-button {
     position: fixed;
     top: 20px;
     left: 30px;
@@ -79,6 +79,16 @@ img[title="Add Step"] {
     width: 100%;
 }
 
+.step-field {
+    display: flex;
+    align-items: center;
+}
+
+.ingredient-field {
+    display: flex;
+    align-items: center;
+}
+
 input[type="text"]::placeholder,
 textarea::placeholder {
     color: #999999;
@@ -98,5 +108,3 @@ input[type="submit"] {
 input[type="submit"]:hover {
     background-color: #FFBF17;
 }
-
-
