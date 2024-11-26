@@ -59,7 +59,7 @@
     </head>
     <body>
         <img onclick="go_back()" class="back-button" src="/RecipeBook/Recipe-Book/buttons/back_button.png" title="Go back" onmouseover="onHoverBack()" onmouseout="noHoverBack()">
-        <h1>Comments in <?php echo htmlspecialchars($post_title); ?></h1>
+        <h1><span style="color:#333;">Comments in</span> <?php echo htmlspecialchars($post_title); ?></h1>
 
         <table>
             <thead>
@@ -97,7 +97,7 @@
                             </tr>";
                     }
                 } else {
-                    echo "<tr><td colspan='6' style='text-align:center;'>There are comments in this post</td></tr>";
+                    echo "<tr><td colspan='6' style='text-align:center;'>There are no comments in this post!</td></tr>";
                 }
                 ?>
             </tbody>

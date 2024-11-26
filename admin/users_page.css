@@ -36,6 +36,9 @@ table, th, td {
 th, td {
     padding: 10px;
     text-align: center;
+    overflow-wrap: break-word;
+    max-width: 200px;
+    white-space: normal;
 }
 
 th {

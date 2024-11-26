@@ -67,7 +67,7 @@
     </head>
     <body>
         <img onclick="go_back()" class="back-button" src="/RecipeBook/Recipe-Book/buttons/back_button.png" title="Go back" onmouseover="onHoverBack()" onmouseout="noHoverBack()">
-        <h1><?php echo htmlspecialchars($user_name); ?>'s Posts</h1>
+        <h1><span style="color:#333;">Posts by</span> <?php echo htmlspecialchars($user_name); ?></h1>
 
         <table>
             <thead>
@@ -79,7 +79,7 @@
                     <th>Category</th>
                     <th>Note</th>
                     <th>Posted Date</th>
-                    <th>Additional info</th>
+                    <th>All Information</th>
                     <th>Comments</th>
                     <th>Actions</th>
                 </tr>
@@ -105,7 +105,7 @@
                                 <td>{$row['post_text']}</td>
                                 <td>{$row['post_posted_date']}</td>
                                 <td>
-                                    <button class='show' title='Show additional information' onclick=\"window.location.href='/Recipebook/Recipe-Book/admin/post_details.php?post_id=" . $row['post_id'] . "'\">Show</button>
+                                    <button class='show' title='Show all information' onclick=\"window.location.href='/Recipebook/Recipe-Book/admin/post_details.php?post_id=" . $row['post_id'] . "'\">Show</button>
                                 </td>
                                 <td>
                                     <form method='GET' action='/Recipebook/Recipe-Book/admin/posts_comment.php'>
@@ -146,7 +146,7 @@
         </div>
     </body>
     <script>
-         function go_back() {
+        function go_back() {
             window.history.back();
         }
 

@@ -58,7 +58,7 @@
     </head>
     <body>
         <img onclick="go_back()" class="back-button" src="/RecipeBook/Recipe-Book/buttons/back_button.png" title="Go back" onmouseover="onHoverBack()" onmouseout="noHoverBack()">
-        <h1 title="All Users">Users</h1>
+        <h1 title="All Users"><span style="color:#333;">All</span> Users</h1>
 
         <table>
             <thead>
