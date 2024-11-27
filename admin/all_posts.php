@@ -60,6 +60,7 @@
             <thead>
                 <tr>
                     <th>Post ID</th>
+                    <th>Posted By</th>
                     <th>Title</th>
                     <th>Image</th>
                     <th>Hashtags</th>
@@ -84,6 +85,7 @@
                         $total_comments = $comments_row['total_comments'];
                         echo "<tr>
                                 <td>{$row['post_id']}</td>
+                                <td>{$row['user_name']}</td>
                                 <td>{$row['post_title']}</td>
                                 <td><img src='data:image/jpeg;base64," . base64_encode($row['post_image']) . "' 
                                             alt='Recipe Image' class='thumbnail' onclick='showPopup(this)'/></td>

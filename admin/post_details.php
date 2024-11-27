@@ -20,8 +20,11 @@
     if (isset($_GET['post_id'])) {
 
         $post_id = $_GET['post_id'];
-
-        $sql = "SELECT * FROM post WHERE post_id = $post_id";
+        
+        $sql = "SELECT post.*, user.user_name 
+            FROM post 
+            LEFT JOIN user ON post.user_id = user.user_id 
+            WHERE post.post_id = $post_id";
         $result = $conn->query($sql);
 
         if ($result->num_rows > 0) {
@@ -58,9 +61,27 @@
                     echo "</div>";
                 ?>
                 <p><strong>Post ID:</strong> <?php echo $row['post_id']; ?></p>
+                <p><strong>Posted By:</strong> <?php echo $row['user_name']; ?></p>
                 <p><strong>Post Title:</strong> <?php echo $row['post_title']; ?></p>
-                <p><strong>Ingredients:</strong> <?php echo $row['post_ingredients']; ?></p>
-                <p><strong>Preparation Steps:</strong> <?php echo $row['post_instructions']; ?></p>
+                <p><strong>Ingredients:</strong></p>
+                <?php
+                    $ingredients = explode(', ', $row['post_ingredients']);
+                    echo "<ul>";
+                    foreach ($ingredients as $ingredient) {
+                        echo "<li>" . htmlspecialchars($ingredient) . "</li>";
+                    }
+                    echo "</ul>";
+                ?>
+
+                <p><strong>Preparation Steps:</strong></p>
+                <?php
+                    $steps = explode(', ', $row['post_instructions']);
+                    echo "<ol>";
+                    foreach ($steps as $step) {
+                        echo "<li>" . htmlspecialchars($step) . "</li>";
+                    }
+                    echo "</ol>";
+                ?>
                 <p><strong>Hashtags</strong> <?php echo $row['post_keywords']; ?></p>
                 <p><strong>Category:</strong> <?php echo $row['post_category']; ?></p>
                 <p><strong>Note:</strong> <?php echo $row['post_text']; ?></p>

@@ -98,18 +98,18 @@
         
         <div class="heading">
             <div class="heading-profile">
-                <a href="/RecipeBook/Recipe-Book/php/profile.php"><?php
-                        if ($result2->num_rows==1) {
-                            while($row = $result2->fetch_assoc()) {
-                                if (($row['user_profile_picture'])) {
-                                    echo "<img src='data:image/jpeg;base64,".base64_encode($row['user_profile_picture'])."' alt='Profile picture' title='Your profile' style='max-width: 300px; max-height: 150px; border-radius: 50%;'/>";
-                                } else {
-                                    echo "<img src='/RecipeBook/Recipe-Book/default_profile_picture.jpg' alt='Profile picture' title='Your profile' style='max-width: 300px; max-height: 150px; border-radius: 50%;'/>";
-                                }
+               <?php
+                    if ($result2->num_rows == 1) {
+                        while ($row = $result2->fetch_assoc()) {
+                            if (!empty($row['user_profile_picture'])) {
+                                echo "<img src='data:image/jpeg;base64," . base64_encode($row['user_profile_picture']) . "' alt='Profile picture' title='Your profile' style='max-width: 300px; max-height: 150px;cursor:pointer; border-radius: 50%;' onclick='inlarge_profile(this)'/>";
+                            } else {
+                                echo "<img src='/RecipeBook/Recipe-Book/default_profile_picture.jpg' alt='Profile picture' title='Your profile' style='max-width: 300px; max-height: 150px; border-radius: 50%;cursor:pointer' onclick='inlarge_profile(this)'/>";
                             }
                         }
-                        ?>
-                    </a>
+                    }
+                ?>
+                    
                 <h2><span style="color:#ffbf17;"><?php echo $user_name ?></span></h2><br/>
             </div>
             <h2 style="text-align: center; margin-top:0px;">All posts</h2>
@@ -261,6 +261,30 @@
         //pop up large image function
         function inlarge_image(image) {
             event.stopPropagation(); // Prevent any parent event from triggering
+            // Create the modal container
+            const modal = document.createElement('div');
+            modal.classList.add('image-modal');
+            modal.style.display = 'flex';
+
+            // Add the image to the modal
+            const modalImage = document.createElement('img');
+            modalImage.src = image.src;
+            modal.appendChild(modalImage);
+
+            // Add a close button
+            const closeBtn = document.createElement('span');
+            closeBtn.classList.add('close-btn');
+            closeBtn.innerHTML = '&times;';
+            closeBtn.onclick = function () {
+                modal.style.display = 'none';
+                modal.remove();
+            };
+            modal.appendChild(closeBtn);
+
+            // Add the modal to the body
+            document.body.appendChild(modal);
+        }
+        function inlarge_profile(image) {
             // Create the modal container
             const modal = document.createElement('div');
             modal.classList.add('image-modal');
