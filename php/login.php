@@ -33,7 +33,11 @@
                 $_SESSION['loggedin'] = true;
                 $_SESSION['username'] = $row['user_name'];
                 $_SESSION['user_id'] = $row['user_id'];
-                header("Location: /RecipeBook/Recipe-Book/php/home.php");
+
+                echo "<script>
+                    alert('Successful log in!');
+                    window.location.href = '/RecipeBook/Recipe-Book/php/home.php';
+                  </script>";
                 exit();
             }else{
                 echo "<script>

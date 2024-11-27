@@ -9,6 +9,7 @@ body {
     background-image: url('/RecipeBook/Recipe-Book/background.png');
     background-size: cover;
     background-position: center;
+    color:#333;
 }
 
 .back-button{
