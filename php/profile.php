@@ -87,7 +87,7 @@
                 <h1  onclick="about()" class="recipebook" title="About Recipebook">Recipebook</h1> 
             </div>
             <div class="likes-button">
-                <button><?php echo "Total likes: " . $total_likes; ?></button>
+                <button><?php echo "Likes : <b>" . $total_likes."</b>"; ?></button>
             </div>
             <div class="rightside-bar">
                 <img class="home-btn" onclick="window.location.href='/RecipeBook/Recipe-Book/php/home.php'" src='/RecipeBook/Recipe-Book/buttons/home_button_black_outlined.png' title="Home feed"  onmouseover="onHoverHome()" onmouseout="noHoverHome()" />

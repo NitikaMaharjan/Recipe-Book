@@ -21,14 +21,12 @@ body {
 
 .likes-button button{
     margin-top: 15px;
-    margin-right: 60px;
+    margin-right: 68px;
     border: none;
-    border-radius: 30px;
+    border-radius: 8px;
     padding: 16px 30px;
-    font-size: 14px;
-    font-weight: bold;
+    font-size: 15px;
     cursor: pointer;
-    transition: background-color 0.2s, color 0.2s;
     background-color: #cccc;
     color: black;
 }
