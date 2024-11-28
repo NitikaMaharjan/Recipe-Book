@@ -49,10 +49,6 @@ th {
     color: black;
 }
 
-tr:hover {
-    background-color: #fff6df;
-}
-
 .show, .disapprove-btn, .approve-btn{
     border: 1px solid #ccc;
     background-color: #ccc;

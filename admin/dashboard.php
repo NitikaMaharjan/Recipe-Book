@@ -64,11 +64,11 @@
                 <h1 onclick="window.location.href='/RecipeBook/Recipe-Book/admin/dashboard.php'" class="dashboard" title="Dashboard">Dashboard</h1>
             </div>
             <div class="logout-bar">
-                <img class="logout-btn" src="/RecipeBook/Recipe-Book/buttons/logout_button_black.png" onclick="confirmit()" title="Logout" onmouseover="onHoverLogout()" onmouseout="noHoverLogout()" height="50px" width="50px"/>
+                <img class="logout-btn" src="/RecipeBook/Recipe-Book/buttons/logout_button_black.png" onclick="confirmit()" title="Logout" onmouseover="onHoverLogout()" onmouseout="noHoverLogout()" height="45px" width="45px"/>
             </div>
         </nav>
 
-        <h1 style="text-align:center; color:#ffbf17;">Overview</h1>
+        <h1 style="text-align:center; color:#ffbf17; margin-top:70px;">Overview</h1>
 
         <div class="dashboard-container">
             <div class="dashboard-buttons">

@@ -58,8 +58,7 @@ body {
     width: 100%;           
     max-width: 950px;      
     margin: 0 auto;        
-    box-sizing: border-box; 
-    margin-top: 100px;
+    box-sizing: border-box;
 }
 
 .dashboard-buttons{

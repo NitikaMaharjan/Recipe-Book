@@ -35,7 +35,7 @@
                 $_SESSION['user_id'] = $row['user_id'];
 
                 echo "<script>
-                    alert('Successful log in!');
+                    alert('Log in successful!');
                     window.location.href = '/RecipeBook/Recipe-Book/php/home.php';
                   </script>";
                 exit();

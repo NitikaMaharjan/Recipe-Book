@@ -84,7 +84,7 @@
     
             if ($conn->query($sql) === TRUE) {
                 echo "<script>
-                            alert('Registration successful. Please log in!');
+                            alert('Sign up successful!');
                             window.location.href = '/RecipeBook/Recipe-Book/html/login.html';
                       </script>";
             } else {
