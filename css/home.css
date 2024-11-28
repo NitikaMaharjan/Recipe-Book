@@ -90,7 +90,7 @@ body {
     display: flex;
     justify-content: space-between;
     gap:20px;
-    margin: 25px;
+    margin: 20px;
 }
 
 .favc-btn, .pen-btn, .setting-btn {

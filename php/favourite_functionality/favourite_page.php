@@ -194,6 +194,22 @@
             document.querySelector('.setting-btn').src = '/RecipeBook/Recipe-Book/buttons/settings_button_black_lined.png';
         }
 
+        function onHoverFav(fav) {
+            fav.src = '/RecipeBook/Recipe-Book/buttons/fav_button_yellow_filled.png';
+        }
+
+        function noHoverFav(fav) {
+            fav.src = '/RecipeBook/Recipe-Book/buttons/fav_button_yellow_outlined.png';
+        }
+
+        function onHoverComment(comment) {
+            comment.src = '/RecipeBook/Recipe-Book/buttons/comment_button_yellow_filled.png';
+        }
+
+        function noHoverComment(comment) {
+            comment.src = '/RecipeBook/Recipe-Book/buttons/comment_button_yellow_outlined.png';
+        }
+
         //pop up large image function
         function inlarge_image(image) {
             event.stopPropagation(); // Prevent any parent event from triggering

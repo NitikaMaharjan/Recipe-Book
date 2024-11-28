@@ -28,6 +28,7 @@ body {
     cursor: pointer;
     background-color: #cccc;
     color: black;
+    margin-right:30px;
 }
 
 .likes-button button:hover {
@@ -54,13 +55,9 @@ body {
 
 .rightside-bar {
     display: flex;
-    margin: 30px;
-}
-
-.favc-btn,
-.pen-btn,
-.setting-btn {
-    padding-left: 30px;
+    justify-content: space-between;
+    gap:20px;
+    margin: 20px;
 }
 
 .home-btn,
