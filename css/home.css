@@ -88,15 +88,12 @@ body {
 
 .rightside-bar {
     display: flex;
-    margin: 30px;
+    justify-content: space-between;
+    gap:20px;
+    margin: 25px;
 }
 
-.setting-btn {
-    padding-left: 30px;
-}
-
-.favc-btn,
-.setting-btn {
+.favc-btn, .pen-btn, .setting-btn {
     cursor: pointer;
 }
 

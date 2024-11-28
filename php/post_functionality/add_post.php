@@ -81,7 +81,7 @@
         if ($conn->query($sql) === TRUE) {
             echo "<script>
                     alert ('Post created successfully!!');
-                    window.location.href = '/RecipeBook/Recipe-Book/php/profile.php';
+                    window.location.href = '/RecipeBook/Recipe-Book/php/post_functionality/pending_post_page.php';
                   </script>";
             exit();
         } else {

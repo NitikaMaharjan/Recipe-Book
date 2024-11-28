@@ -56,9 +56,23 @@
         <link rel="icon" href="/RecipeBook/Recipe-Book/logo/logo4.png" type="image/png">
     </head>
     <body>
-        <img onclick="go_back()" class="back-button" src="/RecipeBook/Recipe-Book/buttons/back_button.png" title="Go back" onmouseover="onHoverBack()" onmouseout="noHoverBack()">
-        <h1>Welcome to <span style="color:#ffbf17; cursor:pointer;" title="Your favourites">your Favourites</span></h1>
-        <h2>All posts</h2>
+        <nav class="navbar">
+            <div class="logo">
+                <img src="/RecipeBook/Recipe-Book/logo/logo4.png" onclick="window.location.href='/RecipeBook/Recipe-Book/php/home.php'" title="Home feed" style="width: 120px; height: 120px;"/>&nbsp;
+                <h1  onclick="about()" class="recipebook" title="About Recipebook">Recipebook</h1> 
+            </div>
+    
+            <div class="rightside-bar">
+                <img class="home-btn" onclick="window.location.href='/RecipeBook/Recipe-Book/php/home.php'" src='/RecipeBook/Recipe-Book/buttons/home_button_black_outlined.png' title="Home feed"  onmouseover="onHoverHome()" onmouseout="noHoverHome()" />
+                <img class="favc-btn" onclick="window.location.href='/RecipeBook/Recipe-Book/php/favourite_functionality/favourite_page.php'" src="/RecipeBook/Recipe-Book/buttons/fav_button_black.png" title="Your favourites" onmouseover="onHoverFavc()" onmouseout="noHoverFavc()"/>
+                <img class="pen-btn" onclick="window.location.href='/RecipeBook/Recipe-Book/php/post_functionality/pending_post_page.php'" src="/RecipeBook/Recipe-Book/buttons/pending_button_black.png" title="Your pending posts" onmouseover="onHoverPen()" onmouseout="noHoverPen()"/>
+                <img class="setting-btn" onclick="window.location.href='/RecipeBook/Recipe-Book/html/manage_profile/settings.html'" src="/RecipeBook/Recipe-Book/buttons/settings_button_black_lined.png" title="Settings" onmouseover="onHoverSetting()" onmouseout="noHoverSetting()"/>
+            </div>
+        </nav>
+        <div class="heading">
+            <h1 style="text-align: center;">Welcome to <span style="color:#ffbf17; cursor:pointer;" title="Your favourites">your Favourites</span></h1><br/>
+            <h2 style="text-align: center;">All posts</h2>
+        </div>
         
         <?php
             if ($result->num_rows > 0) {
@@ -115,6 +129,18 @@
             $conn->close();
         ?>
 
+        <!-- pop up box for about -->
+        <div id="about" class="about">
+            <div class="about_content">
+                <div style="text-align:right;">
+                    <span class="close1" onclick="closePopup1()" style="font-size:35px; color:black; cursor:pointer;">&times;</span>
+                </div>
+                <img src="/RecipeBook/Recipe-Book/logo/logo4.png" title="Recipebook" style="width: 300px; height: 300px;"/>
+                <h1 style="color: #333;">About <span style="color:#ffbf17;">Recipebook</span></h1>
+                <p style="font-size: 20px; text-align:left;">RecipeBook is a social media platform designed specifically for food enthusiasts. It allows users to share their recipes, discover creations by others, and actively connect and engage with a community of like-minded food lovers.</p>
+            </div>
+        </div>
+
         <!-- pop up box for comments -->
         <div id="commentModal" class="modal">
             <div class="modal-content">
@@ -131,36 +157,42 @@
         </div>
     </body>
     <script>
-        function go_back() {
-            window.history.back();
-        }
-        
         function view_post(post_id) {
             window.location.href = "/RecipeBook/Recipe-Book/php/post_functionality/view_post.php?post_id=" + post_id;
         }
-        
-        function onHoverBack(){
-            document.querySelector('.back-button').src = '/RecipeBook/Recipe-Book/buttons/back_button2.png';
+
+        function onHoverHome() {
+            document.querySelector('.home-btn').src = '/RecipeBook/Recipe-Book/buttons/home_button_yellow_outlined.png';
         }
 
-        function noHoverBack(){
-            document.querySelector('.back-button').src = '/RecipeBook/Recipe-Book/buttons/back_button.png';
+        function noHoverHome() {
+            document.querySelector('.home-btn').src = '/RecipeBook/Recipe-Book/buttons/home_button_black_outlined.png';
         }
 
-        function onHoverFav(fav) {
-            fav.src = '/RecipeBook/Recipe-Book/buttons/fav_button_yellow_outlined.png';
+        function onHoverFavc(){
+            document.querySelector('.favc-btn').src = '/RecipeBook/Recipe-Book/buttons/fav_button_yellow.png';
         }
 
-        function noHoverFav(fav) {
-            fav.src = '/RecipeBook/Recipe-Book/buttons/fav_button_yellow_filled.png';
+        function noHoverFavc(){
+            document.querySelector('.favc-btn').src = '/RecipeBook/Recipe-Book/buttons/fav_button_black.png';
         }
 
-        function onHoverComment(comment) {
-            comment.src = '/RecipeBook/Recipe-Book/buttons/comment_button_yellow_filled.png';
+        function onHoverPen(){
+            document.querySelector('.pen-btn').src = '/RecipeBook/Recipe-Book/buttons/pending_button_yellow.png';
         }
 
-        function noHoverComment(comment) {
-            comment.src = '/RecipeBook/Recipe-Book/buttons/comment_button_yellow_outlined.png';
+        function noHoverPen(){
+            document.querySelector('.pen-btn').src = '/RecipeBook/Recipe-Book/buttons/pending_button_black.png';
+        }
+
+        function onHoverSetting(){
+            document.querySelector('.setting-btn').src = '/RecipeBook/Recipe-Book/buttons/settings_button_yellow_lined.png';
+            document.querySelector('.setting-btn').style.height="50px";
+            document.querySelector('.setting-btn').style.width="50px";
+        }
+
+        function noHoverSetting(){
+            document.querySelector('.setting-btn').src = '/RecipeBook/Recipe-Book/buttons/settings_button_black_lined.png';
         }
 
         //pop up large image function
@@ -291,6 +323,33 @@
             // Stop polling when the modal is closed
             clearInterval(commentPollingInterval);
         }
+                
+        // Close modal on 'x' click
+        document.querySelector('.close').addEventListener('click', closeModal);
+
+        //about popup box
+        function about() {
+            //display the pop-up box
+            document.getElementById('about').style.display = 'block';
+        }
+        function closePopup1() {
+            document.getElementById('about').style.display = 'none';
+        }
+        document.querySelector('.close1').addEventListener('click', closePopup1);
+        
+        window.onclick = function(event) {
+            const popup1 = document.getElementById('about');
+            const modal = document.getElementById('commentModal');
+
+            // Close About pop-up when clicking outside
+            if (event.target == popup1) {
+                closePopup1();
+            }
+            // Close comment popup when clicking outside
+            if (event.target == modal) {
+                closeModal();
+            }
+        };
 
         function fetchComments(postId) {
             const xhr = new XMLHttpRequest();
@@ -329,17 +388,6 @@
                 openModal(postId);
             });
         });
-
-        // Close modal when clicking outside
-        window.onclick = function(event) {
-            const modal = document.getElementById('commentModal');
-            if (event.target == modal) {
-                closeModal();
-            }
-        };
-        
-        // Close modal on 'x' click
-        document.querySelector('.close').addEventListener('click', closeModal);
 
         //deleting comment
         function deleteComment(commentId) {
