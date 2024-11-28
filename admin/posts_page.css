@@ -46,6 +46,10 @@ th {
     color:black;
 }
 
+tr:hover {
+    background-color: #fff6df;
+}
+
 .show, .comment-btn{
     border:1px solid #ccc;
     background-color: #ccc;

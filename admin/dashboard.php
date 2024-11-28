@@ -20,19 +20,25 @@
     }
 
     $user_count_query = 'SELECT COUNT(*) AS total_users FROM user;';
+    $pending_post_count_query = 'SELECT COUNT(*) AS total_pending_posts FROM pending_post;';
     $post_count_query = 'SELECT COUNT(*) AS total_posts FROM post;';
     $comment_count_query = 'SELECT COUNT(*) AS total_comment FROM comment;';
 
     $user_count_result = $conn->query($user_count_query);
+    $pending_post_count_result = $conn->query($pending_post_count_query);
     $post_count_result = $conn->query($post_count_query);
     $comment_count_result = $conn->query($comment_count_query);
 
     $user_count = 0; // Default value
+    $pending_post_count = 0; // Default value
     $post_count = 0; // Default value
     $comment_count = 0; // Default value
 
     if ($user_count_result->num_rows > 0) {
         $user_count = $user_count_result->fetch_assoc()['total_users'];
+    }
+    if ($pending_post_count_result->num_rows > 0) {
+        $pending_post_count = $pending_post_count_result->fetch_assoc()['total_pending_posts'];
     }
     if ($post_count_result->num_rows > 0) {
         $post_count = $post_count_result->fetch_assoc()['total_posts'];
@@ -70,6 +76,11 @@
                     <img class="img-1" src="/RecipeBook/Recipe-Book/buttons/users_button.png" height="40px" width="40px"/><br/>
                     <button class="btn-1">users</button><br/><br/>
                     <span class="count-1" style="font-size:30px; padding-left:85px;"><?php echo $user_count; ?></span>
+                </div>
+                <div class="btn4" onclick="window.location.href='/Recipebook/Recipe-Book/admin/all_pending_posts.php'" onmouseover="onHoverbtn4()" onmouseout="noHoverbtn4()" title="Pending Posts">
+                    <img class="img-4" src="/RecipeBook/Recipe-Book/buttons/pending_button_black.png" height="35px" width="35px"/><br/>
+                    <button class="btn-4">pending posts</button><br/><br/>
+                    <span class="count-4" style="font-size:30px; padding-left:85px;"><?php echo $pending_post_count; ?></span>
                 </div>
                 <div class="btn2" onclick="window.location.href='/Recipebook/Recipe-Book/admin/all_posts.php'" onmouseover="onHoverbtn2()" onmouseout="noHoverbtn2()" title="Posts">
                     <img class="img-2" src="/RecipeBook/Recipe-Book/buttons/posts_button.png" height="40px" width="40px"/><br/>
@@ -124,6 +135,20 @@
             document.querySelector('.img-1').src = '/RecipeBook/Recipe-Book/buttons/users_button.png';
             document.querySelector('.btn-1').style.color = "black";
             document.querySelector('.count-1').style.color = "black";
+        }
+
+        function onHoverbtn4() {
+            document.querySelector('.btn4').style.backgroundColor = "#333"; 
+            document.querySelector('.img-4').src = '/RecipeBook/Recipe-Book/buttons/pending_button_white.png';
+            document.querySelector('.btn-4').style.color = "white";
+            document.querySelector('.count-4').style.color = "white";
+        }
+
+        function noHoverbtn4(){
+            document.querySelector('.btn4').style.backgroundColor = "white"; 
+            document.querySelector('.img-4').src = '/RecipeBook/Recipe-Book/buttons/pending_button_black.png';
+            document.querySelector('.btn-4').style.color = "black";
+            document.querySelector('.count-4').style.color = "black";
         }
 
         function onHoverbtn2() {

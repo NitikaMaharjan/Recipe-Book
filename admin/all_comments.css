@@ -46,6 +46,10 @@ th {
     color:black;
 }
 
+tr:hover {
+    background-color: #fff6df;
+}
+
 .delete-button{
     border:none;
     background-color: transparent;

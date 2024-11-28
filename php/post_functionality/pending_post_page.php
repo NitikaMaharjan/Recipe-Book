@@ -20,7 +20,7 @@
         die("Connection failed: " . $conn->connect_error);
     }
 
-    $sql = "SELECT approve_post.*, user.user_profile_picture, user.user_name FROM approve_post JOIN user ON approve_post.user_id = user.user_id WHERE approve_post.user_id = $user_id";
+    $sql = "SELECT pending_post.*, user.user_profile_picture, user.user_name FROM pending_post JOIN user ON pending_post.user_id = user.user_id WHERE pending_post.user_id = $user_id";
 
     $result = $conn->query($sql);
 ?>

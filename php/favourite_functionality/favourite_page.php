@@ -37,7 +37,6 @@
             (SELECT COUNT(*) FROM Likes WHERE Likes.post_id = post.post_id) AS post_like_count,
            (SELECT COUNT(*) FROM Likes WHERE Likes.post_id = post.post_id AND Likes.user_id = $user_id) AS has_liked,
            (SELECT COUNT(*) FROM favourite WHERE favourite.post_id = post.post_id AND favourite.user_id = $user_id) AS has_favorited
-
         FROM favourite 
         JOIN post ON favourite.post_id = post.post_id
         JOIN user ON post.user_id = user.user_id

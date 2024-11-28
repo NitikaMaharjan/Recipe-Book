@@ -11,7 +11,7 @@
         die("Connection failed: " . $conn->connect_error);
     }
 
-    $sql = "CREATE TABLE approve_post(
+    $sql = "CREATE TABLE pending_post(
         post_id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
         post_image LONGBLOB,
         post_title VARCHAR(30) NOT NULL,
@@ -28,7 +28,7 @@
     )";
 
     if ($conn->query($sql) === TRUE) {
-        echo "Approve post table created successfully";
+        echo "Pending post table created successfully";
     } else {
         echo "Error creating table: " . $conn->error;
     }
