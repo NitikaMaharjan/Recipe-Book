@@ -20,63 +20,22 @@
         die("Connection failed: " . $conn->connect_error);
     }
 
-    $sort_by = 'post.post_id DESC'; // Default sort by date
-    if (isset($_GET['sort']) && $_GET['sort'] == 'likes') {
-        $sort_by = 'post_like_count DESC'; // Sort by likes
-    }
-
-    // Update post_like_count on post table
-    $update_sql = "
-        UPDATE post 
-        SET post_like_count = (
-            SELECT COUNT(*) 
-            FROM Likes 
-            WHERE Likes.post_id = post.post_id
-        )
-    ";
-
-    $conn->query($update_sql);
-
-    $sql = "
-        SELECT post.*, 
-           user.user_name, 
-           user.user_profile_picture,
-           (SELECT COUNT(*) FROM Likes WHERE Likes.post_id = post.post_id) AS post_like_count,
-           (SELECT COUNT(*) FROM Likes WHERE Likes.post_id = post.post_id AND Likes.user_id = $user_id) AS has_liked,
-           (SELECT COUNT(*) FROM favourite WHERE favourite.post_id = post.post_id AND favourite.user_id = $user_id) AS has_favorited
-        FROM post 
-        JOIN user ON post.user_id = user.user_id 
-        WHERE post.user_id = $user_id
-        ORDER BY $sort_by
-    ";
+    $sql = "SELECT * FROM approve_post WHERE user_id = $user_id";
 
     $profile_pic_sql = "
         SELECT user_profile_picture
         FROM user  
         WHERE user_id = $user_id
     ";
-    // Query to get total likes
-    $total_likes_sql = "
-        SELECT COUNT(*) AS total_likes 
-        FROM Likes
-        WHERE post_id IN (SELECT post_id FROM post WHERE user_id = $user_id)
-    ";
 
     $result = $conn->query($sql);
     $result2 = $conn->query($profile_pic_sql);
-    $total_likes_result = $conn->query($total_likes_sql);
-
-    // Fetch total likes
-    $total_likes = 0;
-    if ($total_likes_result && $total_likes_row = $total_likes_result->fetch_assoc()) {
-        $total_likes = $total_likes_row['total_likes'];
-    }
 ?>
 
 <html>
     <head>
         <title>Recipebook</title>
-        <link rel="stylesheet" href="/RecipeBook/Recipe-Book/css/profile.css" type="text/css">
+        <link rel="stylesheet" href="/RecipeBook/Recipe-Book/css/pending_post_page.css" type="text/css">
         <link rel="icon" href="/RecipeBook/Recipe-Book/logo/logo4.png" type="image/png">
     </head>
     <body>
@@ -86,9 +45,7 @@
                 <img src="/RecipeBook/Recipe-Book/logo/logo4.png" onclick="window.location.href='/RecipeBook/Recipe-Book/php/home.php'" title="Home feed" style="width: 120px; height: 120px;"/>&nbsp;
                 <h1  onclick="about()" class="recipebook" title="About Recipebook">Recipebook</h1> 
             </div>
-            <div class="likes-button">
-                <button><?php echo "Likes : <b>" . $total_likes."</b>"; ?></button>
-            </div>
+    
             <div class="rightside-bar">
                 <img class="home-btn" onclick="window.location.href='/RecipeBook/Recipe-Book/php/home.php'" src='/RecipeBook/Recipe-Book/buttons/home_button_black_outlined.png' title="Home feed"  onmouseover="onHoverHome()" onmouseout="noHoverHome()" />
                 <img class="favc-btn" onclick="window.location.href='/RecipeBook/Recipe-Book/php/favourite_functionality/favourite_page.php'" src="/RecipeBook/Recipe-Book/buttons/fav_button_black.png" title="Your favourites" onmouseover="onHoverFavc()" onmouseout="noHoverFavc()"/>
@@ -96,35 +53,6 @@
                 <img class="setting-btn" onclick="window.location.href='/RecipeBook/Recipe-Book/html/manage_profile/settings.html'" src="/RecipeBook/Recipe-Book/buttons/settings_button_black_lined.png" title="Settings" onmouseover="onHoverSetting()" onmouseout="noHoverSetting()"/>
             </div>
         </nav>
-        
-        <div class="heading">
-            <div class="heading-profile">
-               <?php
-                    if ($result2->num_rows == 1) {
-                        while ($row = $result2->fetch_assoc()) {
-                            if (!empty($row['user_profile_picture'])) {
-                                echo "<img src='data:image/jpeg;base64," . base64_encode($row['user_profile_picture']) . "' alt='Profile picture' title='Your profile' style='max-width: 300px; max-height: 150px;cursor:pointer; border-radius: 50%;' onclick='inlarge_profile(this)'/>";
-                            } else {
-                                echo "<img src='/RecipeBook/Recipe-Book/default_profile_picture.jpg' alt='Profile picture' title='Your profile' style='max-width: 300px; max-height: 150px; border-radius: 50%;cursor:pointer' onclick='inlarge_profile(this)'/>";
-                            }
-                        }
-                    }
-                ?>
-                    
-                <h2><span style="color:#ffbf17;"><?php echo $user_name ?></span></h2><br/>
-            </div>
-            <h2 style="text-align: center; margin-top:0px;">All posts</h2>
-
-            <form id="sortForm" method="GET" action="">
-                <label for="sort">Sort by:</label>&nbsp;&nbsp;
-                <select id="sort" name="sort" onchange="document.getElementById('sortForm').submit();">
-                    <option value="date" <?php echo (isset($_GET['sort']) && $_GET['sort'] == 'date') ? 'selected' : ''; ?>>Date</option>
-                    <option value="likes" <?php echo (isset($_GET['sort']) && $_GET['sort'] == 'likes') ? 'selected' : ''; ?>>Likes</option>
-                </select>
-            </form>
-        </div>
-
-        <a href="/RecipeBook/Recipe-Book/html/post_functionality/add_post.html"><img class="add_recipe" src="/RecipeBook/Recipe-Book/buttons/add_button.png" title="Add Recipe"></a>
 
         <?php
             if ($result->num_rows > 0) {
@@ -160,13 +88,6 @@
                                     }
                                     echo "<p><b>" . htmlspecialchars($row['user_name']) . "</p></b>";
                                 echo "</div>";
-                                echo "<div class='like_comment_bookmark'>";
-                                    $likeButtonSrc = $row['has_liked'] ? "/RecipeBook/Recipe-Book/buttons/like_button_yellow_filled.png" : "/RecipeBook/Recipe-Book/buttons/like_button_yellow_outlined.png";
-                                    echo "<img id='like-btn-" . $row['post_id'] . "' class='like-btn' data-post-id='" . $row['post_id'] . "' src='" . $likeButtonSrc . "' height='30px' width='30px' title='Likes'/>";
-                                    echo "<span id='like-count-" . $row['post_id'] . "' style='color:#ffbf17; font-weight:bold;'>" . htmlspecialchars($row['post_like_count']) . "</span>&nbsp;&nbsp;&nbsp";
-                                    echo "<img class='comment-btn' data-post-id='" . $postId . "' src='/RecipeBook/Recipe-Book/buttons/comment_button_yellow_outlined.png' height='30px' width='30px' title='Comment' onmouseover='onHoverComment(this)' onmouseout='noHoverComment(this)'/>&nbsp;&nbsp;&nbsp;";
-                                    echo "<img id='fav-btn-" . $row['post_id'] . "' class='fav-btn' data-post-id='" . $row['post_id'] . "' src='/RecipeBook/Recipe-Book/buttons/fav_button_yellow_outlined.png' height='30px' width='30px' title='Add to favourites' onmouseover='onHoverFav(this)' onmouseout='noHoverFav(this)'/>";
-                                echo "</div>";
                             echo "</div>";
                         echo "</div>";
                     echo "</div>";  
@@ -193,20 +114,6 @@
             </div>
         </div>
         
-        <!-- pop up box for comments -->
-        <div id="commentModal" class="modal">
-            <div class="modal-content">
-                <div style="text-align:right;">
-                    <span class="close" onclick="closeModal()" style="font-size:35px; color:black; cursor:pointer;">&times;</span>
-                </div>
-                <h2 style="color: #ffbf17; font-size:35px;">Comments</h2>
-                <div id="commentList"></div><br/><br/><br/>
-                <div style="display:flex; align-items:center;">
-                    <textarea id="commentText" placeholder="Add your comment..."></textarea>&nbsp;&nbsp;
-                    <button id="submit-comment">Submit Comment</button>
-                </div>
-            </div>
-        </div>
     </body>
     <script>
         function view_post(post_id) {
