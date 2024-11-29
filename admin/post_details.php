@@ -24,7 +24,7 @@
         $sql = "SELECT post.*, user.user_name 
             FROM post 
             LEFT JOIN user ON post.user_id = user.user_id 
-            WHERE post.post_id = $post_id";
+            WHERE post.post_status = 'approved' AND post.post_id = $post_id";
         $result = $conn->query($sql);
 
         if ($result->num_rows > 0) {

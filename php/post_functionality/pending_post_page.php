@@ -20,8 +20,20 @@
         die("Connection failed: " . $conn->connect_error);
     }
 
-    $sql = "SELECT pending_post.*, user.user_profile_picture, user.user_name FROM pending_post JOIN user ON pending_post.user_id = user.user_id WHERE pending_post.user_id = $user_id ORDER BY pending_post.post_id DESC";
-
+    $sql = "
+        SELECT 
+            post.*, 
+            user.user_name, 
+            user.user_profile_picture
+        FROM 
+            post
+        JOIN 
+            user ON post.user_id = user.user_id
+        WHERE 
+            post.post_status = 'disapproved' 
+            AND post.user_id = $user_id
+        ORDER BY post.post_id DESC
+    ";
     $result = $conn->query($sql);
 ?>
 

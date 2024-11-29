@@ -21,10 +21,10 @@
 
         $post_id = $_GET['post_id'];
         
-        $sql = "SELECT pending_post.*, user.user_name 
-            FROM pending_post 
-            LEFT JOIN user ON pending_post.user_id = user.user_id 
-            WHERE pending_post.post_id = $post_id";
+        $sql = "SELECT post.*, user.user_name 
+            FROM post 
+            LEFT JOIN user ON post.user_id = user.user_id 
+            WHERE post.post_status = 'disapproved' AND post.post_id = $post_id";
         $result = $conn->query($sql);
 
         if ($result->num_rows > 0) {

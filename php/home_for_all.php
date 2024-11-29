@@ -15,6 +15,7 @@
         SELECT post.*, user.user_name, user.user_profile_picture
         FROM post 
         JOIN user ON post.user_id = user.user_id 
+        WHERE post.post_status = 'approved'
         ORDER BY post.post_id DESC
     ";
 

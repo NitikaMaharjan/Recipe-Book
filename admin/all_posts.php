@@ -22,7 +22,9 @@
 
 
 
-    $sql = "SELECT post.post_id, post.post_title, post.post_image, post.post_keywords, post.post_category, post.post_ingredients, post.post_instructions,post.post_posted_date, post.post_text, user.user_name FROM post INNER JOIN user ON post.user_id = user.user_id";
+    $sql = "SELECT post.post_id, post.post_title, post.post_image, post.post_keywords, post.post_category, post.post_ingredients, post.post_instructions,post.post_posted_date, post.post_text, user.user_name 
+            FROM post INNER JOIN user ON post.user_id = user.user_id 
+            WHERE post.post_status = 'approved'";
     $result = $conn->query($sql);
 
 

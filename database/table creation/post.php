@@ -23,6 +23,7 @@
         post_posted_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         post_edited_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         post_like_count INT(5) DEFAULT 0,
+        post_status ENUM('approved', 'disapproved') DEFAULT 'disapproved',
         user_id INT(6) UNSIGNED,
         FOREIGN KEY (user_id) REFERENCES User(user_id)
     )";

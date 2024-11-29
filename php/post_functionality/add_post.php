@@ -79,7 +79,7 @@
             exit();
         }
         
-        $sql = "INSERT INTO pending_post (post_image, post_title, post_ingredients, post_instructions, post_keywords, post_category, user_id, post_text)
+        $sql = "INSERT INTO post(post_image, post_title, post_ingredients, post_instructions, post_keywords, post_category, user_id, post_text)
             VALUES ('$imageData', '$post_title', '$post_ingredients', '$post_instructions', '$post_keywords', '$post_category', '$user_id','$post_text')";
 
         if ($conn->query($sql) === TRUE) {

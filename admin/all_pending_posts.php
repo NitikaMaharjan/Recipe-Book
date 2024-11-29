@@ -20,52 +20,39 @@
         die("Connection failed: " . $conn->connect_error);
     }
 
-    $sql = "SELECT pending_post.*, user.user_name FROM pending_post JOIN user ON pending_post.user_id = user.user_id ORDER BY pending_post.post_id ASC";
+    $sql = "SELECT post.*, user.user_name FROM post JOIN user ON post.user_id = user.user_id
+            WHERE post.post_status = 'disapproved' ORDER BY post.post_id ASC";
     $result = $conn->query($sql);
 
+   
     if (isset($_POST['disapprove_post'])) {
-        $post_id = $_POST['post_id'];
-        $disapprove_post_sql = "DELETE FROM pending_post WHERE post_id = $post_id";
-        if ($conn->query($disapprove_post_sql)== TRUE){
-            echo"<script>
-                alert('You have disapproved this post!');
-                window.location.href = '/Recipebook/Recipe-Book/admin/all_pending_posts.php';
-                exit();
-            </script>"; 
-        } 
+        $post_id = $_POST['post_id']; 
+        $disapprove_post_sql = "DELETE FROM post WHERE post_id = $post_id";
+
+        if ($conn->query($disapprove_post_sql) === TRUE) {
+            echo "<script>
+                    alert('You have disapproved this post!');
+                    window.location.href = '/Recipebook/Recipe-Book/admin/all_pending_posts.php';
+                    exit();
+                </script>";
+        } else {
+            echo "Error: " . $conn->error;
+        }
     }
 
     if (isset($_POST['approve_post'])) {
-        $post_id = $_POST['post_id'];
-    
-        $approve_post_sql = "SELECT * FROM pending_post WHERE post_id = $post_id";
-        $result2 = $conn->query($approve_post_sql);
-    
-        if ($result2 && $result2->num_rows > 0) {
-            $row = $result2->fetch_assoc();
-    
-            $imageData = $conn->real_escape_string($row['post_image']);
-            $post_title = $conn->real_escape_string($row['post_title']);
-            $post_ingredients = $conn->real_escape_string($row['post_ingredients']);
-            $post_instructions = $conn->real_escape_string($row['post_instructions']);
-            $post_keywords = $conn->real_escape_string($row['post_keywords']);
-            $post_category = $conn->real_escape_string($row['post_category']);
-            $user_id = $row['user_id'];
-            $post_text = $conn->real_escape_string($row['post_text']);
-    
-            $add_into_post_table_sql = "INSERT INTO post (post_image, post_title, post_ingredients, post_instructions, post_keywords, post_category, user_id, post_text)
-                                        VALUES ('$imageData', '$post_title', '$post_ingredients', '$post_instructions', '$post_keywords', '$post_category', $user_id, '$post_text')";
-            $delete_pending_post_sql = "DELETE FROM pending_post WHERE post_id = $post_id";
-            $conn->query($delete_pending_post_sql);
+        $post_id = $_POST['post_id']; 
+        $approve_post_sql = "UPDATE post SET post_status = 'approved' WHERE post_id = $post_id";
 
-            if ($conn->query($add_into_post_table_sql) == TRUE) {
-                echo "<script>
-                        alert('You have approved this post!');
-                        window.location.href = '/Recipebook/Recipe-Book/admin/all_pending_posts.php';
-                      </script>";
-            }
+        if ($conn->query($approve_post_sql) === TRUE) {
+            echo "<script>
+                    alert('You have approved this post!');
+                    window.location.href = '/Recipebook/Recipe-Book/admin/all_pending_posts.php';
+                </script>";
+        } else {
+            echo "Error: " . $conn->error;
         }
-    }    
+    }   
     
 ?>
 

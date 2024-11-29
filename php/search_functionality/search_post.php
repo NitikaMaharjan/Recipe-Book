@@ -60,7 +60,7 @@
             FROM post 
             JOIN user ON post.user_id = user.user_id 
             WHERE (post.post_title LIKE '%$search%' 
-                OR user.user_name LIKE '%$search%')";
+                OR user.user_name LIKE '%$search%') AND post.post_status = 'approved'";
 
     // Split the search terms by commas and trim whitespace
     $searchTerms = array_map('trim', explode(',', $search));

@@ -46,6 +46,7 @@
            (SELECT COUNT(*) FROM favourite WHERE favourite.post_id = post.post_id AND favourite.user_id = $user_id) AS has_favorited
         FROM post 
         JOIN user ON post.user_id = user.user_id 
+        WHERE post.post_status = 'approved'
         ORDER BY $sort_by
     ";
 

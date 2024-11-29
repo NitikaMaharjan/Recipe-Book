@@ -78,7 +78,7 @@
                     while ($row = $result->fetch_assoc()) {
                         $user_id = $row['user_id'];
 
-                        $posts_sql = "SELECT COUNT(*) AS total_posts FROM post WHERE user_id = $user_id";
+                        $posts_sql = "SELECT COUNT(*) AS total_posts FROM post WHERE post.post_status = 'approved' AND user_id = $user_id";
                         $posts_result = $conn->query($posts_sql);
                         $posts_row = $posts_result->fetch_assoc();
                         $total_posts = $posts_row['total_posts'];

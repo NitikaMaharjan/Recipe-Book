@@ -20,8 +20,8 @@
     }
 
     $user_count_query = 'SELECT COUNT(*) AS total_users FROM user;';
-    $pending_post_count_query = 'SELECT COUNT(*) AS total_pending_posts FROM pending_post;';
-    $post_count_query = 'SELECT COUNT(*) AS total_posts FROM post;';
+    $pending_post_count_query = "SELECT COUNT(*) AS total_pending_posts FROM post WHERE post.post_status = 'disapproved';";
+    $post_count_query = "SELECT COUNT(*) AS total_posts FROM post WHERE post.post_status = 'approved';";
     $comment_count_query = 'SELECT COUNT(*) AS total_comment FROM comment;';
 
     $user_count_result = $conn->query($user_count_query);
