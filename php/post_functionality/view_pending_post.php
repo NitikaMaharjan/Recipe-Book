@@ -83,6 +83,7 @@
                 $steps = explode(', ', $row['post_instructions']);
                 echo "<ol>";
                 foreach ($steps as $step) {
+                    $step = str_replace('|', ',', $step);
                     echo "<li>" . htmlspecialchars($step) . "</li>";
                 }
                 echo "</ol>";

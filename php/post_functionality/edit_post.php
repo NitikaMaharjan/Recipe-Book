@@ -81,6 +81,7 @@
                 <?php 
                     $steps = explode(", ", $row['post_instructions']); 
                     foreach ($steps as $step) {
+                        $step = str_replace('|', ',', $step);
                         echo "<div class='step-field'>";
                         echo "<textarea name='post_instructions[]' required>" . htmlspecialchars($step) . "</textarea>";
                         echo "&nbsp;&nbsp;<img src='/RecipeBook/Recipe-Book/buttons/minus_button.png' onclick='removeField(this)' width='22px' title='Remove Preparation Step'  style='background-color:transparent;cursor: pointer;'>";

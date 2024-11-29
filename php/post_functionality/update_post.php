@@ -17,7 +17,11 @@
         $post_id = (int)$_GET['post_id'];
         $post_title = $_POST['post_title'];
         $post_ingredients = implode(", ", $_POST['post_ingredients']); 
-        $post_instructions = implode(", ", $_POST['post_instructions']);
+        $instructions = $_POST['post_instructions'];
+        $instructions =  array_map(function($step){
+            return str_replace(',','|',$step);
+        }, $instructions);
+        $post_instructions = implode(", ", $instructions);
         $post_keywords = $_POST['post_keywords'];
         $post_category = $_POST['post_category'];
         $post_text = $_POST['post_text'];
