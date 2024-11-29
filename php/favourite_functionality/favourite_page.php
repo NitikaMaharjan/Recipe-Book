@@ -87,7 +87,7 @@
                             echo "<div class='post-image' style='text-align:center;'>";
                                 if (($row['post_image'])) {
                                     echo "<img src='data:image/jpeg;base64," . base64_encode($row['post_image']) . "' 
-                                    alt='Recipe Image' style='max-width: 450px; max-height: 450px; border-radius:8px; cursor: pointer;' onclick='inlarge_image(this)'/>";
+                                    alt='Recipe Image' style='max-width: 450px; max-height: 450px; border-radius:8px; cursor: pointer;'/>";
                                 } else {
                                     echo "No image available";
                                 }
@@ -208,33 +208,6 @@
 
         function noHoverComment(comment) {
             comment.src = '/RecipeBook/Recipe-Book/buttons/comment_button_yellow_outlined.png';
-        }
-
-        //pop up large image function
-        function inlarge_image(image) {
-            event.stopPropagation(); // Prevent any parent event from triggering
-            // Create the modal container
-            const modal = document.createElement('div');
-            modal.classList.add('image-modal');
-            modal.style.display = 'flex';
-
-            // Add the image to the modal
-            const modalImage = document.createElement('img');
-            modalImage.src = image.src;
-            modal.appendChild(modalImage);
-
-            // Add a close button
-            const closeBtn = document.createElement('span');
-            closeBtn.classList.add('close-btn');
-            closeBtn.innerHTML = '&times;';
-            closeBtn.onclick = function () {
-                modal.style.display = 'none';
-                modal.remove();
-            };
-            modal.appendChild(closeBtn);
-
-            // Add the modal to the body
-            document.body.appendChild(modal);
         }
 
         //ajax for like button

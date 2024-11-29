@@ -48,8 +48,8 @@ label {
 }
 
 input[type="text"],
-input[type="file"],
-textarea {
+input[type="file"], textarea{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     width: 100%;
     padding: 10px;
     margin-bottom: 15px;

@@ -61,9 +61,10 @@
                 echo "<br/>";
 
                 echo "<div class='post-image'>";
-                    if (($row['post_image'])) {
+                    if (!empty($row['post_image'])) {
                         echo "<img src='data:image/jpeg;base64," . base64_encode($row['post_image']) . "' 
-                        title='Recipe Image' style='max-width: 350px; max-height: 350px; border-radius:8px; cursor: pointer;' onclick='inlarge_image(this)'/>";
+                        title='Recipe Image' style='max-width: 350px; max-height: 350px; border-radius:8px; cursor: pointer;' 
+                        onclick='inlarge_image(this)'/>";
                     } else {
                         echo "No image available";
                     }
@@ -127,32 +128,29 @@
             document.querySelector('.back-button').src = '/RecipeBook/Recipe-Book/buttons/back_button.png';
         }
 
-        //pop up large image function
-        function inlarge_image(image) {
-            event.stopPropagation(); // Prevent any parent event from triggering
+        function inlarge_image(image){
             // Create the modal container
             const modal = document.createElement('div');
             modal.classList.add('image-modal');
-            modal.style.display = 'flex';
 
             // Add the image to the modal
             const modalImage = document.createElement('img');
             modalImage.src = image.src;
+            modalImage.classList.add('modal-image');
             modal.appendChild(modalImage);
-
-            // Add a close button
-            const closeBtn = document.createElement('span');
-            closeBtn.classList.add('close-btn');
-            closeBtn.innerHTML = '&times;';
-            closeBtn.onclick = function () {
-                modal.style.display = 'none';
-                modal.remove();
-            };
-            modal.appendChild(closeBtn);
 
             // Add the modal to the body
             document.body.appendChild(modal);
         }
+
+        window.onclick = function (event) {
+            const imageModal = document.querySelector('.image-modal');
+            
+            // Prevent interfering with the image modal
+            if (imageModal && event.target == imageModal) {
+                imageModal.remove();
+            }
+        };
     </script>
 </html>
 

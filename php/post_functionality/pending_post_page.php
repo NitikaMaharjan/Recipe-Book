@@ -20,7 +20,7 @@
         die("Connection failed: " . $conn->connect_error);
     }
 
-    $sql = "SELECT pending_post.*, user.user_profile_picture, user.user_name FROM pending_post JOIN user ON pending_post.user_id = user.user_id WHERE pending_post.user_id = $user_id";
+    $sql = "SELECT pending_post.*, user.user_profile_picture, user.user_name FROM pending_post JOIN user ON pending_post.user_id = user.user_id WHERE pending_post.user_id = $user_id ORDER BY pending_post.post_id DESC";
 
     $result = $conn->query($sql);
 ?>
@@ -65,7 +65,7 @@
                             echo "<div class='post-image' style='text-align:center;'>";
                                 if (($row['post_image'])) {
                                     echo "<img src='data:image/jpeg;base64," . base64_encode($row['post_image']) . "' 
-                                    alt='Recipe Image' style='max-width: 450px; max-height: 450px; border-radius:8px; cursor: pointer;' onclick='inlarge_image(this)'/>";
+                                    alt='Recipe Image' style='max-width: 450px; max-height: 450px; border-radius:8px; cursor: pointer;'/>";
                                 } else {
                                     echo "No image available";
                                 }
@@ -149,33 +149,6 @@
 
         function noHoverSetting(){
             document.querySelector('.setting-btn').src = '/RecipeBook/Recipe-Book/buttons/settings_button_black_lined.png';
-        }
-
-        //pop up large image function
-        function inlarge_image(image) {
-            event.stopPropagation(); // Prevent any parent event from triggering
-            // Create the modal container
-            const modal = document.createElement('div');
-            modal.classList.add('image-modal');
-            modal.style.display = 'flex';
-
-            // Add the image to the modal
-            const modalImage = document.createElement('img');
-            modalImage.src = image.src;
-            modal.appendChild(modalImage);
-
-            // Add a close button
-            const closeBtn = document.createElement('span');
-            closeBtn.classList.add('close-btn');
-            closeBtn.innerHTML = '&times;';
-            closeBtn.onclick = function () {
-                modal.style.display = 'none';
-                modal.remove();
-            };
-            modal.appendChild(closeBtn);
-
-            // Add the modal to the body
-            document.body.appendChild(modal);
         }
 
         //about popup box
