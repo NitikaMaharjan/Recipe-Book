@@ -59,6 +59,16 @@ body {
     padding-top: 90px;
 }
 
+.add_recipe {
+    position: fixed;
+    bottom: 20px;
+    right: 30px;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
 .container {
     display: block;
     justify-content: center;

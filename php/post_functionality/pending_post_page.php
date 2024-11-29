@@ -51,6 +51,8 @@
             <h2 style="text-align: center;">All posts</h2>
         </div>
 
+        <a href="/RecipeBook/Recipe-Book/html/post_functionality/add_post.html"><img class="add_recipe" src="/RecipeBook/Recipe-Book/buttons/add_button.png" title="Add Recipe"></a>
+
         <?php
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {

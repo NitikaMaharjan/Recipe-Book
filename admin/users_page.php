@@ -91,7 +91,7 @@
                                             alt='Profile Picture' class='thumbnail' onclick='showPopup(this)' />";
                                     } else {
                                         echo "<img src='/Recipebook/Recipe-Book/admin/default_profile_picture.jpg' 
-                                            alt='Default Profile Picture' class='thumbnail' onclick='showPopup(this)'/>";
+                                            alt='Default Profile Picture' class='thumbnail' onclick='showPopup(this)' />";
                                     }
                                 echo "</td>
                                 <td>{$row['user_name']}</td>
@@ -118,12 +118,6 @@
                 ?>
             </tbody>
         </table>
-
-        <div id="myModal" class="modal">
-            <span class="close" onclick="closePopup()">&times;</span>
-            <img class="modal-content" id="modalImg">
-        </div>
-
     </body>
     <script>
         function go_back() {
@@ -153,16 +147,25 @@
 
         // Function to show the image in a popup
         function showPopup(img) {
-            var modal = document.getElementById("myModal");
-            var modalImg = document.getElementById("modalImg");
-            modal.style.display = "block";
-            modalImg.src = img.src;
-        }
+            // Create modal container
+            const modal = document.createElement("div");
+            modal.classList.add("image-modal");
 
-        // Function to close the popup
-        function closePopup() {
-            var modal = document.getElementById("myModal");
-            modal.style.display = "none";
+            // Create enlarged image
+            const modalImg = document.createElement("img");
+            modalImg.src = img.src;
+            modalImg.classList.add("modal-image");
+            modal.appendChild(modalImg);
+
+            // Append modal to the document body
+            document.body.appendChild(modal);
+
+            // Close modal when clicking outside the image
+            modal.addEventListener("click", function (event) {
+                if (event.target === modal) {
+                    modal.remove();
+                }
+            });
         }
     </script>
 </html>

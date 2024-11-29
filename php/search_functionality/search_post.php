@@ -137,6 +137,7 @@
             
             <div class="rightside-bar">
                 <img class="favc-btn" onclick="window.location.href='/RecipeBook/Recipe-Book/php/favourite_functionality/favourite_page.php'" src="/RecipeBook/Recipe-Book/buttons/fav_button_black.png" title="Your favourites" onmouseover="onHoverFavc()" onmouseout="noHoverFavc()"/>
+                <img class="pen-btn" onclick="window.location.href='/RecipeBook/Recipe-Book/php/post_functionality/pending_post_page.php'" src="/RecipeBook/Recipe-Book/buttons/pending_button_black.png" title="Your pending posts" onmouseover="onHoverPen()" onmouseout="noHoverPen()"/>
                 <img class="setting-btn" onclick="window.location.href='/RecipeBook/Recipe-Book/html/manage_profile/settings.html'" src="/RecipeBook/Recipe-Book/buttons/settings_button_black_lined.png" title="Settings" onmouseover="onHoverSetting()" onmouseout="noHoverSetting()"/>
             </div>
         </nav>
@@ -145,7 +146,9 @@
             <h1 style="text-align: center;">Results for <span style="color:#ffbf17; cursor:pointer;"><?php echo $search ?></span>:</h1><br/>
             <h2 style="text-align: center;">All posts</h2>
         </div>
-
+        
+        <a href="/RecipeBook/Recipe-Book/html/post_functionality/add_post.html"><img class="add_recipe" src="/RecipeBook/Recipe-Book/buttons/add_button.png" title="Add Recipe"></a>
+        
         <?php
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {
@@ -243,6 +246,14 @@
 
         function noHoverFavc(){
             document.querySelector('.favc-btn').src = '/RecipeBook/Recipe-Book/buttons/fav_button_black.png';
+        }
+
+        function onHoverPen(){
+            document.querySelector('.pen-btn').src = '/RecipeBook/Recipe-Book/buttons/pending_button_yellow.png';
+        }
+
+        function noHoverPen(){
+            document.querySelector('.pen-btn').src = '/RecipeBook/Recipe-Book/buttons/pending_button_black.png';
         }
 
         function onHoverSetting(){

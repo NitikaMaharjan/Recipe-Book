@@ -26,15 +26,15 @@
                     window.location.href = '/RecipeBook/Recipe-Book/html/signup.html';
                   </script>";
             exit();
-        }else if (!preg_match("/^[a-zA-Z\s]*$/",$user_name)){
+        }else if (!preg_match("/^[a-zA-Z0-9\s]*$/",$user_name)){
             echo "<script>
-                    alert ('Username can only contain letters (a-z, A-Z) and whitespaces. Please try again!!');
+                    alert ('Username can only contain letters (a-z, A-Z), numbers and whitespaces. Please try again!!');
                     window.location.href = '/RecipeBook/Recipe-Book/html/signup.html';
                   </script>";
             exit();
-        }else if (strlen($user_name) < 3 || strlen($user_name) > 25) {
+        }else if (strlen($user_name) > 25) {
             echo "<script>
-                    alert('Username must be between 3 and 25 characters. Please try again!!');
+                    alert('Username must be less than 25 characters. Please try again!!');
                     window.location.href = '/RecipeBook/Recipe-Book/html/signup.html';
                   </script>";
             exit();
@@ -50,9 +50,9 @@
                     window.location.href = '/RecipeBook/Recipe-Book/html/signup.html';
                   </script>";
             exit();
-        }else if (strlen($user_password) < 5 || strlen($user_password) > 8) {
+        }else if (strlen($user_password) > 10) {
             echo "<script>
-                    alert('Password must be between 5 and 8 characters. Please try again!!');
+                    alert('Password must be less than 10 characters. Please try again!!');
                     window.location.href = '/RecipeBook/Recipe-Book/html/signup.html';
                   </script>";
             exit();

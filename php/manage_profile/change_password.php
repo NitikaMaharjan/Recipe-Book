@@ -37,9 +37,9 @@
 
                 if ($current_password == $stored_password) {
 
-                    if (strlen($new_password) < 5 || strlen($new_password) > 8) {
+                    if (strlen($new_password) > 10) {
                         echo "<script>
-                                alert('New password must be between 5 and 8 characters. Please try again!!');
+                                alert('New password must be less than 10 characters. Please try again!!');
                                 window.location.href = '/RecipeBook/Recipe-Book/html/manage_profile/change_password.html';
                             </script>";
                         exit();
