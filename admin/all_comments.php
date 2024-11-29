@@ -103,7 +103,7 @@
     </body>
         <script>
             function go_back() {
-                window.history.back();
+                window.location.href="/RecipeBook/Recipe-Book/admin/dashboard.php"
             }
 
             function onHoverBack(){

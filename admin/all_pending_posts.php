@@ -20,7 +20,7 @@
         die("Connection failed: " . $conn->connect_error);
     }
 
-    $sql = "SELECT pending_post.*, user.user_name FROM pending_post JOIN user ON pending_post.user_id = user.user_id";
+    $sql = "SELECT pending_post.*, user.user_name FROM pending_post JOIN user ON pending_post.user_id = user.user_id ORDER BY pending_post.post_id ASC";
     $result = $conn->query($sql);
 
     if (isset($_POST['disapprove_post'])) {
@@ -134,7 +134,7 @@
     </body>
     <script>
         function go_back() {
-            window.history.back();
+            window.location.href="/RecipeBook/Recipe-Book/admin/dashboard.php"
         }
 
         function onHoverBack(){
