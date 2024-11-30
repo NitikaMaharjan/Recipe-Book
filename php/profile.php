@@ -84,7 +84,7 @@
         <nav class="navbar">
             <div class="logo">
                 <img src="/RecipeBook/Recipe-Book/logo/logo4.png" onclick="window.location.href='/RecipeBook/Recipe-Book/php/home.php'" title="Home feed" style="width: 120px; height: 120px;"/>&nbsp;
-                <h1  onclick="about()" class="recipebook" title="About Recipebook">Recipebook</h1> 
+                <h1  onclick="window.location.href='/RecipeBook/Recipe-Book/php/home.php'" class="recipebook" title="About Recipebook">Recipebook</h1> 
             </div>
             <div class="likes-button">
                 <button><?php echo "Likes : <b>" . $total_likes."</b>"; ?></button>
@@ -180,18 +180,6 @@
             }
             $conn->close();
         ?>
-
-        <!-- pop up box for about -->
-        <div id="about" class="about">
-            <div class="about_content">
-                <div style="text-align:right;">
-                    <span class="close1" onclick="closePopup1()" style="font-size:35px; color:black; cursor:pointer;">&times;</span>
-                </div>
-                <img src="/RecipeBook/Recipe-Book/logo/logo4.png" title="Recipebook" style="width: 300px; height: 300px;"/>
-                <h1 style="color: #333;">About <span style="color:#ffbf17;">Recipebook</span></h1>
-                <p style="font-size: 20px; text-align:left;">RecipeBook is a social media platform designed specifically for food enthusiasts. It allows users to share their recipes, discover creations by others, and actively connect and engage with a community of like-minded food lovers.</p>
-            </div>
-        </div>
         
         <!-- pop up box for comments -->
         <div id="commentModal" class="modal">
@@ -344,16 +332,6 @@
                 xhr.send('post_id=' + postId);
             });
         });
-
-        //about popup box
-        function about() {
-            //display the pop-up box
-            document.getElementById('about').style.display = 'block';
-        }
-        function closePopup1() {
-            document.getElementById('about').style.display = 'none';
-        }
-        document.querySelector('.close1').addEventListener('click', closePopup1);
         
         // ajax and js for comments section
         let commentPollingInterval; // Variable to hold the interval ID
@@ -423,14 +401,9 @@
         });
 
         window.onclick = function (event) {
-            const popup1 = document.getElementById('about');
             const modal = document.getElementById('commentModal');
             const imageModal = document.querySelector('.image-modal');
-
-            // Close About pop-up when clicking outside
-            if (event.target == popup1) {
-                closePopup1();
-            }
+            
             // Close comment pop-up when clicking outside
             if (event.target == modal) {
                 closeModal();

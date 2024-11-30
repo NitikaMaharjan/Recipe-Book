@@ -75,22 +75,22 @@
                 <div class="btn1" onclick="window.location.href='/Recipebook/Recipe-Book/admin/users_page.php'" onmouseover="onHoverbtn1()" onmouseout="noHoverbtn1()" title="Users">
                     <img class="img-1" src="/RecipeBook/Recipe-Book/buttons/users_button.png" height="40px" width="40px"/><br/>
                     <button class="btn-1">users</button><br/><br/>
-                    <span class="count-1" style="font-size:30px; padding-left:85px;"><?php echo $user_count; ?></span>
+                    <span class="count-1" style="font-size:30px; padding-left:80px;"><?php echo $user_count; ?></span>
                 </div>
                 <div class="btn4" onclick="window.location.href='/Recipebook/Recipe-Book/admin/all_pending_posts.php'" onmouseover="onHoverbtn4()" onmouseout="noHoverbtn4()" title="Pending Posts">
                     <img class="img-4" src="/RecipeBook/Recipe-Book/buttons/pending_button_black.png" height="35px" width="35px"/><br/>
                     <button class="btn-4">pending posts</button><br/><br/>
-                    <span class="count-4" style="font-size:30px; padding-left:85px;"><?php echo $pending_post_count; ?></span>
+                    <span class="count-4" style="font-size:30px; padding-left:80px;"><?php echo $pending_post_count; ?></span>
                 </div>
                 <div class="btn2" onclick="window.location.href='/Recipebook/Recipe-Book/admin/all_posts.php'" onmouseover="onHoverbtn2()" onmouseout="noHoverbtn2()" title="Posts">
                     <img class="img-2" src="/RecipeBook/Recipe-Book/buttons/posts_button.png" height="40px" width="40px"/><br/>
                     <button class="btn-2">posts</button><br/><br/>
-                    <span class="count-2" style="font-size:30px; padding-left:85px;"><?php echo $post_count; ?></span>
+                    <span class="count-2" style="font-size:30px; padding-left:80px;"><?php echo $post_count; ?></span>
                 </div>
                 <div class="btn3" onclick="window.location.href='/Recipebook/Recipe-Book/admin/all_comments.php'" onmouseover="onHoverbtn3()" onmouseout="noHoverbtn3()" title="Comments">
                     <img class="img-3" src="/RecipeBook/Recipe-Book/buttons/comment_button_black_outlined.png" height="40px" width="40px"/><br/>
                     <button class="btn-3">comments</button><br/><br/>
-                    <span class="count-3" style="font-size:30px; padding-left:85px;"><?php echo $comment_count; ?></span>
+                    <span class="count-3" style="font-size:30px; padding-left:80px;"><?php echo $comment_count; ?></span>
                 </div>
             </div>
         </div>
