@@ -2,7 +2,7 @@
     session_start();
 
     if (!isset($_SESSION['username']) || !isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == false) {
-        header("Location: /RecipeBook/Recipe-Book/html/login.html");
+        header("Location: /RecipeBook/Recipe-Book/php/home_for_all.php");
         exit();
     }
 
@@ -54,7 +54,7 @@
             <div class="rightside-bar">
                 <img class="home-btn" onclick="window.location.href='/RecipeBook/Recipe-Book/php/home.php'" src='/RecipeBook/Recipe-Book/buttons/home_button_black_outlined.png' title="Home feed"  onmouseover="onHoverHome()" onmouseout="noHoverHome()" />
                 <img class="favc-btn" onclick="window.location.href='/RecipeBook/Recipe-Book/php/favourite_functionality/favourite_page.php'" src="/RecipeBook/Recipe-Book/buttons/fav_button_black.png" title="Your favourites" onmouseover="onHoverFavc()" onmouseout="noHoverFavc()"/>
-                <img class="pen-btn" onclick="window.location.href='/RecipeBook/Recipe-Book/php/post_functionality/pending_post_page.php'" src="/RecipeBook/Recipe-Book/buttons/pending_button_black.png" title="Your pending posts" onmouseover="onHoverPen()" onmouseout="noHoverPen()"/>
+                <img class="pen-btn" onclick="window.location.href='/RecipeBook/Recipe-Book/php/post_functionality/pending_post_page.php'" src="/RecipeBook/Recipe-Book/buttons/pending_button_yellow.png" title="Your pending posts"/>
                 <img class="setting-btn" onclick="window.location.href='/RecipeBook/Recipe-Book/html/manage_profile/settings.html'" src="/RecipeBook/Recipe-Book/buttons/settings_button_black_lined.png" title="Settings" onmouseover="onHoverSetting()" onmouseout="noHoverSetting()"/>
             </div>
         </nav>
@@ -145,14 +145,6 @@
 
         function noHoverFavc(){
             document.querySelector('.favc-btn').src = '/RecipeBook/Recipe-Book/buttons/fav_button_black.png';
-        }
-
-        function onHoverPen(){
-            document.querySelector('.pen-btn').src = '/RecipeBook/Recipe-Book/buttons/pending_button_yellow.png';
-        }
-
-        function noHoverPen(){
-            document.querySelector('.pen-btn').src = '/RecipeBook/Recipe-Book/buttons/pending_button_black.png';
         }
 
         function onHoverSetting(){

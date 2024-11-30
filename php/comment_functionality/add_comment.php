@@ -2,7 +2,7 @@
     session_start();
 
     if (!(isset($_SESSION['username']) && isset($_SESSION['loggedin']) && $_SESSION['loggedin'])) {
-        header("Location: /recipebook/Recipe-Book/html/login.html");
+        header("Location: /recipebook/Recipe-Book/php/home_for_all.php");
         exit();
     }
 

@@ -104,6 +104,10 @@ body {
     justify-content: space-between;
 }
 
+.post-actions p{
+    max-width:350px;
+}
+
 .view-post-container li {
     margin-bottom: 5px;
 }
