@@ -251,11 +251,23 @@
         function noHoverComment(comment) {
             comment.src = '/RecipeBook/Recipe-Book/buttons/comment_button_yellow_outlined.png';
         }
+        //About Section
+        //about popup box
+        function about() {
+            //display the pop-up box
+            document.getElementById('about').style.display = 'block';
+        }
+        function closePopup1() {
+            document.getElementById('about').style.display = 'none';
+        }
+        document.querySelector('.close1').addEventListener('click', closePopup1);
+        
 
+        //Like button
         //ajax for like button
         document.querySelectorAll('.like-btn').forEach(button => {
             button.addEventListener('click', function (event) {
-                event.stopPropagation(); // Prevent any parent event from triggering
+                event.stopPropagation(); // Prevent any parent event from triggering, like ma click garda post container ma click nahoos
                 
                 const postId = this.getAttribute('data-post-id');
                 const likeBtn = document.getElementById(`like-btn-${postId}`);
@@ -281,7 +293,7 @@
                         const response = JSON.parse(xhr.responseText);
 
                         if (response.success) {
-                            // Update Like Count in UI (already updated above, but just in case)
+                            // just in case mathi ko chalena bhanney, updating like count in UI
                             likeCount.innerText = response.newLikeCount;
                         } else {
                             alert(response.message);
@@ -295,6 +307,7 @@
             });
         });
 
+        //Favourite 
         //ajax for favourite button
         document.querySelectorAll('.fav-btn').forEach(button => {
             button.addEventListener('click', function(event) {
@@ -315,16 +328,9 @@
             });
         });
 
-        //about popup box
-        function about() {
-            //display the pop-up box
-            document.getElementById('about').style.display = 'block';
-        }
-        function closePopup1() {
-            document.getElementById('about').style.display = 'none';
-        }
-        document.querySelector('.close1').addEventListener('click', closePopup1);
-        
+
+
+        //Comment Section
         // ajax and js for comments section
         let commentPollingInterval; // Variable to hold the interval ID
 
@@ -332,10 +338,10 @@
             // Fetch existing comments
             fetchComments(postId);
             
-            // Start polling for new comments
+            // Fetch new comments every 3 seconds
             commentPollingInterval = setInterval(() => {
                 fetchComments(postId);
-            }, 3000); // Fetch new comments every 3 seconds
+            }, 3000); 
             
             // Display the modal
             document.getElementById('commentModal').style.display = 'block';
@@ -347,7 +353,7 @@
         function closeModal() {
             document.getElementById('commentModal').style.display = 'none';
             
-            // Stop polling when the modal is closed
+            // Stop fetching when the modal is closed
             clearInterval(commentPollingInterval);
         }
         
@@ -391,21 +397,6 @@
                 openModal(postId);
             });
         });
-
-        window.onclick = function(event) {
-            const popup1 = document.getElementById('about');
-            const modal = document.getElementById('commentModal');
-
-            // Close About pop-up when clicking outside
-            if (event.target == popup1) {
-                closePopup1();
-            }
-            // Close comment popup when clicking outside
-            if (event.target == modal) {
-                closeModal();
-            }
-        };
-
         //deleting comment
         function deleteComment(commentId) {
             if (confirm("Are you sure you want to delete this comment?")){
@@ -420,5 +411,23 @@
                 xhr.send('comment_id=' + commentId);
             }
         }
+
+        
+        //Closing about and comment pop-up box
+        window.onclick = function(event) {
+            const popup1 = document.getElementById('about');
+            const modal = document.getElementById('commentModal');
+
+            // Close About pop-up when clicking outside
+            if (event.target == popup1) {
+                closePopup1();
+            }
+            // Close comment popup when clicking outside
+            if (event.target == modal) {
+                closeModal();
+            }
+        };
+
+    
     </script>
 </html>

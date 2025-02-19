@@ -1,13 +1,11 @@
 <?php
     session_start();
 
-    // Check if the admin is logged in
     if (!(isset($_SESSION['adminname']) && isset($_SESSION['admin_loggedin']) && isset($_SESSION['admin_id']))) {
         header("Location: /Recipebook/Recipe-Book/admin/login_admin.html");
         exit();
     }
 
-    // Database connection
     $servername = "localhost";
     $username = "root";
     $password = "";
@@ -15,7 +13,6 @@
 
     $conn = new mysqli($servername, $username, $password, $dbname);
 
-    // Check connection
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }

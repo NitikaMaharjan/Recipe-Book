@@ -7,7 +7,6 @@
         exit();
     }
 
-    // Database connection
     $servername = "localhost";
     $username = "root";
     $password = "";

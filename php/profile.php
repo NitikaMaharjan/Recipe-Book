@@ -289,7 +289,6 @@
                     likeCount.innerHTML = parseInt(likeCount.innerHTML) + 1;
                 }
 
-                // Send AJAX Request
                 const xhr = new XMLHttpRequest();
                 xhr.open("POST", "/RecipeBook/Recipe-Book/php/likes_functionality/like_post.php", true);
                 xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
@@ -340,10 +339,10 @@
             // Fetch existing comments
             fetchComments(postId);
             
-            // Start polling for new comments
+            // Fetch new comments every 3 seconds
             commentPollingInterval = setInterval(() => {
                 fetchComments(postId);
-            }, 3000); // Fetch new comments every 3 seconds
+            }, 3000); 
             
             // Display the modal
             document.getElementById('commentModal').style.display = 'block';
@@ -355,7 +354,7 @@
         function closeModal() {
             document.getElementById('commentModal').style.display = 'none';
             
-            // Stop polling when the modal is closed
+            // Stop fetching when the modal is closed
             clearInterval(commentPollingInterval);
         }
         

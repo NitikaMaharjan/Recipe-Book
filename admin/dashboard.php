@@ -30,9 +30,9 @@
     $comment_count_result = $conn->query($comment_count_query);
 
     $user_count = 0; // Default value
-    $pending_post_count = 0; // Default value
-    $post_count = 0; // Default value
-    $comment_count = 0; // Default value
+    $pending_post_count = 0;
+    $post_count = 0; 
+    $comment_count = 0; 
 
     if ($user_count_result->num_rows > 0) {
         $user_count = $user_count_result->fetch_assoc()['total_users'];
@@ -179,9 +179,7 @@
             document.querySelector('.count-3').style.color = "black";
         }
 
-        //about popup box
         function about() {
-            //display the pop-up box
             document.getElementById('about').style.display = 'block';
         }
         function closePopup1() {
