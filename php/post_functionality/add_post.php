@@ -26,6 +26,15 @@
         $instructions =  array_map(function($step){
             return str_replace(',','|',$step);
         }, $instructions);
+                                //$instructions = [
+                                //     "Chop onions, tomatoes, and garlic",
+                                //     "Heat oil, add spices, and stir",
+                                //     "Cook for 10 minutes, then serve"
+                                // ]; to $instructions = [
+                                //     "Chop onions | tomatoes | and garlic",
+                                //     "Heat oil | add spices | and stir",
+                                //     "Cook for 10 minutes | then serve"
+                                // ];
         $post_instructions = implode(", ", $instructions);
         $post_keywords = $_POST['post_keywords'];
         $post_category = $_POST['post_category'];
