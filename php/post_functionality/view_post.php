@@ -58,7 +58,7 @@
     <head>
         <title>Recipebook</title>
         <link rel="stylesheet" href="/RecipeBook/Recipe-Book/css/view_post.css" type="text/css">
-        <link rel="icon" href="/RecipeBook/Recipe-Book/logo/logo4.png" type="image/png">
+        <link rel="icon" href="/RecipeBook/Recipe-Book/logo/logo.png" type="image/png">
     </head>
     <body>
         <img onclick="go_back()" class="back-button" src="/RecipeBook/Recipe-Book/buttons/back_button.png" title="Go back" onmouseover="onHoverBack()" onmouseout="noHoverBack()">

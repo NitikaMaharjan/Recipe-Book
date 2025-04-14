@@ -28,13 +28,13 @@
     <head>
         <title>Recipebook</title>
         <link rel="stylesheet" href="/RecipeBook/Recipe-Book/css/home_for_all.css" type="text/css">
-        <link rel="icon" href="/RecipeBook/Recipe-Book/logo/logo4.png" type="image/png">
+        <link rel="icon" href="/RecipeBook/Recipe-Book/logo/logo.png" type="image/png">
     </head>
 
     <body>
         <nav class="navbar">
             <div class="logo">
-                <img src="/RecipeBook/Recipe-Book/logo/logo4.png" onclick="window.location.href='/RecipeBook/Recipe-Book/php/home_for_all.php'" title="Home feed" style="width: 120px; height: 120px;"/>&nbsp;
+                <img src="/RecipeBook/Recipe-Book/logo/logo.png" onclick="window.location.href='/RecipeBook/Recipe-Book/php/home_for_all.php'" title="Home feed" style="width: 120px; height: 120px;"/>&nbsp;
                 <h1 onclick="about()" class="recipebook" title="About Recipebook">Recipebook</h1>
             </div>
 
@@ -106,7 +106,7 @@
                 }
             } else {
                 echo "<p style='text-align: center; font-size: 20px;'><b>";
-                echo "<img src='/RecipeBook/Recipe-Book/logo/logo4.png' onclick='about()' title='Recipebook' style='width: 300px; height: 300px; cursor:pointer;'/><br/>";
+                echo "<img src='/RecipeBook/Recipe-Book/logo/logo.png' onclick='about()' title='Recipebook' style='width: 300px; height: 300px; cursor:pointer;'/><br/>";
                 echo "There are no recipes to show you. <span style='color:#ffbf17; cursor:pointer;' onclick='popup()'>Click Here</span> to get started with Recipebook!";
                 echo "</b></p>";
             }
@@ -119,7 +119,7 @@
                 <div style="text-align:right;">
                     <span class="close1" onclick="closePopup1()" style="font-size:35px; color:black; cursor:pointer;">&times;</span>
                 </div>
-                <img src="/RecipeBook/Recipe-Book/logo/logo4.png" title="Recipebook" style="width: 300px; height: 300px;"/>
+                <img src="/RecipeBook/Recipe-Book/logo/logo.png" title="Recipebook" style="width: 300px; height: 300px;"/>
                 <h1 style="color: #333;">About <span style="color:#ffbf17;">Recipebook</span></h1>
                 <p style="font-size: 20px; text-align:left;">RecipeBook is a social media platform designed specifically for food enthusiasts. It allows users to share their recipes, discover creations by others, and actively connect and engage with a community of like-minded food lovers.</p>
             </div>
@@ -131,7 +131,7 @@
             <div class="popup_content">
                 <span class="close2" onclick="closePopup2()">&times;</span>
                 <div class="signup_login_popup_logo">
-                    <img src="/RecipeBook/Recipe-Book/logo/logo4.png" title="Recipebook"/>
+                    <img src="/RecipeBook/Recipe-Book/logo/logo.png" title="Recipebook"/>
                 </div>
                 <div class="signup_login_popup_form">
                     <h1>Sign up to get started with <span style="color:#ffbf17;">Recipebook</span></h1><br/>

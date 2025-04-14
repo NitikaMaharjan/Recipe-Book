@@ -52,12 +52,12 @@
     <head>
         <title>Recipebook</title>
         <link rel="stylesheet" href="/RecipeBook/Recipe-Book/css/favourite_page.css" type="text/css">
-        <link rel="icon" href="/RecipeBook/Recipe-Book/logo/logo4.png" type="image/png">
+        <link rel="icon" href="/RecipeBook/Recipe-Book/logo/logo.png" type="image/png">
     </head>
     <body>
         <nav class="navbar">
             <div class="logo">
-                <img src="/RecipeBook/Recipe-Book/logo/logo4.png" onclick="window.location.href='/RecipeBook/Recipe-Book/php/home.php'" title="Home feed" style="width: 120px; height: 120px;"/>&nbsp;
+                <img src="/RecipeBook/Recipe-Book/logo/logo.png" onclick="window.location.href='/RecipeBook/Recipe-Book/php/home.php'" title="Home feed" style="width: 120px; height: 120px;"/>&nbsp;
                 <h1  onclick="window.location.href='/RecipeBook/Recipe-Book/php/home.php'" class="recipebook" title="About Recipebook">Recipebook</h1> 
             </div>
     
@@ -123,7 +123,7 @@
                 }
             }else {
                 echo "<p style='text-align: center; font-size: 20px;'><b>";
-                echo "<img src='/RecipeBook/Recipe-Book/logo/logo4.png' title='Recipebook' style='width: 300px; height: 300px; cursor:pointer;'/><br/>";
+                echo "<img src='/RecipeBook/Recipe-Book/logo/logo.png' title='Recipebook' style='width: 300px; height: 300px; cursor:pointer;'/><br/>";
                 echo "You have not added any recipes to your favourites yet.";
                 echo "</b></p><br/>";
             }
