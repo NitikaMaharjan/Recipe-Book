@@ -35,7 +35,7 @@
                 //third delete the posts 
                 $delete_post_sql = "DELETE FROM post WHERE user_id = $user_id";
                 if( $conn->query($delete_post_sql) === TRUE){
-                    //then only can delete user, natra foreign key constarint le error dincha
+                    //then only can delete user, otherwise foreign key constraint will throw error
                     $delete_user_sql = "DELETE FROM user WHERE user_id = $user_id";
                     $conn->query($delete_user_sql);
                     echo"<script>

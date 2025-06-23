@@ -251,8 +251,8 @@
         function noHoverComment(comment) {
             comment.src = '/RecipeBook/Recipe-Book/buttons/comment_button_yellow_outlined.png';
         }
-        //About Section
-        //about popup box
+
+        // about pop-up box
         function about() {
             //display the pop-up box
             document.getElementById('about').style.display = 'block';
@@ -262,12 +262,10 @@
         }
         document.querySelector('.close1').addEventListener('click', closePopup1);
         
-
-        //Like button
-        //ajax for like button
+        // ajax for like btn
         document.querySelectorAll('.like-btn').forEach(button => {
             button.addEventListener('click', function (event) {
-                event.stopPropagation(); // Prevent any parent event from triggering, like ma click garda post container ma click nahoos
+                event.stopPropagation(); // Prevent any parent event from triggering
                 
                 const postId = this.getAttribute('data-post-id');
                 const likeBtn = document.getElementById(`like-btn-${postId}`);
@@ -293,7 +291,6 @@
                         const response = JSON.parse(xhr.responseText);
 
                         if (response.success) {
-                            // just in case mathi ko chalena bhanney, updating like count in UI
                             likeCount.innerText = response.newLikeCount;
                         } else {
                             alert(response.message);
@@ -307,8 +304,7 @@
             });
         });
 
-        //Favourite 
-        //ajax for favourite button
+        //ajax for favourite btn
         document.querySelectorAll('.fav-btn').forEach(button => {
             button.addEventListener('click', function(event) {
                 event.stopPropagation();
@@ -328,9 +324,6 @@
             });
         });
 
-
-
-        //Comment Section
         // ajax and js for comments section
         let commentPollingInterval; // Variable to hold the interval ID
 
