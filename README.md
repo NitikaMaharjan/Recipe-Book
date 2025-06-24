@@ -23,20 +23,16 @@ Developed using the **Waterfall model**, the platform integrates **HTML, CSS, Ja
 
 ## Problem Statement
 
-- **Lack of a Dedicated Food Community**  
-    
+- **Lack of a Dedicated Food Community**      
     General social media platforms make it difficult for food lovers to find recipes and connect.
 
-- **No Recipe Templates**  
-    
+- **No Recipe Templates**      
     Existing platforms don’t support structured recipe formatting, leading to cluttered posts.
 
-- **Limited Recipe Search Tools**  
-    
+- **Limited Recipe Search Tools**      
     Users cannot filter recipes based on title, tags, or ingredients.
 
-- **Minimal Interaction on Food Websites**  
-    
+- **Minimal Interaction on Food Websites**      
     Traditional recipe websites lack interactive features like likes, comments, and bookmarks.
 
 ## Objectives
@@ -49,30 +45,24 @@ To build a web application where users can:
 
 ## Scope
 
-- **Structured Recipe Posting**  
-    
+- **Structured Recipe Posting**    
     Recipes are added via a clean and organized form layout.
 
-- **Advanced Search Feature**  
-    
+- **Advanced Search Feature**    
     Users can filter recipes by recipe title, username, hashtags, or categories.
 
-- **Community Engagement**  
-    
+- **Community Engagement**    
     Users can like, comment on, and bookmark favorite recipes.
 
 ## Limitations
 
-- **No Real User Feedback**  
-    
+- **No Real User Feedback**    
     All accounts and activity are simulated; no real user testing was conducted.
 
-- **Not Deployed Online**  
-    
+- **Not Deployed Online**    
     The platform is not hosted, so scalability and performance are untested.
 
-- **Missing Features**  
-    
+- **Missing Features**    
     Real-time notifications, multiple images per post, and ingredient-based searches are not implemented.
 
 ## Use Case Diagram
@@ -128,7 +118,7 @@ To build a web application where users can:
 
 ## Screenshots
 
-Below are some screenshots of the user interface and platform features:
+> Below are some screenshots of the website interface and admin dashboard:
 
 ### Home Page
 <img src="img/1.png"><br/>
@@ -183,9 +173,9 @@ Below are some screenshots of the user interface and platform features:
 
 ## Demo Video
 
-Watch a short demo of the Recipebook in action by clicking the image below:
+> Watch the working demo of Recipebook by clicking the image below:
 
-<a href="https://drive.google.com/file/d/1jX67Q_Tf2A2gTgUdWPEHos1q6dO20rhA/view?usp=drive_link" target="_blank" rel="noopener noreferrer">
+<a href="https://drive.google.com/file/d/1jX67Q_Tf2A2gTgUdWPEHos1q6dO20rhA/view?usp=drive_link" target="_blank">
   <img src="img/1.png" alt="Demo Video" width="600"/>
 </a>
 
