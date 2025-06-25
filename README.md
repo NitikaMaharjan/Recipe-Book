@@ -1,4 +1,4 @@
-# Recipebook – A Social Platform for Sharing Recipes
+# Recipebook – A Social Media Platform for Sharing Recipes
 
 ## Abstract
 
