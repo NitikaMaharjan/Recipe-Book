@@ -202,6 +202,9 @@ Several areas have been identified for future improvements:
 This project was collaboratively developed by:
 
 - [Nitika Maharjan](https://github.com/NitikaMaharjan)
+
+  email: [maharjanitika@gmail.com](https://mail.google.com/mail/?view=cm&fs=1&to=maharjanitika@gmail.com)
+
     - Designed and implemented the navigation bar and major UI components across pages.
     - Built `home.php`, `edit_post.php`, and `delete_post.php` for displaying and managing user posts.
     - Implemented profile picture features (add, delete, update), password update, and comment removal.
@@ -212,6 +215,9 @@ This project was collaboratively developed by:
     - Added UI elements like “About” pop-up boxes and comment modals for enhanced user experience.
  
 - [Rohan Kasichhwa](https://github.com/Rohankasichhwa2023)
+
+  email: [rohankasichhwa@gmail.com](https://mail.google.com/mail/?view=cm&fs=1&to=rohankasichhwa@gmail.com)
+
     - Developed authentication features in `signup.php` and `login.php`.
     - Created `add_post.php`, `view_post.php`, and `profile.php` to manage user content.
     - Implemented like/unlike and add-to-favorite functionality for recipes.
@@ -221,4 +227,4 @@ This project was collaboratively developed by:
     - Built admin functionalities to approve/disapprove posts and manage user accounts/comments.
     - Ensured proper integration between user actions and backend operations.
 
-Feel free to connect with us on GitHub for feedback, suggestions, or collaboration opportunities.
+Feel free to connect with us on GitHub or reach out via email for feedback, suggestions, or collaboration opportunities.
